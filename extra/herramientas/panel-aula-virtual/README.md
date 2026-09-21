@@ -50,6 +50,21 @@ justifica **[Motion](https://motion.dev/docs/vue)** (`motion-v`, el paquete ofic
 Motion para Vue) para las animaciones. Hay más vistas, listas que cambian y estados que
 en la calculadora, donde bastaban las transiciones nativas de Vue.
 
+## Estilo
+
+Mismo criterio que en `calculadora-de-faltas`, para que las dos herramientas se vean
+como una sola familia:
+
+- Paleta neutra (grises), color solo cuando significa algo (nunca decorativo).
+- Nada de fondos/insignias detrás de iconos. El icono lleva el color, sin adorno alrededor.
+- Sin patrones de dashboard genérico ("número grande + etiqueta gris"): si hay un dato
+  central, que tenga una forma pensada para ese dato, no la plantilla por defecto.
+- Texto mínimo: cada línea dice algo que ninguna otra parte de la pantalla ya dice.
+  Sin raya larga (—) como pausa a media frase (ver
+  [`../../.agents/skills/apuntes-claros/SKILL.md`](../../.agents/skills/apuntes-claros/SKILL.md)).
+- Animación proporcional: transición nativa para algo simple, Motion cuando de verdad
+  hay varias vistas/estados que lo justifiquen (ver "Stack" arriba).
+
 ## Legal
 
 - El consentimiento de cada compañero es base legal suficiente para la Fase 2 (art. 6.1.a
