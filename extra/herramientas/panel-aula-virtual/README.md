@@ -52,18 +52,9 @@ en la calculadora, donde bastaban las transiciones nativas de Vue.
 
 ## Estilo
 
-Mismo criterio que en `calculadora-de-faltas`, para que las dos herramientas se vean
-como una sola familia:
-
-- Paleta neutra (grises), color solo cuando significa algo (nunca decorativo).
-- Nada de fondos/insignias detrás de iconos. El icono lleva el color, sin adorno alrededor.
-- Sin patrones de dashboard genérico ("número grande + etiqueta gris"): si hay un dato
-  central, que tenga una forma pensada para ese dato, no la plantilla por defecto.
-- Texto mínimo: cada línea dice algo que ninguna otra parte de la pantalla ya dice.
-  Sin raya larga (—) como pausa a media frase (ver
-  [`../../.agents/skills/apuntes-claros/SKILL.md`](../../.agents/skills/apuntes-claros/SKILL.md)).
-- Animación proporcional: transición nativa para algo simple, Motion cuando de verdad
-  hay varias vistas/estados que lo justifiquen (ver "Stack" arriba).
+Mismo criterio visual que `calculadora-de-faltas`: paleta neutra, color solo con
+significado, nada de fondos/insignias detrás de iconos, y sin patrones de dashboard
+genérico (un dato central lleva una forma pensada para él, no la plantilla por defecto).
 
 ## Legal
 
