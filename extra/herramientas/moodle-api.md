@@ -48,6 +48,25 @@ curl -s "${MOODLE_URL}/webservice/rest/server.php" \
 - **`core_course_get_contents`** (con `courseid`): contenido completo de un curso
   (secciones, archivos, tareas, enlaces).
 - **`message_popup_get_popup_notifications`** (con `useridto`): notificaciones sin leer.
+- **`core_grades_get_gradeitems`** (con `courseid`): notas por curso, en JSON limpio (mejor
+  que `gradereport_user_get_grades_table`, que devuelve HTML). Sirve para avisar cuando
+  aparece una nota nueva.
+- **`core_course_get_recent_courses`**: cursos ordenados por último acceso. Sirve para ver
+  en qué asignatura llevas más tiempo sin entrar.
+- **`core_calendar_get_calendar_upcoming_view`**: alternativa a
+  `get_action_events_by_timesort`, con más datos ya incluidos por evento (nombre de
+  actividad, icono, curso).
+
+Probadas pero sin datos porque no se usan en los cursos de este año: `mod_forum_get_forums_by_courses`
+(foros a 0 discusiones), `core_badges_get_user_badges` (sin insignias),
+`core_completion_get_activities_completion_status` (sin seguimiento de finalización
+activado). Puede que funcionen mejor en otros módulos o cursos.
+
+**Bloqueada por el clasificador de seguridad de Claude Code** (genera un token nuevo, mismo
+tipo de aviso que resetear un token): `core_calendar_get_calendar_export_token`. Si
+funcionara, daría una URL de feed iCal para suscribir el calendario de tareas directo en
+Google/Apple Calendar, sin construir nada. Pendiente de una decisión explícita para
+desbloquearla.
 
 ## Lo que no funciona desde una cuenta de alumno
 
