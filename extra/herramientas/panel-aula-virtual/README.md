@@ -53,9 +53,7 @@ Estilo visual: ver [`../README.md`](../README.md#estilo-visual).
 **Backend**: Node.js (Express o similar), mismo lenguaje que el frontend. Sin base de
 datos (un archivo JSON guardando "esto ya se avisó" sobra) y sin ningún framework de
 agentes (LangGraph y similares están pensados para flujos con bucles/ramas de decisión;
-esto es lineal: pedir datos → comprobar → avisar). Evaluado y descartado por ahora:
-**[Jev](https://wavect.io/blog/jev-ai-decision-model-review/)** (modelo de decisión de
-TypeSafe AI). Interesante para el futuro, pero las decisiones aquí son deterministas
+esto es lineal: pedir datos, comprobar, avisar). Las decisiones aquí son deterministas
 (6%/10%, hay tarea nueva sí/no), no ambiguas, así que un `if` ya es correcto y gratis.
 
 ## Ideas para automatizar (sin construir todavía)
