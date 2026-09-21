@@ -9,3 +9,5 @@ su propio código.
   no tengas ya en tu calendario.
 - [`panel-aula-virtual/`](panel-aula-virtual/): tareas, notas y actividad de todos tus
   cursos en una sola pantalla.
+- [`web-del-repo/`](web-del-repo/): convertir el contenido del repo en una web navegable.
+- [`cuaderno-ia/`](cuaderno-ia/): preguntar con IA sobre el material de un módulo.
