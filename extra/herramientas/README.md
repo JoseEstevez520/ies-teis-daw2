@@ -11,3 +11,9 @@ su propio código.
   cursos en una sola pantalla.
 - [`web-del-repo/`](web-del-repo/): convertir el contenido del repo en una web navegable.
 - [`cuaderno-ia/`](cuaderno-ia/): preguntar con IA sobre el material de un módulo.
+
+## Estilo visual
+
+Para cualquier herramienta con interfaz: paleta neutra, color solo con significado,
+nada de fondos/insignias detrás de iconos, y sin patrones de dashboard genérico (un dato
+central lleva una forma pensada para él, no la plantilla por defecto).

@@ -45,16 +45,10 @@ hospedada por alguien (con el consentimiento de cada uno, todos mayores de edad)
 
 ## Stack
 
-Vue 3 + Vite + Tailwind, igual que `calculadora-de-faltas`. La diferencia: aquí sí se
-justifica **[Motion](https://motion.dev/docs/vue)** (`motion-v`, el paquete oficial de
-Motion para Vue) para las animaciones. Hay más vistas, listas que cambian y estados que
-en la calculadora, donde bastaban las transiciones nativas de Vue.
-
-## Estilo
-
-Mismo criterio visual que `calculadora-de-faltas`: paleta neutra, color solo con
-significado, nada de fondos/insignias detrás de iconos, y sin patrones de dashboard
-genérico (un dato central lleva una forma pensada para él, no la plantilla por defecto).
+Vue 3 + Vite + Tailwind. Para las animaciones, **[Motion](https://motion.dev/docs/vue)**
+(`motion-v`, el paquete oficial de Motion para Vue): hay varias vistas y listas que
+cambian, suficiente complejidad para justificarlo. Estilo visual: ver
+[`../README.md`](../README.md#estilo-visual).
 
 ## Legal
 
