@@ -14,6 +14,9 @@ previa. La idea es que subir algo sea tan fácil como copiarlo aquí.
 - Si dudas dónde meter algo, mejor preguntarlo que dejarlo suelto en la raíz.
 - **Estilo de redacción**: conciso y escaneable, sin relleno. Ver
   [.agents/skills/apuntes-claros/SKILL.md](.agents/skills/apuntes-claros/SKILL.md).
+- **No uses la palabra "Moodle" en el nombre de una herramienta** (`alarma-tareas`, no
+  `MoodleAlarma`). Es la política de marca de Moodle, aplica aunque sea gratis. Mencionarlo
+  como descripción sí vale ("consulta el Aula Virtual (Moodle) vía su API").
 
 ## Plantilla mínima de apunte
 
