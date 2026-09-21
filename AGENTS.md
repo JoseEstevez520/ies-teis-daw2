@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Repo colaborativo de apuntes y recursos de 2º DAW — IES de Teis, curso 2026-2027. Lo
+Repo colaborativo de apuntes y recursos de 2º DAW (IES de Teis, curso 2026-2027). Lo
 edita toda la clase, no una sola persona.
 
 ## Dónde mirar
@@ -16,5 +16,5 @@ Contenido extra (no es temario): `extra/{ia,diseno-web,ideas-proyecto-fin-curso,
 
 ## Reglas
 
-- No es para entregas ni trabajo evaluable individual — eso va en el repo de cada uno.
+- No es para entregas ni trabajo evaluable individual. Eso va en el repo de cada uno.
 - Push directo, sin pull requests (ver [CONTRIBUTING.md](CONTRIBUTING.md)).

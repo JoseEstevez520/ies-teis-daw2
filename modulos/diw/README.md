@@ -2,5 +2,5 @@
 
 Vue 3 + Vite
 
-Apuntes y recursos del módulo. Añade un archivo por tema o por apunte suelto — ver
+Apuntes y recursos del módulo. Añade un archivo por tema o por apunte suelto. Ver
 [convenciones de nombres](../../CONTRIBUTING.md).

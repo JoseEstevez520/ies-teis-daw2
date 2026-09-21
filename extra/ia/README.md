@@ -14,7 +14,7 @@ Copilot, ChatGPT...) en el día a día de clase.
   cómo quieres que trabaje contigo (por ejemplo: "no edites código, solo explica"). Es la
   forma de que no se pase de listo y te resuelva el ejercicio por ti.
 - **Úsalo para lo tedioso, no para lo que tienes que aprender.** Documentación, bootear un
-  proyecto, buscar en la documentación oficial — ahí sí ahorra tiempo real.
+  proyecto, buscar en la documentación oficial: ahí sí ahorra tiempo real.
 
 Añade aquí prompts o flujos concretos que te hayan funcionado bien en las prácticas del
 curso.

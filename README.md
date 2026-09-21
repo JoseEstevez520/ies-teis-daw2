@@ -1,7 +1,7 @@
 # ies-teis-daw2
 
 Apuntes y recursos de 2º DAW (IES de Teis), entre toda la clase. Sirve para repasar o para
-aportar lo que ya dominas — es la base de conocimiento común, no un archivo de entregas.
+aportar lo que ya dominas. Es la base de conocimiento común, no un archivo de entregas.
 
 No es para trabajo evaluable individual: eso va en el repo de cada uno.
 
@@ -23,11 +23,11 @@ extra/
 horario/
 ```
 
-- **`modulos/`** — apuntes y recursos del temario, organizados por módulo.
-- **`extra/`** — contenido que no es temario pero suma: IA aplicada, diseño web, ideas para
+- **`modulos/`**: apuntes y recursos del temario, organizados por módulo.
+- **`extra/`**: contenido que no es temario pero suma: IA aplicada, diseño web, ideas para
   el proyecto de fin de curso, y herramientas útiles (mini-proyectos con su propio código,
   como una calculadora de faltas).
-- **`horario/`** — horario semanal de clase.
+- **`horario/`**: horario semanal de clase.
 
 ## Cómo aportar
 

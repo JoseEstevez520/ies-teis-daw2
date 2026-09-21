@@ -1,6 +1,6 @@
 ---
 name: apuntes-claros
-description: Estilo de escritura para cualquier .md de este repo (apuntes, README, extra/) — conciso, escaneable y sin sonar a texto generado por IA. Aplícalo siempre que redactes o revises un apunte nuevo o un README de módulo, aunque no se pida explícitamente.
+description: Estilo de escritura para cualquier .md de este repo (apuntes, README, extra/), conciso, escaneable y sin sonar a texto generado por IA. Aplícalo siempre que redactes o revises un apunte nuevo o un README de módulo, aunque no se pida explícitamente.
 ---
 
 # Apuntes claros
@@ -38,7 +38,10 @@ lectura rápida:
   tres cosas distintas vale; si es relleno, corta a una.
 - **Palabras infladas**: fundamental, robusto, holístico, potente, clave, esencial.
   Casi siempre se pueden borrar sin perder nada.
-- **Raya larga (—) a cada dos frases** y emojis decorativos metidos como adorno.
+- **Raya larga (—) como pausa explicativa a media frase** ("esto es X — que además hace Y").
+  Las IA la usan mucho más que una persona al escribir. En una lista, como separador entre
+  un término y su descripción, no pasa nada. El problema es meterla dentro de una frase.
+- Emojis decorativos metidos como adorno.
 - **Cierres tipo moraleja**: la última frase tiene que ser información, no resumen.
 - **Frases de chatbot**: "¡Espero que esto te sea útil!". Esto es un apunte, no una
   respuesta de asistente.

@@ -3,5 +3,5 @@
 Propuestas, referencias y notas sobre qué suele funcionar bien en un proyecto final:
 alcance realista, qué mirar los evaluadores, ejemplos de proyectos anteriores.
 
-Si tienes una idea de proyecto, apúntala aquí aunque no la vayas a hacer tú — puede
+Si tienes una idea de proyecto, apúntala aquí aunque no la vayas a hacer tú. Puede
 inspirar a otro, o alguien puede sumarse.

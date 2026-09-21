@@ -6,13 +6,13 @@ previa. La idea es que subir algo sea tan fácil como copiarlo aquí.
 ## Reglas mínimas
 
 - **Haz `git pull` antes de currar**, para no pisar el trabajo de otro.
-- **No reescribas lo de otra persona sin necesidad** — si crees que algo está mal, corrígelo,
+- **No reescribas lo de otra persona sin necesidad.** Si crees que algo está mal, corrígelo,
   pero no borres el trabajo ajeno solo porque lo harías distinto.
 - **Nombres de archivo y carpeta en minúsculas-con-guiones** (`validacion-formularios.md`,
   no `Validación Formularios.md`). Esto importa porque el repo se puede convertir en web más
   adelante, y esos nombres pasan a ser URLs.
 - Si dudas dónde meter algo, mejor preguntarlo que dejarlo suelto en la raíz.
-- **Estilo de redacción**: conciso y escaneable, sin relleno — ver
+- **Estilo de redacción**: conciso y escaneable, sin relleno. Ver
   [.agents/skills/apuntes-claros/SKILL.md](.agents/skills/apuntes-claros/SKILL.md).
 
 ## Plantilla mínima de apunte
