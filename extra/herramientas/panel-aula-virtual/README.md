@@ -43,6 +43,13 @@ hospedada por alguien (con el consentimiento de cada uno, todos mayores de edad)
   funciones de lectura habilitadas (nunca las de entrega), y un aviso claro a cada uno de
   qué se guarda y que pueden pedir borrado cuando quieran.
 
+## Stack
+
+Vue 3 + Vite + Tailwind, igual que `calculadora-de-faltas`. La diferencia: aquí sí se
+justifica **[Motion](https://motion.dev/docs/vue)** (`motion-v`, el paquete oficial de
+Motion para Vue) para las animaciones. Hay más vistas, listas que cambian y estados que
+en la calculadora, donde bastaban las transiciones nativas de Vue.
+
 ## Legal
 
 - El consentimiento de cada compañero es base legal suficiente para la Fase 2 (art. 6.1.a
