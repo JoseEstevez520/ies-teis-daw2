@@ -23,3 +23,42 @@ la herramienta hace el cálculo (margen restante, cuántas más te puedes permit
 
 Nota aparte: ese acceso a AbalarMóvil es individual, del propio alumno, no compartido
 con la familia.
+
+## Los umbrales reales
+
+De la presentación de Tutoría de IES de Teis (más específica que la norma general):
+
+- **6% de faltas sin justificar** de un módulo → apercibimiento.
+- **10% de faltas sin justificar** → pérdida de evaluación continua (esto coincide con la
+  Orde do 12 de xullo de 2011 de la Xunta, que fija el 10% como norma general de Galicia).
+- Solo cuentan las faltas **sin justificar**. Justificar se hace siempre por AbalarMóvil,
+  subiendo foto.
+- Baja de oficio: 15 días consecutivos o 25 alternos sin asistir.
+
+## Horas por módulo y semanas lectivas (para calcular el total)
+
+Horas/semana (de `HORARIO.md`): dwcs 10, diw 8, dwcc 8, despregamento 4, dasp 1. DAW sin
+confirmar.
+
+Semanas lectivas reales para **2º curso**: el calendario escolar general de Galicia va del
+9 de septiembre de 2026 al 21 de junio de 2027, pero en 2º no hay tercer trimestre de
+clase. Tras la 2ª avaliación (24/25 de febrero) se pasa a FCT, así que las horas de cada
+módulo solo cuentan hasta ahí. Contando días lectivos reales (restando Nadal y festivos)
+salen **~20,8 semanas**, no las ~34,8 de un curso completo.
+
+## Fórmula
+
+```
+horas totales módulo = horas/semana × 20,8 semanas
+horas de falta = nº de faltas sin justificar × duración de la sesión
+% faltado = horas de falta / horas totales
+```
+
+Ejemplo con DWCS (10h/semana): ~208 horas totales. 6% ≈ 12,5h de falta (aviso), 10% ≈ 21h
+(pérdida de evaluación continua).
+
+## Fuentes
+
+- Presentación de Tutoría 2ºDAW 2026-2027 (Aula Virtual, IES de Teis).
+- [Orde do 12 de xullo de 2011 — DOG](https://www.xunta.gal/dog/Publicados/2011/20110715/AnuncioC3F1-120711-4341_es.html).
+- [Calendario escolar Galicia 2026-2027 — galiciae.com](https://www.galiciae.com/articulo/galicia/calendario-escolar-galicia-curso-2026-27-cuando-empiezan-claves-que-dias-seran-lectivos/20260825180432109165.html).
