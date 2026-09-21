@@ -16,5 +16,5 @@ Copilot, ChatGPT...) en el día a día de clase.
 - **Úsalo para lo tedioso, no para lo que tienes que aprender.** Documentación, bootear un
   proyecto, buscar en la documentación oficial — ahí sí ahorra tiempo real.
 
-Si esto te resulta útil y quieres profundizar, pregunta — se puede ampliar con ejemplos
-concretos de prompts o flujos que funcionan bien para las prácticas del curso.
+Añade aquí prompts o flujos concretos que te hayan funcionado bien en las prácticas del
+curso.
