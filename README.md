@@ -21,11 +21,14 @@ extra/
   ia/
   diseno-web/
   ideas-proyecto-fin-curso/
+  herramientas/
+HORARIO.md
 ```
 
 - **`modulos/`** — apuntes y recursos del temario, organizados por módulo.
 - **`extra/`** — contenido que no es temario pero suma: IA aplicada, diseño web, ideas para
-  el proyecto de fin de curso.
+  el proyecto de fin de curso, y herramientas útiles (mini-proyectos con su propio código,
+  como una calculadora de faltas).
 
 ## Cómo aportar
 
