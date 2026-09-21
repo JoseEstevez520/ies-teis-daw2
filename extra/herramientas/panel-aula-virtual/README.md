@@ -45,10 +45,29 @@ hospedada por alguien (con el consentimiento de cada uno, todos mayores de edad)
 
 ## Stack
 
-Vue 3 + Vite + Tailwind. Para las animaciones, **[Motion](https://motion.dev/docs/vue)**
-(`motion-v`, el paquete oficial de Motion para Vue): hay varias vistas y listas que
-cambian, suficiente complejidad para justificarlo. Estilo visual: ver
-[`../README.md`](../README.md#estilo-visual).
+**Frontend**: Vue 3 + Vite + Tailwind. Para las animaciones,
+**[Motion](https://motion.dev/docs/vue)** (`motion-v`, el paquete oficial de Motion para
+Vue): hay varias vistas y listas que cambian, suficiente complejidad para justificarlo.
+Estilo visual: ver [`../README.md`](../README.md#estilo-visual).
+
+**Backend**: Node.js (Express o similar), mismo lenguaje que el frontend. Sin base de
+datos (un archivo JSON guardando "esto ya se avisó" sobra) y sin ningún framework de
+agentes (LangGraph y similares están pensados para flujos con bucles/ramas de decisión;
+esto es lineal: pedir datos → comprobar → avisar). Evaluado y descartado por ahora:
+**[Jev](https://wavect.io/blog/jev-ai-decision-model-review/)** (modelo de decisión de
+TypeSafe AI). Interesante para el futuro, pero las decisiones aquí son deterministas
+(6%/10%, hay tarea nueva sí/no), no ambiguas, así que un `if` ya es correcto y gratis.
+
+## Ideas para automatizar (sin construir todavía)
+
+- Generar el propio `.ics` desde los datos ya obtenidos (el export de calendario de
+  Moodle está bloqueado por el clasificador de seguridad, pero el resultado se puede
+  construir a mano con lo que ya se saca de la API).
+- Resumen semanal por Telegram (domingo noche) en vez de avisos sueltos.
+- Detectar contenido nuevo del profesor comparando `core_course_get_contents` entre
+  ejecuciones del cron, no solo tareas.
+- Cruzar con las fechas de evaluación del curso (1ª, 2ª, final) sacadas del PDF de
+  Tutoría, no solo con las entregas sueltas.
 
 ## Legal
 
