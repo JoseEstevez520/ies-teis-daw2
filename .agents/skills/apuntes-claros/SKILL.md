@@ -1,4 +1,9 @@
-# Estilo de escritura
+---
+name: apuntes-claros
+description: Estilo de escritura para cualquier .md de este repo (apuntes, README, extra/) — conciso, escaneable y sin sonar a texto generado por IA. Aplícalo siempre que redactes o revises un apunte nuevo o un README de módulo, aunque no se pida explícitamente.
+---
+
+# Apuntes claros
 
 Este repo lo lee gente con prisa, a mitad de clase, buscando una cosa concreta. Un apunte
 que hay que releer dos veces para entenderlo no sirve, por muy completo que sea.

@@ -12,7 +12,8 @@ previa. La idea es que subir algo sea tan fácil como copiarlo aquí.
   no `Validación Formularios.md`). Esto importa porque el repo se puede convertir en web más
   adelante, y esos nombres pasan a ser URLs.
 - Si dudas dónde meter algo, mejor preguntarlo que dejarlo suelto en la raíz.
-- **Estilo de redacción**: conciso y escaneable, sin relleno — ver [ESTILO.md](ESTILO.md).
+- **Estilo de redacción**: conciso y escaneable, sin relleno — ver
+  [.agents/skills/apuntes-claros/SKILL.md](.agents/skills/apuntes-claros/SKILL.md).
 
 ## Plantilla mínima de apunte
 
