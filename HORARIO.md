@@ -2,6 +2,8 @@
 
 Taller Inf 2 salvo que se indique lo contrario. Recreo 11:30–12:00.
 
+![Horario semanal CSDAW2º](horario.jpg)
+
 | Hora | Lunes | Martes | Miércoles | Jueves | Viernes |
 |---|---|---|---|---|---|
 | 8:10 | IPEII (FOL Adelina) | DWCC (INF Juan) | DIW (INF JuanCarlos) | DWCC (INF Juan) | DWCS (INF Patricia) |
