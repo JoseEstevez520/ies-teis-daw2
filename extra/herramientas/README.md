@@ -7,3 +7,5 @@ su propio código.
   permitido por módulo.
 - [`alarma-tareas/`](alarma-tareas/): avisa de tareas pendientes del Aula Virtual que
   no tengas ya en tu calendario.
+- [`panel-aula-virtual/`](panel-aula-virtual/): tareas, notas y actividad de todos tus
+  cursos en una sola pantalla.
