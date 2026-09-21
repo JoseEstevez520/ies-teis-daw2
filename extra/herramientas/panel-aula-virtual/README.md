@@ -50,12 +50,6 @@ hospedada por alguien (con el consentimiento de cada uno, todos mayores de edad)
 Vue): hay varias vistas y listas que cambian, suficiente complejidad para justificarlo.
 Estilo visual: ver [`../README.md`](../README.md#estilo-visual).
 
-**Backend**: Node.js (Express o similar), mismo lenguaje que el frontend. Sin base de
-datos (un archivo JSON guardando "esto ya se avisó" sobra) y sin ningún framework de
-agentes (LangGraph y similares están pensados para flujos con bucles/ramas de decisión;
-esto es lineal: pedir datos, comprobar, avisar). Las decisiones aquí son deterministas
-(6%/10%, hay tarea nueva sí/no), no ambiguas, así que un `if` ya es correcto y gratis.
-
 ## Ideas para automatizar (sin construir todavía)
 
 - Generar el propio `.ics` desde los datos ya obtenidos (el export de calendario de
