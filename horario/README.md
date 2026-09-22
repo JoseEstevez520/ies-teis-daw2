@@ -2,6 +2,9 @@
 
 Taller Inf 2 salvo que se indique lo contrario. Recreo 11:30–12:00.
 
+Fin de las clases: 14:30 de lunes a miércoles, 15:20 los jueves, 13:40 los viernes (sin
+franja de 13:40).
+
 ![Horario semanal CSDAW2º](horario.jpg)
 
 | Hora | Lunes | Martes | Miércoles | Jueves | Viernes |
