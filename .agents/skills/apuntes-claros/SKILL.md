@@ -20,6 +20,19 @@ apunte, esa frase ya le tiene que servir.
 Nada de introducciones que solo anuncian lo que viene ("en este documento veremos...") ni
 cierres que resumen lo que ya se acaba de leer ("en resumen, hemos aprendido que...").
 
+## No digas lo innecesario
+
+Si un dato no ayuda a quien lee a entender o decidir algo, sobra — aunque sea cierto. Cada
+ejemplo entre paréntesis, cada nombre propio que metes de más, le cuesta atención al lector
+sin darle nada a cambio.
+
+- Mal: "Apuntes para repasar, y herramientas reales (como un panel que junta tareas y notas
+  del Aula Virtual) que cualquiera puede clonar y usar."
+- Bien: "Apuntes para repasar, y herramientas reales que cualquiera puede clonar y usar."
+
+El ejemplo concreto vive en la página de esa herramienta, no en la frase que presenta el
+repo entero.
+
 ## Trocear, no amontonar
 
 Un bloque de texto largo se salta. Usa:
@@ -66,3 +79,4 @@ lectura rápida:
 - ¿Hay algún párrafo que se pueda cortar a la mitad sin perder información?
 - ¿Sobra alguna palabra de la lista de "infladas"?
 - ¿Una lista tiene más de 5 puntos sin agrupar?
+- ¿Hay un ejemplo o paréntesis que no hace falta para entender la frase?

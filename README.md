@@ -1,7 +1,7 @@
 # ies-teis-daw2
 
-Apuntes y recursos de 2º DAW (IES de Teis), entre toda la clase. Sirve para repasar o para
-aportar lo que ya dominas. Es la base de conocimiento común, no un archivo de entregas.
+Este repo es un espacio colaborativo para que a toda la clase de 2º DAW le vaya mejor:
+apuntes, conocimientos extra, ideas y herramientas que cualquiera puede usar.
 
 No es para trabajo evaluable individual: eso va en el repo de cada uno.
 

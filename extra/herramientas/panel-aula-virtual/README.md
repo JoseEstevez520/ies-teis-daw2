@@ -8,6 +8,35 @@ asignatura llevas tiempo sin entrar. Detalles técnicos y funciones de Moodle ya
 Backend empezado en [`backend/`](backend/): `/api/tareas` y `/api/notas` ya funcionan de
 extremo a extremo. Actividad y todo el frontend siguen sin construir.
 
+## Arrancarlo tú mismo
+
+Cada uno lo corre en su propia máquina, con su propio token. Nadie más ve tus datos.
+
+```bash
+git clone https://github.com/JoseEstevez520/ies-teis-daw2.git
+cd ies-teis-daw2
+```
+
+1. **Saca tu token**: Aula Virtual → tu perfil → Preferencias → Chaves de seguridade →
+   "Moodle mobile web service" → Restabelecer. Pasos completos en
+   [`../moodle-api.md`](../moodle-api.md#cómo-sacar-tu-token).
+2. **Crea tu `.env`** en la raíz del repo (copia [`.env.example`](../../.env.example)) y
+   pega ahí tu `MOODLE_TOKEN`. Nunca se sube, ya está en `.gitignore`.
+3. **Backend** (Java 21, no hace falta instalar Maven, ya trae `mvnw`):
+   ```bash
+   set -a; source .env; set +a
+   cd extra/herramientas/panel-aula-virtual/backend
+   ./mvnw spring-boot:run
+   ```
+4. **Frontend**, en otra terminal (Node):
+   ```bash
+   cd extra/herramientas/panel-aula-virtual/frontend
+   npm install
+   npm run dev
+   ```
+
+Abre la URL que te dé Vite (`http://localhost:5173` normalmente).
+
 ## Fase 1: versión personal autoalojada (la primera a construir)
 
 Cada uno la corre en su propia máquina/servidor, con su propio token.
