@@ -48,8 +48,9 @@ De la presentación de Tutoría de IES de Teis (más específica que la norma ge
 
 ## Horas por módulo y semanas lectivas (para calcular el total)
 
-Horas/semana (de `HORARIO.md`): dwcs 10, diw 8, dwcc 8, despregamento 4, dasp 1. DAW sin
-confirmar.
+Horas/semana (contando los bloques de 50 min de
+[`horario/README.md`](../../../horario/README.md)): dwcs 8h20, diw 6h40, dwcc 5h50, daw 3h20,
+ipeii 1h40, hcle 1h40, dasp 50min, acp 50min.
 
 Semanas lectivas reales para **2º curso**: el calendario escolar general de Galicia va del
 9 de septiembre de 2026 al 21 de junio de 2027, pero en 2º no hay tercer trimestre de
@@ -61,12 +62,12 @@ salen **~20,8 semanas**, no las ~34,8 de un curso completo.
 
 ```
 horas totales módulo = horas/semana × 20,8 semanas
-horas de falta = nº de faltas sin justificar × duración de la sesión
+horas de falta = nº de faltas sin justificar × 50 min (duración de una clase)
 % faltado = horas de falta / horas totales
 ```
 
-Ejemplo con DWCS (10h/semana): ~208 horas totales. 6% ≈ 12,5h de falta (aviso), 10% ≈ 21h
-(pérdida de evaluación continua).
+Ejemplo con DWCS (8,33h/semana): ~173 horas totales. 6% ≈ 10,4h de falta (aviso), 10% ≈
+17,3h (pérdida de evaluación continua).
 
 ## Fuentes
 

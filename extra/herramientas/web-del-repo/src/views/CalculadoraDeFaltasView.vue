@@ -84,9 +84,9 @@ npm run dev</code></pre>
     <div class="flex flex-col gap-3">
       <h2 class="text-base font-semibold text-neutral-900 pb-2 border-b border-neutral-200">Fórmula</h2>
       <p class="text-sm text-neutral-700 leading-relaxed">
-        Horas por módulo (de <code class="px-1.5 py-0.5 rounded bg-neutral-100 text-neutral-800 font-mono text-[0.85em]">HORARIO.md</code>): dwcs 10, diw 8, dwcc 8, despregamento 4, dasp 1. DAW sin
-        confirmar. Semanas lectivas reales de 2º curso (hasta la 2ª avaliación, antes de FCT):
-        ~20,8, no las ~34,8 de un curso completo.
+        Horas por módulo (contando los bloques de 50 min de <code class="px-1.5 py-0.5 rounded bg-neutral-100 text-neutral-800 font-mono text-[0.85em]">horario/README.md</code>): dwcs 8h20, diw 6h40, dwcc 5h50, daw 3h20,
+        ipeii 1h40, hcle 1h40, dasp 50min, acp 50min. Semanas lectivas reales de 2º curso (hasta la
+        2ª avaliación, antes de FCT): ~20,8, no las ~34,8 de un curso completo.
       </p>
       <div class="rounded-lg border border-neutral-200 overflow-hidden">
         <div class="flex items-center gap-2 px-4 py-2 bg-neutral-50 border-b border-neutral-200">
@@ -94,12 +94,12 @@ npm run dev</code></pre>
           <span class="text-xs text-neutral-400 font-mono">fórmula</span>
         </div>
         <pre class="p-4 overflow-x-auto text-xs font-mono text-neutral-800 bg-white"><code>horas totales módulo = horas/semana × 20,8 semanas
-horas de falta = nº de faltas sin justificar × duración de la sesión
+horas de falta = nº de faltas sin justificar × 50 min (duración de una clase)
 % faltado = horas de falta / horas totales</code></pre>
       </div>
       <p class="text-sm text-neutral-700 leading-relaxed">
-        Ejemplo con DWCS (10h/semana): ~208 horas totales. 6% ≈ 12,5h de falta (aviso), 10% ≈ 21h
-        (pérdida de evaluación continua).
+        Ejemplo con DWCS (8,33h/semana): ~173 horas totales. 6% ≈ 10,4h de falta (aviso), 10% ≈
+        17,3h (pérdida de evaluación continua).
       </p>
     </div>
 
