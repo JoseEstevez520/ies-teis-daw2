@@ -8,7 +8,9 @@ const tarjetas = SECCIONES.filter((s) => s.enPortada)
 <template>
   <div class="flex flex-col gap-8">
     <p class="text-sm text-neutral-700">
-      Todo el contenido del repo de 2º DAW, navegable sin bucear por carpetas de GitHub.
+      Espacio colaborativo para que a toda la clase de 2º DAW le vaya mejor: apuntes,
+      conocimientos extra, ideas y herramientas que cualquiera puede usar. Todo el
+      contenido del repo, navegable sin bucear por carpetas de GitHub.
     </p>
 
     <div class="grid sm:grid-cols-2 gap-5">
