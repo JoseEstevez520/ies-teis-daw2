@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { AnimatePresence, motion } from 'motion-v'
+import { motion } from 'motion-v'
 import { PanelLeftClose, PanelLeftOpen } from '@lucide/vue'
 import { SECCIONES } from '../data/secciones.js'
 
@@ -19,12 +19,11 @@ function esActivo(seccion) {
     :animate="{ width: abierta ? 256 : 64 }"
     :transition="{ type: 'spring', stiffness: 320, damping: 32 }"
     class="shrink-0 border-r border-neutral-200 bg-white flex flex-col gap-1 p-3 overflow-hidden"
-    :class="!abierta && 'items-center'"
   >
     <button
       type="button"
       @click="abierta = !abierta"
-      class="flex items-center gap-2.5 px-3 py-2 rounded-lg text-neutral-500 hover:bg-neutral-100 hover:text-neutral-900 transition-colors duration-150 mb-1"
+      class="flex items-center px-3 py-2 rounded-lg text-neutral-500 hover:bg-neutral-100 hover:text-neutral-900 transition-colors duration-150 mb-1"
       :aria-label="abierta ? 'Replegar barra lateral' : 'Desplegar barra lateral'"
     >
       <component :is="abierta ? PanelLeftClose : PanelLeftOpen" class="w-4 h-4 shrink-0" />
@@ -34,27 +33,21 @@ function esActivo(seccion) {
       v-for="seccion in SECCIONES"
       :key="seccion.ruta"
       :to="seccion.ruta"
-      class="flex items-center gap-2.5 py-2 rounded-lg text-sm transition-colors duration-150 w-full whitespace-nowrap"
-      :class="[
+      class="flex items-center px-3 py-2 rounded-lg text-sm transition-colors duration-150 w-full overflow-hidden"
+      :class="
         esActivo(seccion)
           ? 'bg-neutral-100 text-neutral-900 font-medium'
-          : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900',
-        abierta ? 'px-3' : 'justify-center px-0',
-      ]"
+          : 'text-neutral-600 hover:bg-neutral-50 hover:text-neutral-900'
+      "
       :title="!abierta ? seccion.etiqueta : undefined"
     >
       <component :is="seccion.icono" class="w-4 h-4 shrink-0" />
-      <AnimatePresence>
-        <motion.span
-          v-if="abierta"
-          :initial="{ opacity: 0 }"
-          :animate="{ opacity: 1 }"
-          :exit="{ opacity: 0 }"
-          :transition="{ duration: 0.12 }"
-        >
-          {{ seccion.etiqueta }}
-        </motion.span>
-      </AnimatePresence>
+      <span
+        class="overflow-hidden whitespace-nowrap transition-[max-width,margin-left] duration-300 ease-out"
+        :class="abierta ? 'max-w-40 ml-2.5' : 'max-w-0 ml-0'"
+      >
+        {{ seccion.etiqueta }}
+      </span>
     </RouterLink>
   </motion.nav>
 </template>
