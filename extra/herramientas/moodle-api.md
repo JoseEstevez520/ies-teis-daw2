@@ -48,9 +48,12 @@ curl -s "${MOODLE_URL}/webservice/rest/server.php" \
 - **`core_course_get_contents`** (con `courseid`): contenido completo de un curso
   (secciones, archivos, tareas, enlaces).
 - **`message_popup_get_popup_notifications`** (con `useridto`): notificaciones sin leer.
-- **`core_grades_get_gradeitems`** (con `courseid`): notas por curso, en JSON limpio (mejor
-  que `gradereport_user_get_grades_table`, que devuelve HTML). Sirve para avisar cuando
-  aparece una nota nueva.
+- **`gradereport_user_get_grade_items`** (con `courseid` + `userid`, los dos
+  obligatorios): notas reales por curso, en JSON limpio (mejor que
+  `gradereport_user_get_grades_table`, que devuelve HTML). Sirve para avisar cuando
+  aparece una nota nueva. Ojo: `core_grades_get_gradeitems` (con solo `courseid`) parece
+  la misma función pero **nunca trae la nota**, solo el nombre del ítem — es una trampa,
+  no sirve para esto.
 - **`core_course_get_recent_courses`**: cursos ordenados por último acceso. Sirve para ver
   en qué asignatura llevas más tiempo sin entrar.
 - **`core_calendar_get_calendar_upcoming_view`**: alternativa a
@@ -67,6 +70,25 @@ tipo de aviso que resetear un token): `core_calendar_get_calendar_export_token`.
 funcionara, daría una URL de feed iCal para suscribir el calendario de tareas directo en
 Google/Apple Calendar, sin construir nada. Pendiente de una decisión explícita para
 desbloquearla.
+
+## Detalles que no son obvios
+
+Encontrados construyendo `panel-aula-virtual/backend`, probando contra el Aula Virtual real:
+
+- **`core_calendar_get_action_events_by_timesort` con `userid` explícito da
+  `nopermission`**, aunque sea el tuyo. Omite el parámetro: Moodle lo toma del dueño del
+  token.
+- **El `instance` de un evento de calendario no es el id de la tarea, es el `cmid`** (id
+  del módulo de curso, el mismo que usan las URLs de Moodle). Para llamar después a
+  `mod_assign_get_submission_status`, el id real de la tarea sale de
+  `mod_assign_get_assignments`, no del evento de calendario.
+- **`mod_assign_get_submission_status` no siempre trae `lastattempt.submission`**: si
+  nunca abriste la entrega, ese campo falta del todo, no viene con un estado tipo "sin
+  empezar". Tratar "sin `submission`" igual que "sin entregar".
+- **`gradereport_user_get_grade_items` exige `userid` explícito**, justo al revés que la
+  función de calendario de arriba: sin él da `nopermission` ("Ver cualificacións doutros
+  usuarios"). No hay una regla general de "pon siempre/nunca userid", depende de la
+  función — probarlo con y sin él si da error de permisos.
 
 ## Lo que no funciona desde una cuenta de alumno
 

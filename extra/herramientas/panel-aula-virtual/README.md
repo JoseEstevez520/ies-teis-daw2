@@ -5,7 +5,8 @@ pendientes de verdad (con estado real de entrega), notas nuevas por curso, y en 
 asignatura llevas tiempo sin entrar. Detalles técnicos y funciones de Moodle ya probadas:
 [`../moodle-api.md`](../moodle-api.md).
 
-Esto es documentación de diseño, sin código todavía.
+Backend empezado en [`backend/`](backend/): `/api/tareas` y `/api/notas` ya funcionan de
+extremo a extremo. Actividad y todo el frontend siguen sin construir.
 
 ## Fase 1: versión personal autoalojada (la primera a construir)
 
@@ -49,6 +50,9 @@ hospedada por alguien (con el consentimiento de cada uno, todos mayores de edad)
 **[Motion](https://motion.dev/docs/vue)** (`motion-v`, el paquete oficial de Motion para
 Vue): hay varias vistas y listas que cambian, suficiente complejidad para justificarlo.
 Estilo visual: ver [`../README.md`](../README.md#estilo-visual).
+
+**Backend**: Spring Boot, módulo Web (REST), el frontend en Vue habla con él por API. En
+Fase 2, con varios usuarios, se añade JPA para persistir el token de cada uno.
 
 ## Ideas para automatizar (sin construir todavía)
 
