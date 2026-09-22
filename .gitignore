@@ -14,3 +14,6 @@ target/
 
 # Entornos
 .env
+
+# Claude Code
+.claude/

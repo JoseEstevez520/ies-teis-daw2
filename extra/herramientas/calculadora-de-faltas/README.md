@@ -3,7 +3,18 @@
 Idea: meter las faltas por módulo y ver el % frente al máximo permitido antes de perder
 evaluación continua.
 
-Esto es documentación de diseño, sin código todavía.
+## Arrancarlo tú mismo
+
+Todo en el navegador, sin backend ni token.
+
+```bash
+git clone https://github.com/JoseEstevez520/ies-teis-daw2.git
+cd ies-teis-daw2/extra/herramientas/calculadora-de-faltas
+npm install
+npm run dev
+```
+
+Abre la URL que te dé Vite (`http://localhost:5173` normalmente).
 
 ## Por qué es de entrada manual, no automática
 

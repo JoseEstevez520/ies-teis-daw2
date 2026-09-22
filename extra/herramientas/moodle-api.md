@@ -52,8 +52,8 @@ curl -s "${MOODLE_URL}/webservice/rest/server.php" \
   obligatorios): notas reales por curso, en JSON limpio (mejor que
   `gradereport_user_get_grades_table`, que devuelve HTML). Sirve para avisar cuando
   aparece una nota nueva. Ojo: `core_grades_get_gradeitems` (con solo `courseid`) parece
-  la misma función pero **nunca trae la nota**, solo el nombre del ítem — es una trampa,
-  no sirve para esto.
+  la misma función pero **nunca trae la nota**, solo el nombre del ítem. Es una trampa, no
+  sirve para esto.
 - **`core_course_get_recent_courses`**: cursos ordenados por último acceso. Sirve para ver
   en qué asignatura llevas más tiempo sin entrar.
 - **`core_calendar_get_calendar_upcoming_view`**: alternativa a
@@ -87,8 +87,8 @@ Encontrados construyendo `panel-aula-virtual/backend`, probando contra el Aula V
   empezar". Tratar "sin `submission`" igual que "sin entregar".
 - **`gradereport_user_get_grade_items` exige `userid` explícito**, justo al revés que la
   función de calendario de arriba: sin él da `nopermission` ("Ver cualificacións doutros
-  usuarios"). No hay una regla general de "pon siempre/nunca userid", depende de la
-  función — probarlo con y sin él si da error de permisos.
+  usuarios"). No hay una regla general de "pon siempre/nunca userid": depende de la
+  función, pruébalo con y sin él si da error de permisos.
 
 ## Lo que no funciona desde una cuenta de alumno
 

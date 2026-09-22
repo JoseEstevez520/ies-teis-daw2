@@ -6,7 +6,9 @@ description: Estilo de escritura para cualquier .md de este repo (apuntes, READM
 # Apuntes claros
 
 Este repo lo lee gente con prisa, a mitad de clase, buscando una cosa concreta. Un apunte
-que hay que releer dos veces para entenderlo no sirve, por muy completo que sea.
+que hay que releer dos veces para entenderlo no sirve, por muy completo que sea, y lo que
+sobra no es neutro: cada frase de más es tiempo que le quitas a quien solo quería la
+respuesta.
 
 ## Ir al grano
 
@@ -22,7 +24,7 @@ cierres que resumen lo que ya se acaba de leer ("en resumen, hemos aprendido que
 
 ## No digas lo innecesario
 
-Si un dato no ayuda a quien lee a entender o decidir algo, sobra — aunque sea cierto. Cada
+Si un dato no ayuda a quien lee a entender o decidir algo, sobra, aunque sea cierto. Cada
 ejemplo entre paréntesis, cada nombre propio que metes de más, le cuesta atención al lector
 sin darle nada a cambio.
 
@@ -32,6 +34,12 @@ sin darle nada a cambio.
 
 El ejemplo concreto vive en la página de esa herramienta, no en la frase que presenta el
 repo entero.
+
+Esto no es "no pongas ejemplos" en general. En un apunte técnico, un ejemplo de código o un
+caso concreto *es* la explicación, no un adorno (ver "Código en bloques, nunca descrito en
+prosa" más abajo). La regla es sobre lo decorativo: un paréntesis con un dato suelto metido
+en una frase de presentación o de resumen, que no ayuda a entender esa frase y que además
+ya tiene su sitio propio en otra página.
 
 ## Trocear, no amontonar
 
