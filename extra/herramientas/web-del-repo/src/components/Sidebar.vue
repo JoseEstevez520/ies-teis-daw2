@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
+import { AnimatePresence, motion } from 'motion-v'
 import { PanelLeftClose, PanelLeftOpen } from '@lucide/vue'
 import { SECCIONES } from '../data/secciones.js'
 
@@ -14,9 +15,11 @@ function esActivo(seccion) {
 </script>
 
 <template>
-  <nav
-    class="shrink-0 border-r border-neutral-200 bg-white flex flex-col gap-1 p-3 transition-all duration-200"
-    :class="abierta ? 'w-64' : 'w-16 items-center'"
+  <motion.nav
+    :animate="{ width: abierta ? 256 : 64 }"
+    :transition="{ type: 'spring', stiffness: 320, damping: 32 }"
+    class="shrink-0 border-r border-neutral-200 bg-white flex flex-col gap-1 p-3 overflow-hidden"
+    :class="!abierta && 'items-center'"
   >
     <button
       type="button"
@@ -31,7 +34,7 @@ function esActivo(seccion) {
       v-for="seccion in SECCIONES"
       :key="seccion.ruta"
       :to="seccion.ruta"
-      class="flex items-center gap-2.5 py-2 rounded-lg text-sm transition-colors duration-150 w-full"
+      class="flex items-center gap-2.5 py-2 rounded-lg text-sm transition-colors duration-150 w-full whitespace-nowrap"
       :class="[
         esActivo(seccion)
           ? 'bg-neutral-100 text-neutral-900 font-medium'
@@ -41,7 +44,17 @@ function esActivo(seccion) {
       :title="!abierta ? seccion.etiqueta : undefined"
     >
       <component :is="seccion.icono" class="w-4 h-4 shrink-0" />
-      <span v-if="abierta">{{ seccion.etiqueta }}</span>
+      <AnimatePresence>
+        <motion.span
+          v-if="abierta"
+          :initial="{ opacity: 0 }"
+          :animate="{ opacity: 1 }"
+          :exit="{ opacity: 0 }"
+          :transition="{ duration: 0.12 }"
+        >
+          {{ seccion.etiqueta }}
+        </motion.span>
+      </AnimatePresence>
     </RouterLink>
-  </nav>
+  </motion.nav>
 </template>
