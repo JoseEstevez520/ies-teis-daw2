@@ -1,6 +1,7 @@
 <script setup>
 import { computed } from 'vue'
 import { parseMarkdown } from '../lib/markdown.js'
+import { iconoDeTitulo } from '../lib/iconoSeccion.js'
 import BloqueMarkdown from './BloqueMarkdown.vue'
 
 const props = defineProps({
@@ -23,7 +24,8 @@ const secciones = computed(() => {
   let actual = null
   for (const b of bloques.value) {
     if (b.tipo === 'titulo' && b.nivel === 2) {
-      actual = { titulo: b, bloques: [] }
+      const textoPlano = b.html.replace(/<[^>]+>/g, '')
+      actual = { titulo: b, icono: iconoDeTitulo(textoPlano), bloques: [] }
       grupos.push(actual)
     } else if (actual) {
       actual.bloques.push(b)
@@ -44,7 +46,10 @@ const secciones = computed(() => {
       :key="si"
       class="rounded-2xl border border-neutral-200 bg-white p-6 flex flex-col gap-4"
     >
-      <h2 class="text-base font-semibold text-neutral-900" v-html="seccion.titulo.html" />
+      <div class="flex items-center gap-2">
+        <component :is="seccion.icono" class="w-4 h-4 text-neutral-900 shrink-0" />
+        <h2 class="text-base font-semibold text-neutral-900" v-html="seccion.titulo.html" />
+      </div>
       <template v-for="(bloque, bi) in seccion.bloques" :key="bi">
         <BloqueMarkdown :bloque="bloque" />
       </template>

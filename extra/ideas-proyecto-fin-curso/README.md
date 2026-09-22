@@ -10,12 +10,12 @@ en [`../herramientas/panel-aula-virtual/`](../herramientas/panel-aula-virtual/).
 encaja bien como PFC: frontend/backend + consumo de una API REST real + decisiones de
 arquitectura defendibles, no solo un CRUD de ejemplo.
 
-## Buscador de prácticas
+## Buscador de empresas de FCT
 
-Buscador de los ejercicios y prácticas que ya ha resuelto la clase, para no resolver
-desde cero algo que ya hizo otro. Encaja como PFC: alcance pequeño, fecha real encima (la
-FCT) y sirve a los 26. También vale como herramienta real de la clase, no solo como idea
-— ver [`../herramientas/README.md`](../herramientas/README.md#pendientes).
+Directorio de empresas donde hacer la FCT, con lo que aporta cada alumno que ya estuvo:
+qué stack usaron, qué hizo allí, si la recomienda. Encaja como PFC: alcance pequeño, fecha
+real encima (la FCT) y sirve a los 26. También vale como herramienta real de la clase, no
+solo como idea — ver [`../herramientas/README.md`](../herramientas/README.md#pendientes).
 
 ## Wiki de un canal de YouTube
 
