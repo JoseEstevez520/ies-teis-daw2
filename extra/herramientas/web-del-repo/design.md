@@ -21,6 +21,20 @@ Escala neutra de Tailwind, la misma que ya usan `panel-aula-virtual` y
 acento" (enlace activo, indicador de "estás aquí") se marca con `neutral-900` en negrita o
 un borde/fondo `neutral-100`, no con un color distinto.
 
+**Excepción documentada — tarjetas de recursos**: cuando una lista del `.md` es
+mayoritariamente enlaces externos con descripción (ver `parseMarkdown` en
+[`src/lib/markdown.js`](src/lib/markdown.js)), se renderiza como tarjetas con favicon real
+del sitio (vía `icon.horse`, con CORS abierto) y un degradado sacado del color medio de
+ese favicon (`src/lib/colorFavicon.js`, leído por canvas en `TarjetaRecurso.vue`). Mientras
+carga o si falla (favicon casi transparente, red, servicio caído), se usa de reserva un
+degradado por hash del dominio, calculado en `parseMarkdown`: determinista, mismo dominio
+da mismo color, sin red. Es la única zona con color a propósito: sin ella, una lista de
+herramientas externas es indistinguible de cualquier otra lista. No se usa para nada más.
+
+Se probó antes con captura real de la landing (vía `image.thum.io`): se descartó porque el
+servicio gratuito falla para algunos dominios (límite de uso) sin devolver un error
+detectable — carga una imagen válida con el aviso "not authorized" dentro.
+
 Los colores semánticos (`emerald`/`amber`/`red` de éxito/aviso/error) quedan reservados
 para las herramientas que ya los usan (`panel-aula-virtual`, `calculadora-de-faltas`); no
 se reutilizan aquí con otro significado.

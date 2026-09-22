@@ -9,6 +9,53 @@ const ICONO_EXTERNO =
 const CLASE_ENLACE =
   'text-neutral-900 underline decoration-neutral-300 hover:decoration-neutral-900 underline-offset-2'
 
+const ES_EXTERNO = /^(https?:)?\/\//i
+
+function leerHref(tokenEnlace) {
+  const i = tokenEnlace.attrIndex('href')
+  return i >= 0 ? tokenEnlace.attrs[i][1] : ''
+}
+
+// Normaliza la etiqueta explícita de un enlace ("Tecnología", "Ejemplo"...) al
+// tipo de tarjeta que usa TarjetasMixtas.vue. Sin etiqueta, es un ejemplo.
+function tipoDeEtiqueta(etiqueta) {
+  const t = (etiqueta || '').toLowerCase()
+  if (t.includes('tecnolog')) return 'tecnologia'
+  if (t.includes('campo')) return 'campo'
+  return 'ejemplo'
+}
+
+// Hash simple y determinista: mismo dominio siempre da el mismo degradado.
+function hashDominio(dominio) {
+  let h = 0
+  for (let i = 0; i < dominio.length; i++) h = (h * 31 + dominio.charCodeAt(i)) >>> 0
+  return h
+}
+
+// Excepción documentada al "sin acento de color" de design.md: las tarjetas
+// de recursos externos son la única zona con color. El degradado real (color
+// medio del favicon) se calcula en el navegador, en TarjetaRecurso.vue — esto
+// solo da un degradado de reserva instantáneo por hash del dominio, para
+// mientras carga el favicon o si falla.
+function tarjetaRecurso({ href, terminoHtml, descripcionHtml }) {
+  let dominio = ''
+  try {
+    dominio = new URL(href.startsWith('//') ? `https:${href}` : href).hostname
+  } catch {
+    dominio = href
+  }
+  const hash = hashDominio(dominio)
+  const h1 = hash % 360
+  const h2 = (h1 + 45) % 360
+  return {
+    href,
+    terminoHtml,
+    descripcionHtml,
+    favicon: `https://icon.horse/icon/${dominio}`,
+    gradiente: `linear-gradient(135deg, hsl(${h1} 70% 55%), hsl(${h2} 75% 42%))`,
+  }
+}
+
 const MARCADORES = [
   { patron: /^ojo\s*:\s*/i, variante: 'aviso' },
   { patron: /^cuidado\s*:\s*/i, variante: 'aviso' },
@@ -119,7 +166,68 @@ function extraerItemsLista(tokens, i, md) {
         primero && primero.type === 'strong_open'
           ? hijos.findIndex((c, idx2) => idx2 > inicio && c.type === 'strong_close')
           : -1
+      const idxCierreEnlace =
+        primero && primero.type === 'link_open'
+          ? hijos.findIndex((c, idx2) => idx2 > inicio && c.type === 'link_close')
+          : -1
+
+      // "**Etiqueta:** [Enlace](url) — descripción": un enlace con una
+      // etiqueta explícita en negrita delante, para listas donde el enlace
+      // solo no basta para saber de qué tipo de tarjeta es (ver
+      // "tarjetas-mixtas").
+      let enlaceEtiquetado = null
       if (idxCierreStrong > inicio) {
+        let despues = idxCierreStrong + 1
+        if (hijos[despues] && hijos[despues].type === 'text') {
+          // El ":" puede quedar dentro del **negrita** ("**Etiqueta:**") o
+          // fuera ("**Etiqueta**:"); aquí solo queda espacio en blanco por
+          // limpiar antes del enlace, con o sin ":" suelto.
+          hijos[despues].content = hijos[despues].content.replace(/^\s*[:.]?\s*/, '')
+          if (hijos[despues].content.trim() === '') despues += 1
+        }
+        if (hijos[despues] && hijos[despues].type === 'link_open') {
+          const idxCierreEnlace2 = hijos.findIndex((c, idx2) => idx2 > despues && c.type === 'link_close')
+          if (idxCierreEnlace2 > despues) {
+            const etiqueta = renderInline(md, hijos.slice(inicio + 1, idxCierreStrong)).trim()
+            const href = leerHref(hijos[despues])
+            const hijosTermino = hijos.slice(despues + 1, idxCierreEnlace2)
+            const resto = hijos.slice(idxCierreEnlace2 + 1)
+            if (resto[0] && resto[0].type === 'text') {
+              resto[0].content = resto[0].content.replace(/^\s*[—–-]\s*/, '')
+            }
+            enlaceEtiquetado = { etiqueta, href, hijosTermino, resto }
+          }
+        }
+      }
+
+      if (enlaceEtiquetado) {
+        items.push({
+          esEnlace: true,
+          externo: ES_EXTERNO.test(enlaceEtiquetado.href),
+          href: enlaceEtiquetado.href,
+          etiqueta: enlaceEtiquetado.etiqueta,
+          terminoHtml: renderInline(md, enlaceEtiquetado.hijosTermino),
+          descripcionHtml: renderInline(md, enlaceEtiquetado.resto),
+          html: renderInline(md, inlineToken.children),
+        })
+      } else if (idxCierreEnlace > inicio) {
+        const href = leerHref(primero)
+        const hijosTermino = hijos.slice(inicio + 1, idxCierreEnlace)
+        const resto = hijos.slice(idxCierreEnlace + 1)
+        if (resto[0] && resto[0].type === 'text') {
+          resto[0].content = resto[0].content.replace(/^\s*[—–-]\s*/, '')
+        }
+        items.push({
+          esEnlace: true,
+          externo: ES_EXTERNO.test(href),
+          href,
+          terminoHtml: renderInline(md, hijosTermino),
+          descripcionHtml: renderInline(md, resto),
+          // Fallback si esta lista no acaba siendo tarjetas-recursos (p.ej.
+          // enlaces internos): render normal del item completo, con el <a>.
+          html: renderInline(md, inlineToken.children),
+        })
+      } else if (idxCierreStrong > inicio) {
         const hijosTermino = hijos.slice(inicio + 1, idxCierreStrong)
         const resto = hijos.slice(idxCierreStrong + 1)
         if (resto[0] && resto[0].type === 'text') {
@@ -223,8 +331,30 @@ export function parseMarkdown(fuente, { directorio }) {
 
     if (t.type === 'bullet_list_open') {
       const { items, siguienteIndice } = extraerItemsLista(tokens, i, md)
+      const conEnlaceExterno = items.filter((it) => it.esEnlace && it.externo).length
       const conBold = items.filter((it) => it.esBold).length
-      if (items.length > 0 && conBold >= Math.ceil(items.length * 0.6)) {
+      // Lista mixta: algunos ítems son enlaces externos (ejemplos reales) y
+      // otros son términos en negrita sin enlace (campos/ideas). En vez de
+      // forzarla a un solo tipo, se renderiza como tarjetas filtrables.
+      if (items.length > 0 && conBold > 0 && conEnlaceExterno > 0 && conBold + conEnlaceExterno >= Math.ceil(items.length * 0.8)) {
+        bloques.push({
+          tipo: 'tarjetas-mixtas',
+          items: items
+            .filter((it) => it.esBold || (it.esEnlace && it.externo))
+            .map((it) =>
+              it.esEnlace && it.externo
+                ? { tipoTarjeta: tipoDeEtiqueta(it.etiqueta), ...tarjetaRecurso(it) }
+                : { tipoTarjeta: 'campo', terminoHtml: it.terminoHtml, descripcionHtml: it.descripcionHtml }
+            ),
+        })
+      } else if (items.length > 0 && conEnlaceExterno >= Math.ceil(items.length * 0.6)) {
+        bloques.push({
+          tipo: 'tarjetas-recursos',
+          items: items
+            .filter((it) => it.esEnlace && it.externo)
+            .map((it) => tarjetaRecurso(it)),
+        })
+      } else if (items.length > 0 && conBold >= Math.ceil(items.length * 0.6)) {
         bloques.push({
           tipo: 'lista-referencia',
           items: items.map((it) => ({

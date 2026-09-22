@@ -18,3 +18,8 @@ Copilot, ChatGPT...) en el día a día de clase.
 
 Añade aquí prompts o flujos concretos que te hayan funcionado bien en las prácticas del
 curso.
+
+## Recursos
+
+- [How I Use AI to Learn Things](https://www.youtube.com/watch?v=kzcI5F4tGiU) — usar la IA
+  para aprender algo nuevo, no para que te lo resuelva.
