@@ -17,10 +17,9 @@ Escala neutra de Tailwind, la misma que ya usan `panel-aula-virtual` y
 | `neutral-400` | `#a3a3a3` | texto secundario |
 | `neutral-900` | `#171717` | texto principal, títulos |
 
-**Acento**: `cyan-600` (`#0891b2`), solo en enlaces activos, iconos de navegación y el
-borde/indicador de "estás aquí". Nunca como fondo detrás de un icono ni como color de
-fondo de una tarjeta entera. Eso es justo el patrón de dashboard genérico que ya está
-descartado.
+**Sin acento de color**: solo negro, blanco y grises. Lo que en otro sistema sería "el
+acento" (enlace activo, indicador de "estás aquí") se marca con `neutral-900` en negrita o
+un borde/fondo `neutral-100`, no con un color distinto.
 
 Los colores semánticos (`emerald`/`amber`/`red` de éxito/aviso/error) quedan reservados
 para las herramientas que ya los usan (`panel-aula-virtual`, `calculadora-de-faltas`); no
