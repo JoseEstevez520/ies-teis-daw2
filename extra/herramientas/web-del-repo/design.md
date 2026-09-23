@@ -67,6 +67,14 @@ inventar significados técnicos que no están confirmados:
 | Ideas de PFC | `Lightbulb` |
 | Horario | `Calendar` |
 
+**Excepción — tarjetas de páginas del repo**: cuando una lista del `.md` es
+mayoritariamente enlaces internos con descripción (p.ej. el índice de herramientas), se
+renderiza como tarjetas (`TarjetaInterna.vue`), cada una con su propio icono y título
+sacados de [`src/data/fichas.js`](src/data/fichas.js). El icono es el mismo que ya usa la
+vista a medida de esa herramienta, si la tiene. Una página sin ficha sale con el nombre
+de su carpeta y `FileText`. Flecha `ArrowRight` si abre dentro de la web, `ArrowUpRight`
+si no hay página y va a GitHub.
+
 ## Layout
 
 - **Barra lateral**: fija a la izquierda, `w-64 border-r border-neutral-200 bg-white`,

@@ -36,6 +36,12 @@ function quitarSufijos(ruta) {
 
 const ES_EXTERNO = /^(https?:)?\/\//i
 
+// Ruta del repo a la que apunta un enlace relativo, sin `README.md` ni `.md`
+// (el mismo formato que `claveRuta` en data/paginas.js).
+export function claveDeEnlace(href, directorio) {
+  return quitarSufijos(normalizar(directorio, href))
+}
+
 export function resolverEnlace(href, directorio) {
   if (!href) return { href: '#', externo: false }
   if (ES_EXTERNO.test(href) || href.startsWith('mailto:')) {

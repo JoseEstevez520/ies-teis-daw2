@@ -1,5 +1,5 @@
 import MarkdownIt from 'markdown-it'
-import { resolverEnlace, resolverImagen } from './enlaces.js'
+import { claveDeEnlace, resolverEnlace, resolverImagen } from './enlaces.js'
 
 // Icono externo dibujado a mano (flecha saliendo de una esquina), para no
 // depender de un componente Vue dentro de HTML que se inyecta con v-html.
@@ -53,6 +53,19 @@ function tarjetaRecurso({ href, terminoHtml, descripcionHtml }) {
     descripcionHtml,
     favicon: `https://icon.horse/icon/${dominio}`,
     gradiente: `linear-gradient(135deg, hsl(${h1} 70% 55%), hsl(${h2} 75% 42%))`,
+  }
+}
+
+// Tarjeta de una página del propio repo (herramienta, apunte...). Título e
+// icono no salen de aquí sino de data/fichas.js, a partir de `clave`: el texto
+// del enlace suele ser solo el nombre de la carpeta.
+function tarjetaInterna({ href, descripcionHtml }, directorio) {
+  const destino = resolverEnlace(href, directorio)
+  return {
+    clave: claveDeEnlace(href, directorio),
+    href: destino.href,
+    externo: destino.externo,
+    descripcionHtml,
   }
 }
 
@@ -215,7 +228,7 @@ function extraerItemsLista(tokens, i, md) {
         const hijosTermino = hijos.slice(inicio + 1, idxCierreEnlace)
         const resto = hijos.slice(idxCierreEnlace + 1)
         if (resto[0] && resto[0].type === 'text') {
-          resto[0].content = resto[0].content.replace(/^\s*[—–-]\s*/, '')
+          resto[0].content = resto[0].content.replace(/^\s*[:—–-]\s*/, '')
         }
         items.push({
           esEnlace: true,
@@ -332,6 +345,7 @@ export function parseMarkdown(fuente, { directorio }) {
     if (t.type === 'bullet_list_open') {
       const { items, siguienteIndice } = extraerItemsLista(tokens, i, md)
       const conEnlaceExterno = items.filter((it) => it.esEnlace && it.externo).length
+      const conEnlaceInterno = items.filter((it) => it.esEnlace && !it.externo).length
       const conBold = items.filter((it) => it.esBold).length
       // Lista mixta: algunos ítems son enlaces externos (ejemplos reales) y
       // otros son términos en negrita sin enlace (campos/ideas). En vez de
@@ -353,6 +367,15 @@ export function parseMarkdown(fuente, { directorio }) {
           items: items
             .filter((it) => it.esEnlace && it.externo)
             .map((it) => tarjetaRecurso(it)),
+        })
+      } else if (items.length > 0 && conEnlaceInterno >= Math.ceil(items.length * 0.6)) {
+        // Lista de enlaces a otras páginas del repo con su descripción (p.ej.
+        // el índice de herramientas): tarjetas navegables, no viñetas.
+        bloques.push({
+          tipo: 'tarjetas-internas',
+          items: items
+            .filter((it) => it.esEnlace && !it.externo)
+            .map((it) => tarjetaInterna(it, directorio)),
         })
       } else if (items.length > 0 && conBold >= Math.ceil(items.length * 0.6)) {
         bloques.push({

@@ -1,5 +1,6 @@
 <script setup>
 import { AlertTriangle, Info, Terminal } from '@lucide/vue'
+import TarjetaInterna from './TarjetaInterna.vue'
 import TarjetaRecurso from './TarjetaRecurso.vue'
 import TarjetasMixtas from './TarjetasMixtas.vue'
 
@@ -55,6 +56,17 @@ defineProps({
       :descripcion-html="item.descripcionHtml"
       :favicon="item.favicon"
       :gradiente-inicial="item.gradiente"
+    />
+  </div>
+
+  <div v-else-if="bloque.tipo === 'tarjetas-internas'" class="grid sm:grid-cols-2 gap-4">
+    <TarjetaInterna
+      v-for="item in bloque.items"
+      :key="item.clave"
+      :clave="item.clave"
+      :href="item.href"
+      :externo="item.externo"
+      :descripcion-html="item.descripcionHtml"
     />
   </div>
 
