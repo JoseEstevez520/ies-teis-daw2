@@ -34,7 +34,7 @@ function hashDominio(dominio) {
 
 // Excepción documentada al "sin acento de color" de design.md: las tarjetas
 // de recursos externos son la única zona con color. El degradado real (color
-// medio del favicon) se calcula en el navegador, en TarjetaRecurso.vue — esto
+// medio del favicon) se calcula en el navegador, en TarjetaRecurso.vue; esto
 // solo da un degradado de reserva instantáneo por hash del dominio, para
 // mientras carga el favicon o si falla.
 function tarjetaRecurso({ href, terminoHtml, descripcionHtml }) {

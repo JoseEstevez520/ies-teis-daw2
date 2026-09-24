@@ -72,5 +72,5 @@ Ejemplo con DWCS (8,33h/semana): ~173 horas totales. 6% ≈ 10,4h de falta (avis
 ## Fuentes
 
 - Presentación de Tutoría 2ºDAW 2026-2027 (Aula Virtual, IES de Teis).
-- [Orde do 12 de xullo de 2011 — DOG](https://www.xunta.gal/dog/Publicados/2011/20110715/AnuncioC3F1-120711-4341_es.html).
-- [Calendario escolar Galicia 2026-2027 — galiciae.com](https://www.galiciae.com/articulo/galicia/calendario-escolar-galicia-curso-2026-27-cuando-empiezan-claves-que-dias-seran-lectivos/20260825180432109165.html).
+- [Orde do 12 de xullo de 2011 (DOG)](https://www.xunta.gal/dog/Publicados/2011/20110715/AnuncioC3F1-120711-4341_es.html).
+- [Calendario escolar Galicia 2026-2027 (galiciae.com)](https://www.galiciae.com/articulo/galicia/calendario-escolar-galicia-curso-2026-27-cuando-empiezan-claves-que-dias-seran-lectivos/20260825180432109165.html).

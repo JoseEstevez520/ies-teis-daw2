@@ -21,7 +21,7 @@ Escala neutra de Tailwind, la misma que ya usan `panel-aula-virtual` y
 acento" (enlace activo, indicador de "estás aquí") se marca con `neutral-900` en negrita o
 un borde/fondo `neutral-100`, no con un color distinto.
 
-**Excepción documentada — tarjetas de recursos**: cuando una lista del `.md` es
+**Excepción documentada, tarjetas de recursos**: cuando una lista del `.md` es
 mayoritariamente enlaces externos con descripción (ver `parseMarkdown` en
 [`src/lib/markdown.js`](src/lib/markdown.js)), se renderiza como tarjetas con favicon real
 del sitio (vía `icon.horse`, con CORS abierto) y un degradado sacado del color medio de
@@ -33,7 +33,7 @@ herramientas externas es indistinguible de cualquier otra lista. No se usa para 
 
 Se probó antes con captura real de la landing (vía `image.thum.io`): se descartó porque el
 servicio gratuito falla para algunos dominios (límite de uso) sin devolver un error
-detectable — carga una imagen válida con el aviso "not authorized" dentro.
+detectable: carga una imagen válida con el aviso "not authorized" dentro.
 
 **Color por sección**: cada sección del repo tiene su color (Módulos azul, Extra verde
 azulado, IA violeta, Herramientas ámbar, Diseño web fucsia, Ideas de PFC verde lima,
@@ -41,7 +41,7 @@ Horario rosa), definido en un único sitio, [`src/lib/colorSeccion.js`](src/lib/
 Solo se usa en iconos y en el punto de cada página en la barra lateral, para saber en qué
 parte estás. Los fondos, textos y bordes siguen en gris.
 
-**Excepción — piezas visuales** (`src/visuales/`): sí llevan color, siempre con
+**Excepción, piezas visuales** (`src/visuales/`): sí llevan color, siempre con
 significado: un color por concepto, y verde/ámbar/rojo para sí/con condiciones/no. Las
 reglas están en la skill [apuntes-web](../../../.agents/skills/apuntes-web/SKILL.md).
 
@@ -77,7 +77,7 @@ inventar significados técnicos que no están confirmados:
 | Ideas de PFC | `Lightbulb` |
 | Horario | `Calendar` |
 
-**Excepción — tarjetas de páginas del repo**: cuando una lista del `.md` es
+**Excepción, tarjetas de páginas del repo**: cuando una lista del `.md` es
 mayoritariamente enlaces internos con descripción (p.ej. el índice de herramientas), se
 renderiza como tarjetas (`TarjetaInterna.vue`), cada una con su propio icono y título
 sacados de [`src/data/fichas.js`](src/data/fichas.js). El icono es el mismo que ya usa la

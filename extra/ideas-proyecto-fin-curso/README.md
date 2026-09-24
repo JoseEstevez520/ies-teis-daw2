@@ -15,7 +15,7 @@ arquitectura defendibles, no solo un CRUD de ejemplo.
 Directorio de empresas donde hacer la FCT, con lo que aporta cada alumno que ya estuvo:
 qué stack usaron, qué hizo allí, si la recomienda. Encaja como PFC: alcance pequeño, fecha
 real encima (la FCT) y sirve a los 26. También vale como herramienta real de la clase, no
-solo como idea — ver [`../herramientas/README.md`](../herramientas/README.md#pendientes).
+solo como idea: ver [`../herramientas/README.md`](../herramientas/README.md#pendientes).
 
 ## Wiki de un canal de YouTube
 

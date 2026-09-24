@@ -10,7 +10,7 @@ Copilot, ChatGPT...) en el día a día de clase.
 - **No le pidas la solución, pídele que explique.** Si el asistente te da el código directo,
   aprendes menos y no vas a poder defenderlo en un examen o en una entrevista. Pídele que te
   explique el concepto o que revise lo que ya has hecho tú.
-- **Dale contexto real, no solo la pregunta suelta.** "¿Por qué falla esto?" funciona peor
+- **Dale contexto real.** "¿Por qué falla esto?" funciona peor
   que pegar el error completo + qué estabas intentando hacer.
 - **Un archivo `AGENTS.md` (o `CLAUDE.md`) en la raíz de tu proyecto** le dice al asistente
   cómo quieres que trabaje contigo (por ejemplo: "no edites código, solo explica"). Es la

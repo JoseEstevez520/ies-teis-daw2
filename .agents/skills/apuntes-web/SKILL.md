@@ -73,6 +73,9 @@ Ejemplos de referencia, cópiales el patrón:
 - Cajas semitransparentes encima de líneas: se ven las líneas a través. Lo inactivo se
   atenúa con gris, con la caja opaca.
 - Un visual vacío al cargar: el estado inicial ya tiene que enseñar algo.
+- Pasarse de detalle: bordes laterales de color, marcos alrededor de todo, datos
+  repetidos dentro de cada caja (una hora que ya se lee en el eje). Minimalista: fondo
+  suave del color, el dato justo y aire. En el horario funcionó así.
 - Diagramas genéricos de cajas cuando el concepto pide otra cosa.
 
 **Contenido:**

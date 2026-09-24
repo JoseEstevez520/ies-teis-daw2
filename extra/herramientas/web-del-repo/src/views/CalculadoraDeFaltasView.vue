@@ -15,7 +15,7 @@ const UMBRALES = [
 
 const FUENTES = [
   { nombre: 'Presentación de Tutoría 2ºDAW 2026-2027', nota: 'Aula Virtual, IES de Teis' },
-  { nombre: 'Orde do 12 de xullo de 2011 — DOG', url: 'https://www.xunta.gal/dog/Publicados/2011/20110715/AnuncioC3F1-120711-4341_es.html', nota: 'fija el 10% como norma general de Galicia' },
+  { nombre: 'Orde do 12 de xullo de 2011 (DOG)', url: 'https://www.xunta.gal/dog/Publicados/2011/20110715/AnuncioC3F1-120711-4341_es.html', nota: 'fija el 10% como norma general de Galicia' },
   { nombre: 'Calendario escolar Galicia 2026-2027', url: 'https://www.galiciae.com/articulo/galicia/calendario-escolar-galicia-curso-2026-27-cuando-empiezan-claves-que-dias-seran-lectivos/20260825180432109165.html', nota: 'galiciae.com' },
 ]
 </script>
