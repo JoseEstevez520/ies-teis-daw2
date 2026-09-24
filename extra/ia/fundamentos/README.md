@@ -5,11 +5,12 @@ Un agente de IA es un cerebro con cuerpo. El cerebro es el **modelo**, el cuerpo
 
 ## Cerebro y cuerpo
 
-- **Modelo (el cerebro):** GPT, Claude, Gemini, Qwen... Piensa y habla, pero no tiene ojos
-  ni manos.
-- **Harness (el cuerpo):** el programa que le da ojos para leer tus archivos y manos para
-  editar y ejecutar. OpenCode, Claude Code y Codex son harnesses.
-- **Agente:** el cerebro dentro del cuerpo, trabajando hasta acabar la tarea.
+- **Modelo (el cerebro):** la IA que piensa y escribe (GPT, Claude, Gemini, Qwen...).
+  Recibe texto y devuelve texto. No puede abrir tus archivos ni ejecutar nada.
+- **Harness (el cuerpo):** el programa que hace lo que el modelo decide. Lee tus
+  archivos, los edita y ejecuta comandos en la terminal (`npm test`, `git commit`...).
+  OpenCode, Claude Code y Codex son harnesses.
+- **Agente:** modelo y harness juntos, trabajando hasta acabar la tarea.
 
 ```visual
 modelo-y-harness

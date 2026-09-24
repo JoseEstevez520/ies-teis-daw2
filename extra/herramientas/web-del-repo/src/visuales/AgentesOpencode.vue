@@ -134,15 +134,15 @@ const agente = computed(() => AGENTES[elegido.value])
 <template>
   <div class="rounded-xl border border-neutral-200 bg-white overflow-hidden grid md:grid-cols-[200px_1fr]">
     <!-- Lista -->
-    <div class="border-b md:border-b-0 md:border-r border-neutral-200 bg-neutral-50 p-4 flex flex-col gap-5">
-      <div v-for="grupo in GRUPOS" :key="grupo.titulo" class="flex flex-col gap-1">
-        <p class="text-[11px] font-semibold text-neutral-500 uppercase tracking-wide mb-1">{{ grupo.titulo }}</p>
+    <div class="border-b md:border-b-0 md:border-r border-neutral-200 bg-neutral-50 p-4 flex flex-col gap-4 md:gap-5">
+      <div v-for="grupo in GRUPOS" :key="grupo.titulo" class="flex flex-wrap md:flex-col gap-1">
+        <p class="w-full text-[11px] font-semibold text-neutral-500 uppercase tracking-wide mb-1">{{ grupo.titulo }}</p>
         <button
           v-for="id in grupo.ids"
           :key="id"
           type="button"
           @click="elegido = id"
-          class="flex items-center justify-between rounded-lg border px-3 py-1.5 text-left text-sm transition-colors duration-150"
+          class="flex items-center justify-between gap-3 rounded-lg border px-3 py-1.5 text-left text-sm transition-colors duration-150"
           :class="
             elegido === id
               ? 'border-neutral-900 bg-white text-neutral-900 font-medium'
@@ -150,7 +150,7 @@ const agente = computed(() => AGENTES[elegido.value])
           "
         >
           <span :class="AGENTES[id].propio ? 'font-mono text-[13px]' : ''">{{ AGENTES[id].nombre }}</span>
-          <span class="text-[10px] text-neutral-400">{{ AGENTES[id].tipo }}</span>
+          <span class="hidden md:inline text-[10px] text-neutral-400">{{ AGENTES[id].tipo }}</span>
         </button>
       </div>
     </div>
@@ -171,11 +171,11 @@ const agente = computed(() => AGENTES[elegido.value])
         </div>
 
         <div class="flex flex-col rounded-lg border border-neutral-200 divide-y divide-neutral-200 text-sm">
-          <div class="grid grid-cols-[100px_1fr] gap-3 px-4 py-3">
+          <div class="grid sm:grid-cols-[100px_1fr] gap-1 sm:gap-3 px-4 py-3">
             <p class="text-neutral-500">Instrucciones</p>
             <p class="text-neutral-900">"{{ agente.instrucciones }}"</p>
           </div>
-          <div class="grid grid-cols-[100px_1fr] gap-3 px-4 py-3">
+          <div class="grid sm:grid-cols-[100px_1fr] gap-1 sm:gap-3 px-4 py-3">
             <p class="text-neutral-500">Permisos</p>
             <div class="flex flex-wrap gap-x-5 gap-y-1">
               <span
@@ -190,7 +190,7 @@ const agente = computed(() => AGENTES[elegido.value])
               </span>
             </div>
           </div>
-          <div class="grid grid-cols-[100px_1fr] gap-3 px-4 py-3">
+          <div class="grid sm:grid-cols-[100px_1fr] gap-1 sm:gap-3 px-4 py-3">
             <p class="text-neutral-500">Se llama</p>
             <p class="text-neutral-900">{{ agente.llamada }}</p>
           </div>

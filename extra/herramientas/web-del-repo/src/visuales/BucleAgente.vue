@@ -6,14 +6,14 @@ import { Brain, CheckCheck, Eye, Hand, RotateCw } from '@lucide/vue'
 // (modelo, violeta) o el cuerpo (harness, cian). El ejemplo va en cada paso.
 
 const PASOS = [
-  { icono: Eye, verbo: 'Mira', quien: 'cuerpo', ejemplo: 'Abre RegistroForm.vue y se lo enseña al cerebro.' },
-  { icono: Brain, verbo: 'Piensa', quien: 'cerebro', ejemplo: '"No se valida el email. Hay que añadir la comprobación."' },
-  { icono: Hand, verbo: 'Hace', quien: 'cuerpo', ejemplo: 'Edita el archivo con el cambio.' },
-  { icono: CheckCheck, verbo: 'Comprueba', quien: 'cuerpo', ejemplo: 'Ejecuta los tests. Si fallan, vuelve a mirar.' },
+  { icono: Eye, verbo: 'Lee', quien: 'cuerpo', ejemplo: 'El harness abre RegistroForm.vue y se lo pasa al modelo.' },
+  { icono: Brain, verbo: 'Piensa', quien: 'cerebro', ejemplo: 'El modelo: "No se valida el email. Hay que añadir la comprobación."' },
+  { icono: Hand, verbo: 'Edita', quien: 'cuerpo', ejemplo: 'El harness escribe el cambio en el archivo.' },
+  { icono: CheckCheck, verbo: 'Comprueba', quien: 'cuerpo', ejemplo: 'El harness ejecuta npm test. Si falla, vuelve al paso 1.' },
 ]
 
 const COLOR = { cerebro: '#7c3aed', cuerpo: '#0891b2' }
-const NOMBRE = { cerebro: 'cerebro (modelo)', cuerpo: 'cuerpo (harness)' }
+const NOMBRE = { cerebro: 'lo hace el modelo', cuerpo: 'lo hace el harness' }
 
 const elegido = ref(0)
 </script>

@@ -7,6 +7,12 @@ import { ARBOL_NAV } from '../lib/arbolNav.js'
 import NavNodo from './NavNodo.vue'
 import { colorDeRuta } from '../lib/colorSeccion.js'
 
+const props = defineProps({
+  // En el móvil va dentro de un panel que se abre con el menú: siempre
+  // desplegada y sin botón de plegar.
+  movil: { type: Boolean, default: false },
+})
+
 const route = useRoute()
 const abierta = ref(true)
 // Rutas con el desplegable abierto. Al navegar se abren solos la página
@@ -38,11 +44,12 @@ watch(
 
 <template>
   <motion.nav
-    :animate="{ width: abierta ? 256 : 64 }"
+    :animate="{ width: props.movil ? 280 : abierta ? 256 : 64 }"
     :transition="{ type: 'spring', stiffness: 320, damping: 32 }"
-    class="shrink-0 border-r border-neutral-200 bg-white flex flex-col gap-1 p-3 overflow-x-hidden overflow-y-auto"
+    class="shrink-0 h-full border-r border-neutral-200 bg-white flex flex-col gap-1 p-3 overflow-x-hidden overflow-y-auto"
   >
     <button
+      v-if="!props.movil"
       type="button"
       @click="abierta = !abierta"
       class="flex items-center px-3 py-2 rounded-lg text-neutral-500 hover:bg-neutral-100 hover:text-neutral-900 transition-colors duration-150 mb-1"

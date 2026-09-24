@@ -117,9 +117,25 @@ const conexiones = Object.keys(NODOS).filter((id) => id !== 'agente')
 
 <template>
   <div class="rounded-xl border border-neutral-200 bg-white overflow-hidden">
+    <!-- Esquema en móvil: las piezas en fila, se ilumina la del paso -->
+    <div class="md:hidden flex flex-wrap gap-1.5 border-b border-neutral-200 bg-neutral-50 p-3">
+      <button
+        v-for="(nodo, id) in NODOS"
+        :key="id"
+        type="button"
+        @click="irANodo(id)"
+        class="flex items-center gap-1.5 rounded-lg border bg-white px-2.5 py-1.5 text-xs transition-colors duration-300"
+        :class="activos.has(id) ? 'border-2 font-medium text-neutral-900' : 'border-neutral-200 text-neutral-400'"
+        :style="{ borderColor: activos.has(id) ? nodo.color : undefined }"
+      >
+        <component :is="nodo.icono" class="w-3.5 h-3.5" :style="activos.has(id) ? { color: nodo.color } : undefined" />
+        {{ nodo.etiqueta }}
+      </button>
+    </div>
+
     <!-- Esquema -->
-    <div class="overflow-x-auto border-b border-neutral-200 bg-neutral-50">
-      <div class="relative h-72 min-w-[560px]">
+    <div class="hidden md:block border-b border-neutral-200 bg-neutral-50">
+      <div class="relative h-72">
         <svg class="absolute inset-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
           <line
             v-for="id in conexiones"
@@ -203,7 +219,7 @@ const conexiones = Object.keys(NODOS).filter((id) => id !== 'agente')
       </div>
 
       <!-- Controles -->
-      <div class="flex items-center justify-between gap-3">
+      <div class="flex flex-wrap items-center justify-between gap-3">
         <div class="flex items-center gap-1.5">
           <button
             v-for="(p, i) in PASOS"

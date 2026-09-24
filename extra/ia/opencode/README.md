@@ -1,8 +1,11 @@
 # Agentes de IA con OpenCode
 
-[OpenCode](https://opencode.ai/) es un harness gratis: el cuerpo que le da ojos y manos
-al modelo. Si no sabes qué es eso, empieza por los [fundamentos](../fundamentos/). Lo
-que aprendas aquí vale igual para Claude Code o Codex.
+[OpenCode](https://opencode.ai/) es un harness: el programa que lee tus archivos, los
+edita y ejecuta comandos por el modelo. Si no sabes qué es eso, empieza por los
+[fundamentos](../fundamentos/).
+
+Explicamos OpenCode porque es gratis, sencillo y está bien hecho. Lo que aprendas aquí
+vale igual para Claude Code o Codex.
 
 ## Un agente trabajando, paso a paso
 

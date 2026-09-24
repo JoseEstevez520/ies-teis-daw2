@@ -58,6 +58,10 @@ Ejemplos de referencia, cópiales el patrón:
 
 ## 4. Reglas visuales
 
+**Móvil:** todo tiene que funcionar a 390 px sin scroll horizontal. Si una pieza no cabe,
+cámbiale la forma en el móvil (un día cada vez en el horario, fichas en vez de esquema),
+no la encojas.
+
 **Color, con significado:**
 
 - Un color por concepto, y el mismo en todo el visual: su caja, su línea y lo que sale en
@@ -83,6 +87,8 @@ Ejemplos de referencia, cópiales el patrón:
 - Ejemplos de clase o de este mismo repo (una práctica de Spring, un apunte de Vue), no
   genéricos.
 - Si un ejemplo no es literal (una terminal simplificada), dilo.
+- Lo concreto primero y la comparación después: "ejecuta comandos (`npm test`)" y, como
+  pista, "sus manos". Una comparación sola ("manos") no se entiende.
 - Autoexamen con casos ("¿dónde pondrías esta regla?"), no definiciones, y cada
   respuesta explica por qué.
 

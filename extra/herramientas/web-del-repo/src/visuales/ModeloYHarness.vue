@@ -1,15 +1,17 @@
 <script setup>
 import { ref } from 'vue'
-import { ArrowLeftRight, Brain, Eye, FolderOpen, Hand, Phone, User, X } from '@lucide/vue'
+import { ArrowLeftRight, Brain, FileCode, FilePen, FolderOpen, Plug, SquareTerminal, User, X } from '@lucide/vue'
 
 // Modelo = cerebro, harness = cuerpo. Sin cuerpo, el cerebro solo puede
 // hablar contigo; con cuerpo, tiene ojos y manos para llegar a tu proyecto.
 // Colores: modelo violeta, harness cian, en todas las páginas de agentes.
 
+// Lo concreto primero; la parte del cuerpo, como pista.
 const CUERPO = [
-  { icono: Eye, parte: 'Ojos', hace: 'lee tus archivos' },
-  { icono: Hand, parte: 'Manos', hace: 'edita y ejecuta comandos' },
-  { icono: Phone, parte: 'Teléfono', hace: 'consulta fuera (MCP)' },
+  { icono: FileCode, hace: 'Lee tus archivos', parte: 'sus ojos' },
+  { icono: FilePen, hace: 'Edita tus archivos', parte: 'sus manos' },
+  { icono: SquareTerminal, hace: 'Ejecuta comandos: npm test, git…', parte: 'sus manos' },
+  { icono: Plug, hace: 'Consulta fuera con MCP: docs, GitHub…', parte: 'su teléfono' },
 ]
 
 const modo = ref('cuerpo')
@@ -59,19 +61,19 @@ const modo = ref('cuerpo')
             <Brain class="w-6 h-6 shrink-0" style="color: #7c3aed" />
             <div class="flex flex-col">
               <span class="text-sm font-semibold" style="color: #7c3aed">Cerebro = modelo</span>
-              <span class="text-xs text-neutral-600">GPT, Claude, Gemini, Qwen… Piensa y habla.</span>
+              <span class="text-xs text-neutral-600">GPT, Claude, Gemini, Qwen… Piensa y escribe texto.</span>
             </div>
           </div>
 
           <div
-            class="grid sm:grid-cols-3 gap-2 transition-opacity duration-300"
+            class="grid sm:grid-cols-2 gap-2 transition-opacity duration-300"
             :class="modo === 'cuerpo' ? 'opacity-100' : 'opacity-0'"
           >
-            <div v-for="c in CUERPO" :key="c.parte" class="flex items-center gap-2.5 rounded-lg bg-white px-3 py-2.5">
+            <div v-for="c in CUERPO" :key="c.hace" class="flex items-center gap-2.5 rounded-lg bg-white px-3 py-2.5">
               <component :is="c.icono" class="w-4 h-4 shrink-0" style="color: #0891b2" />
               <div class="flex flex-col">
-                <span class="text-xs font-semibold text-neutral-900">{{ c.parte }}</span>
-                <span class="text-xs text-neutral-600">{{ c.hace }}</span>
+                <span class="text-xs font-medium text-neutral-900">{{ c.hace }}</span>
+                <span class="text-[11px] text-neutral-400">{{ c.parte }}</span>
               </div>
             </div>
           </div>
@@ -95,13 +97,13 @@ const modo = ref('cuerpo')
 
       <p class="text-sm text-neutral-700 leading-relaxed">
         <template v-if="modo === 'cerebro'">
-          Un cerebro sin cuerpo solo puede hablar contigo. No ve tu proyecto ni toca nada:
-          <strong class="text-neutral-900">los ojos y las manos los pones tú</strong> (copiar, pegar, ejecutar).
-          Es lo que pasa en el chat de ChatGPT o Claude.
+          El modelo solo te contesta con texto. No abre tus archivos ni ejecuta nada:
+          <strong class="text-neutral-900">eso lo haces tú</strong> (copiar el código, pegarlo, ejecutar, volver a
+          preguntar). Es lo que pasa en el chat de ChatGPT o Claude.
         </template>
         <template v-else>
-          Con cuerpo, el cerebro ve tu proyecto y actúa en él. Cerebro y cuerpo juntos, trabajando
-          hasta acabar la tarea, es un <strong class="text-neutral-900">agente</strong>.
+          El modelo decide qué hacer y el harness lo hace en tu proyecto: lee, edita, ejecuta. Los dos
+          juntos, trabajando hasta acabar la tarea, son un <strong class="text-neutral-900">agente</strong>.
         </template>
       </p>
     </div>

@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { computed, onBeforeUnmount, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import { Coffee, Download, MapPin } from '@lucide/vue'
 import { CLASES, MODULOS } from './horario.js'
@@ -31,13 +31,26 @@ const bloques = CLASES.map(([dia, codigo, sesion, n]) => {
 const marcas = [...INICIO_SESION, RECREO.inicio, FIN_DIA].sort((a, b) => a - b)
 
 // Hoy se marca en la cabecera (no en el PNG).
+const lienzo = ref(null)
+const exportando = ref(false)
 const d = new Date().getDay()
 const hoy = d >= 1 && d <= 5 ? d - 1 : -1
 
+// En el móvil no caben cinco columnas: se ve un día, con pestañas para
+// cambiar (empieza en hoy). El PNG siempre lleva la semana entera.
+const consulta = window.matchMedia('(max-width: 639px)')
+const esMovil = ref(consulta.matches)
+const alCambiar = (e) => (esMovil.value = e.matches)
+consulta.addEventListener('change', alCambiar)
+onBeforeUnmount(() => consulta.removeEventListener('change', alCambiar))
+const diaMovil = ref(hoy === -1 ? 0 : hoy)
+
+const dias = computed(() => (esMovil.value && !exportando.value ? [diaMovil.value] : [0, 1, 2, 3, 4]))
+const columna = (dia) => dias.value.indexOf(dia) + 2
+const bloquesVisibles = computed(() => bloques.filter((b) => dias.value.includes(b.dia)))
+
 // Descarga como PNG: solo la tabla y la leyenda, sin el botón ni la marca de
 // hoy (una imagen guardada no debería decir qué día era al guardarla).
-const lienzo = ref(null)
-const exportando = ref(false)
 async function descargar() {
   exportando.value = true
   try {
@@ -72,26 +85,43 @@ async function descargar() {
       </button>
     </div>
 
+    <div class="sm:hidden grid grid-cols-5 gap-1 rounded-xl bg-neutral-100 p-1">
+      <button
+        v-for="(dia, i) in DIAS"
+        :key="dia"
+        type="button"
+        @click="diaMovil = i"
+        class="rounded-lg py-1.5 text-sm transition-colors duration-150"
+        :class="diaMovil === i ? 'bg-white text-neutral-900 font-medium' : 'text-neutral-500'"
+      >
+        {{ dia.slice(0, 3) }}<span v-if="i === hoy" class="text-neutral-400">·</span>
+      </button>
+    </div>
+
     <div class="overflow-x-auto">
-      <div ref="lienzo" class="min-w-[640px] bg-white rounded-xl p-5 flex flex-col gap-5">
+      <div
+        ref="lienzo"
+        class="sm:min-w-[640px] bg-white rounded-xl p-4 sm:p-5 flex flex-col gap-5"
+        :style="exportando ? { width: '760px' } : undefined"
+      >
         <!-- Solo sale en el PNG, que no tiene el título de la página -->
         <p v-if="exportando" class="text-base font-semibold text-neutral-900">Horario · CSDAW 2º</p>
 
         <div
           class="grid gap-x-1"
           :style="{
-            gridTemplateColumns: '44px repeat(5, 1fr)',
+            gridTemplateColumns: `44px repeat(${dias.length}, 1fr)`,
             gridTemplateRows: `28px repeat(${FIN_DIA / MIN_POR_FILA}, 11px)`,
           }"
         >
           <div
-            v-for="(dia, i) in DIAS"
-            :key="dia"
+            v-for="i in dias"
+            :key="DIAS[i]"
             class="text-sm text-center"
             :class="i === hoy && !exportando ? 'text-neutral-900 font-semibold' : 'text-neutral-500'"
-            :style="{ gridColumn: i + 2, gridRow: 1 }"
+            :style="{ gridColumn: columna(i), gridRow: 1 }"
           >
-            {{ dia }}
+            {{ DIAS[i] }}
             <span v-if="i === hoy && !exportando" class="block mx-auto mt-0.5 w-1 h-1 rounded-full bg-neutral-900" />
           </div>
 
@@ -104,20 +134,20 @@ async function descargar() {
 
           <div
             class="flex items-center justify-center gap-1.5 text-xs text-neutral-400"
-            :style="{ gridColumn: '2 / 7', gridRow: `${fila(RECREO.inicio)} / ${fila(RECREO.fin)}` }"
+            :style="{ gridColumn: `2 / ${dias.length + 2}`, gridRow: `${fila(RECREO.inicio)} / ${fila(RECREO.fin)}` }"
           >
             <Coffee class="w-3.5 h-3.5" /> Recreo
           </div>
 
           <component
             :is="b.ruta && !exportando ? RouterLink : 'div'"
-            v-for="(b, i) in bloques"
+            v-for="(b, i) in bloquesVisibles"
             :key="i"
             :to="b.ruta"
             :title="`${b.codigo} · ${b.profe} · ${hora(b.inicio)}–${hora(b.fin)}`"
             class="rounded-lg m-0.5 px-2.5 py-2 flex flex-col gap-0.5 overflow-hidden transition-opacity duration-150 hover:opacity-80"
             :style="{
-              gridColumn: b.dia + 2,
+              gridColumn: columna(b.dia),
               gridRow: `${fila(b.inicio)} / ${fila(b.fin)}`,
               backgroundColor: `color-mix(in srgb, ${b.color} 12%, white)`,
             }"
