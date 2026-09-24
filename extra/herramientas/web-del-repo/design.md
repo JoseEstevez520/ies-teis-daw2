@@ -111,3 +111,6 @@ import { IconoDeLaSeccion } from '@lucide/vue'
 cuerpo lo pone un componente `PaginaMarkdown` compartido que aplica la tipografía de esta
 tabla al `.md` de origen. No es markdown crudo sin estilo, pero tampoco un diseño distinto
 por cada apunte.
+
+Los bloques ```` ```mermaid ```` se pintan como diagrama (`DiagramaMermaid.vue`), con la
+paleta neutra de arriba. Mermaid solo se descarga en las páginas que tienen alguno.

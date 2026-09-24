@@ -49,6 +49,20 @@ Un bloque de texto largo se salta. Usa:
 - **Listas de hasta 5 puntos.** Si tienes más, agrúpalos bajo sub-encabezados.
 - **Código en bloques**, nunca descrito en prosa cuando se puede pegar directamente.
 
+## Enséñalo, no solo lo cuentes
+
+Una lista de definiciones se lee y se olvida. Si un concepto es nuevo para la clase, que
+quien lee vea cómo es de verdad:
+
+- **Un ejemplo real** del fichero, comando o salida, en un bloque de código. Mejor de
+  algo de clase (una práctica de Spring o de Vue) que genérico.
+- **Un diagrama Mermaid** (bloque ```` ```mermaid ````) cuando hay piezas que se
+  relacionan o pasos en orden. GitHub y la web del repo lo pintan solos.
+- **"Así se ve"**: una sesión o pantalla de ejemplo, marcada como simplificada si no es
+  literal.
+
+Cada visual va justo después de la frase que explica, no todos juntos al final.
+
 ## Quita los tics de IA
 
 Delatan que un texto lo escribió (o lo pasó a lo loco por) una IA, y estorban a la
@@ -88,3 +102,4 @@ lectura rápida:
 - ¿Sobra alguna palabra de la lista de "infladas"?
 - ¿Una lista tiene más de 5 puntos sin agrupar?
 - ¿Hay un ejemplo o paréntesis que no hace falta para entender la frase?
+- ¿Cada concepto nuevo tiene un ejemplo real o un diagrama?
