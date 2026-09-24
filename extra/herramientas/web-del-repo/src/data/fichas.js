@@ -1,4 +1,4 @@
-import { BellRing, CalendarX, Globe, LayoutDashboard, NotebookPen } from '@lucide/vue'
+import { BellRing, CalendarX, Globe, LayoutDashboard, NotebookPen, SquareTerminal } from '@lucide/vue'
 
 // Título e icono de las páginas del repo que salen como tarjeta en una lista
 // de enlaces internos (ver `tarjetas-internas` en lib/markdown.js). Título =
@@ -11,4 +11,5 @@ export const FICHAS = {
   'extra/herramientas/panel-aula-virtual': { titulo: 'Panel del Aula Virtual', icono: LayoutDashboard },
   'extra/herramientas/web-del-repo': { titulo: 'Web del repo', icono: Globe },
   'extra/herramientas/cuaderno-ia': { titulo: 'Cuaderno de IA para apuntes', icono: NotebookPen },
+  'extra/ia/opencode': { titulo: 'OpenCode', icono: SquareTerminal },
 }

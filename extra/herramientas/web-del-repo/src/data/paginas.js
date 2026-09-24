@@ -13,6 +13,7 @@ import cuadernoIa from '../../../../../extra/herramientas/cuaderno-ia/README.md?
 import moodleApi from '../../../../../extra/herramientas/moodle-api.md?raw'
 
 import ia from '../../../../../extra/ia/README.md?raw'
+import opencode from '../../../../../extra/ia/opencode/README.md?raw'
 import disenoWeb from '../../../../../extra/diseno-web/README.md?raw'
 import ideasPfc from '../../../../../extra/ideas-proyecto-fin-curso/README.md?raw'
 
@@ -117,6 +118,14 @@ export const PAGINAS = [
     seccion: 'IA',
     icono: Bot,
     fuente: ia,
+  },
+  {
+    ruta: '/ia/opencode',
+    directorio: 'extra/ia/opencode',
+    claveRuta: 'extra/ia/opencode',
+    seccion: 'IA',
+    icono: Bot,
+    fuente: opencode,
   },
   {
     ruta: '/diseno-web',
