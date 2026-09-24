@@ -68,7 +68,7 @@ const REFERENCIAS = [
 <template>
   <div class="max-w-4xl flex flex-col gap-8">
     <div class="flex items-center gap-2.5">
-      <LayoutDashboard class="w-5 h-5 text-neutral-900 shrink-0" />
+      <LayoutDashboard class="w-5 h-5 shrink-0" style="color: #d97706" />
       <h1 class="text-2xl font-semibold text-neutral-900">Panel del Aula Virtual</h1>
     </div>
 

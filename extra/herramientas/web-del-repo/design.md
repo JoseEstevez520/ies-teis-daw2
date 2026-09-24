@@ -35,6 +35,12 @@ Se probó antes con captura real de la landing (vía `image.thum.io`): se descar
 servicio gratuito falla para algunos dominios (límite de uso) sin devolver un error
 detectable — carga una imagen válida con el aviso "not authorized" dentro.
 
+**Color por sección**: cada sección del repo tiene su color (Módulos azul, Extra verde
+azulado, IA violeta, Herramientas ámbar, Diseño web fucsia, Ideas de PFC verde lima,
+Horario rosa), definido en un único sitio, [`src/lib/colorSeccion.js`](src/lib/colorSeccion.js).
+Solo se usa en iconos y en el punto de cada página en la barra lateral, para saber en qué
+parte estás. Los fondos, textos y bordes siguen en gris.
+
 **Excepción — piezas visuales** (`src/visuales/`): sí llevan color, siempre con
 significado: un color por concepto, y verde/ámbar/rojo para sí/con condiciones/no. Las
 reglas están en la skill [apuntes-web](../../../.agents/skills/apuntes-web/SKILL.md).

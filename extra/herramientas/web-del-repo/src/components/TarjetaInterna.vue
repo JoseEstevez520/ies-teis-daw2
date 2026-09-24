@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { RouterLink } from 'vue-router'
 import { ArrowRight, ArrowUpRight, FileText } from '@lucide/vue'
 import { FICHAS } from '../data/fichas.js'
+import { colorDeRuta } from '../lib/colorSeccion.js'
 
 const props = defineProps({
   clave: { type: String, required: true },
@@ -16,6 +17,7 @@ const carpeta = computed(() => props.clave.split('/').pop())
 const ficha = computed(() => FICHAS[props.clave] || {})
 const titulo = computed(() => ficha.value.titulo || carpeta.value)
 const icono = computed(() => ficha.value.icono || FileText)
+const color = computed(() => (props.externo ? '#171717' : colorDeRuta(props.href)))
 </script>
 
 <template>
@@ -25,7 +27,7 @@ const icono = computed(() => ficha.value.icono || FileText)
     class="group flex flex-col gap-4 bg-white border border-neutral-200 rounded-2xl p-5 hover:border-neutral-300 transition-colors duration-150"
   >
     <div class="flex items-start justify-between">
-      <component :is="icono" class="w-5 h-5 text-neutral-900 shrink-0" />
+      <component :is="icono" class="w-5 h-5 shrink-0" :style="{ color }" />
       <component
         :is="externo ? ArrowUpRight : ArrowRight"
         class="w-4 h-4 text-neutral-400 group-hover:text-neutral-900 transition-[color,translate] duration-150"

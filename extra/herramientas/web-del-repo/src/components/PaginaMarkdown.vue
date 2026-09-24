@@ -7,6 +7,8 @@ import BloqueMarkdown from './BloqueMarkdown.vue'
 const props = defineProps({
   markdown: { type: String, required: true },
   directorio: { type: String, required: true },
+  // Color de la sección del repo (ver lib/colorSeccion.js), para los iconos.
+  color: { type: String, default: '#171717' },
 })
 
 const bloques = computed(() => parseMarkdown(props.markdown, { directorio: props.directorio }))
@@ -47,7 +49,7 @@ const secciones = computed(() => {
       class="rounded-2xl border border-neutral-200 bg-white p-6 flex flex-col gap-4"
     >
       <div class="flex items-center gap-2">
-        <component :is="seccion.icono" class="w-4 h-4 text-neutral-900 shrink-0" />
+        <component :is="seccion.icono" class="w-4 h-4 shrink-0" :style="{ color }" />
         <h2 class="text-base font-semibold text-neutral-900" v-html="seccion.titulo.html" />
       </div>
       <template v-for="(bloque, bi) in seccion.bloques" :key="bi">

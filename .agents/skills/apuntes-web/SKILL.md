@@ -63,6 +63,8 @@ Ejemplos de referencia, cópiales el patrón:
 - Un color por concepto, y el mismo en todo el visual: su caja, su línea y lo que sale en
   la terminal cuando actúa.
 - Verde / ámbar / rojo solo para sí / con condiciones / no.
+- Fuera de las piezas, el color es el de la sección (`src/lib/colorSeccion.js`). Una
+  sección nueva de primer nivel necesita su color ahí.
 - Nada de color de adorno. Si quitas un color y no se pierde información, sobraba.
 
 **Lo que ha quedado mal y no se repite:**
