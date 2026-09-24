@@ -21,7 +21,9 @@ npm pack --pack-destination <ruta-a>/web-del-repo/vendor
 Y aquí `npm install ./vendor/elastic-ui-<versión>.tgz`. Borra el `.tgz` viejo.
 
 No trae CSS compilado: `src/style.css` importa sus tokens y le dice a Tailwind que lea sus
-componentes (`@source`).
+componentes (`@source`). Los textos que pone la librería por su cuenta (nombres para
+lectores de pantalla, "En esta página", títulos de los avisos...) están en español en
+`src/main.js` (`app.use(ElasticUi, { labels })`).
 
 Antes de montar algo a mano, mira si la librería ya lo tiene. Qué usa la web:
 
@@ -33,10 +35,11 @@ Antes de montar algo a mano, mira si la librería ya lo tiene. Qué usa la web:
 | avisos | `Callout` |
 | `###` de un `.md` | `Accordion` |
 | tarjetas | `Card` |
-| filtros | `Tabs variant="pill"` + `AnimatedList` |
+| filtros y cambios de vista | `SegmentedControl` (+ `AnimatedList` para lo que se filtra) |
 | buscador | `SearchMorph` (se abre con `/`) |
 | tema claro / oscuro | `ThemeToggle` |
 | botones y etiquetas | `Button`, `Badge`, `TextMorph` |
+| pasos | `Collapsible` (pieza de agentes por pasos) |
 
 ## Paleta
 
@@ -113,11 +116,10 @@ con descripción, sale como tarjetas (`TarjetaInterna.vue`) con título e icono 
 ## Layout
 
 - **Barra lateral**: `Sidebar` conectada. La página activa es una pestaña del mismo color
-  que el contenido, que entra en la barra, sin sombra: las esquinas curvas que la unen a la
-  página se redibujan en `src/style.css` con un degradado en vez del `box-shadow` de la
-  librería. Se pliega a una columna de iconos; en el móvil es un panel que se abre
-  con el botón de arriba. Un grupo no es un enlace, así que su propia página va como
-  primera entrada, "Índice".
+  que el contenido, que entra en la barra, sin sombra. Se pliega a una columna de iconos; en
+  el móvil es un panel que se abre con el botón de arriba. Una carpeta con páginas dentro es
+  un grupo que también es página: su nombre lleva a ella y el chevron lo pliega. Se abre
+  solo al estar en su página o en una de dentro.
 - **Cabecera**: buscador y cambio de tema, a la derecha.
 - **Contenido**: `max-w-3xl`, con el índice de la página a la derecha en pantallas anchas.
   La ventana es la que hace scroll, no el contenido.

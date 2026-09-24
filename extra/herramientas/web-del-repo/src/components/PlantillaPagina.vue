@@ -27,7 +27,7 @@ defineProps({
     </article>
 
     <aside v-if="indice.length > 1" class="hidden w-52 justify-self-end xl:block">
-      <TableOfContents :items="indice" title="En esta página" :offset="32" class="sticky top-8" />
+      <TableOfContents :items="indice" :offset="32" class="sticky top-8" />
     </aside>
   </div>
 </template>

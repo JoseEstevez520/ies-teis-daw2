@@ -22,19 +22,3 @@ body {
   color: var(--color-fg);
 }
 
-/*
- * La pestaña de la página activa en la barra lateral. elastic-ui dibuja las
- * esquinas curvas que la unen a la página con box-shadow; aquí van con un
- * degradado del mismo color, para que no haya ninguna sombra.
- */
-.tab-connected::before,
-.tab-connected::after {
-  box-shadow: none;
-  border-radius: 0;
-}
-.tab-connected::before {
-  background: radial-gradient(circle at 0 0, transparent 0.75rem, var(--tab-color) calc(0.75rem + 0.5px));
-}
-.tab-connected::after {
-  background: radial-gradient(circle at 0 100%, transparent 0.75rem, var(--tab-color) calc(0.75rem + 0.5px));
-}

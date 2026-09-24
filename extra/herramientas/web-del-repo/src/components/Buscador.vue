@@ -35,7 +35,7 @@ function abrirPrimero(evento) {
 
 <template>
   <div class="relative" @focusin="enfocado = true" @focusout="alSalir" @keydown.enter="abrirPrimero">
-    <SearchMorph v-model="consulta" v-model:open="abierto" label="Buscar en la web" placeholder="Buscar…" shortcut="/" />
+    <SearchMorph v-model="consulta" v-model:open="abierto" label="Buscar en la web" shortcut="/" />
 
     <div
       v-if="visible"

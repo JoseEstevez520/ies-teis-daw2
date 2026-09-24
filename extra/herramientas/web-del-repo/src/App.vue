@@ -8,9 +8,8 @@ import Buscador from './components/Buscador.vue'
 const route = useRoute()
 const router = useRouter()
 
-// Los enlaces internos que no son RouterLink (los de la barra lateral de
-// elastic-ui y los que salen del .md con v-html) son <a href="/..."> normales:
-// se pasan por el router para no recargar la página entera.
+// Los enlaces internos que salen del .md (con v-html) son <a href="/...">
+// normales, no RouterLink: se pasan por el router para no recargar la página.
 function alHacerClic(evento) {
   if (evento.defaultPrevented || evento.button !== 0) return
   if (evento.metaKey || evento.ctrlKey || evento.shiftKey || evento.altKey) return
@@ -43,7 +42,7 @@ watch(
         <RouterLink to="/" class="truncate text-sm font-semibold text-fg md:hidden">2º DAW · IES de Teis</RouterLink>
         <div class="ml-auto flex items-center gap-1">
           <Buscador />
-          <ThemeToggle light-label="Cambiar a tema claro" dark-label="Cambiar a tema oscuro" />
+          <ThemeToggle />
         </div>
       </header>
 

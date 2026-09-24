@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
-import { Tabs, TabsList, TabsTrigger } from 'elastic-ui'
+import { SegmentedControl, SegmentedControlItem } from 'elastic-ui'
 import { ArrowLeftRight, Brain, FileCode, FilePen, FolderOpen, ScrollText, ShieldCheck, SquareTerminal, User, X } from '@lucide/vue'
 
 // El modelo es el cerebro; el harness es lo que le das para trabajar
@@ -33,12 +33,10 @@ const tinte = (color, porcentaje) => `color-mix(in oklab, ${color} ${porcentaje}
 
 <template>
   <div class="flex flex-col gap-6">
-    <Tabs v-model="modo" variant="pill">
-      <TabsList aria-label="Qué ver">
-        <TabsTrigger value="modelo">Solo el modelo</TabsTrigger>
-        <TabsTrigger value="harness">Modelo + harness</TabsTrigger>
-      </TabsList>
-    </Tabs>
+    <SegmentedControl v-model="modo" label="Qué ver">
+        <SegmentedControlItem value="modelo">Solo el modelo</SegmentedControlItem>
+        <SegmentedControlItem value="harness">Modelo + harness</SegmentedControlItem>
+    </SegmentedControl>
 
     <div class="flex flex-col items-stretch gap-4 md:flex-row md:items-center">
       <div class="flex items-center justify-center gap-2 md:w-16 md:flex-col">

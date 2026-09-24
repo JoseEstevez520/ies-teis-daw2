@@ -1,7 +1,7 @@
 <script setup>
 import { computed, onBeforeUnmount, ref } from 'vue'
 import { RouterLink } from 'vue-router'
-import { Button, Tabs, TabsList, TabsTrigger, TextMorph, Tooltip } from 'elastic-ui'
+import { Button, SegmentedControl, SegmentedControlItem, TextMorph, Tooltip } from 'elastic-ui'
 import { Coffee, Download, MapPin } from '@lucide/vue'
 import { CLASES, MODULOS } from './horario.js'
 
@@ -45,7 +45,7 @@ const alCambiar = (e) => (esMovil.value = e.matches)
 consulta.addEventListener('change', alCambiar)
 onBeforeUnmount(() => consulta.removeEventListener('change', alCambiar))
 const diaMovil = ref(hoy === -1 ? 0 : hoy)
-// Tabs trabaja con cadenas.
+// SegmentedControl trabaja con cadenas.
 const pestanaMovil = computed({
   get: () => String(diaMovil.value),
   set: (v) => (diaMovil.value = Number(v)),
@@ -109,13 +109,11 @@ async function descargar() {
       </Button>
     </div>
 
-    <Tabs v-model="pestanaMovil" variant="pill" class="sm:hidden">
-      <TabsList aria-label="Día">
-        <TabsTrigger v-for="(dia, i) in DIAS" :key="dia" :value="String(i)" class="px-3">
+    <SegmentedControl v-model="pestanaMovil" label="Día" class="sm:hidden">
+        <SegmentedControlItem v-for="(dia, i) in DIAS" :key="dia" :value="String(i)" class="px-3">
           {{ dia.slice(0, 3) }}<span v-if="i === hoy" class="ml-0.5 text-fg-faint">·</span>
-        </TabsTrigger>
-      </TabsList>
-    </Tabs>
+        </SegmentedControlItem>
+    </SegmentedControl>
 
     <div class="overflow-x-auto scrollbar-subtle">
       <div
