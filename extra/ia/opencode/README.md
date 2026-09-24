@@ -23,37 +23,13 @@ agente-en-accion
 3. Escribe `/connect` y elige **OpenCode Zen**, que tiene modelos gratis.
 4. Escribe `/init`: analiza el proyecto y te crea un `AGENTS.md`.
 
-## Build y Plan
+## Agentes
 
-OpenCode tiene dos modos, y cambias de uno a otro con la tecla `Tab`:
+Ve paso a paso: de los dos que trae OpenCode a crear el tuyo.
 
-| | Build | Plan |
-|---|---|---|
-| Qué hace | los cambios que le pides | te dice qué cambiaría |
-| Editar tus archivos | sí | te pregunta antes |
-| Ejecutar comandos | sí | te pregunta antes |
-| Cuándo usarlo | casi siempre (viene activado) | antes de un cambio grande |
-
-## Tu propio agente
-
-Build y Plan son dos agentes que ya vienen hechos. Puedes crear el tuyo con otras
-instrucciones y otros permisos. Por ejemplo, un tutor para las prácticas que te explica
-pero no puede tocar tus archivos:
-
-```markdown
----
-description: Explica y guía sin escribir la solución
-mode: primary
-permission:
-  edit: deny
-  bash: deny
----
-
-Explícame el concepto y hazme preguntas. No me des el código de la práctica.
+```visual
+agentes-por-pasos
 ```
-
-Guárdalo como `.opencode/agents/tutor.md` en tu proyecto y te sale al pulsar `Tab`, junto
-a Build y Plan. Con `edit: deny` no puede editar aunque se lo pidas.
 
 ## `AGENTS.md`: las reglas del proyecto
 
