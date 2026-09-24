@@ -22,6 +22,16 @@ apunte, esa frase ya le tiene que servir.
 Nada de introducciones que solo anuncian lo que viene ("en este documento veremos...") ni
 cierres que resumen lo que ya se acaba de leer ("en resumen, hemos aprendido que...").
 
+## Escribe para quien no sabe nada
+
+Quien lee puede no haber oído nunca el término. Cada nombre propio o palabra técnica
+necesita decir qué es la primera vez que sale.
+
+- Mal: "OpenCode, Claude Code y Codex te dan un harness ya montado."
+- Bien: "Hay aplicaciones que lo traen ya montado, como Claude Code."
+
+Nada de jerga suelta ("API", "open source") si no hace falta para entender la frase.
+
 ## No digas lo innecesario
 
 Si un dato no ayuda a quien lee a entender o decidir algo, sobra, aunque sea cierto. Cada
