@@ -23,8 +23,8 @@ curso.
 
 ## Agentes
 
-- [`opencode/`](opencode/): agente gratis para la terminal, para empezar con
-  `AGENTS.md`, skills y MCP.
+- [`opencode/`](opencode/): qué es un modelo, un harness y un agente, y cómo se trabaja
+  con ellos. Con OpenCode, que es gratis.
 
 ## Recursos
 

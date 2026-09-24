@@ -6,6 +6,18 @@ import { Check, RotateCcw, X } from '@lucide/vue'
 // explica por qué, acierte o no.
 const PREGUNTAS = [
   {
+    enunciado: 'Claude Code, Codex y OpenCode, ¿qué son?',
+    opciones: ['Modelos de IA', 'Harnesses', 'Servidores MCP'],
+    correcta: 1,
+    porque: 'Son el programa que envuelve al modelo y le da manos. El modelo (Claude, GPT, Qwen...) es lo que va dentro.',
+  },
+  {
+    enunciado: 'Le preguntas algo a un modelo por la web, sin harness. ¿Puede ejecutar tus tests?',
+    opciones: ['Sí, si se lo pides', 'No: solo devuelve texto'],
+    correcta: 1,
+    porque: 'Sin harness nadie ejecuta nada: el modelo te dice qué hacer y las manos las pones tú.',
+  },
+  {
     enunciado: 'Quieres que el agente nunca te dé la solución de las prácticas en este proyecto. ¿Dónde lo pones?',
     opciones: ['En AGENTS.md', 'En una skill', 'En un servidor MCP'],
     correcta: 0,

@@ -9,7 +9,7 @@ import { Bot, ChevronLeft, ChevronRight, FileCode, FileText, Pause, Play, Plug, 
 
 const NODOS = {
   tu: { etiqueta: 'Tú', icono: User, x: 11, y: 50, color: '#171717' },
-  agente: { etiqueta: 'Agente', detalle: 'modelo de IA + herramientas', icono: Bot, x: 45, y: 50, color: '#171717' },
+  agente: { etiqueta: 'OpenCode', detalle: 'harness + modelo', icono: Bot, x: 45, y: 50, color: '#0891b2' },
   reglas: { etiqueta: 'AGENTS.md', detalle: 'reglas del proyecto', icono: FileText, x: 84, y: 13, color: '#2563eb' },
   skills: { etiqueta: 'Skills', detalle: 'instrucciones a demanda', icono: Sparkles, x: 84, y: 37.5, color: '#7c3aed' },
   mcp: { etiqueta: 'MCP', detalle: 'herramientas de fuera', icono: Plug, x: 84, y: 62.5, color: '#d97706' },

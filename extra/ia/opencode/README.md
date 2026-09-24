@@ -1,11 +1,39 @@
-# OpenCode
+# Agentes de IA con OpenCode
 
-[OpenCode](https://opencode.ai/) es un agente de IA para la terminal: le pides algo en
-lenguaje normal y él lee tu proyecto, propone cambios y los aplica. Es gratis y trae
-modelos gratuitos, así que sirve para aprender a trabajar con agentes antes de pagar
-nada. Lo que practiques aquí vale igual en Claude Code, Codex o Copilot.
+Un agente de IA para programar es una IA que trabaja dentro de tu proyecto: lee
+archivos, ejecuta comandos y edita código. Aquí lo aprendemos con [OpenCode](https://opencode.ai/)
+porque es gratis y cualquiera puede instalarlo, pero lo que aprendas vale igual para
+Claude Code o Codex.
 
-## Cómo encaja todo
+## Modelo, harness y agente
+
+Son tres palabras que se mezclan mucho:
+
+- **Modelo:** la IA en sí (GPT, Claude, Gemini, Qwen...). Recibe texto y devuelve texto.
+  No ve tus archivos ni ejecuta nada.
+- **Harness:** el programa que envuelve al modelo y le da manos. Lee tus archivos,
+  ejecuta comandos, le pasa los resultados al modelo y repite. OpenCode, Claude Code y
+  Codex son harnesses.
+- **Agente:** un modelo dentro de un harness, trabajando en bucle hasta acabar.
+
+La diferencia se ve con la misma petición. Cambia entre las dos pestañas:
+
+```visual
+modelo-y-harness
+```
+
+Los tres harnesses más usados:
+
+| Harness | De quién | Qué necesitas |
+|---|---|---|
+| OpenCode | open source | nada: trae modelos gratis |
+| Claude Code | Anthropic | suscripción de Claude o API |
+| Codex | OpenAI | cuenta de ChatGPT o API |
+
+Las ideas de esta página (reglas del proyecto, skills, MCP) son las mismas en los tres.
+Solo cambia algún nombre de fichero: Claude Code, por ejemplo, lee `CLAUDE.md`.
+
+## Un agente trabajando, paso a paso
 
 Pulsa **Reproducir** o ve paso a paso: se ilumina la pieza que entra en juego en cada
 momento. El caso es de este mismo repo (la terminal está simplificada): pedirle un apunte.
@@ -28,11 +56,12 @@ agente-en-accion
 3. Escribe `/connect` y elige **OpenCode Zen**, que tiene modelos gratis.
 4. Escribe `/init`: analiza el proyecto y te crea un `AGENTS.md`.
 
-## Agentes
+## Los agentes de OpenCode
 
-Un agente es un modelo de IA con tres ajustes: **instrucciones** (qué hace y cómo),
-**permisos** (si puede editar o usar la terminal) y **cómo se le llama**. OpenCode trae
-varios, y todos son eso mismo con ajustes distintos. Elige uno y compara:
+Dentro de OpenCode, cada "agente" es el mismo modelo y el mismo harness con tres ajustes:
+**instrucciones** (qué hace y cómo), **permisos** (si puede editar o usar la terminal) y
+**cómo se le llama**. Trae varios de serie, y puedes hacerte los tuyos. Elige uno y
+compara:
 
 ```visual
 agentes-opencode

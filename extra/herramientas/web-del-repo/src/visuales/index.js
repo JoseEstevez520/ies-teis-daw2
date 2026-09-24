@@ -1,6 +1,7 @@
 import AgenteEnAccion from './AgenteEnAccion.vue'
 import AgentesOpencode from './AgentesOpencode.vue'
 import AutoexamenAgentes from './AutoexamenAgentes.vue'
+import ModeloYHarness from './ModeloYHarness.vue'
 
 // Piezas visuales interactivas que un .md mete con un bloque:
 //
@@ -14,4 +15,5 @@ export const VISUALES = {
   'agente-en-accion': AgenteEnAccion,
   'agentes-opencode': AgentesOpencode,
   'autoexamen-agentes': AutoexamenAgentes,
+  'modelo-y-harness': ModeloYHarness,
 }
