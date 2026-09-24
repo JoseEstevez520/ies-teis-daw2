@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import { Coffee, Download, MapPin } from '@lucide/vue'
+import { CLASES, MODULOS } from './horario.js'
 
 // Horario de 2º DAW, sacado de la foto oficial (horario/horario.jpg). Cada
 // bloque ocupa lo que dura de verdad: sesiones de 50 min desde las 8:10, con
@@ -13,26 +14,6 @@ const DIAS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes']
 const INICIO_SESION = [0, 50, 100, 150, 230, 280, 330, 380] // minutos desde las 8:10
 const FIN_DIA = 430 // 15:20
 const RECREO = { inicio: 200, fin: 230 }
-
-const MODULOS = {
-  DWCS: { profe: 'Patricia', color: '#e11d48', ruta: '/modulos/dwcs' },
-  DWCC: { profe: 'Soledad', color: '#4f46e5', ruta: '/modulos/dwcc' },
-  DIW: { profe: 'Juan Carlos', color: '#0d9488', ruta: '/modulos/diw' },
-  DAW: { profe: 'Marta', color: '#ca8a04', ruta: '/modulos/daw' },
-  IPEII: { profe: 'Adelina (FOL)', color: '#16a34a' },
-  HCLE: { profe: 'Elvira (Inglés)', color: '#2563eb' },
-  DASP: { profe: 'Marcos Alonso', color: '#65a30d', ruta: '/modulos/dasp' },
-  ACP: { profe: 'Iago', color: '#ea580c' },
-}
-
-// [día, módulo, primera sesión, nº de sesiones]
-const CLASES = [
-  [0, 'IPEII', 0, 2], [0, 'DAW', 2, 2], [0, 'DIW', 4, 2], [0, 'DASP', 6, 1],
-  [1, 'DWCC', 0, 3], [1, 'DIW', 3, 1], [1, 'DIW', 4, 1], [1, 'DWCS', 5, 2],
-  [2, 'DIW', 0, 2], [2, 'DWCS', 2, 2], [2, 'DWCS', 4, 1], [2, 'DAW', 5, 2],
-  [3, 'DWCC', 0, 2], [3, 'DIW', 2, 2], [3, 'ACP', 4, 1], [3, 'HCLE', 5, 1], [3, 'DWCS', 6, 2],
-  [4, 'DWCS', 0, 3], [4, 'HCLE', 3, 1], [4, 'DWCC', 4, 3],
-]
 
 const MIN_POR_FILA = 10
 const hora = (min) => {
@@ -48,14 +29,6 @@ const bloques = CLASES.map(([dia, codigo, sesion, n]) => {
 })
 
 const marcas = [...INICIO_SESION, RECREO.inicio, FIN_DIA].sort((a, b) => a - b)
-
-const leyenda = Object.entries(MODULOS)
-  .map(([codigo, m]) => ({
-    codigo,
-    ...m,
-    sesiones: CLASES.filter((c) => c[1] === codigo).reduce((t, c) => t + c[3], 0),
-  }))
-  .sort((a, b) => b.sesiones - a.sesiones)
 
 // Hoy se marca en la cabecera (no en el PNG).
 const d = new Date().getDay()
@@ -154,13 +127,6 @@ async function descargar() {
           </component>
         </div>
 
-        <div class="flex flex-wrap gap-x-5 gap-y-1.5 text-xs">
-          <span v-for="m in leyenda" :key="m.codigo" class="flex items-center gap-1.5 text-neutral-500">
-            <span class="w-2 h-2 rounded-full" :style="{ backgroundColor: m.color }" />
-            <span class="font-medium text-neutral-800">{{ m.codigo }}</span>
-            {{ m.profe }} · {{ m.sesiones }} h
-          </span>
-        </div>
       </div>
     </div>
   </div>

@@ -7,4 +7,11 @@ salvo los jueves, que es a las 15:20.
 horario-semanal
 ```
 
-Sacado de la [foto del horario oficial](horario.jpg). Última actualización: 2026-09-24.
+## Módulos y profes
+
+Sesiones de 50 min por semana. Sacado de la [foto del horario oficial](horario.jpg),
+actualizado el 2026-09-24.
+
+```visual
+horario-modulos
+```
