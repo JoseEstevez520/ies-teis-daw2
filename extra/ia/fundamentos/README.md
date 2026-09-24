@@ -6,17 +6,18 @@ El modelo es el cerebro. El harness le da herramientas. Juntos son un agente.
 
 - **Modelo:** la IA que piensa (GPT, Claude, Gemini, Qwen...). Solo recibe texto y
   devuelve texto.
-- **Harness:** el programa que le da herramientas al modelo: leer tus archivos,
-  editarlos y ejecutar comandos. OpenCode, Claude Code y Codex son harnesses.
+- **Harness:** lo que le das al modelo para que pueda trabajar. Sobre todo herramientas
+  (leer archivos, editarlos, ejecutar comandos), y también instrucciones y permisos.
+  OpenCode, Claude Code y Codex te dan un harness ya montado.
 - **Agente:** modelo + harness.
 
 ```visual
 modelo-y-harness
 ```
 
-## Los harnesses más usados
+## Dónde conseguir un harness
 
-| Harness | De quién | Qué necesitas |
+| Programa | De quién | Qué necesitas |
 |---|---|---|
 | OpenCode | open source | nada: trae modelos gratis |
 | Claude Code | Anthropic | suscripción de Claude o API |

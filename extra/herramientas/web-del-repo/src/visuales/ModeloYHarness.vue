@@ -1,14 +1,16 @@
 <script setup>
 import { ref } from 'vue'
-import { ArrowLeftRight, Brain, FileCode, FilePen, FolderOpen, SquareTerminal, User, X } from '@lucide/vue'
+import { ArrowLeftRight, Brain, FileCode, FilePen, FolderOpen, ScrollText, ShieldCheck, SquareTerminal, User, X } from '@lucide/vue'
 
-// El modelo es el cerebro; el harness le da herramientas para llegar a tu
-// proyecto. Colores: modelo violeta, harness cian, en todas las páginas de agentes.
+// El modelo es el cerebro; el harness es lo que le das para trabajar
+// (herramientas, instrucciones, permisos) y con lo que llega a tu proyecto. Colores: modelo violeta, harness cian, en todas las páginas de agentes.
 
 const HERRAMIENTAS = [
   { icono: FileCode, texto: 'Leer archivos' },
   { icono: FilePen, texto: 'Editar archivos' },
   { icono: SquareTerminal, texto: 'Ejecutar comandos' },
+  { icono: ScrollText, texto: 'Instrucciones' },
+  { icono: ShieldCheck, texto: 'Permisos' },
 ]
 
 const modo = ref('harness')
@@ -50,7 +52,7 @@ const modo = ref('harness')
             :class="modo === 'harness' ? 'opacity-100' : 'opacity-0'"
             style="color: #0891b2"
           >
-            Harness
+            Harness: lo que le das al modelo
           </p>
 
           <div class="rounded-lg px-4 py-4 flex items-center gap-3" style="background-color: color-mix(in srgb, #7c3aed 12%, white)">
@@ -62,7 +64,7 @@ const modo = ref('harness')
           </div>
 
           <div
-            class="grid sm:grid-cols-3 gap-2 transition-opacity duration-300"
+            class="grid grid-cols-2 sm:grid-cols-3 gap-2 transition-opacity duration-300"
             :class="modo === 'harness' ? 'opacity-100' : 'opacity-0'"
           >
             <div
@@ -97,7 +99,7 @@ const modo = ref('harness')
           Te contesta con texto. Copiar, pegar y ejecutar lo haces tú. Es el chat de ChatGPT o Claude.
         </template>
         <template v-else>
-          Con herramientas, el modelo trabaja directamente en tu proyecto. Eso es un
+          Con un harness, el modelo trabaja directamente en tu proyecto. Eso es un
           <strong class="text-neutral-900">agente</strong>.
         </template>
       </p>

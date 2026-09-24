@@ -9,7 +9,7 @@ const PREGUNTAS = [
     enunciado: 'Claude Code, Codex y OpenCode, ¿qué son?',
     opciones: ['Modelos de IA', 'Harnesses', 'Servidores MCP'],
     correcta: 1,
-    porque: 'Son el programa que envuelve al modelo y le da manos. El modelo (Claude, GPT, Qwen...) es lo que va dentro.',
+    porque: 'Te dan el harness: las herramientas, instrucciones y permisos. El modelo (Claude, GPT, Qwen...) es aparte.',
   },
   {
     enunciado: 'Le preguntas algo a un modelo por la web, sin harness. ¿Puede ejecutar tus tests?',
