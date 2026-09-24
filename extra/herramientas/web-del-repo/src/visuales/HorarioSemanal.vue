@@ -1,6 +1,7 @@
 <script setup>
 import { computed, onBeforeUnmount, ref } from 'vue'
 import { RouterLink } from 'vue-router'
+import { Button, Tabs, TabsList, TabsTrigger, TextMorph, Tooltip } from 'elastic-ui'
 import { Coffee, Download, MapPin } from '@lucide/vue'
 import { CLASES, MODULOS } from './horario.js'
 
@@ -44,6 +45,33 @@ const alCambiar = (e) => (esMovil.value = e.matches)
 consulta.addEventListener('change', alCambiar)
 onBeforeUnmount(() => consulta.removeEventListener('change', alCambiar))
 const diaMovil = ref(hoy === -1 ? 0 : hoy)
+// Tabs trabaja con cadenas.
+const pestanaMovil = computed({
+  get: () => String(diaMovil.value),
+  set: (v) => (diaMovil.value = Number(v)),
+})
+
+// Una línea en la columna de hoy a la hora que es, si estás en horario de clase.
+const ahora = ref(minutosDesdeInicio())
+function minutosDesdeInicio() {
+  const n = new Date()
+  return n.getHours() * 60 + n.getMinutes() - (8 * 60 + 10)
+}
+const reloj = setInterval(() => (ahora.value = minutosDesdeInicio()), 60_000)
+onBeforeUnmount(() => clearInterval(reloj))
+const lineaAhora = computed(() => {
+  if (hoy === -1 || !dias.value.includes(hoy) || ahora.value < 0 || ahora.value >= FIN_DIA) return null
+  return {
+    gridColumn: columna(hoy),
+    gridRow: Math.floor(ahora.value / MIN_POR_FILA) + 2,
+    translate: `0 ${((ahora.value % MIN_POR_FILA) / MIN_POR_FILA) * 11}px`,
+  }
+})
+
+// El texto de cada bloque en su color, pero mezclado con el del tema para que
+// se lea igual de bien en claro y en oscuro.
+const colorTexto = (color) => `color-mix(in oklab, ${color} 75%, var(--color-fg))`
+const colorFondo = (color) => `color-mix(in oklab, ${color} 14%, var(--color-bg))`
 
 const dias = computed(() => (esMovil.value && !exportando.value ? [diaMovil.value] : [0, 1, 2, 3, 4]))
 const columna = (dia) => dias.value.indexOf(dia) + 2
@@ -56,7 +84,9 @@ async function descargar() {
   try {
     const { toPng } = await import('html-to-image')
     await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)))
-    const url = await toPng(lienzo.value, { pixelRatio: 2, backgroundColor: '#ffffff' })
+    // El fondo del tema que se está viendo, para que el texto se lea también en oscuro.
+    const fondo = getComputedStyle(document.body).backgroundColor
+    const url = await toPng(lienzo.value, { pixelRatio: 2, backgroundColor: fondo })
     const a = document.createElement('a')
     a.href = url
     a.download = 'horario-2daw.png'
@@ -70,42 +100,31 @@ async function descargar() {
 <template>
   <div class="flex flex-col gap-3">
     <div class="flex items-center justify-between gap-3">
-      <p class="flex items-center gap-1.5 text-sm text-neutral-500">
+      <p class="flex items-center gap-1.5 text-sm text-fg-muted">
         <MapPin class="w-3.5 h-3.5 shrink-0" />
         Todas en el Taller Inf 2
       </p>
-      <button
-        type="button"
-        @click="descargar"
-        :disabled="exportando"
-        class="flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-sm text-neutral-600 hover:bg-neutral-100 hover:text-neutral-900 disabled:opacity-50"
-      >
-        <Download class="w-3.5 h-3.5" />
-        {{ exportando ? 'Generando…' : 'Descargar PNG' }}
-      </button>
+      <Button variant="ghost" size="sm" :icon="Download" :disabled="exportando" @click="descargar">
+        <TextMorph :text="exportando ? 'Generando…' : 'Descargar PNG'" />
+      </Button>
     </div>
 
-    <div class="sm:hidden grid grid-cols-5 gap-1 rounded-xl bg-neutral-100 p-1">
-      <button
-        v-for="(dia, i) in DIAS"
-        :key="dia"
-        type="button"
-        @click="diaMovil = i"
-        class="rounded-lg py-1.5 text-sm transition-colors duration-150"
-        :class="diaMovil === i ? 'bg-white text-neutral-900 font-medium' : 'text-neutral-500'"
-      >
-        {{ dia.slice(0, 3) }}<span v-if="i === hoy" class="text-neutral-400">·</span>
-      </button>
-    </div>
+    <Tabs v-model="pestanaMovil" variant="pill" class="sm:hidden">
+      <TabsList aria-label="Día">
+        <TabsTrigger v-for="(dia, i) in DIAS" :key="dia" :value="String(i)" class="px-3">
+          {{ dia.slice(0, 3) }}<span v-if="i === hoy" class="ml-0.5 text-fg-faint">·</span>
+        </TabsTrigger>
+      </TabsList>
+    </Tabs>
 
-    <div class="overflow-x-auto">
+    <div class="overflow-x-auto scrollbar-subtle">
       <div
         ref="lienzo"
-        class="sm:min-w-[640px] bg-white rounded-xl p-4 sm:p-5 flex flex-col gap-5"
+        class="flex flex-col gap-5 bg-bg py-2 sm:min-w-[640px]"
         :style="exportando ? { width: '760px' } : undefined"
       >
         <!-- Solo sale en el PNG, que no tiene el título de la página -->
-        <p v-if="exportando" class="text-base font-semibold text-neutral-900">Horario · CSDAW 2º</p>
+        <p v-if="exportando" class="text-base font-semibold text-fg">Horario · CSDAW 2º</p>
 
         <div
           class="grid gap-x-1"
@@ -118,43 +137,57 @@ async function descargar() {
             v-for="i in dias"
             :key="DIAS[i]"
             class="text-sm text-center"
-            :class="i === hoy && !exportando ? 'text-neutral-900 font-semibold' : 'text-neutral-500'"
+            :class="i === hoy && !exportando ? 'text-fg font-semibold' : 'text-fg-muted'"
             :style="{ gridColumn: columna(i), gridRow: 1 }"
           >
             {{ DIAS[i] }}
-            <span v-if="i === hoy && !exportando" class="block mx-auto mt-0.5 w-1 h-1 rounded-full bg-neutral-900" />
+            <span v-if="i === hoy && !exportando" class="block mx-auto mt-0.5 w-1 h-1 rounded-full bg-fg" />
           </div>
 
           <span
             v-for="m in marcas"
             :key="'m' + m"
-            class="text-[11px] text-neutral-400 tabular-nums -translate-y-1.5"
+            class="text-[11px] text-fg-faint tabular-nums -translate-y-1.5"
             :style="{ gridColumn: 1, gridRow: fila(m) }"
           >{{ hora(m) }}</span>
 
           <div
-            class="flex items-center justify-center gap-1.5 text-xs text-neutral-400"
+            class="flex items-center justify-center gap-1.5 text-xs text-fg-faint"
             :style="{ gridColumn: `2 / ${dias.length + 2}`, gridRow: `${fila(RECREO.inicio)} / ${fila(RECREO.fin)}` }"
           >
             <Coffee class="w-3.5 h-3.5" /> Recreo
           </div>
 
-          <component
-            :is="b.ruta && !exportando ? RouterLink : 'div'"
+          <Tooltip
             v-for="(b, i) in bloquesVisibles"
             :key="i"
-            :to="b.ruta"
-            :title="`${b.codigo} · ${b.profe} · ${hora(b.inicio)}–${hora(b.fin)}`"
-            class="rounded-lg m-0.5 px-2.5 py-2 flex flex-col gap-0.5 overflow-hidden transition-opacity duration-150 hover:opacity-80"
-            :style="{
-              gridColumn: columna(b.dia),
-              gridRow: `${fila(b.inicio)} / ${fila(b.fin)}`,
-              backgroundColor: `color-mix(in srgb, ${b.color} 12%, white)`,
-            }"
+            :content="`${b.codigo} · ${b.profe} · ${hora(b.inicio)}–${hora(b.fin)}`"
+            :disabled="exportando"
           >
-            <span class="text-sm font-semibold leading-tight" :style="{ color: b.color }">{{ b.codigo }}</span>
-            <span class="text-xs text-neutral-600 leading-tight truncate">{{ b.profe }}</span>
-          </component>
+            <component
+              :is="b.ruta && !exportando ? RouterLink : 'div'"
+              :to="b.ruta"
+              class="m-0.5 flex flex-col gap-0.5 overflow-hidden rounded-[var(--radius-md)] px-2.5 py-2 transition-opacity duration-150 hover:opacity-80 focus-visible:outline-2 focus-visible:outline-accent"
+              :style="{
+                gridColumn: columna(b.dia),
+                gridRow: `${fila(b.inicio)} / ${fila(b.fin)}`,
+                backgroundColor: colorFondo(b.color),
+              }"
+            >
+              <span class="text-sm leading-tight font-semibold" :style="{ color: colorTexto(b.color) }">{{ b.codigo }}</span>
+              <span class="mask-fade-r text-xs leading-tight whitespace-nowrap text-fg-secondary">{{ b.profe }}</span>
+            </component>
+          </Tooltip>
+
+          <!-- La hora que es, sobre la columna de hoy. No sale en el PNG. -->
+          <div
+            v-if="lineaAhora && !exportando"
+            aria-hidden="true"
+            class="pointer-events-none relative z-10 mx-0.5 h-px self-start bg-fg"
+            :style="lineaAhora"
+          >
+            <span class="absolute -top-[3px] -left-1 size-[7px] rounded-full bg-fg" />
+          </div>
         </div>
 
       </div>

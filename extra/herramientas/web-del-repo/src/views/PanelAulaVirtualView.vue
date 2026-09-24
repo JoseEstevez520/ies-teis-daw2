@@ -1,14 +1,30 @@
 <script setup>
 import { RouterLink } from 'vue-router'
-import {
-  LayoutDashboard,
-  CircleCheck,
-  Circle,
-  Server,
-  MonitorSmartphone,
-  ShieldCheck,
-  ExternalLink,
-} from '@lucide/vue'
+import { Badge, Callout, CodeBlock } from 'elastic-ui'
+import { LayoutDashboard, CircleCheck, Circle, Server, MonitorSmartphone, ShieldCheck } from '@lucide/vue'
+import { colorDeRuta } from '../lib/colorSeccion.js'
+import ListaEnlaces from '../components/ListaEnlaces.vue'
+import PlantillaPagina from '../components/PlantillaPagina.vue'
+import SeccionPagina from '../components/SeccionPagina.vue'
+
+const color = colorDeRuta('/extra/herramientas/panel-aula-virtual')
+
+const INDICE = [
+  { id: 'arrancarlo', label: 'Arrancarlo tú mismo', level: 2 },
+  { id: 'fases', label: 'Fases', level: 2 },
+  { id: 'stack', label: 'Stack', level: 2 },
+  { id: 'legal', label: 'Legal', level: 2 },
+  { id: 'referencias', label: 'Referencias', level: 2 },
+]
+
+const ESTADO = [
+  { nombre: 'Tareas', nota: '/api/tareas funciona', hecho: true },
+  { nombre: 'Notas', nota: '/api/notas funciona', hecho: true },
+  { nombre: 'Actividad + frontend', nota: 'sin construir', hecho: false },
+]
+
+const CLONAR = `git clone https://github.com/JoseEstevez520/ies-teis-daw2.git
+cd ies-teis-daw2`
 
 const PASOS = [
   {
@@ -66,162 +82,124 @@ const REFERENCIAS = [
 </script>
 
 <template>
-  <div class="max-w-4xl flex flex-col gap-8">
-    <div class="flex items-center gap-2.5">
-      <LayoutDashboard class="w-5 h-5 shrink-0" style="color: #d97706" />
-      <h1 class="text-2xl font-semibold text-neutral-900">Panel del Aula Virtual</h1>
-    </div>
-
-    <p class="text-sm text-neutral-700 leading-relaxed">
+  <PlantillaPagina titulo="Panel del Aula Virtual" :icono="LayoutDashboard" :color="color" :indice="INDICE">
+    <p class="text-sm leading-relaxed text-fg-secondary">
       Junta en una sola pantalla lo que hoy hay que ir a buscar por separado en Moodle: tareas
       pendientes de verdad (con estado real de entrega), notas nuevas por curso, y en qué
       asignatura llevas tiempo sin entrar. Detalles técnicos de la API del Aula Virtual en
-      <RouterLink to="/extra/herramientas/moodle-api" class="text-neutral-900 underline decoration-neutral-300 hover:decoration-neutral-900 underline-offset-2">moodle-api</RouterLink>.
+      <RouterLink
+        to="/extra/herramientas/moodle-api"
+        class="text-fg underline decoration-border-strong underline-offset-2 transition-[text-decoration-color] duration-150 hover:decoration-fg"
+        >moodle-api</RouterLink
+      >.
     </p>
 
-    <!-- Estado -->
-    <div class="grid sm:grid-cols-3 gap-3">
-      <div class="flex items-center gap-2.5 rounded-lg border border-neutral-200 bg-white px-4 py-3">
-        <CircleCheck class="w-4 h-4 text-neutral-900 shrink-0" />
+    <ul class="grid gap-4 sm:grid-cols-3">
+      <li v-for="e in ESTADO" :key="e.nombre" class="flex items-center gap-2.5">
+        <component :is="e.hecho ? CircleCheck : Circle" class="size-4 shrink-0" :class="e.hecho ? 'text-fg' : 'text-fg-faint'" />
         <div class="flex flex-col">
-          <span class="text-sm font-medium text-neutral-900">Tareas</span>
-          <span class="text-xs text-neutral-400">/api/tareas funciona</span>
+          <span class="text-sm font-medium text-fg">{{ e.nombre }}</span>
+          <span class="text-xs text-fg-muted">{{ e.nota }}</span>
         </div>
-      </div>
-      <div class="flex items-center gap-2.5 rounded-lg border border-neutral-200 bg-white px-4 py-3">
-        <CircleCheck class="w-4 h-4 text-neutral-900 shrink-0" />
-        <div class="flex flex-col">
-          <span class="text-sm font-medium text-neutral-900">Notas</span>
-          <span class="text-xs text-neutral-400">/api/notas funciona</span>
-        </div>
-      </div>
-      <div class="flex items-center gap-2.5 rounded-lg border border-neutral-200 bg-white px-4 py-3">
-        <Circle class="w-4 h-4 text-neutral-400 shrink-0" />
-        <div class="flex flex-col">
-          <span class="text-sm font-medium text-neutral-900">Actividad + frontend</span>
-          <span class="text-xs text-neutral-400">sin construir</span>
-        </div>
-      </div>
-    </div>
+      </li>
+    </ul>
 
-    <!-- Quick start -->
-    <div class="flex flex-col gap-4">
-      <h2 class="text-base font-semibold text-neutral-900 pb-2 border-b border-neutral-200">Arrancarlo tú mismo</h2>
-      <p class="text-sm text-neutral-700">Cada uno lo corre en su propia máquina, con su propio token. Nadie más ve tus datos.</p>
+    <div class="flex flex-col gap-12">
+      <SeccionPagina id="arrancarlo">
+        <template #titulo>Arrancarlo tú mismo</template>
+        <p class="text-sm text-fg-secondary">Cada uno lo corre en su propia máquina, con su propio token. Nadie más ve tus datos.</p>
+        <CodeBlock :code="CLONAR" language="bash" />
 
-      <div class="rounded-lg border border-neutral-200 overflow-hidden">
-        <pre class="p-4 overflow-x-auto text-xs font-mono text-neutral-800 bg-white"><code>git clone https://github.com/JoseEstevez520/ies-teis-daw2.git
-cd ies-teis-daw2</code></pre>
-      </div>
-
-      <ol class="flex flex-col">
-        <li v-for="(paso, idx) in PASOS" :key="paso.titulo" class="flex gap-3">
-          <div class="flex flex-col items-center">
-            <span class="flex items-center justify-center w-6 h-6 rounded-full border border-neutral-300 text-neutral-900 text-xs font-semibold shrink-0">{{ idx + 1 }}</span>
-            <span v-if="idx < PASOS.length - 1" class="w-px flex-1 bg-neutral-200 my-1"></span>
-          </div>
-          <div class="flex flex-col gap-2 pb-4">
-            <p class="text-sm text-neutral-700 leading-relaxed">
-              <strong class="text-neutral-900 font-medium">{{ paso.titulo }}</strong>: {{ paso.texto }}
-            </p>
-            <pre v-if="paso.codigo" class="rounded-lg border border-neutral-200 p-3 overflow-x-auto text-xs font-mono text-neutral-800 bg-white"><code>{{ paso.codigo }}</code></pre>
-          </div>
-        </li>
-      </ol>
-
-      <p class="text-sm text-neutral-700">Abre la URL que te dé Vite (<code class="px-1.5 py-0.5 rounded bg-neutral-100 text-neutral-800 font-mono text-[0.85em]">http://localhost:5173</code> normalmente).</p>
-    </div>
-
-    <!-- Fases -->
-    <div class="flex flex-col gap-4">
-      <h2 class="text-base font-semibold text-neutral-900 pb-2 border-b border-neutral-200">Fases</h2>
-
-      <div class="flex flex-col">
-        <div v-for="(fase, idx) in FASES" :key="fase.numero" class="flex gap-4">
-          <div class="flex flex-col items-center">
-            <span
-              class="flex items-center justify-center w-8 h-8 rounded-full border text-xs font-semibold shrink-0"
-              :class="fase.estado === 'en marcha' ? 'border-neutral-900 text-neutral-900' : 'border-neutral-300 text-neutral-400'"
-              >{{ fase.numero }}</span
-            >
-            <span v-if="idx < FASES.length - 1" class="w-px flex-1 bg-neutral-200 my-1"></span>
-          </div>
-          <div class="flex flex-col gap-2 pb-8 flex-1">
-            <div class="flex items-center gap-2">
-              <h3 class="text-sm font-semibold text-neutral-900">{{ fase.titulo }}</h3>
-              <span class="text-xs px-2 py-0.5 rounded-full border border-neutral-200 text-neutral-400">{{ fase.estado }}</span>
+        <ol class="flex flex-col">
+          <li v-for="(paso, idx) in PASOS" :key="paso.titulo" class="flex gap-3">
+            <div class="flex flex-col items-center">
+              <span class="flex size-6 shrink-0 items-center justify-center rounded-full bg-bg-muted text-xs font-semibold text-fg tabular-nums">{{ idx + 1 }}</span>
+              <span v-if="idx < PASOS.length - 1" class="my-1 w-px flex-1 bg-border"></span>
             </div>
-            <p class="text-sm text-neutral-700">{{ fase.resumen }}</p>
-            <ul class="flex flex-col gap-2 mt-1">
-              <li v-for="punto in fase.puntos" :key="punto" class="flex items-start gap-2">
-                <span class="mt-2 w-1 h-1 rounded-full bg-neutral-400 shrink-0"></span>
-                <p class="text-sm text-neutral-700 leading-relaxed">{{ punto }}</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
+            <div class="flex min-w-0 flex-1 flex-col gap-2 pb-5">
+              <p class="text-sm leading-relaxed text-fg-secondary">
+                <strong class="font-medium text-fg">{{ paso.titulo }}</strong>: {{ paso.texto }}
+              </p>
+              <CodeBlock v-if="paso.codigo" :code="paso.codigo" />
+            </div>
+          </li>
+        </ol>
 
-    <!-- Stack -->
-    <div class="flex flex-col gap-4">
-      <h2 class="text-base font-semibold text-neutral-900 pb-2 border-b border-neutral-200">Stack</h2>
-      <div class="grid sm:grid-cols-2 gap-3">
-        <div class="flex gap-3 rounded-lg border border-neutral-200 bg-white p-4">
-          <MonitorSmartphone class="w-4 h-4 text-neutral-900 shrink-0 mt-0.5" />
-          <div class="flex flex-col gap-1">
-            <span class="text-sm font-semibold text-neutral-900">Frontend</span>
-            <span class="text-sm text-neutral-700">Vue 3 + Vite + Tailwind. Animaciones con Motion (motion-v).</span>
-          </div>
-        </div>
-        <div class="flex gap-3 rounded-lg border border-neutral-200 bg-white p-4">
-          <Server class="w-4 h-4 text-neutral-900 shrink-0 mt-0.5" />
-          <div class="flex flex-col gap-1">
-            <span class="text-sm font-semibold text-neutral-900">Backend</span>
-            <span class="text-sm text-neutral-700">Spring Boot, módulo Web (REST). En Fase 2 se añade JPA para persistir el token de cada uno.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Legal -->
-    <div class="flex flex-col gap-3">
-      <h2 class="text-base font-semibold text-neutral-900 pb-2 border-b border-neutral-200">Legal</h2>
-      <div class="flex gap-3 rounded-lg border border-neutral-200 bg-neutral-50 p-4">
-        <ShieldCheck class="w-4 h-4 text-neutral-900 shrink-0 mt-0.5" />
-        <p class="text-sm text-neutral-700 leading-relaxed">
-          El consentimiento de cada compañero es base legal suficiente para la Fase 2 (art. 6.1.a
-          RGPD), pero no elimina la responsabilidad de quien hospeda: sigue teniendo que cumplir
-          seguridad adecuada y las peticiones de borrado. El nombre de la herramienta no lleva
-          "Moodle" por política de marca.
+        <p class="text-sm text-fg-secondary">
+          Abre la URL que te dé Vite (<code class="rounded-[var(--radius-sm)] bg-bg-muted px-1.5 py-0.5 font-mono text-[0.85em] text-fg">http://localhost:5173</code> normalmente).
         </p>
-      </div>
-    </div>
+      </SeccionPagina>
 
-    <!-- Referencias -->
-    <div class="flex flex-col gap-3">
-      <h2 class="text-base font-semibold text-neutral-900 pb-2 border-b border-neutral-200">Referencias</h2>
-      <div class="flex flex-col divide-y divide-neutral-200 rounded-lg border border-neutral-200 overflow-hidden">
-        <a
-          v-for="ref in REFERENCIAS"
-          :key="ref.url"
-          :href="ref.url"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex items-center justify-between gap-3 p-4 bg-white hover:bg-neutral-50 transition-colors duration-150"
-        >
-          <div class="flex flex-col gap-0.5">
-            <span class="text-sm font-semibold text-neutral-900">{{ ref.nombre }}</span>
-            <span class="text-sm text-neutral-700">{{ ref.nota }}</span>
+      <SeccionPagina id="fases">
+        <template #titulo>Fases</template>
+        <div class="flex flex-col">
+          <div v-for="(fase, idx) in FASES" :key="fase.numero" class="flex gap-4">
+            <div class="flex flex-col items-center">
+              <span
+                class="flex size-8 shrink-0 items-center justify-center rounded-full text-xs font-semibold"
+                :class="fase.estado === 'en marcha' ? 'bg-fg text-bg' : 'bg-bg-muted text-fg-muted'"
+                >{{ fase.numero }}</span
+              >
+              <span v-if="idx < FASES.length - 1" class="my-1 w-px flex-1 bg-border"></span>
+            </div>
+            <div class="flex flex-1 flex-col gap-2 pb-8">
+              <div class="flex flex-wrap items-center gap-2">
+                <h3 class="text-sm font-semibold text-fg">{{ fase.titulo }}</h3>
+                <Badge variant="outline" size="sm">{{ fase.estado }}</Badge>
+              </div>
+              <p class="text-sm text-fg-secondary">{{ fase.resumen }}</p>
+              <ul class="mt-1 flex flex-col gap-2">
+                <li v-for="punto in fase.puntos" :key="punto" class="flex items-start gap-2">
+                  <span class="mt-2 size-1 shrink-0 rounded-full bg-fg-faint"></span>
+                  <p class="text-sm leading-relaxed text-fg-secondary">{{ punto }}</p>
+                </li>
+              </ul>
+            </div>
           </div>
-          <ExternalLink class="w-3.5 h-3.5 text-neutral-400 shrink-0" />
-        </a>
-      </div>
+        </div>
+      </SeccionPagina>
+
+      <SeccionPagina id="stack">
+        <template #titulo>Stack</template>
+        <div class="grid gap-6 sm:grid-cols-2">
+          <div class="flex gap-3">
+            <MonitorSmartphone class="mt-0.5 size-4 shrink-0 text-fg" />
+            <div class="flex flex-col gap-1">
+              <span class="text-sm font-semibold text-fg">Frontend</span>
+              <span class="text-sm text-fg-secondary">Vue 3 + Vite + Tailwind. Animaciones con Motion (motion-v).</span>
+            </div>
+          </div>
+          <div class="flex gap-3">
+            <Server class="mt-0.5 size-4 shrink-0 text-fg" />
+            <div class="flex flex-col gap-1">
+              <span class="text-sm font-semibold text-fg">Backend</span>
+              <span class="text-sm text-fg-secondary">Spring Boot, módulo Web (REST). En Fase 2 se añade JPA para persistir el token de cada uno.</span>
+            </div>
+          </div>
+        </div>
+      </SeccionPagina>
+
+      <SeccionPagina id="legal">
+        <template #titulo>Legal</template>
+        <Callout type="note" title="Consentimiento" :icon="ShieldCheck">
+          <p>
+            El consentimiento de cada compañero es base legal suficiente para la Fase 2 (art. 6.1.a
+            RGPD), pero no elimina la responsabilidad de quien hospeda: sigue teniendo que cumplir
+            seguridad adecuada y las peticiones de borrado. El nombre de la herramienta no lleva
+            "Moodle" por política de marca.
+          </p>
+        </Callout>
+      </SeccionPagina>
+
+      <SeccionPagina id="referencias">
+        <template #titulo>Referencias</template>
+        <ListaEnlaces :items="REFERENCIAS" />
+      </SeccionPagina>
     </div>
 
-    <p class="text-xs text-neutral-400">
+    <p class="text-xs text-fg-muted">
       También vale como proyecto de fin de curso: frontend/backend + consumo de una API REST real +
       una decisión de arquitectura defendible, no solo un CRUD de ejemplo.
     </p>
-  </div>
+  </PlantillaPagina>
 </template>

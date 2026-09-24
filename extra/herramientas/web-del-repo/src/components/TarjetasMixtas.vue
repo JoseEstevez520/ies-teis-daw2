@@ -1,49 +1,64 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { computed, ref } from 'vue'
+import { AnimatedList, Card, CardDescription, CardTitle, Tabs, TabsList, TabsTrigger } from 'elastic-ui'
 import TarjetaRecurso from './TarjetaRecurso.vue'
-import FiltroDesplegable from './FiltroDesplegable.vue'
 
 const props = defineProps({
   items: { type: Array, required: true }, // { tipoTarjeta: 'campo' | 'ejemplo' | 'tecnologia', ... }
 })
 
-const OPCIONES = [
+const TIPOS = [
+  { id: 'todo', label: 'Todo' },
   { id: 'campo', label: 'Campos' },
   { id: 'ejemplo', label: 'Ejemplos' },
   { id: 'tecnologia', label: 'Tecnología' },
 ]
 
-// Empiezan todas activas: sin filtrar, se ve todo.
-const activos = ref(new Set(OPCIONES.map((o) => o.id)))
+// Solo las pestañas que tienen algo; "Todo" siempre.
+const opciones = computed(() =>
+  TIPOS.map((t) => ({
+    ...t,
+    total: t.id === 'todo' ? props.items.length : props.items.filter((it) => it.tipoTarjeta === t.id).length,
+  })).filter((t) => t.total > 0),
+)
 
-const visibles = computed(() => props.items.filter((it) => activos.value.has(it.tipoTarjeta)))
-const camposVisibles = computed(() => visibles.value.filter((it) => it.tipoTarjeta === 'campo'))
-const otrosVisibles = computed(() => visibles.value.filter((it) => it.tipoTarjeta !== 'campo'))
+const filtro = ref('todo')
+// Campos primero, como en el .md; al filtrar, las tarjetas que quedan se
+// deslizan a su sitio (AnimatedList) en vez de saltar.
+const visibles = computed(() =>
+  props.items
+    .filter((it) => filtro.value === 'todo' || it.tipoTarjeta === filtro.value)
+    .sort((a, b) => (a.tipoTarjeta === 'campo' ? 0 : 1) - (b.tipoTarjeta === 'campo' ? 0 : 1)),
+)
+const clave = (it) => it.href || it.terminoHtml
 </script>
 
 <template>
   <div class="flex flex-col gap-4">
-    <FiltroDesplegable v-model="activos" :opciones="OPCIONES" />
+    <Tabs v-model="filtro" variant="pill">
+      <TabsList aria-label="Filtrar tarjetas">
+        <TabsTrigger v-for="o in opciones" :key="o.id" :value="o.id">
+          {{ o.label }}<span class="ml-1.5 text-fg-faint tabular-nums">{{ o.total }}</span>
+        </TabsTrigger>
+      </TabsList>
+    </Tabs>
 
-    <div class="grid sm:grid-cols-2 gap-4">
-      <div
-        v-for="(item, idx) in camposVisibles"
-        :key="'campo-' + idx"
-        class="flex flex-col gap-1 rounded-2xl border border-neutral-200 bg-white p-4"
-      >
-        <span class="text-sm font-semibold text-neutral-900" v-html="item.terminoHtml" />
-        <p v-if="item.descripcionHtml" class="text-sm text-neutral-700 leading-relaxed" v-html="item.descripcionHtml" />
-      </div>
-
-      <TarjetaRecurso
-        v-for="(item, idx) in otrosVisibles"
-        :key="'otro-' + idx"
-        :href="item.href"
-        :termino-html="item.terminoHtml"
-        :descripcion-html="item.descripcionHtml"
-        :favicon="item.favicon"
-        :gradiente-inicial="item.gradiente"
-      />
-    </div>
+    <AnimatedList :items="visibles" :item-key="clave" as="div" class="grid gap-4 sm:grid-cols-2">
+      <template #default="{ item }">
+        <Card v-if="item.tipoTarjeta === 'campo'" size="sm" class="h-full gap-1 px-4">
+          <CardTitle as="h4" size="sm" class="text-sm" v-html="item.terminoHtml" />
+          <CardDescription v-if="item.descripcionHtml" class="leading-relaxed" v-html="item.descripcionHtml" />
+        </Card>
+        <TarjetaRecurso
+          v-else
+          :href="item.href"
+          :termino-html="item.terminoHtml"
+          :descripcion-html="item.descripcionHtml"
+          :favicon="item.favicon"
+          :gradiente-inicial="item.gradiente"
+          class="block h-full"
+        />
+      </template>
+    </AnimatedList>
   </div>
 </template>

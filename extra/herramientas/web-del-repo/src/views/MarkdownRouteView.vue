@@ -1,8 +1,10 @@
 <script setup>
 import { computed } from 'vue'
 import PaginaMarkdown from '../components/PaginaMarkdown.vue'
-import { extraerTitulo } from '../lib/markdown.js'
+import PlantillaPagina from '../components/PlantillaPagina.vue'
+import { extraerTitulo, parseMarkdown } from '../lib/markdown.js'
 import { colorDeRuta } from '../lib/colorSeccion.js'
+import { textoDeHtml } from '../lib/slug.js'
 
 const props = defineProps({
   pagina: { type: Object, required: true },
@@ -10,15 +12,19 @@ const props = defineProps({
 
 const info = computed(() => extraerTitulo(props.pagina.fuente))
 const color = computed(() => colorDeRuta(props.pagina.ruta))
+const bloques = computed(() => parseMarkdown(info.value.cuerpo, { directorio: props.pagina.directorio }))
+
+// El índice son los `##`: los `###` salen como desplegables cerrados, y un
+// enlace a algo escondido no llevaría a ningún sitio visible.
+const indice = computed(() =>
+  bloques.value
+    .filter((b) => b.tipo === 'titulo' && b.nivel === 2)
+    .map((b) => ({ id: b.id, label: textoDeHtml(b.html), level: 2 })),
+)
 </script>
 
 <template>
-  <div class="max-w-4xl flex flex-col gap-6">
-    <div class="flex items-center gap-2.5">
-      <component :is="pagina.icono" class="w-5 h-5 shrink-0" :style="{ color }" />
-      <h1 class="text-2xl font-semibold text-neutral-900">{{ info.titulo }}</h1>
-    </div>
-
-    <PaginaMarkdown :markdown="info.cuerpo" :directorio="pagina.directorio" :color="color" />
-  </div>
+  <PlantillaPagina :titulo="info.titulo" :icono="pagina.icono" :color="color" :indice="indice">
+    <PaginaMarkdown :bloques="bloques" :color="color" />
+  </PlantillaPagina>
 </template>

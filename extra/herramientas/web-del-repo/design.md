@@ -1,131 +1,189 @@
 # Sistema de diseño
 
-Extiende la regla ya existente en [`../README.md#estilo-visual`](../README.md#estilo-visual)
-(paleta neutra, color solo con significado, sin fondos/insignias detrás de iconos, sin
-patrones de dashboard genérico) con los valores concretos de este proyecto.
+La web está hecha con [elastic-ui](#elastic-ui), la librería de componentes Vue de José:
+las cosas se transforman en vez de aparecer de golpe, pocas cajas y una sola animación
+que manda en cada pantalla. Este archivo dice cómo se aplica aquí. Extiende la regla de
+[`../README.md#estilo-visual`](../README.md#estilo-visual): paleta neutra, color solo con
+significado.
+
+## elastic-ui
+
+Aún no está en npm. Va empaquetada en `vendor/elastic-ui-<versión>.tgz`, para que funcione
+al clonar el repo sin tener la librería en tu ordenador.
+
+Para actualizarla, desde la carpeta de la librería:
+
+```bash
+npm run build
+npm pack --pack-destination <ruta-a>/web-del-repo/vendor
+```
+
+Y aquí `npm install ./vendor/elastic-ui-<versión>.tgz`. Borra el `.tgz` viejo.
+
+No trae CSS compilado: `src/style.css` importa sus tokens y le dice a Tailwind que lea sus
+componentes (`@source`).
+
+Antes de montar algo a mano, mira si la librería ya lo tiene. Qué usa la web:
+
+| Para | Componente |
+|---|---|
+| estructura | `SidebarLayout`, `Sidebar variant="connected"`, `SidebarToggle`, `NavTree` |
+| índice de cada página | `TableOfContents` (los `##`, a la derecha, solo en pantallas anchas) |
+| bloques de código | `CodeBlock` |
+| avisos | `Callout` |
+| `###` de un `.md` | `Accordion` |
+| tarjetas | `Card` |
+| filtros | `Tabs variant="pill"` + `AnimatedList` |
+| buscador | `SearchMorph` (se abre con `/`) |
+| tema claro / oscuro | `ThemeToggle` |
+| botones y etiquetas | `Button`, `Badge`, `TextMorph` |
 
 ## Paleta
 
-Escala neutra de Tailwind, la misma que ya usan `panel-aula-virtual` y
-`calculadora-de-faltas`:
+Los colores son los tokens de elastic-ui (`--color-bg`, `--color-fg`...), en clases de
+Tailwind (`bg-bg`, `text-fg-secondary`...). Cada token tiene valor claro y oscuro, así que
+la web sale bien en los dos temas sin hacer nada.
 
-| Token | Valor | Uso |
-|---|---|---|
-| `neutral-50` | `#fafafa` | fondo de la página |
-| `white` | `#ffffff` | tarjetas, barra lateral |
-| `neutral-200` | `#e5e5e5` | bordes |
-| `neutral-400` | `#a3a3a3` | texto secundario |
-| `neutral-900` | `#171717` | texto principal, títulos |
+| Token | Uso |
+|---|---|
+| `bg` | fondo de la página |
+| `bg-subtle`, `bg-muted` | fondos suaves: código, hover |
+| `border`, `border-strong` | líneas y bordes |
+| `fg` | títulos y texto importante |
+| `fg-secondary` | texto normal |
+| `fg-muted`, `fg-faint` | texto secundario, iconos apagados |
 
-**Sin acento de color en la interfaz** (barra lateral, tarjetas, títulos): solo negro, blanco y grises. Lo que en otro sistema sería "el
-acento" (enlace activo, indicador de "estás aquí") se marca con `neutral-900` en negrita o
-un borde/fondo `neutral-100`, no con un color distinto.
+No pongas grises fijos (`neutral-500`, `#fff`...): en tema oscuro no se ven.
 
-**Excepción documentada, tarjetas de recursos**: cuando una lista del `.md` es
-mayoritariamente enlaces externos con descripción (ver `parseMarkdown` en
-[`src/lib/markdown.js`](src/lib/markdown.js)), se renderiza como tarjetas con favicon real
-del sitio (vía `icon.horse`, con CORS abierto) y un degradado sacado del color medio de
-ese favicon (`src/lib/colorFavicon.js`, leído por canvas en `TarjetaRecurso.vue`). Mientras
-carga o si falla (favicon casi transparente, red, servicio caído), se usa de reserva un
-degradado por hash del dominio, calculado en `parseMarkdown`: determinista, mismo dominio
-da mismo color, sin red. Es la única zona con color a propósito: sin ella, una lista de
-herramientas externas es indistinguible de cualquier otra lista. No se usa para nada más.
-
-Se probó antes con captura real de la landing (vía `image.thum.io`): se descartó porque el
-servicio gratuito falla para algunos dominios (límite de uso) sin devolver un error
-detectable: carga una imagen válida con el aviso "not authorized" dentro.
+**Sin acento de color.** `--color-accent` está en `src/style.css` con el mismo gris casi
+negro del texto (casi blanco en oscuro). La página activa, el foco o la pestaña elegida se
+marcan con ese gris, no con un color.
 
 **Color por sección**: cada sección del repo tiene su color (Módulos azul, Extra verde
 azulado, IA violeta, Herramientas ámbar, Diseño web fucsia, Ideas de PFC verde lima,
 Horario rosa), definido en un único sitio, [`src/lib/colorSeccion.js`](src/lib/colorSeccion.js).
-Solo se usa en iconos y en el punto de cada página en la barra lateral, para saber en qué
-parte estás. Los fondos, textos y bordes siguen en gris.
+Solo se usa en iconos. Como los componentes piden el icono como componente, el color se le
+pone con `iconoConColor` de [`src/lib/iconos.js`](src/lib/iconos.js).
 
-**Excepción, piezas visuales** (`src/visuales/`): sí llevan color, siempre con
-significado: un color por concepto, y verde/ámbar/rojo para sí/con condiciones/no. Las
+**Excepción, tarjetas de recursos**: cuando una lista del `.md` es casi toda enlaces
+externos con descripción, sale como tarjetas con el favicon real del sitio (vía
+`icon.horse`) y un degradado del color medio de ese favicon (`src/lib/colorFavicon.js`).
+Mientras carga, o si falla, un degradado por hash del dominio. Es la única zona con color a
+propósito: sin ella, una lista de herramientas externas es igual que cualquier otra lista.
+
+**Excepción, piezas visuales** (`src/visuales/`): llevan color, siempre con significado. Las
 reglas están en la skill [apuntes-web](../../../.agents/skills/apuntes-web/SKILL.md).
 
-Los colores semánticos (`emerald`/`amber`/`red` de éxito/aviso/error) quedan reservados
-para las herramientas que ya los usan (`panel-aula-virtual`, `calculadora-de-faltas`); no
-se reutilizan aquí con otro significado.
+Los avisos (`Callout`) usan los colores de la librería: verde para consejo, ámbar para
+aviso, rojo para cuidado.
 
 ## Tipografía
 
-Sin fuente propia: la pila `sans` por defecto de Tailwind (`system-ui` y similares) es la
-misma que ya cae por defecto en el resto de herramientas, así que no hace falta cargar
-nada nuevo.
+Sin fuente propia: la de elastic-ui cae a la del sistema si no está instalada.
 
 | Uso | Clases |
 |---|---|
-| Título de página | `text-2xl font-semibold text-neutral-900` |
-| Título de sección/tarjeta | `text-base font-semibold text-neutral-900` |
-| Cuerpo | `text-sm text-neutral-700` |
-| Texto secundario (fechas, rutas, metadatos) | `text-xs text-neutral-400` |
+| Título de página | `text-2xl font-semibold tracking-tight text-fg` |
+| Título de sección (`##`) | `text-lg font-semibold tracking-tight text-fg` |
+| Título de tarjeta | `CardTitle size="sm"` |
+| Cuerpo | `text-sm text-fg-secondary` |
+| Texto secundario | `text-xs text-fg-muted` |
 
 ## Iconos
 
-`@lucide/vue`, un icono por sección de nivel superior, no por cada módulo suelto, para no
-inventar significados técnicos que no están confirmados:
+`@lucide/vue`. En la barra lateral, solo las secciones de primer nivel llevan icono; el
+resto va con el texto solo. No hace falta un icono ni una marca en cada cosa.
 
 | Sección | Icono |
 |---|---|
 | Inicio | `Home` |
 | Módulos | `BookOpen` |
+| Extra | `Layers` |
 | Herramientas | `Wrench` |
 | IA | `Bot` |
 | Diseño web | `Palette` |
 | Ideas de PFC | `Lightbulb` |
 | Horario | `Calendar` |
 
-**Excepción, tarjetas de páginas del repo**: cuando una lista del `.md` es
-mayoritariamente enlaces internos con descripción (p.ej. el índice de herramientas), se
-renderiza como tarjetas (`TarjetaInterna.vue`), cada una con su propio icono y título
-sacados de [`src/data/fichas.js`](src/data/fichas.js). El icono es el mismo que ya usa la
-vista a medida de esa herramienta, si la tiene. Una página sin ficha sale con el nombre
-de su carpeta y `FileText`. Flecha `ArrowRight` si abre dentro de la web, `ArrowUpRight`
-si no hay página y va a GitHub.
+**Tarjetas de páginas del repo**: cuando una lista del `.md` es casi toda enlaces internos
+con descripción, sale como tarjetas (`TarjetaInterna.vue`) con título e icono de
+[`src/data/fichas.js`](src/data/fichas.js). Sin ficha, el nombre de la carpeta y
+`FileText`. Flecha `ArrowRight` si abre dentro de la web, `ArrowUpRight` si va a GitHub.
 
 ## Layout
 
-- **Barra lateral**: fija a la izquierda, `w-64 border-r border-neutral-200 bg-white`,
-  mismo patrón que [`Sidebar.vue`](../panel-aula-virtual/frontend/src/components/Sidebar.vue)
-  de `panel-aula-virtual`.
-- **Contenido**: `max-w-4xl` centrado dentro del área principal, `p-8`.
-- **Portada**: una frase de una línea + rejilla de tarjetas (una por sección de nivel
-  superior), cada tarjeta con icono, título y una frase, sin foto de fondo ni gradientes.
+- **Barra lateral**: `Sidebar` conectada. La página activa es una pestaña del mismo color
+  que el contenido, que entra en la barra, sin sombra: las esquinas curvas que la unen a la
+  página se redibujan en `src/style.css` con un degradado en vez del `box-shadow` de la
+  librería. Se pliega a una columna de iconos; en el móvil es un panel que se abre
+  con el botón de arriba. Un grupo no es un enlace, así que su propia página va como
+  primera entrada, "Índice".
+- **Cabecera**: buscador y cambio de tema, a la derecha.
+- **Contenido**: `max-w-3xl`, con el índice de la página a la derecha en pantallas anchas.
+  La ventana es la que hace scroll, no el contenido.
+- **Portada**: una frase + rejilla de tarjetas, una por sección.
+
+## Cajas
+
+Las tarjetas que llevan a otra página van en caja (`Card` con borde), que se marca más al
+pasar por encima. El resto va sin caja: las secciones se separan con espacio, las tablas y
+listas de enlaces solo con líneas entre filas, y el código con un fondo suave.
+
+## Movimiento
+
+Lo pone la librería; no animes nada a mano.
+
+- Lo que ya está al cargar la página se muestra sin animar. Al cambiar de página, la nueva
+  entra enfocándose (`blur-in`).
+- Una sola animación manda en cada pantalla: no añadas otra al lado de la de un componente.
+- Si un texto cambia de valor (un botón que pasa a "Generando…"), `TextMorph`.
 
 ## Plantilla de página
 
-Dos variantes. La decisión de cuál usar está en [`AGENTS.md`](AGENTS.md#qué-lleva-diseño-a-medida-y-qué-no).
+Dos variantes. Cuál usar está en [`AGENTS.md`](AGENTS.md#qué-lleva-diseño-a-medida-y-qué-no).
+Las dos usan `PlantillaPagina` (título, icono y el índice a la derecha) y `SeccionPagina`
+para cada `##`.
 
 **A medida** (herramientas con entidad propia):
 
 ```vue
 <script setup>
 import { IconoDeLaSeccion } from '@lucide/vue'
+import { colorDeRuta } from '../lib/colorSeccion.js'
+import PlantillaPagina from '../components/PlantillaPagina.vue'
+import SeccionPagina from '../components/SeccionPagina.vue'
+
+const INDICE = [{ id: 'primera', label: 'Primera sección', level: 2 }]
 </script>
 
 <template>
-  <div class="max-w-4xl flex flex-col gap-6">
-    <div class="flex items-center gap-2.5">
-      <IconoDeLaSeccion class="w-5 h-5 text-neutral-900 shrink-0" />
-      <h1 class="text-2xl font-semibold text-neutral-900">Título de la página</h1>
-    </div>
-
-    <!-- contenido propio de esta página -->
-  </div>
+  <PlantillaPagina titulo="Título" :icono="IconoDeLaSeccion" :color="colorDeRuta('/ruta')" :indice="INDICE">
+    <SeccionPagina id="primera">
+      <template #titulo>Primera sección</template>
+      <!-- contenido -->
+    </SeccionPagina>
+  </PlantillaPagina>
 </template>
 ```
 
-**Desde `.md`** (apuntes y el resto de `extra/`): el mismo encabezado de arriba, pero el
-cuerpo lo pone un componente `PaginaMarkdown` compartido que aplica la tipografía de esta
-tabla al `.md` de origen. No es markdown crudo sin estilo, pero tampoco un diseño distinto
-por cada apunte.
+**Desde `.md`** (apuntes y el resto de `extra/`): `MarkdownRouteView` pasa el `.md` por
+[`src/lib/markdown.js`](src/lib/markdown.js), que lo convierte en bloques, y cada bloque sale
+con su componente:
 
-Los bloques ```` ```mermaid ```` se pintan como diagrama (`DiagramaMermaid.vue`), con la
-paleta neutra de arriba. Mermaid solo se descarga en las páginas que tienen alguno.
+| En el `.md` | Sale como |
+|---|---|
+| `##` | sección, con icono y en el índice de la página |
+| `###` | desplegable (`Accordion`) |
+| bloque de código | `CodeBlock` |
+| `> [!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]`, `[!CAUTION]` | `Callout` |
+| párrafo que empieza por "Ojo:", "Cuidado:", "Nota:"... | `Callout` |
+| lista numerada | pasos |
+| lista de enlaces | tarjetas |
+
+Los bloques ```` ```mermaid ```` se pintan como diagrama (`DiagramaMermaid.vue`), con los
+colores del tema que se está viendo. Mermaid solo se descarga en las páginas que lo usan.
 
 **Piezas visuales interactivas** (`src/visuales/`): para lo que se entiende mejor tocándolo
-que leyéndolo. Son componentes Vue hechos a mano que el `.md` mete con un bloque
-```` ```visual ```` y el nombre de la pieza dentro, registrado en `src/visuales/index.js`.
-Cómo hacerlas: skill [apuntes-web](../../../.agents/skills/apuntes-web/SKILL.md).
+que leyéndolo. El `.md` las mete con un bloque ```` ```visual ```` y el nombre de la pieza,
+registrado en `src/visuales/index.js`. Cómo hacerlas: skill
+[apuntes-web](../../../.agents/skills/apuntes-web/SKILL.md).

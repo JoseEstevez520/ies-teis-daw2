@@ -5,10 +5,9 @@ una web navegable con diseño propio, no en markdown renderizado sin más.
 
 ## Stack
 
-Vue 3 + Vite + Tailwind + vue-router + `@lucide/vue`, mismo patrón que
-[`panel-aula-virtual/frontend`](../panel-aula-virtual/frontend/) y
-[`calculadora-de-faltas`](../calculadora-de-faltas/). Sin VitePress ni ningún generador de
-markdown: cada página bespoke se escribe como componente Vue.
+Vue 3 + Vite + Tailwind + vue-router + `@lucide/vue`, con los componentes de
+[elastic-ui](design.md#elastic-ui). Sin VitePress ni ningún generador de markdown: cada
+página bespoke se escribe como componente Vue.
 
 ## Qué lleva diseño a medida y qué no
 

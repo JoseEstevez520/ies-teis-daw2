@@ -1,6 +1,40 @@
 @import "tailwindcss";
+@import "elastic-ui/tokens.css";
+
+/* La librería no trae CSS compilado: Tailwind tiene que leer sus componentes. */
+@source "../node_modules/elastic-ui/dist";
+
+/*
+ * Sin color de acento (ver design.md): lo que en elastic-ui es el acento
+ * (foco, pestaña activa, "Importante") aquí es el mismo gris casi negro del
+ * texto, y casi blanco en el tema oscuro.
+ */
+:root {
+  --color-accent: light-dark(#18181b, #f4f4f5);
+  --color-accent-hover: light-dark(#3f3f46, #d4d4d8);
+  --color-accent-subtle: light-dark(#e9e9eb, #18181b);
+  --color-accent-fg: light-dark(#ffffff, #0a0a0a);
+}
 
 body {
   margin: 0;
-  background: #fafafa;
+  background: var(--color-bg);
+  color: var(--color-fg);
+}
+
+/*
+ * La pestaña de la página activa en la barra lateral. elastic-ui dibuja las
+ * esquinas curvas que la unen a la página con box-shadow; aquí van con un
+ * degradado del mismo color, para que no haya ninguna sombra.
+ */
+.tab-connected::before,
+.tab-connected::after {
+  box-shadow: none;
+  border-radius: 0;
+}
+.tab-connected::before {
+  background: radial-gradient(circle at 0 0, transparent 0.75rem, var(--tab-color) calc(0.75rem + 0.5px));
+}
+.tab-connected::after {
+  background: radial-gradient(circle at 0 100%, transparent 0.75rem, var(--tab-color) calc(0.75rem + 0.5px));
 }

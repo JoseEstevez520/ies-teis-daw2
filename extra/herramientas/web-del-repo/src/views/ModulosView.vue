@@ -1,6 +1,8 @@
 <script setup>
-import { RouterLink } from 'vue-router'
 import { BookOpen } from '@lucide/vue'
+import { colorDeRuta } from '../lib/colorSeccion.js'
+import PlantillaPagina from '../components/PlantillaPagina.vue'
+import TarjetaPagina from '../components/TarjetaPagina.vue'
 
 // Descripciones sacadas literalmente de la segunda línea de cada
 // modulos/<módulo>/README.md.
@@ -15,24 +17,17 @@ const MODULOS = [
 </script>
 
 <template>
-  <div class="max-w-4xl flex flex-col gap-6">
-    <div class="flex items-center gap-2.5">
-      <BookOpen class="w-5 h-5 shrink-0" style="color: #2563eb" />
-      <h1 class="text-2xl font-semibold text-neutral-900">Módulos</h1>
-    </div>
+  <PlantillaPagina titulo="Módulos" :icono="BookOpen" :color="colorDeRuta('/modulos')">
+    <p class="text-sm text-fg-secondary">Apuntes del temario, un módulo por carpeta.</p>
 
-    <p class="text-sm text-neutral-700">Apuntes del temario, un módulo por carpeta.</p>
-
-    <div class="grid sm:grid-cols-2 gap-5">
-      <RouterLink
+    <div class="grid gap-4 sm:grid-cols-2">
+      <TarjetaPagina
         v-for="modulo in MODULOS"
         :key="modulo.ruta"
-        :to="modulo.ruta"
-        class="flex flex-col gap-1 bg-white border border-neutral-200 rounded-2xl p-6 hover:border-neutral-300 transition-colors duration-150"
-      >
-        <h2 class="text-base font-semibold text-neutral-900">{{ modulo.nombre }}</h2>
-        <p class="text-sm text-neutral-700">{{ modulo.descripcion }}</p>
-      </RouterLink>
+        :href="modulo.ruta"
+        :titulo="modulo.nombre"
+        :descripcion="modulo.descripcion"
+      />
     </div>
-  </div>
+  </PlantillaPagina>
 </template>

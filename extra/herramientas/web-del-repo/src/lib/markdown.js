@@ -1,13 +1,14 @@
 import MarkdownIt from 'markdown-it'
 import { claveDeEnlace, resolverEnlace, resolverImagen } from './enlaces.js'
+import { crearSlugger } from './slug.js'
 
 // Icono externo dibujado a mano (flecha saliendo de una esquina), para no
 // depender de un componente Vue dentro de HTML que se inyecta con v-html.
 const ICONO_EXTERNO =
-  '<svg class="inline-block w-3 h-3 ml-0.5 -translate-y-px align-middle text-neutral-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>'
+  '<svg class="inline-block w-3 h-3 ml-0.5 -translate-y-px align-middle text-fg-faint" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7"/><path d="M8 7h9v9"/></svg>'
 
 const CLASE_ENLACE =
-  'text-neutral-900 underline decoration-neutral-300 hover:decoration-neutral-900 underline-offset-2'
+  'text-fg underline decoration-border-strong hover:decoration-fg underline-offset-2 transition-[text-decoration-color] duration-150'
 
 const ES_EXTERNO = /^(https?:)?\/\//i
 
@@ -69,14 +70,26 @@ function tarjetaInterna({ href, descripcionHtml }, directorio) {
   }
 }
 
+// Avisos escritos como texto normal al empezar un párrafo ("Ojo: ..."). Salen
+// igual que las alertas de GitHub (`> [!WARNING]`), con Callout.
 const MARCADORES = [
-  { patron: /^ojo\s*:\s*/i, variante: 'aviso' },
-  { patron: /^cuidado\s*:\s*/i, variante: 'aviso' },
-  { patron: /^atenci[oó]n\s*:\s*/i, variante: 'aviso' },
-  { patron: /^pendiente\s*:\s*/i, variante: 'aviso' },
-  { patron: /^nota aparte\s*:\s*/i, variante: 'nota' },
-  { patron: /^nota\s*:\s*/i, variante: 'nota' },
+  { patron: /^(ojo)\s*:\s*/i, variante: 'warning' },
+  { patron: /^(cuidado)\s*:\s*/i, variante: 'warning' },
+  { patron: /^(atenci[oó]n)\s*:\s*/i, variante: 'warning' },
+  { patron: /^(pendiente)\s*:\s*/i, variante: 'important' },
+  { patron: /^(nota aparte)\s*:\s*/i, variante: 'note' },
+  { patron: /^(nota)\s*:\s*/i, variante: 'note' },
 ]
+
+// Alertas de GitHub: `> [!NOTE]` en la primera línea de una cita.
+const ALERTA = /^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*/i
+const TITULOS_ALERTA = {
+  note: 'Nota',
+  tip: 'Consejo',
+  important: 'Importante',
+  warning: 'Aviso',
+  caution: 'Cuidado',
+}
 
 function crearMd(directorio) {
   const md = new MarkdownIt({ html: false, linkify: false })
@@ -108,12 +121,12 @@ function crearMd(directorio) {
     const original = i >= 0 ? token.attrs[i][1] : ''
     const url = resolverImagen(original, directorio)
     const alt = md.utils.escapeHtml(token.content || '')
-    return `<img src="${url}" alt="${alt}" class="rounded-lg border border-neutral-200 max-w-full" loading="lazy" />`
+    return `<img src="${url}" alt="${alt}" class="rounded-[var(--radius-lg)] max-w-full" loading="lazy" />`
   }
 
   md.renderer.rules.code_inline = (tokens, idx) => {
     const token = tokens[idx]
-    return `<code class="px-1.5 py-0.5 rounded bg-neutral-100 text-neutral-800 font-mono text-[0.85em]">${md.utils.escapeHtml(token.content)}</code>`
+    return `<code class="px-1.5 py-0.5 rounded-[var(--radius-sm)] bg-bg-muted text-fg font-mono text-[0.85em]">${md.utils.escapeHtml(token.content)}</code>`
   }
 
   return md
@@ -140,10 +153,27 @@ function detectarMarcador(inlineToken) {
     const coincidencia = primero.content.match(patron)
     if (coincidencia) {
       primero.content = primero.content.slice(coincidencia[0].length)
-      return variante
+      const palabra = coincidencia[1]
+      return { variante, titulo: palabra[0].toUpperCase() + palabra.slice(1).toLowerCase() }
     }
   }
   return null
+}
+
+// Quita el `[!NOTE]` del principio de una cita y devuelve de qué tipo es, o
+// null si es una cita normal.
+function detectarAlerta(tokens, i) {
+  const inline = tokens[i + 1]?.type === 'paragraph_open' ? tokens[i + 2] : null
+  const primero = inline?.children?.[0]
+  if (!primero || primero.type !== 'text') return null
+  const coincidencia = primero.content.match(ALERTA)
+  if (!coincidencia) return null
+  primero.content = primero.content.slice(coincidencia[0].length)
+  // El salto de línea tras `[!NOTE]` deja un token de salto suelto al principio.
+  if (!primero.content && ['softbreak', 'hardbreak'].includes(inline.children[1]?.type)) {
+    inline.children.splice(0, 2)
+  }
+  return coincidencia[1].toLowerCase()
 }
 
 function extraerItemsLista(tokens, i, md) {
@@ -311,24 +341,32 @@ function extraerBlockquote(tokens, i, md) {
 export function parseMarkdown(fuente, { directorio }) {
   const md = crearMd(directorio)
   const tokens = md.parse(fuente, {})
-  const bloques = []
-  let i = 0
+  return parsearRango(tokens, 0, tokens.length, { md, directorio, slug: crearSlugger() })
+}
 
-  while (i < tokens.length) {
+// Los bloques de tokens[desde..hasta). Se llama a sí misma para lo que va
+// dentro de una alerta, que puede tener párrafos, listas o código.
+function parsearRango(tokens, desde, hasta, contexto) {
+  const { md, directorio } = contexto
+  const bloques = []
+  let i = desde
+
+  while (i < hasta) {
     const t = tokens[i]
 
     if (t.type === 'heading_open') {
       const inline = tokens[i + 1]
-      bloques.push({ tipo: 'titulo', nivel: Number(t.tag.slice(1)), html: renderInline(md, inline.children) })
+      const html = renderInline(md, inline.children)
+      bloques.push({ tipo: 'titulo', nivel: Number(t.tag.slice(1)), html, id: contexto.slug(html) })
       i += 3
       continue
     }
 
     if (t.type === 'paragraph_open') {
       const inline = tokens[i + 1]
-      const variante = detectarMarcador(inline)
-      if (variante) {
-        bloques.push({ tipo: 'aviso', variante, html: renderInline(md, inline.children) })
+      const marcador = detectarMarcador(inline)
+      if (marcador) {
+        bloques.push({ tipo: 'aviso', ...marcador, bloques: [{ tipo: 'parrafo', html: renderInline(md, inline.children) }] })
       } else {
         bloques.push({ tipo: 'parrafo', html: renderInline(md, inline.children) })
       }
@@ -416,6 +454,14 @@ export function parseMarkdown(fuente, { directorio }) {
     }
 
     if (t.type === 'blockquote_open') {
+      const alerta = detectarAlerta(tokens, i)
+      if (alerta) {
+        const cierre = indiceCierre(tokens, i)
+        const interior = parsearRango(tokens, i + 1, cierre, contexto).filter((b) => b.tipo !== 'parrafo' || b.html)
+        bloques.push({ tipo: 'aviso', variante: alerta, titulo: TITULOS_ALERTA[alerta], bloques: interior })
+        i = cierre + 1
+        continue
+      }
       const { html, siguienteIndice } = extraerBlockquote(tokens, i, md)
       bloques.push({ tipo: 'cita', html })
       i = siguienteIndice

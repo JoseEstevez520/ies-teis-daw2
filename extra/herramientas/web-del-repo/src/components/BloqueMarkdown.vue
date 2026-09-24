@@ -1,11 +1,13 @@
 <script setup>
-import { AlertTriangle, Info, Terminal } from '@lucide/vue'
+import { Callout, CodeBlock } from 'elastic-ui'
 import DiagramaMermaid from './DiagramaMermaid.vue'
 import TarjetaInterna from './TarjetaInterna.vue'
 import { VISUALES } from '../visuales/index.js'
 import TarjetaRecurso from './TarjetaRecurso.vue'
 import TarjetasMixtas from './TarjetasMixtas.vue'
 
+// Un bloque de lib/markdown.js pintado con su componente: código con
+// CodeBlock, avisos con Callout, listas de enlaces como tarjetas...
 defineProps({
   bloque: { type: Object, required: true },
 })
@@ -15,16 +17,16 @@ defineProps({
   <component
     :is="'h' + bloque.nivel"
     v-if="bloque.tipo === 'titulo'"
-    class="text-sm font-semibold text-neutral-900 mt-1"
+    :id="bloque.id"
+    class="scroll-mt-6 text-sm font-semibold text-fg"
     v-html="bloque.html"
   />
 
-  <p v-else-if="bloque.tipo === 'parrafo'" class="text-sm text-neutral-700 leading-relaxed" v-html="bloque.html" />
+  <p v-else-if="bloque.tipo === 'parrafo'" class="text-sm leading-relaxed text-fg-secondary" v-html="bloque.html" />
 
-  <div v-else-if="bloque.tipo === 'aviso'" class="flex gap-3 rounded-lg border border-neutral-200 bg-neutral-50 p-4">
-    <component :is="bloque.variante === 'nota' ? Info : AlertTriangle" class="w-4 h-4 text-neutral-900 shrink-0 mt-0.5" />
-    <p class="text-sm text-neutral-700 leading-relaxed" v-html="bloque.html" />
-  </div>
+  <Callout v-else-if="bloque.tipo === 'aviso'" :type="bloque.variante" :title="bloque.titulo">
+    <BloqueMarkdown v-for="(b, i) in bloque.bloques" :key="i" :bloque="b" />
+  </Callout>
 
   <component
     :is="VISUALES[bloque.codigo.trim()]"
@@ -33,30 +35,24 @@ defineProps({
 
   <DiagramaMermaid v-else-if="bloque.tipo === 'codigo' && bloque.lenguaje === 'mermaid'" :codigo="bloque.codigo" />
 
-  <div v-else-if="bloque.tipo === 'codigo'" class="rounded-lg border border-neutral-200 overflow-hidden">
-    <div class="flex items-center gap-2 px-4 py-2 bg-neutral-50 border-b border-neutral-200">
-      <Terminal class="w-3.5 h-3.5 text-neutral-400" />
-      <span class="text-xs text-neutral-400 font-mono">{{ bloque.lenguaje || 'texto' }}</span>
-    </div>
-    <pre class="p-4 overflow-x-auto text-xs font-mono text-neutral-800 bg-white"><code>{{ bloque.codigo }}</code></pre>
-  </div>
+  <CodeBlock v-else-if="bloque.tipo === 'codigo'" :code="bloque.codigo" :language="bloque.lenguaje || undefined" />
 
   <ol v-else-if="bloque.tipo === 'pasos'" class="flex flex-col">
     <li v-for="(item, idx) in bloque.items" :key="idx" class="flex gap-3">
       <div class="flex flex-col items-center">
         <span
-          class="flex items-center justify-center w-6 h-6 rounded-full border border-neutral-300 text-neutral-900 text-xs font-semibold shrink-0"
+          class="flex size-6 shrink-0 items-center justify-center rounded-full bg-bg-muted text-xs font-semibold text-fg tabular-nums"
           >{{ idx + 1 }}</span
         >
-        <span v-if="idx < bloque.items.length - 1" class="w-px flex-1 bg-neutral-200 my-1"></span>
+        <span v-if="idx < bloque.items.length - 1" class="my-1 w-px flex-1 bg-border"></span>
       </div>
-      <p class="text-sm text-neutral-700 leading-relaxed pb-4" v-html="item" />
+      <p class="pb-4 text-sm leading-relaxed text-fg-secondary" v-html="item" />
     </li>
   </ol>
 
   <TarjetasMixtas v-else-if="bloque.tipo === 'tarjetas-mixtas'" :items="bloque.items" />
 
-  <div v-else-if="bloque.tipo === 'tarjetas-recursos'" class="grid sm:grid-cols-2 gap-4">
+  <div v-else-if="bloque.tipo === 'tarjetas-recursos'" class="grid gap-4 sm:grid-cols-2">
     <TarjetaRecurso
       v-for="(item, idx) in bloque.items"
       :key="idx"
@@ -68,7 +64,7 @@ defineProps({
     />
   </div>
 
-  <div v-else-if="bloque.tipo === 'tarjetas-internas'" class="grid sm:grid-cols-2 gap-4">
+  <div v-else-if="bloque.tipo === 'tarjetas-internas'" class="grid gap-4 sm:grid-cols-2">
     <TarjetaInterna
       v-for="item in bloque.items"
       :key="item.clave"
@@ -81,39 +77,48 @@ defineProps({
 
   <dl v-else-if="bloque.tipo === 'lista-referencia'" class="flex flex-col gap-3">
     <div v-for="(item, idx) in bloque.items" :key="idx" class="flex flex-col gap-0.5">
-      <dt class="text-sm font-semibold text-neutral-900" v-html="item.terminoHtml.replace(/:\s*$/, '')" />
-      <dd v-if="item.descripcionHtml" class="text-sm text-neutral-700 leading-relaxed first-letter:uppercase" v-html="item.descripcionHtml" />
+      <dt class="text-sm font-semibold text-fg" v-html="item.terminoHtml.replace(/:\s*$/, '')" />
+      <dd
+        v-if="item.descripcionHtml"
+        class="text-sm leading-relaxed text-fg-secondary first-letter:uppercase"
+        v-html="item.descripcionHtml"
+      />
     </div>
   </dl>
 
   <ul v-else-if="bloque.tipo === 'lista'" class="flex flex-col gap-2">
     <li v-for="(item, idx) in bloque.items" :key="idx" class="flex items-start gap-2">
-      <span class="mt-2 w-1 h-1 rounded-full bg-neutral-400 shrink-0"></span>
-      <p class="text-sm text-neutral-700 leading-relaxed" v-html="item" />
+      <span class="mt-2 size-1 shrink-0 rounded-full bg-fg-faint"></span>
+      <p class="text-sm leading-relaxed text-fg-secondary" v-html="item" />
     </li>
   </ul>
 
-  <div v-else-if="bloque.tipo === 'tabla'" class="overflow-x-auto rounded-lg border border-neutral-200">
-    <table class="w-full text-sm text-left">
-      <thead class="bg-neutral-50">
-        <tr>
+  <!-- Sin caja alrededor: solo las líneas entre filas (ver design.md). -->
+  <div v-else-if="bloque.tipo === 'tabla'" class="overflow-x-auto scrollbar-subtle">
+    <table class="w-full text-left text-sm">
+      <thead>
+        <tr class="border-b border-border-strong">
           <th
             v-for="(c, idx) in bloque.cabeceras"
             :key="idx"
-            class="px-4 py-2 font-semibold text-neutral-900 text-xs uppercase tracking-wide"
+            class="px-3 py-2 text-xs font-medium text-fg-muted first:pl-0"
             v-html="c"
           />
         </tr>
       </thead>
-      <tbody class="divide-y divide-neutral-200">
+      <tbody class="divide-y divide-border">
         <tr v-for="(fila, fidx) in bloque.filas" :key="fidx">
-          <td v-for="(c, cidx) in fila" :key="cidx" class="px-4 py-2 text-neutral-700 align-top" v-html="c" />
+          <td v-for="(c, cidx) in fila" :key="cidx" class="px-3 py-2.5 align-top text-fg-secondary first:pl-0" v-html="c" />
         </tr>
       </tbody>
     </table>
   </div>
 
-  <hr v-else-if="bloque.tipo === 'separador'" class="border-neutral-200" />
+  <hr v-else-if="bloque.tipo === 'separador'" class="border-border" />
 
-  <div v-else-if="bloque.tipo === 'cita'" class="border-l-2 border-neutral-300 pl-4 text-neutral-600 italic text-sm" v-html="bloque.html" />
+  <blockquote
+    v-else-if="bloque.tipo === 'cita'"
+    class="border-l-2 border-border-strong pl-4 text-sm text-fg-secondary italic [&>p+p]:mt-2"
+    v-html="bloque.html"
+  />
 </template>

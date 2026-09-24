@@ -1,36 +1,40 @@
 <script setup>
 import { computed } from 'vue'
-import { parseMarkdown } from '../lib/markdown.js'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from 'elastic-ui'
 import { iconoDeTitulo } from '../lib/iconoSeccion.js'
-import { ChevronDown } from '@lucide/vue'
 import BloqueMarkdown from './BloqueMarkdown.vue'
+import SeccionPagina from './SeccionPagina.vue'
 
+// El cuerpo de una página sacada de su .md. Los bloques los da
+// parseMarkdown (lib/markdown.js); aquí se agrupan en secciones (cada `##`) y
+// en desplegables (cada `###`).
 const props = defineProps({
-  markdown: { type: String, required: true },
-  directorio: { type: String, required: true },
+  bloques: { type: Array, required: true },
   // Color de la sección del repo (ver lib/colorSeccion.js), para los iconos.
-  color: { type: String, default: '#171717' },
+  color: { type: String, default: 'var(--color-fg)' },
 })
 
-const bloques = computed(() => parseMarkdown(props.markdown, { directorio: props.directorio }))
-
-// Agrupa por sección (cada H2 y lo que le sigue hasta el próximo H2) para
-// poder envolver cada sección en su propia tarjeta. Lo que va antes del
-// primer H2 (la intro de la página) queda fuera de cualquier tarjeta.
+// Lo que va antes del primer `##` es la intro de la página.
 const intro = computed(() => {
-  const primerH2 = bloques.value.findIndex((b) => b.tipo === 'titulo' && b.nivel === 2)
-  return primerH2 === -1 ? bloques.value : bloques.value.slice(0, primerH2)
+  const primerH2 = props.bloques.findIndex((b) => b.tipo === 'titulo' && b.nivel === 2)
+  return primerH2 === -1 ? props.bloques : props.bloques.slice(0, primerH2)
 })
 
-// Dentro de una sección, cada ### y lo que le sigue (hasta el siguiente ###)
-// es un desplegable: para detalles que no todo el mundo necesita leer.
+// Dentro de una sección, cada `###` y lo que le sigue es un desplegable: para
+// detalles que no todo el mundo necesita leer. Los seguidos van en el mismo
+// Accordion.
 function agruparDesplegables(bloques) {
   const salida = []
+  let acordeon = null
   let abierto = null
   for (const b of bloques) {
     if (b.tipo === 'titulo' && b.nivel === 3) {
-      abierto = { tipo: 'desplegable', html: b.html, bloques: [] }
-      salida.push(abierto)
+      if (!acordeon) {
+        acordeon = { tipo: 'acordeon', items: [] }
+        salida.push(acordeon)
+      }
+      abierto = { id: b.id, html: b.html, bloques: [] }
+      acordeon.items.push(abierto)
     } else if (abierto) {
       abierto.bloques.push(b)
     } else {
@@ -43,10 +47,9 @@ function agruparDesplegables(bloques) {
 const secciones = computed(() => {
   const grupos = []
   let actual = null
-  for (const b of bloques.value) {
+  for (const b of props.bloques) {
     if (b.tipo === 'titulo' && b.nivel === 2) {
-      const textoPlano = b.html.replace(/<[^>]+>/g, '')
-      actual = { titulo: b, icono: iconoDeTitulo(textoPlano), bloques: [] }
+      actual = { titulo: b, icono: iconoDeTitulo(b.html.replace(/<[^>]+>/g, '')), bloques: [] }
       grupos.push(actual)
     } else if (actual) {
       actual.bloques.push(b)
@@ -57,37 +60,27 @@ const secciones = computed(() => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-5">
-    <template v-for="(bloque, i) in intro" :key="'intro-' + i">
-      <BloqueMarkdown :bloque="bloque" />
-    </template>
+  <div class="flex flex-col gap-12">
+    <div v-if="intro.length" class="flex flex-col gap-5">
+      <BloqueMarkdown v-for="(bloque, i) in intro" :key="i" :bloque="bloque" />
+    </div>
 
-    <section
-      v-for="(seccion, si) in secciones"
-      :key="si"
-      class="rounded-2xl border border-neutral-200 bg-white p-6 flex flex-col gap-4"
-    >
-      <div class="flex items-center gap-2">
-        <component :is="seccion.icono" class="w-4 h-4 shrink-0" :style="{ color }" />
-        <h2 class="text-base font-semibold text-neutral-900" v-html="seccion.titulo.html" />
-      </div>
-      <div v-if="seccion.bloques.some((b) => b.tipo === 'desplegable')" class="flex flex-col">
-        <template v-for="(bloque, bi) in seccion.bloques" :key="bi">
-          <details v-if="bloque.tipo === 'desplegable'" class="group border-b border-neutral-100 last:border-b-0">
-            <summary class="flex items-center justify-between gap-3 py-3 cursor-pointer list-none text-sm font-medium text-neutral-900 [&::-webkit-details-marker]:hidden">
-              <span v-html="bloque.html" />
-              <ChevronDown class="w-4 h-4 shrink-0 text-neutral-400 transition-transform duration-150 group-open:rotate-180" />
-            </summary>
-            <div class="flex flex-col gap-3 pb-4">
-              <BloqueMarkdown v-for="(b, di) in bloque.bloques" :key="di" :bloque="b" />
-            </div>
-          </details>
-          <BloqueMarkdown v-else :bloque="bloque" class="mb-3" />
-        </template>
-      </div>
-      <template v-else>
-        <BloqueMarkdown v-for="(bloque, bi) in seccion.bloques" :key="bi" :bloque="bloque" />
+    <SeccionPagina v-for="seccion in secciones" :id="seccion.titulo.id" :key="seccion.titulo.id" :icono="seccion.icono" :color="color">
+      <template #titulo><span v-html="seccion.titulo.html" /></template>
+
+      <template v-for="(bloque, bi) in seccion.bloques" :key="bi">
+        <Accordion v-if="bloque.tipo === 'acordeon'" type="multiple">
+          <AccordionItem v-for="item in bloque.items" :key="item.id" :value="item.id">
+            <AccordionTrigger :id="item.id" class="scroll-mt-6"><span v-html="item.html" /></AccordionTrigger>
+            <AccordionContent>
+              <div class="flex flex-col gap-3">
+                <BloqueMarkdown v-for="(b, di) in item.bloques" :key="di" :bloque="b" />
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+        <BloqueMarkdown v-else :bloque="bloque" />
       </template>
-    </section>
+    </SeccionPagina>
   </div>
 </template>

@@ -5,6 +5,14 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Web del repo · 2º DAW</title>
+    <script>
+      // El tema elegido con ThemeToggle, puesto antes de pintar para que no
+      // parpadee el del sistema al cargar.
+      try {
+        const tema = localStorage.getItem('elastic-ui.theme')
+        if (tema === 'light' || tema === 'dark') document.documentElement.dataset.theme = tema
+      } catch {}
+    </script>
   </head>
   <body>
     <div id="app"></div>

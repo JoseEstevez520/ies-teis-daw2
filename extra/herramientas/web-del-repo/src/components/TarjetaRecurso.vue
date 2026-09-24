@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import { Card, CardDescription, CardTitle } from 'elastic-ui'
 import { extraerGradiente } from '../lib/colorFavicon.js'
 
 const props = defineProps({
@@ -30,18 +31,20 @@ onMounted(() => {
     :href="href"
     target="_blank"
     rel="noopener noreferrer"
-    class="flex flex-col rounded-2xl border border-neutral-200 bg-white overflow-hidden hover:border-neutral-300 transition-colors duration-150"
+    class="group rounded-[var(--radius-xl)] focus-visible:outline-2 focus-visible:outline-accent"
   >
-    <div class="h-16 relative shrink-0" :style="{ backgroundImage: gradiente }">
-      <div
-        class="absolute -bottom-4 left-4 w-9 h-9 rounded-lg bg-white border border-neutral-200 shadow-sm flex items-center justify-center overflow-hidden"
-      >
-        <img :src="favicon" alt="" class="w-5 h-5" loading="lazy" />
+    <Card size="sm" class="h-full gap-0 py-0 transition-colors duration-150 group-hover:border-border-strong">
+      <div class="relative h-16 shrink-0" :style="{ backgroundImage: gradiente }">
+        <div
+          class="absolute -bottom-4 left-4 flex size-9 items-center justify-center overflow-hidden rounded-[var(--radius-md)] bg-bg shadow-soft"
+        >
+          <img :src="favicon" alt="" class="size-5" loading="lazy" decoding="async" />
+        </div>
       </div>
-    </div>
-    <div class="flex flex-col gap-1 p-4 pt-6">
-      <span class="text-sm font-semibold text-neutral-900" v-html="terminoHtml" />
-      <p v-if="descripcionHtml" class="text-sm text-neutral-700 leading-relaxed" v-html="descripcionHtml" />
-    </div>
+      <div class="flex flex-col gap-1 p-4 pt-7">
+        <CardTitle size="sm" as="h4" class="text-sm" v-html="terminoHtml" />
+        <CardDescription v-if="descripcionHtml" class="leading-relaxed" v-html="descripcionHtml" />
+      </div>
+    </Card>
   </a>
 </template>

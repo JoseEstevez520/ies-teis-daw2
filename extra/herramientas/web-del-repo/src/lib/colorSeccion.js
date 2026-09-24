@@ -19,5 +19,5 @@ export function colorDeRuta(ruta) {
       mejor = [prefijo, color]
     }
   }
-  return mejor ? mejor[1] : '#171717'
+  return mejor ? mejor[1] : 'var(--color-fg)'
 }

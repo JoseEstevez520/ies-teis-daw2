@@ -8,10 +8,32 @@ async function cargarMermaid() {
   const { default: mermaid } = await import('mermaid')
   return mermaid
 }
+
+// Mermaid necesita colores de verdad, no variables CSS: se leen de los tokens
+// de elastic-ui ya resueltos para el tema que se está viendo.
+function colores() {
+  const estilo = getComputedStyle(document.documentElement)
+  const leer = (token) => {
+    const muestra = document.createElement('span')
+    muestra.style.color = `var(${token})`
+    document.body.appendChild(muestra)
+    const color = getComputedStyle(muestra).color
+    muestra.remove()
+    return color || estilo.getPropertyValue(token)
+  }
+  return {
+    fondo: leer('--color-bg'),
+    sutil: leer('--color-bg-subtle'),
+    texto: leer('--color-fg'),
+    linea: leer('--color-fg-faint'),
+    borde: leer('--color-border'),
+  }
+}
 </script>
 
 <script setup>
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
+import { useTheme } from 'elastic-ui'
 
 // Bloque ```mermaid de un .md, pintado como diagrama. GitHub hace lo mismo con
 // el mismo bloque, así que el .md sigue siendo la única fuente. Mermaid pesa
@@ -22,13 +44,17 @@ const props = defineProps({
 
 const svg = ref('')
 const error = ref(false)
-onMounted(() => {
-  cola = cola.then(renderizar)
-})
+const { theme } = useTheme()
+
+const pintar = () => (cola = cola.then(renderizar))
+onMounted(pintar)
+// Al cambiar de tema se vuelve a pintar con los colores nuevos.
+watch(theme, () => requestAnimationFrame(pintar))
 
 async function renderizar() {
   try {
     const mermaid = await cargarMermaid()
+    const c = colores()
     mermaid.initialize({
       startOnLoad: false,
       theme: 'base',
@@ -37,18 +63,24 @@ async function renderizar() {
       // Sin sombras: el tema base las pone en los nodos y chocan con design.md.
       themeCSS: '* { filter: none !important; }',
       themeVariables: {
-        primaryColor: '#ffffff',
-        primaryBorderColor: '#a3a3a3',
-        primaryTextColor: '#171717',
-        lineColor: '#a3a3a3',
-        secondaryColor: '#fafafa',
-        tertiaryColor: '#fafafa',
-        clusterBkg: '#fafafa',
-        clusterBorder: '#e5e5e5',
-        actorBkg: '#ffffff',
-        actorBorder: '#a3a3a3',
-        noteBkgColor: '#fafafa',
-        noteBorderColor: '#e5e5e5',
+        background: c.fondo,
+        primaryColor: c.fondo,
+        primaryBorderColor: c.linea,
+        primaryTextColor: c.texto,
+        textColor: c.texto,
+        lineColor: c.linea,
+        secondaryColor: c.sutil,
+        tertiaryColor: c.sutil,
+        clusterBkg: c.sutil,
+        clusterBorder: c.borde,
+        actorBkg: c.fondo,
+        actorBorder: c.linea,
+        actorTextColor: c.texto,
+        signalColor: c.texto,
+        signalTextColor: c.texto,
+        noteBkgColor: c.sutil,
+        noteBorderColor: c.borde,
+        noteTextColor: c.texto,
         fontSize: '14px',
       },
     })
@@ -60,9 +92,9 @@ async function renderizar() {
 </script>
 
 <template>
-  <div class="rounded-lg border border-neutral-200 bg-white p-4 overflow-x-auto">
-    <div v-if="svg" class="flex justify-center [&_svg]:max-w-full [&_svg]:h-auto" v-html="svg" />
-    <pre v-else-if="error" class="text-xs font-mono text-neutral-800"><code>{{ codigo }}</code></pre>
+  <div class="overflow-x-auto rounded-[var(--radius-lg)] bg-bg-subtle p-4 scrollbar-subtle">
+    <div v-if="svg" class="flex justify-center [&_svg]:h-auto [&_svg]:max-w-full" v-html="svg" />
+    <pre v-else-if="error" class="font-mono text-xs text-fg-secondary"><code>{{ codigo }}</code></pre>
     <div v-else class="h-24" />
   </div>
 </template>

@@ -1,68 +1,60 @@
 <script setup>
-import { ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
-import { AnimatePresence, motion } from 'motion-v'
-import { Menu, X } from '@lucide/vue'
-import Sidebar from './components/Sidebar.vue'
+import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+import { SidebarLayout, SidebarToggle, ThemeToggle } from 'elastic-ui'
+import BarraLateral from './components/BarraLateral.vue'
+import Buscador from './components/Buscador.vue'
 
-// En el móvil la barra lateral no cabe: se esconde tras un botón de menú y
-// se abre como panel encima del contenido. Se cierra al cambiar de página.
-const menuAbierto = ref(false)
 const route = useRoute()
-watch(() => route.fullPath, () => (menuAbierto.value = false))
+const router = useRouter()
+
+// Los enlaces internos que no son RouterLink (los de la barra lateral de
+// elastic-ui y los que salen del .md con v-html) son <a href="/..."> normales:
+// se pasan por el router para no recargar la página entera.
+function alHacerClic(evento) {
+  if (evento.defaultPrevented || evento.button !== 0) return
+  if (evento.metaKey || evento.ctrlKey || evento.shiftKey || evento.altKey) return
+  const enlace = evento.target.closest?.('a[href]')
+  if (!enlace || enlace.target || enlace.hasAttribute('download')) return
+  const href = enlace.getAttribute('href')
+  if (!href.startsWith('/') || href.startsWith('//')) return
+  evento.preventDefault()
+  router.push(href)
+}
+onMounted(() => document.addEventListener('click', alHacerClic))
+onBeforeUnmount(() => document.removeEventListener('click', alHacerClic))
+
+// Lo que ya está al cargar simplemente se muestra; al cambiar de página, la
+// nueva entra enfocándose (el `blur-in` de elastic-ui).
+const primeraCarga = ref(true)
+watch(
+  () => route.path,
+  () => (primeraCarga.value = false),
+)
 </script>
 
 <template>
-  <div class="h-dvh flex flex-col md:flex-row bg-neutral-50">
-    <div class="hidden md:flex h-full"><Sidebar /></div>
+  <SidebarLayout>
+    <BarraLateral />
 
-    <header class="md:hidden flex items-center gap-2 border-b border-neutral-200 bg-white px-3 py-2">
-      <button
-        type="button"
-        @click="menuAbierto = true"
-        class="p-2 rounded-lg text-neutral-700 hover:bg-neutral-100"
-        aria-label="Abrir menú"
-      >
-        <Menu class="w-5 h-5" />
-      </button>
-      <RouterLink to="/" class="text-sm font-semibold text-neutral-900">2º DAW · IES de Teis</RouterLink>
-    </header>
+    <div class="flex min-w-0 flex-1 flex-col">
+      <header class="flex h-14 shrink-0 items-center gap-2 px-4 md:px-8">
+        <SidebarToggle class="md:hidden" label="Abrir el menú" />
+        <RouterLink to="/" class="truncate text-sm font-semibold text-fg md:hidden">2º DAW · IES de Teis</RouterLink>
+        <div class="ml-auto flex items-center gap-1">
+          <Buscador />
+          <ThemeToggle light-label="Cambiar a tema claro" dark-label="Cambiar a tema oscuro" />
+        </div>
+      </header>
 
-    <AnimatePresence>
-      <motion.div
-        v-if="menuAbierto"
-        :initial="{ opacity: 0 }"
-        :animate="{ opacity: 1 }"
-        :exit="{ opacity: 0 }"
-        class="md:hidden fixed inset-0 z-40 bg-neutral-900/30"
-        @click="menuAbierto = false"
-      />
-    </AnimatePresence>
-    <AnimatePresence>
-      <motion.div
-        v-if="menuAbierto"
-        :initial="{ x: -300 }"
-        :animate="{ x: 0 }"
-        :exit="{ x: -300 }"
-        :transition="{ type: 'spring', stiffness: 380, damping: 36 }"
-        class="md:hidden fixed inset-y-0 left-0 z-50 flex"
-      >
-        <Sidebar movil />
-        <button
-          type="button"
-          @click="menuAbierto = false"
-          class="absolute top-3 right-3 p-2 rounded-lg text-neutral-500 hover:bg-neutral-100"
-          aria-label="Cerrar menú"
+      <main class="flex-1 px-4 pt-2 pb-24 md:px-8">
+        <div
+          :key="route.path"
+          :class="primeraCarga ? '' : 'animate-[blur-in_0.45s_var(--ease-soft)] motion-reduce:animate-none'"
         >
-          <X class="w-4 h-4" />
-        </button>
-      </motion.div>
-    </AnimatePresence>
-
-    <main class="flex-1 min-h-0 flex justify-center overflow-y-auto">
-      <div class="w-full min-w-0 max-w-4xl self-start px-4 py-6 pb-24 md:p-8 md:pb-24">
-        <RouterView :key="$route.fullPath" />
-      </div>
-    </main>
-  </div>
+          <RouterView />
+        </div>
+      </main>
+    </div>
+  </SidebarLayout>
 </template>
