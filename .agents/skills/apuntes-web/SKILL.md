@@ -21,8 +21,8 @@ El texto sigue [apuntes-claros](../apuntes-claros/SKILL.md).
 ## Antes de escribir
 
 - Datos de la **documentación oficial**, nunca de memoria.
-- Busca **qué hay que entender primero**. Sin "modelo = cerebro, harness = cuerpo", lo
-  demás de agentes no se entendía.
+- Busca **qué hay que entender primero**, y cuéntalo con lo mínimo. En agentes bastó
+  "el modelo es el cerebro, el harness le da herramientas"; el bucle y MCP liaban.
 - Lo básico va en su propia página (como `extra/ia/fundamentos/`), no al principio de otra.
 
 ## Qué forma darle a cada idea

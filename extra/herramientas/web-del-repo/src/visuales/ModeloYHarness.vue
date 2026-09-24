@@ -1,20 +1,17 @@
 <script setup>
 import { ref } from 'vue'
-import { ArrowLeftRight, Brain, FileCode, FilePen, FolderOpen, Plug, SquareTerminal, User, X } from '@lucide/vue'
+import { ArrowLeftRight, Brain, FileCode, FilePen, FolderOpen, SquareTerminal, User, X } from '@lucide/vue'
 
-// Modelo = cerebro, harness = cuerpo. Sin cuerpo, el cerebro solo puede
-// hablar contigo; con cuerpo, tiene ojos y manos para llegar a tu proyecto.
-// Colores: modelo violeta, harness cian, en todas las páginas de agentes.
+// El modelo es el cerebro; el harness le da herramientas para llegar a tu
+// proyecto. Colores: modelo violeta, harness cian, en todas las páginas de agentes.
 
-// Lo concreto primero; la parte del cuerpo, como pista.
-const CUERPO = [
-  { icono: FileCode, hace: 'Lee tus archivos', parte: 'sus ojos' },
-  { icono: FilePen, hace: 'Edita tus archivos', parte: 'sus manos' },
-  { icono: SquareTerminal, hace: 'Ejecuta comandos: npm test, git…', parte: 'sus manos' },
-  { icono: Plug, hace: 'Consulta fuera con MCP: docs, GitHub…', parte: 'su teléfono' },
+const HERRAMIENTAS = [
+  { icono: FileCode, texto: 'Leer archivos' },
+  { icono: FilePen, texto: 'Editar archivos' },
+  { icono: SquareTerminal, texto: 'Ejecutar comandos' },
 ]
 
-const modo = ref('cuerpo')
+const modo = ref('harness')
 </script>
 
 <template>
@@ -22,8 +19,8 @@ const modo = ref('cuerpo')
     <div class="flex border-b border-neutral-200 bg-neutral-50 p-1.5 gap-1.5">
       <button
         v-for="m in [
-          { id: 'cerebro', texto: 'Solo el cerebro (modelo)' },
-          { id: 'cuerpo', texto: 'Cerebro con cuerpo (modelo + harness)' },
+          { id: 'modelo', texto: 'Solo el modelo' },
+          { id: 'harness', texto: 'Modelo + harness' },
         ]"
         :key="m.id"
         type="button"
@@ -44,43 +41,43 @@ const modo = ref('cuerpo')
 
         <ArrowLeftRight class="w-4 h-4 text-neutral-400 self-center shrink-0 max-md:rotate-90" />
 
-        <!-- Cuerpo (harness) con el cerebro (modelo) dentro -->
         <div
           class="flex-1 rounded-xl p-3 flex flex-col gap-3 transition-colors duration-300"
-          :style="{ backgroundColor: modo === 'cuerpo' ? 'color-mix(in srgb, #0891b2 10%, white)' : 'transparent' }"
+          :style="{ backgroundColor: modo === 'harness' ? 'color-mix(in srgb, #0891b2 10%, white)' : 'transparent' }"
         >
           <p
             class="text-xs font-semibold transition-opacity duration-300"
-            :class="modo === 'cuerpo' ? 'opacity-100' : 'opacity-0'"
+            :class="modo === 'harness' ? 'opacity-100' : 'opacity-0'"
             style="color: #0891b2"
           >
-            Cuerpo = harness (OpenCode, Claude Code, Codex)
+            Harness
           </p>
 
           <div class="rounded-lg px-4 py-4 flex items-center gap-3" style="background-color: color-mix(in srgb, #7c3aed 12%, white)">
             <Brain class="w-6 h-6 shrink-0" style="color: #7c3aed" />
             <div class="flex flex-col">
-              <span class="text-sm font-semibold" style="color: #7c3aed">Cerebro = modelo</span>
-              <span class="text-xs text-neutral-600">GPT, Claude, Gemini, Qwen… Piensa y escribe texto.</span>
+              <span class="text-sm font-semibold" style="color: #7c3aed">Modelo</span>
+              <span class="text-xs text-neutral-600">el cerebro: piensa</span>
             </div>
           </div>
 
           <div
-            class="grid sm:grid-cols-2 gap-2 transition-opacity duration-300"
-            :class="modo === 'cuerpo' ? 'opacity-100' : 'opacity-0'"
+            class="grid sm:grid-cols-3 gap-2 transition-opacity duration-300"
+            :class="modo === 'harness' ? 'opacity-100' : 'opacity-0'"
           >
-            <div v-for="c in CUERPO" :key="c.hace" class="flex items-center gap-2.5 rounded-lg bg-white px-3 py-2.5">
-              <component :is="c.icono" class="w-4 h-4 shrink-0" style="color: #0891b2" />
-              <div class="flex flex-col">
-                <span class="text-xs font-medium text-neutral-900">{{ c.hace }}</span>
-                <span class="text-[11px] text-neutral-400">{{ c.parte }}</span>
-              </div>
+            <div
+              v-for="h in HERRAMIENTAS"
+              :key="h.texto"
+              class="flex items-center gap-2 rounded-lg bg-white px-3 py-2.5 text-xs font-medium text-neutral-900"
+            >
+              <component :is="h.icono" class="w-4 h-4 shrink-0" style="color: #0891b2" />
+              {{ h.texto }}
             </div>
           </div>
         </div>
 
         <ArrowLeftRight
-          v-if="modo === 'cuerpo'"
+          v-if="modo === 'harness'"
           class="w-4 h-4 self-center shrink-0 max-md:rotate-90"
           style="color: #0891b2"
         />
@@ -88,22 +85,20 @@ const modo = ref('cuerpo')
 
         <div
           class="flex md:flex-col items-center justify-center gap-2 rounded-xl px-4 py-3 md:w-28 transition-colors duration-300"
-          :class="modo === 'cuerpo' ? 'bg-neutral-100 text-neutral-900' : 'bg-neutral-50 text-neutral-300'"
+          :class="modo === 'harness' ? 'bg-neutral-100 text-neutral-900' : 'bg-neutral-50 text-neutral-300'"
         >
           <FolderOpen class="w-5 h-5" />
           <span class="text-sm font-medium text-center">Tu proyecto</span>
         </div>
       </div>
 
-      <p class="text-sm text-neutral-700 leading-relaxed">
-        <template v-if="modo === 'cerebro'">
-          El modelo solo te contesta con texto. No abre tus archivos ni ejecuta nada:
-          <strong class="text-neutral-900">eso lo haces tú</strong> (copiar el código, pegarlo, ejecutar, volver a
-          preguntar). Es lo que pasa en el chat de ChatGPT o Claude.
+      <p class="text-sm text-neutral-700">
+        <template v-if="modo === 'modelo'">
+          Te contesta con texto. Copiar, pegar y ejecutar lo haces tú. Es el chat de ChatGPT o Claude.
         </template>
         <template v-else>
-          El modelo decide qué hacer y el harness lo hace en tu proyecto: lee, edita, ejecuta. Los dos
-          juntos, trabajando hasta acabar la tarea, son un <strong class="text-neutral-900">agente</strong>.
+          Con herramientas, el modelo trabaja directamente en tu proyecto. Eso es un
+          <strong class="text-neutral-900">agente</strong>.
         </template>
       </p>
     </div>

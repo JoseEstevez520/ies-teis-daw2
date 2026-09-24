@@ -1,27 +1,17 @@
 # Fundamentos: modelo, harness y agente
 
-Un agente de IA es un cerebro con cuerpo. El cerebro es el **modelo**, el cuerpo es el
-**harness**, y juntos trabajan en tu proyecto.
+El modelo es el cerebro. El harness le da herramientas. Juntos son un agente.
 
-## Cerebro y cuerpo
+## Modelo y harness
 
-- **Modelo (el cerebro):** la IA que piensa y escribe (GPT, Claude, Gemini, Qwen...).
-  Recibe texto y devuelve texto. No puede abrir tus archivos ni ejecutar nada.
-- **Harness (el cuerpo):** el programa que hace lo que el modelo decide. Lee tus
-  archivos, los edita y ejecuta comandos en la terminal (`npm test`, `git commit`...).
-  OpenCode, Claude Code y Codex son harnesses.
-- **Agente:** modelo y harness juntos, trabajando hasta acabar la tarea.
+- **Modelo:** la IA que piensa (GPT, Claude, Gemini, Qwen...). Solo recibe texto y
+  devuelve texto.
+- **Harness:** el programa que le da herramientas al modelo: leer tus archivos,
+  editarlos y ejecutar comandos. OpenCode, Claude Code y Codex son harnesses.
+- **Agente:** modelo + harness.
 
 ```visual
 modelo-y-harness
-```
-
-## Cómo trabaja un agente
-
-Repite cuatro pasos hasta acabar. Pulsa cada uno para ver el ejemplo:
-
-```visual
-bucle-agente
 ```
 
 ## Los harnesses más usados
