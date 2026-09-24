@@ -23,8 +23,8 @@ curso.
 
 ## Agentes
 
-- [`opencode/`](opencode/): qué es un modelo, un harness y un agente, y cómo se trabaja
-  con ellos. Con OpenCode, que es gratis.
+- [`fundamentos/`](fundamentos/): qué es un modelo, un harness y un agente.
+- [`opencode/`](opencode/): trabajar con agentes usando OpenCode, que es gratis.
 
 ## Recursos
 

@@ -1,29 +1,8 @@
 # Agentes de IA con OpenCode
 
-Un agente de IA para programar es una IA que trabaja dentro de tu proyecto: lee
-archivos, ejecuta comandos y edita código. Lo aprendemos con [OpenCode](https://opencode.ai/)
-porque es gratis; lo mismo vale para Claude Code o Codex.
-
-## Modelo, harness y agente
-
-- **Modelo:** la IA en sí (GPT, Claude, Gemini, Qwen...). Recibe texto y devuelve texto.
-  No ve tus archivos ni ejecuta nada.
-- **Harness:** el programa que envuelve al modelo y le da manos: lee archivos, edita y
-  ejecuta comandos. OpenCode, Claude Code y Codex son harnesses.
-- **Agente:** un modelo dentro de un harness, en bucle hasta acabar la tarea.
-
-```visual
-modelo-y-harness
-```
-
-| Harness | De quién | Qué necesitas |
-|---|---|---|
-| OpenCode | open source | nada: trae modelos gratis |
-| Claude Code | Anthropic | suscripción de Claude o API |
-| Codex | OpenAI | cuenta de ChatGPT o API |
-
-Lo que sigue (`AGENTS.md`, skills, MCP) funciona igual en los tres. Claude Code usa
-`CLAUDE.md` en vez de `AGENTS.md`.
+[OpenCode](https://opencode.ai/) es un harness gratis: el cuerpo que le da ojos y manos
+al modelo. Si no sabes qué es eso, empieza por los [fundamentos](../fundamentos/). Lo
+que aprendas aquí vale igual para Claude Code o Codex.
 
 ## Un agente trabajando, paso a paso
 

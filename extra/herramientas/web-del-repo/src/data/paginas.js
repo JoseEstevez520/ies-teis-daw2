@@ -15,6 +15,7 @@ import moodleApi from '../../../../../extra/herramientas/moodle-api.md?raw'
 
 import ia from '../../../../../extra/ia/README.md?raw'
 import opencode from '../../../../../extra/ia/opencode/README.md?raw'
+import fundamentos from '../../../../../extra/ia/fundamentos/README.md?raw'
 import disenoWeb from '../../../../../extra/diseno-web/README.md?raw'
 import ideasPfc from '../../../../../extra/ideas-proyecto-fin-curso/README.md?raw'
 
@@ -127,6 +128,14 @@ export const PAGINAS = [
     seccion: 'IA',
     icono: Bot,
     fuente: ia,
+  },
+  {
+    ruta: '/extra/ia/fundamentos',
+    directorio: 'extra/ia/fundamentos',
+    claveRuta: 'extra/ia/fundamentos',
+    seccion: 'IA',
+    icono: Bot,
+    fuente: fundamentos,
   },
   {
     ruta: '/extra/ia/opencode',
