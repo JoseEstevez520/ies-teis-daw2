@@ -30,10 +30,16 @@ const PREGUNTAS = [
     porque: 'Por eso la descripción importa tanto: es lo que usa para decidir si la carga.',
   },
   {
+    enunciado: 'Quieres un asistente para todas tus prácticas que te explique pero que no pueda tocar tus archivos. ¿Qué haces?',
+    opciones: ['Pedírselo a Build cada vez', 'Crear un agente propio con edit: deny', 'Instalar un servidor MCP'],
+    correcta: 1,
+    porque: 'Pedírselo no lo garantiza. Un agente con edit: deny no puede editar aunque quiera: el límite lo pone el permiso, no la buena voluntad.',
+  },
+  {
     enunciado: 'Estás en modo Plan y te propone tres cambios. ¿Ha tocado ya tus archivos?',
     opciones: ['Sí, ya están hechos', 'No, solo propone'],
     correcta: 1,
-    porque: 'Plan solo propone. Los cambios se aplican cuando pasas a Build con Tab.',
+    porque: 'Plan te pregunta antes de editar nada. Lo normal es revisar su propuesta y pasar a Build con Tab para aplicarla.',
   },
 ]
 

@@ -138,15 +138,26 @@ const conexiones = Object.keys(NODOS).filter((id) => id !== 'agente')
           @click="irANodo(id)"
           class="absolute -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 rounded-lg border bg-white px-3 py-2 text-left transition-all duration-300"
           :class="[
-            activos.has(id) ? 'border-neutral-900 shadow-sm opacity-100' : 'border-neutral-200 opacity-50 hover:opacity-80',
+            activos.has(id) ? 'border-neutral-900' : 'border-neutral-200 hover:border-neutral-400',
             id === 'agente' ? 'px-4 py-3' : '',
           ]"
           :style="{ left: nodo.x + '%', top: nodo.y + '%' }"
         >
-          <component :is="nodo.icono" :class="id === 'agente' ? 'w-5 h-5' : 'w-4 h-4'" class="text-neutral-900 shrink-0" />
+          <component
+            :is="nodo.icono"
+            :class="[id === 'agente' ? 'w-5 h-5' : 'w-4 h-4', activos.has(id) ? 'text-neutral-900' : 'text-neutral-300']"
+            class="shrink-0 transition-colors duration-300"
+          />
           <span class="flex flex-col">
-            <span class="text-sm font-medium text-neutral-900 whitespace-nowrap">{{ nodo.etiqueta }}</span>
-            <span v-if="nodo.detalle" class="text-[11px] text-neutral-500 whitespace-nowrap">{{ nodo.detalle }}</span>
+            <span
+              class="text-sm font-medium whitespace-nowrap transition-colors duration-300"
+              :class="activos.has(id) ? 'text-neutral-900' : 'text-neutral-400'"
+            >{{ nodo.etiqueta }}</span>
+            <span
+              v-if="nodo.detalle"
+              class="text-[11px] whitespace-nowrap transition-colors duration-300"
+              :class="activos.has(id) ? 'text-neutral-500' : 'text-neutral-300'"
+            >{{ nodo.detalle }}</span>
           </span>
         </button>
       </div>

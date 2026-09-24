@@ -34,6 +34,8 @@ async function renderizar() {
       theme: 'base',
       fontFamily: 'inherit',
       sequence: { mirrorActors: false },
+      // Sin sombras: el tema base las pone en los nodos y chocan con design.md.
+      themeCSS: '* { filter: none !important; }',
       themeVariables: {
         primaryColor: '#ffffff',
         primaryBorderColor: '#a3a3a3',

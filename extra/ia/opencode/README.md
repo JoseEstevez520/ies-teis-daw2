@@ -28,37 +28,27 @@ agente-en-accion
 3. Escribe `/connect` y elige **OpenCode Zen**, que tiene modelos gratis.
 4. Escribe `/init`: analiza el proyecto y te crea un `AGENTS.md`.
 
-## Cómo se trabaja: Plan y Build
+## Agentes: los que trae y los tuyos
 
-Con `Tab` cambias entre dos modos. Pide primero en **Plan**, revisa lo que propone, y
-solo entonces pásalo a **Build**.
+OpenCode no es un solo agente: trae varios, cada uno con sus permisos. **Build** (el de
+por defecto) y **Plan** son los dos principales, y cambias entre ellos con `Tab`. Los
+subagentes los llama el propio agente cuando le hacen falta, o tú con `@nombre`.
 
-```mermaid
-flowchart LR
-    plan["Plan<br/>propone, no toca nada"] -->|Tab| build["Build<br/>edita tus archivos"]
-    build -->|Tab| plan
+Elige uno para ver qué puede hacer:
+
+```visual
+agentes-opencode
 ```
 
-Ejemplo de sesión (simplificado):
+### Cuándo te haces uno propio
 
-```text
-[Plan]  > Cuando se borre un producto, que no desaparezca: márcalo como
-          borrado y añade una pantalla de productos borrados.
+Cuando quieres que un agente **no pueda** hacer algo, no solo pedírselo. Un agente con
+`edit: deny` no edita aunque se lo pidas, y eso es justo lo que necesitas en una práctica.
 
-        Propuesta:
-          1. Añadir el campo `borrado` a Producto.java
-          2. Cambiar ProductoService.borrar() para que solo lo marque
-          3. Nueva vista productos-borrados.html
-        ¿Lo aplico?
-
-[Build] > Vale, adelante.
-
-        ✓ Producto.java           (editado)
-        ✓ ProductoService.java    (editado)
-        ✓ productos-borrados.html (nuevo)
-```
-
-Ojo: si no te gusta lo que ha hecho, `/undo` deshace el último cambio.
+- **Skill o agente:** una skill son instrucciones que el agente carga. Un agente propio
+  tiene sus propios permisos y hasta su propio modelo.
+- **Crearlo:** `opencode agent create` te pregunta qué debe hacer y qué permisos darle,
+  y te crea el `.md`. También puedes escribirlo a mano en `.opencode/agents/`.
 
 ## `AGENTS.md`: las reglas del proyecto
 
