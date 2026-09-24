@@ -8,6 +8,7 @@ edita toda la clase, no una sola persona.
 | Si... | Lee |
 |---|---|
 | vas a escribir o revisar un apunte, README o cualquier `.md` de este repo | [.agents/skills/apuntes-claros/SKILL.md](.agents/skills/apuntes-claros/SKILL.md) |
+| vas a crear o mejorar cómo se ve algo en la web del repo (diagramas, piezas interactivas) | [.agents/skills/apuntes-web/SKILL.md](.agents/skills/apuntes-web/SKILL.md) |
 | vas a aportar contenido por primera vez | [CONTRIBUTING.md](CONTRIBUTING.md) |
 | necesitas el horario de clase | [horario/](horario/) |
 

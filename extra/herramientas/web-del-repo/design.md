@@ -17,7 +17,7 @@ Escala neutra de Tailwind, la misma que ya usan `panel-aula-virtual` y
 | `neutral-400` | `#a3a3a3` | texto secundario |
 | `neutral-900` | `#171717` | texto principal, títulos |
 
-**Sin acento de color**: solo negro, blanco y grises. Lo que en otro sistema sería "el
+**Sin acento de color en la interfaz** (barra lateral, tarjetas, títulos): solo negro, blanco y grises. Lo que en otro sistema sería "el
 acento" (enlace activo, indicador de "estás aquí") se marca con `neutral-900` en negrita o
 un borde/fondo `neutral-100`, no con un color distinto.
 
@@ -34,6 +34,10 @@ herramientas externas es indistinguible de cualquier otra lista. No se usa para 
 Se probó antes con captura real de la landing (vía `image.thum.io`): se descartó porque el
 servicio gratuito falla para algunos dominios (límite de uso) sin devolver un error
 detectable — carga una imagen válida con el aviso "not authorized" dentro.
+
+**Excepción — piezas visuales** (`src/visuales/`): sí llevan color, siempre con
+significado: un color por concepto, y verde/ámbar/rojo para sí/con condiciones/no. Las
+reglas están en la skill [apuntes-web](../../../.agents/skills/apuntes-web/SKILL.md).
 
 Los colores semánticos (`emerald`/`amber`/`red` de éxito/aviso/error) quedan reservados
 para las herramientas que ya los usan (`panel-aula-virtual`, `calculadora-de-faltas`); no

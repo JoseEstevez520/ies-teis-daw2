@@ -8,12 +8,12 @@ import { Bot, ChevronLeft, ChevronRight, FileCode, FileText, Pause, Play, Plug, 
 // real de este repo: pedir un apunte, con su AGENTS.md y su skill.
 
 const NODOS = {
-  tu: { etiqueta: 'Tú', icono: User, x: 11, y: 50 },
-  agente: { etiqueta: 'Agente', detalle: 'modelo de IA + herramientas', icono: Bot, x: 45, y: 50 },
-  reglas: { etiqueta: 'AGENTS.md', detalle: 'reglas del proyecto', icono: FileText, x: 84, y: 13 },
-  skills: { etiqueta: 'Skills', detalle: 'instrucciones a demanda', icono: Sparkles, x: 84, y: 37.5 },
-  mcp: { etiqueta: 'MCP', detalle: 'herramientas de fuera', icono: Plug, x: 84, y: 62.5 },
-  archivos: { etiqueta: 'Tus archivos', detalle: 'lee y edita', icono: FileCode, x: 84, y: 87 },
+  tu: { etiqueta: 'Tú', icono: User, x: 11, y: 50, color: '#171717' },
+  agente: { etiqueta: 'Agente', detalle: 'modelo de IA + herramientas', icono: Bot, x: 45, y: 50, color: '#171717' },
+  reglas: { etiqueta: 'AGENTS.md', detalle: 'reglas del proyecto', icono: FileText, x: 84, y: 13, color: '#2563eb' },
+  skills: { etiqueta: 'Skills', detalle: 'instrucciones a demanda', icono: Sparkles, x: 84, y: 37.5, color: '#7c3aed' },
+  mcp: { etiqueta: 'MCP', detalle: 'herramientas de fuera', icono: Plug, x: 84, y: 62.5, color: '#d97706' },
+  archivos: { etiqueta: 'Tus archivos', detalle: 'lee y edita', icono: FileCode, x: 84, y: 87, color: '#059669' },
 }
 
 const PASOS = [
@@ -74,6 +74,11 @@ const PASOS = [
 const paso = ref(0)
 const actual = computed(() => PASOS[paso.value])
 const activos = computed(() => new Set(actual.value.activos))
+// Color del paso: el de la pieza que actúa (la que no es Tú ni el agente).
+const colorPaso = computed(() => {
+  const pieza = actual.value.activos.find((id) => id !== 'agente' && id !== 'tu')
+  return pieza ? NODOS[pieza].color : '#a3a3a3'
+})
 
 // Terminal acumulada: todo lo que ha salido hasta el paso actual, como en una
 // sesión de verdad. Lo del paso actual se marca para distinguirlo.
@@ -125,7 +130,7 @@ const conexiones = Object.keys(NODOS).filter((id) => id !== 'agente')
             :y2="NODOS[id].y"
             vector-effect="non-scaling-stroke"
             class="transition-all duration-300"
-            :stroke="activos.has(id) ? '#171717' : '#d4d4d4'"
+            :stroke="activos.has(id) ? NODOS[id].color : '#d4d4d4'"
             :stroke-width="activos.has(id) ? 2 : 1"
             :stroke-dasharray="activos.has(id) ? '0' : '4 4'"
           />
@@ -138,14 +143,15 @@ const conexiones = Object.keys(NODOS).filter((id) => id !== 'agente')
           @click="irANodo(id)"
           class="absolute -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 rounded-lg border bg-white px-3 py-2 text-left transition-all duration-300"
           :class="[
-            activos.has(id) ? 'border-neutral-900' : 'border-neutral-200 hover:border-neutral-400',
+            activos.has(id) ? 'border-2' : 'border-neutral-200 hover:border-neutral-400',
             id === 'agente' ? 'px-4 py-3' : '',
           ]"
-          :style="{ left: nodo.x + '%', top: nodo.y + '%' }"
+          :style="{ left: nodo.x + '%', top: nodo.y + '%', borderColor: activos.has(id) ? nodo.color : undefined }"
         >
           <component
             :is="nodo.icono"
-            :class="[id === 'agente' ? 'w-5 h-5' : 'w-4 h-4', activos.has(id) ? 'text-neutral-900' : 'text-neutral-300']"
+            :class="[id === 'agente' ? 'w-5 h-5' : 'w-4 h-4', activos.has(id) ? '' : 'text-neutral-300']"
+            :style="activos.has(id) ? { color: nodo.color } : undefined"
             class="shrink-0 transition-colors duration-300"
           />
           <span class="flex flex-col">
@@ -183,14 +189,15 @@ const conexiones = Object.keys(NODOS).filter((id) => id !== 'agente')
       </div>
 
       <!-- Terminal -->
-      <div class="rounded-lg bg-neutral-900 p-4 font-mono text-xs leading-relaxed min-h-40 max-h-56 overflow-y-auto">
+      <div class="rounded-lg bg-neutral-900 py-4 pr-4 pl-2 font-mono text-xs leading-relaxed min-h-40 max-h-56 overflow-y-auto">
         <p
           v-for="(l, i) in lineas"
           :key="i"
-          class="whitespace-pre-wrap transition-opacity duration-300"
+          class="whitespace-pre-wrap transition-opacity duration-300 border-l-2"
+          :style="{ borderColor: l.nueva ? colorPaso : 'transparent', paddingLeft: l.tipo === 'archivo' ? '1.5rem' : '0.5rem' }"
           :class="[
             l.nueva ? 'opacity-100' : 'opacity-40',
-            l.tipo === 'tu' ? 'text-white' : l.tipo === 'archivo' ? 'text-neutral-400 pl-4' : l.tipo === 'ok' ? 'text-white' : 'text-neutral-300',
+            l.tipo === 'tu' ? 'text-white' : l.tipo === 'archivo' ? 'text-neutral-400' : l.tipo === 'ok' ? 'text-white' : 'text-neutral-300',
           ]"
         >{{ l.t }}</p>
       </div>

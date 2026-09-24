@@ -63,6 +63,9 @@ quien lee vea cómo es de verdad:
 
 Cada visual va justo después de la frase que explica, no todos juntos al final.
 
+Cómo elegir y construir esos visuales para la web: skill
+[apuntes-web](../apuntes-web/SKILL.md).
+
 ## Quita los tics de IA
 
 Delatan que un texto lo escribió (o lo pasó a lo loco por) una IA, y estorban a la

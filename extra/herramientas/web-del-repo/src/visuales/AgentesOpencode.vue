@@ -122,9 +122,9 @@ const PERMISOS = [
 ]
 
 const ESTADOS = {
-  si: { icono: Check, texto: 'sí', clase: 'text-neutral-900' },
-  pregunta: { icono: CircleHelp, texto: 'pregunta', clase: 'text-neutral-600' },
-  no: { icono: X, texto: 'no', clase: 'text-neutral-400' },
+  si: { icono: Check, texto: 'sí', clase: 'text-emerald-700' },
+  pregunta: { icono: CircleHelp, texto: 'pregunta', clase: 'text-amber-600' },
+  no: { icono: X, texto: 'no', clase: 'text-red-600' },
 }
 
 const elegido = ref('plan')
@@ -186,7 +186,7 @@ const agente = computed(() => AGENTES[elegido.value])
               >
                 <component :is="ESTADOS[agente.permisos[p.clave]].icono" class="w-3.5 h-3.5 shrink-0" />
                 {{ p.etiqueta }}
-                <span v-if="agente.permisos[p.clave] === 'pregunta'" class="text-neutral-400">(te pregunta)</span>
+                <span v-if="agente.permisos[p.clave] === 'pregunta'" class="opacity-70">(te pregunta)</span>
               </span>
             </div>
           </div>
