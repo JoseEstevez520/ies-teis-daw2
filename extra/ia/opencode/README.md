@@ -88,9 +88,3 @@ documentación oficial de librerías:
 ```
 
 Se lo pides tal cual: "usa context7 y dime cómo se hace un `watch` en Vue 3".
-
-## Ponte a prueba
-
-```visual
-autoexamen-agentes
-```

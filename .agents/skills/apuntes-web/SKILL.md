@@ -34,7 +34,6 @@ El texto sigue [apuntes-claros](../apuntes-claros/SKILL.md).
 | un fichero o comando | bloque de código con el ejemplo real |
 | piezas que encajan | cajas (una dentro de otra si una contiene a la otra) |
 | un proceso en el tiempo | pieza paso a paso |
-| comprobar si se ha entendido | autoexamen |
 
 ## Piezas visuales
 
@@ -48,7 +47,7 @@ nombre-de-la-pieza
 ````
 
 Referencias: `ModeloYHarness.vue` (cajas), `AgenteEnAccion.vue` (paso a paso),
-`AutoexamenAgentes.vue`, `HorarioSemanal.vue`. Antes de hacer una pieza, mira si basta
+`AgentesPorPasos.vue` (de menos a más), `HorarioSemanal.vue`. Antes de hacer una pieza, mira si basta
 una tabla: para Build y Plan bastó.
 
 - **Color:** uno por concepto, el mismo en toda la página. Verde / ámbar / rojo solo
@@ -58,7 +57,6 @@ una tabla: para Build y Plan bastó.
   laterales de color, datos repetidos dentro de cada caja.
 - **Móvil:** si no cabe, cambia de forma (un día cada vez, fichas en vez de esquema).
 - **Ejemplos** de clase o de este repo. Si no es literal, dilo.
-- **Autoexamen** con casos, no definiciones, y cada respuesta dice por qué.
 
 ## Meterla en la web
 
