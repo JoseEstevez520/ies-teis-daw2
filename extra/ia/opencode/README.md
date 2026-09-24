@@ -28,27 +28,24 @@ agente-en-accion
 3. Escribe `/connect` y elige **OpenCode Zen**, que tiene modelos gratis.
 4. Escribe `/init`: analiza el proyecto y te crea un `AGENTS.md`.
 
-## Agentes: los que trae y los tuyos
+## Agentes
 
-OpenCode no es un solo agente: trae varios, cada uno con sus permisos. **Build** (el de
-por defecto) y **Plan** son los dos principales, y cambias entre ellos con `Tab`. Los
-subagentes los llama el propio agente cuando le hacen falta, o tú con `@nombre`.
-
-Elige uno para ver qué puede hacer:
+Un agente es un modelo de IA con tres ajustes: **instrucciones** (qué hace y cómo),
+**permisos** (si puede editar o usar la terminal) y **cómo se le llama**. OpenCode trae
+varios, y todos son eso mismo con ajustes distintos. Elige uno y compara:
 
 ```visual
 agentes-opencode
 ```
 
-### Cuándo te haces uno propio
+- **Principal:** hablas directamente con él. Cambias de uno a otro con `Tab`.
+- **Subagente:** el agente principal le encarga una parte, la hace aparte y le devuelve
+  solo el resultado. Tú también puedes llamarlo con `@nombre`.
 
-Cuando quieres que un agente **no pueda** hacer algo, no solo pedírselo. Un agente con
-`edit: deny` no edita aunque se lo pidas, y eso es justo lo que necesitas en una práctica.
-
-- **Skill o agente:** una skill son instrucciones que el agente carga. Un agente propio
-  tiene sus propios permisos y hasta su propio modelo.
-- **Crearlo:** `opencode agent create` te pregunta qué debe hacer y qué permisos darle,
-  y te crea el `.md`. También puedes escribirlo a mano en `.opencode/agents/`.
+Hacerte uno es elegir tú esos tres ajustes: `opencode agent create` te los pregunta, o
+escribes el `.md` a mano en `.opencode/agents/`. Merece la pena cuando repites siempre
+las mismas instrucciones, o cuando quieres que **no pueda** hacer algo: un agente sin
+permiso de editar no edita aunque se lo pidas.
 
 ## `AGENTS.md`: las reglas del proyecto
 

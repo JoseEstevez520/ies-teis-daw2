@@ -1,100 +1,88 @@
 <script setup>
 import { computed, ref } from 'vue'
 import { AnimatePresence, motion } from 'motion-v'
-import { Check, CircleHelp, X } from '@lucide/vue'
+import { ArrowRight, Check, CircleHelp, X } from '@lucide/vue'
 
-// Los agentes de OpenCode como catálogo: los que trae y dos hechos para clase.
-// Al elegir uno se ve qué puede hacer (permisos), cuándo usarlo y cómo se
-// llama. Los permisos de los que vienen son los de la documentación oficial.
+// Todos los agentes son lo mismo, un modelo de IA con tres ajustes:
+// instrucciones, permisos y cómo se le llama. Al elegir uno se ven sus tres
+// ajustes, así que se nota que solo cambian eso. Los permisos de los que
+// vienen son los de la documentación oficial; los "tuyos" son ejemplos.
 
 const GRUPOS = [
-  {
-    titulo: 'Principales',
-    nota: 'hablas con ellos; cambias con Tab',
-    ids: ['build', 'plan'],
-  },
-  {
-    titulo: 'Subagentes',
-    nota: 'los llama el agente, o tú con @',
-    ids: ['general', 'explore', 'scout'],
-  },
-  {
-    titulo: 'Tuyos',
-    nota: 'un .md en .opencode/agents/',
-    ids: ['tutor', 'revisor'],
-  },
+  { titulo: 'Vienen de serie', ids: ['build', 'plan', 'explore', 'general'] },
+  { titulo: 'Ejemplos tuyos', ids: ['tutor', 'revisor', 'apuntes'] },
 ]
 
 const AGENTES = {
   build: {
     nombre: 'Build',
-    resumen: 'El de por defecto. Hace el trabajo: edita archivos y ejecuta comandos.',
+    paraQue: 'Hacer el trabajo. Es el que está activo al abrir OpenCode.',
+    instrucciones: 'Desarrolla lo que te pidan, con acceso completo.',
     permisos: { leer: 'si', editar: 'si', terminal: 'si' },
-    cuando: 'Cuando ya sabes qué quieres y quieres que lo haga.',
-    como: 'Viene seleccionado al abrir OpenCode.',
-    ejemplo: '> Añade validación al formulario de registro\n✓ RegistroForm.vue (editado)',
+    tipo: 'principal',
+    llamada: 'Activo por defecto. Tab para cambiar a otro principal.',
   },
   plan: {
     nombre: 'Plan',
-    resumen: 'Analiza y propone, pero te pregunta antes de tocar un archivo o lanzar un comando.',
+    paraQue: 'Ver qué haría antes de que lo haga.',
+    instrucciones: 'Analiza y propone un plan, sin cambiar nada por tu cuenta.',
     permisos: { leer: 'si', editar: 'pregunta', terminal: 'pregunta' },
-    cuando: 'Antes de un cambio grande, para ver qué haría sin que lo haga.',
-    como: 'Tab para pasar de Build a Plan (y otra vez Tab para volver).',
-    ejemplo:
-      '> Cuando se borre un producto, márcalo como borrado\nPropuesta:\n  1. Campo `borrado` en Producto.java\n  2. ProductoService.borrar() solo lo marca\n(Tab → Build para aplicarlo)',
-  },
-  general: {
-    nombre: 'General',
-    resumen: 'Un ayudante para tareas de varios pasos. Puede editar. Sirve para repartir trabajo en paralelo.',
-    permisos: { leer: 'si', editar: 'si', terminal: 'si' },
-    cuando: 'Cuando hay varias cosas independientes que hacer a la vez.',
-    como: 'Lo llama el agente principal, o tú: @general',
-    ejemplo: '> @general busca dónde se usa calcularTotal y cámbialo a calcularImporte',
+    tipo: 'principal',
+    llamada: 'Tab desde Build.',
   },
   explore: {
     nombre: 'Explore',
-    resumen: 'Rápido y de solo lectura: busca archivos y código sin tocar nada.',
+    paraQue: 'Encontrar cosas en un proyecto que no conoces.',
+    instrucciones: 'Busca archivos y código rápido. No modifica nada.',
     permisos: { leer: 'si', editar: 'no', terminal: 'no' },
-    cuando: 'Para entender un proyecto que no conoces.',
-    como: 'Lo llama el agente principal, o tú: @explore',
-    ejemplo: '> @explore ¿dónde se configura la base de datos en este proyecto?',
+    tipo: 'subagente',
+    llamada: 'Lo llama Build cuando necesita buscar, o tú con @explore.',
+    encargo: {
+      pide: '¿Dónde se configura la base de datos?',
+      devuelve: 'En src/main/resources/application.properties',
+    },
   },
-  scout: {
-    nombre: 'Scout',
-    resumen: 'De solo lectura, para fuera de tu proyecto: documentación y código de librerías.',
-    permisos: { leer: 'si', editar: 'no', terminal: 'no' },
-    cuando: 'Cuando la duda es sobre una librería, no sobre tu código.',
-    como: 'Lo llama el agente principal, o tú: @scout',
-    ejemplo: '> @scout ¿cómo implementa vue-router el guard beforeEach?',
+  general: {
+    nombre: 'General',
+    paraQue: 'Repartir una tarea grande en partes que se hacen a la vez.',
+    instrucciones: 'Resuelve tareas de varios pasos. Puede editar.',
+    permisos: { leer: 'si', editar: 'si', terminal: 'si' },
+    tipo: 'subagente',
+    llamada: 'Lo llama Build para trabajar en paralelo, o tú con @general.',
+    encargo: {
+      pide: 'Renombra calcularTotal a calcularImporte en todo el proyecto',
+      devuelve: 'Hecho: 6 archivos cambiados',
+    },
   },
   tutor: {
     nombre: 'tutor',
     propio: true,
-    resumen: 'Te explica y te hace preguntas, pero nunca escribe el código por ti.',
+    paraQue: 'Las prácticas: te explica, pero no puede resolverlas por ti.',
+    instrucciones: 'Explica el concepto y hazme preguntas. Nunca me des el código.',
     permisos: { leer: 'si', editar: 'no', terminal: 'no' },
-    cuando: 'Para las prácticas: aprendes tú, y no puede resolverlas aunque se lo pidas.',
-    como: 'Tab hasta llegar a él (es principal).',
-    fichero: `.opencode/agents/tutor.md`,
+    tipo: 'principal',
+    llamada: 'Tab hasta llegar a él.',
+    fichero: '.opencode/agents/tutor.md',
     definicion: `---
-description: Explica conceptos y guía sin escribir la solución
+description: Explica y guía sin escribir la solución
 mode: primary
 permission:
   edit: deny
   bash: deny
 ---
 
-Eres un profesor de 2º DAW. Explica el concepto, haz
-preguntas que me lleven a la solución y revisa lo que
-escribo yo. Nunca me des el código de la práctica.`,
+Explica el concepto y hazme preguntas que me lleven
+a la solución. Nunca me des el código de la práctica.`,
   },
   revisor: {
     nombre: 'revisor',
     propio: true,
-    resumen: 'Revisa tu práctica antes de entregarla: errores, casos que se te escapan, nombres.',
-    permisos: { leer: 'si', editar: 'no', terminal: 'no' },
-    cuando: 'Justo antes de entregar, o cuando algo "funciona" pero no sabes si está bien.',
-    como: 'Tú: @revisor, o lo llama Build solo si le pides revisar.',
-    fichero: `.opencode/agents/revisor.md`,
+    paraQue: 'Revisar tu práctica antes de entregarla.',
+    instrucciones: 'Revisa como el profesor: errores, casos límite, nombres. No arregles nada.',
+    permisos: { leer: 'si', editar: 'no', terminal: 'si' },
+    tipo: 'subagente',
+    llamada: 'Tú con @revisor, o Build si le pides una revisión.',
+    fichero: '.opencode/agents/revisor.md',
     definicion: `---
 description: Revisa código de prácticas antes de entregar
 mode: subagent
@@ -106,17 +94,36 @@ Revisa el código como lo haría el profesor: errores,
 casos límite, nombres poco claros. Señala el problema
 y la línea; no lo arregles tú.`,
   },
+  apuntes: {
+    nombre: 'apuntes',
+    propio: true,
+    paraQue: 'Pasar a limpio tus notas de clase en este repo.',
+    instrucciones: 'Escribe apuntes siguiendo la skill apuntes-claros.',
+    permisos: { leer: 'si', editar: 'si', terminal: 'no' },
+    tipo: 'subagente',
+    llamada: 'Tú con @apuntes y tus notas pegadas.',
+    fichero: '.opencode/agents/apuntes.md',
+    definicion: `---
+description: Pasa notas de clase a un apunte del repo
+mode: subagent
+permission:
+  bash: deny
+---
+
+Convierte mis notas en un apunte en modulos/<módulo>/.
+Sigue la skill apuntes-claros.`,
+  },
 }
 
 const PERMISOS = [
-  { clave: 'leer', etiqueta: 'Leer archivos' },
-  { clave: 'editar', etiqueta: 'Editar archivos' },
-  { clave: 'terminal', etiqueta: 'Usar la terminal' },
+  { clave: 'leer', etiqueta: 'Leer' },
+  { clave: 'editar', etiqueta: 'Editar' },
+  { clave: 'terminal', etiqueta: 'Terminal' },
 ]
 
 const ESTADOS = {
   si: { icono: Check, texto: 'sí', clase: 'text-neutral-900' },
-  pregunta: { icono: CircleHelp, texto: 'te pregunta', clase: 'text-neutral-600' },
+  pregunta: { icono: CircleHelp, texto: 'pregunta', clase: 'text-neutral-600' },
   no: { icono: X, texto: 'no', clase: 'text-neutral-400' },
 }
 
@@ -125,20 +132,17 @@ const agente = computed(() => AGENTES[elegido.value])
 </script>
 
 <template>
-  <div class="rounded-xl border border-neutral-200 bg-white overflow-hidden grid md:grid-cols-[240px_1fr]">
-    <!-- Catálogo -->
+  <div class="rounded-xl border border-neutral-200 bg-white overflow-hidden grid md:grid-cols-[200px_1fr]">
+    <!-- Lista -->
     <div class="border-b md:border-b-0 md:border-r border-neutral-200 bg-neutral-50 p-4 flex flex-col gap-5">
-      <div v-for="grupo in GRUPOS" :key="grupo.titulo" class="flex flex-col gap-1.5">
-        <div>
-          <p class="text-xs font-semibold text-neutral-900 uppercase tracking-wide">{{ grupo.titulo }}</p>
-          <p class="text-[11px] text-neutral-500">{{ grupo.nota }}</p>
-        </div>
+      <div v-for="grupo in GRUPOS" :key="grupo.titulo" class="flex flex-col gap-1">
+        <p class="text-[11px] font-semibold text-neutral-500 uppercase tracking-wide mb-1">{{ grupo.titulo }}</p>
         <button
           v-for="id in grupo.ids"
           :key="id"
           type="button"
           @click="elegido = id"
-          class="rounded-lg border px-3 py-2 text-left text-sm transition-colors duration-150"
+          class="flex items-center justify-between rounded-lg border px-3 py-1.5 text-left text-sm transition-colors duration-150"
           :class="
             elegido === id
               ? 'border-neutral-900 bg-white text-neutral-900 font-medium'
@@ -146,11 +150,12 @@ const agente = computed(() => AGENTES[elegido.value])
           "
         >
           <span :class="AGENTES[id].propio ? 'font-mono text-[13px]' : ''">{{ AGENTES[id].nombre }}</span>
+          <span class="text-[10px] text-neutral-400">{{ AGENTES[id].tipo }}</span>
         </button>
       </div>
     </div>
 
-    <!-- Detalle -->
+    <!-- Los tres ajustes del agente elegido -->
     <AnimatePresence mode="wait">
       <motion.div
         :key="elegido"
@@ -158,38 +163,62 @@ const agente = computed(() => AGENTES[elegido.value])
         :animate="{ opacity: 1, x: 0 }"
         :exit="{ opacity: 0, x: -8 }"
         :transition="{ duration: 0.18 }"
-        class="p-5 flex flex-col gap-5 min-w-0"
+        class="p-5 flex flex-col gap-4 min-w-0"
       >
-        <div class="flex flex-col gap-1">
+        <div class="flex flex-col gap-0.5">
           <p class="text-lg font-semibold text-neutral-900" :class="agente.propio ? 'font-mono' : ''">{{ agente.nombre }}</p>
-          <p class="text-sm text-neutral-700 leading-relaxed">{{ agente.resumen }}</p>
+          <p class="text-sm text-neutral-700">{{ agente.paraQue }}</p>
         </div>
 
-        <div class="grid grid-cols-3 rounded-lg border border-neutral-200 divide-x divide-neutral-200">
-          <div v-for="p in PERMISOS" :key="p.clave" class="px-3 py-2.5 flex flex-col gap-1">
-            <p class="text-[11px] text-neutral-500">{{ p.etiqueta }}</p>
-            <p class="flex items-center gap-1.5 text-sm font-medium" :class="ESTADOS[agente.permisos[p.clave]].clase">
-              <component :is="ESTADOS[agente.permisos[p.clave]].icono" class="w-3.5 h-3.5 shrink-0" />
-              {{ ESTADOS[agente.permisos[p.clave]].texto }}
-            </p>
+        <div class="flex flex-col rounded-lg border border-neutral-200 divide-y divide-neutral-200 text-sm">
+          <div class="grid grid-cols-[100px_1fr] gap-3 px-4 py-3">
+            <p class="text-neutral-500">Instrucciones</p>
+            <p class="text-neutral-900">"{{ agente.instrucciones }}"</p>
+          </div>
+          <div class="grid grid-cols-[100px_1fr] gap-3 px-4 py-3">
+            <p class="text-neutral-500">Permisos</p>
+            <div class="flex flex-wrap gap-x-5 gap-y-1">
+              <span
+                v-for="p in PERMISOS"
+                :key="p.clave"
+                class="flex items-center gap-1.5"
+                :class="ESTADOS[agente.permisos[p.clave]].clase"
+              >
+                <component :is="ESTADOS[agente.permisos[p.clave]].icono" class="w-3.5 h-3.5 shrink-0" />
+                {{ p.etiqueta }}
+                <span v-if="agente.permisos[p.clave] === 'pregunta'" class="text-neutral-400">(te pregunta)</span>
+              </span>
+            </div>
+          </div>
+          <div class="grid grid-cols-[100px_1fr] gap-3 px-4 py-3">
+            <p class="text-neutral-500">Se llama</p>
+            <p class="text-neutral-900">{{ agente.llamada }}</p>
           </div>
         </div>
 
-        <dl class="grid sm:grid-cols-[110px_1fr] gap-x-4 gap-y-2 text-sm">
-          <dt class="text-neutral-500">Cuándo</dt>
-          <dd class="text-neutral-800">{{ agente.cuando }}</dd>
-          <dt class="text-neutral-500">Cómo se usa</dt>
-          <dd class="text-neutral-800">{{ agente.como }}</dd>
-        </dl>
+        <!-- Subagente: el encargo de ida y vuelta -->
+        <div v-if="agente.encargo" class="grid sm:grid-cols-[1fr_auto_1fr_auto_1fr] items-stretch gap-2 text-xs [&>svg]:self-center [&>svg]:max-sm:rotate-90 [&>svg]:max-sm:justify-self-center">
+          <div class="rounded-lg border border-neutral-200 p-3">
+            <p class="text-neutral-500 mb-1">Build le encarga</p>
+            <p class="text-neutral-900">{{ agente.encargo.pide }}</p>
+          </div>
+          <ArrowRight class="w-4 h-4 text-neutral-400" />
+          <div class="rounded-lg border border-neutral-900 p-3">
+            <p class="text-neutral-500 mb-1">{{ agente.nombre }} trabaja aparte</p>
+            <p class="text-neutral-900">sin llenar la conversación principal</p>
+          </div>
+          <ArrowRight class="w-4 h-4 text-neutral-400" />
+          <div class="rounded-lg border border-neutral-200 p-3">
+            <p class="text-neutral-500 mb-1">Devuelve solo esto</p>
+            <p class="text-neutral-900">{{ agente.encargo.devuelve }}</p>
+          </div>
+        </div>
 
+        <!-- Tuyo: el fichero que lo define -->
         <div v-if="agente.definicion" class="rounded-lg border border-neutral-200 overflow-hidden">
           <p class="px-4 py-2 bg-neutral-50 border-b border-neutral-200 text-xs text-neutral-500 font-mono">{{ agente.fichero }}</p>
           <pre class="p-4 overflow-x-auto text-xs font-mono text-neutral-800 leading-relaxed"><code>{{ agente.definicion }}</code></pre>
         </div>
-        <pre
-          v-else
-          class="rounded-lg bg-neutral-900 p-4 overflow-x-auto text-xs font-mono text-neutral-200 leading-relaxed whitespace-pre-wrap"
-        ><code>{{ agente.ejemplo }}</code></pre>
       </motion.div>
     </AnimatePresence>
   </div>
