@@ -1,83 +1,33 @@
 <script setup>
-import { computed, onBeforeUnmount, ref } from 'vue'
-import { AnimatePresence, motion } from 'motion-v'
-import { Brain, Pause, Play, RotateCcw, User, Wrench } from '@lucide/vue'
+import { ref } from 'vue'
+import { ArrowLeftRight, Brain, FileCode, FilePen, Plug, SquareTerminal, User, X } from '@lucide/vue'
 
-// La misma petición, con y sin harness. Sin harness el modelo solo puede
-// contestar texto; con harness, el modelo piensa y el harness hace, en bucle.
+// Modelo y harness como cajas: sin harness, el modelo solo habla contigo y tu
+// proyecto le queda fuera; con harness, el modelo va dentro de una caja más
+// grande que sí tiene manos para llegar a tu proyecto.
 // Colores: modelo violeta, harness cian, en toda la página.
 
-const COLOR = { modelo: '#7c3aed', harness: '#0891b2', tu: '#171717' }
-
-const PETICION = 'Arregla el error del formulario de registro'
-
-const SOLO_MODELO = [
-  { quien: 'tu', texto: PETICION },
-  {
-    quien: 'modelo',
-    texto: 'No puedo ver tu proyecto. Pégame el código del formulario y el error, y te digo qué cambiar.',
-  },
-  { quien: 'tu', texto: '(copias el código, lo pegas, copias la respuesta, la pegas en tu archivo, lo pruebas...)' },
+const HERRAMIENTAS = [
+  { icono: FileCode, texto: 'Lee archivos' },
+  { icono: FilePen, texto: 'Edita' },
+  { icono: SquareTerminal, texto: 'Ejecuta comandos' },
+  { icono: Plug, texto: 'MCP' },
 ]
-
-const CON_HARNESS = [
-  { quien: 'tu', texto: PETICION },
-  { quien: 'harness', texto: 'Busca y lee RegistroForm.vue. Se lo pasa al modelo.' },
-  { quien: 'modelo', texto: 'No se valida el email. Antes de tocar nada: ejecuta los tests.' },
-  { quien: 'harness', texto: 'Ejecuta npm test → 1 test falla: "email inválido aceptado". Se lo pasa.' },
-  { quien: 'modelo', texto: 'Confirmado. Cambia la validación del campo email así: …' },
-  { quien: 'harness', texto: 'Edita RegistroForm.vue y vuelve a ejecutar los tests → todos pasan.' },
-  { quien: 'modelo', texto: 'Listo: el email se valida y los tests pasan.' },
-]
-
-const QUIEN = {
-  tu: { etiqueta: 'Tú', icono: User },
-  modelo: { etiqueta: 'Modelo', icono: Brain, nota: 'piensa' },
-  harness: { etiqueta: 'Harness', icono: Wrench, nota: 'hace' },
-}
 
 const modo = ref('harness')
-const mensajes = computed(() => (modo.value === 'harness' ? CON_HARNESS : SOLO_MODELO))
-const visibles = ref(CON_HARNESS.length)
-
-function cambiarModo(m) {
-  parar()
-  modo.value = m
-  visibles.value = mensajes.value.length
-}
-
-const reproduciendo = ref(false)
-let temporizador = null
-function reproducir() {
-  if (reproduciendo.value) return parar()
-  visibles.value = 1
-  reproduciendo.value = true
-  temporizador = setInterval(() => {
-    if (visibles.value >= mensajes.value.length) return parar()
-    visibles.value++
-  }, 1400)
-}
-function parar() {
-  reproduciendo.value = false
-  clearInterval(temporizador)
-}
-onBeforeUnmount(parar)
-
-const vueltas = computed(() => CON_HARNESS.filter((m) => m.quien === 'harness').length)
 </script>
 
 <template>
   <div class="rounded-xl border border-neutral-200 bg-white overflow-hidden">
-    <!-- Selector -->
     <div class="flex border-b border-neutral-200 bg-neutral-50 p-1.5 gap-1.5">
       <button
         v-for="m in [
           { id: 'modelo', texto: 'Solo el modelo' },
-          { id: 'harness', texto: 'Modelo + harness' },
+          { id: 'harness', texto: 'Modelo dentro de un harness' },
         ]"
         :key="m.id"
         type="button"
-        @click="cambiarModo(m.id)"
+        @click="modo = m.id"
         class="flex-1 rounded-lg px-3 py-2 text-sm transition-colors duration-150"
         :class="modo === m.id ? 'bg-white border border-neutral-200 text-neutral-900 font-medium' : 'text-neutral-500 hover:text-neutral-900'"
       >
@@ -85,60 +35,81 @@ const vueltas = computed(() => CON_HARNESS.filter((m) => m.quien === 'harness').
       </button>
     </div>
 
-    <div class="p-5 flex flex-col gap-4">
-      <!-- Conversación -->
-      <div class="flex flex-col gap-2 min-h-72">
-        <AnimatePresence>
-          <motion.div
-            v-for="(m, i) in mensajes.slice(0, visibles)"
-            :key="modo + i"
-            :initial="{ opacity: 0, y: 6 }"
-            :animate="{ opacity: 1, y: 0 }"
-            :transition="{ duration: 0.2 }"
-            class="flex gap-3 items-start"
-            :class="m.quien === 'harness' ? 'sm:pl-16' : m.quien === 'modelo' ? 'sm:pr-16' : ''"
+    <div class="p-6 flex flex-col gap-6">
+      <div class="flex flex-col md:flex-row items-stretch md:items-center gap-3">
+        <!-- Tú -->
+        <div class="flex md:flex-col items-center justify-center gap-2 rounded-xl bg-neutral-100 px-4 py-3 md:w-24">
+          <User class="w-5 h-5 text-neutral-900" />
+          <span class="text-sm font-medium text-neutral-900">Tú</span>
+        </div>
+
+        <ArrowLeftRight class="w-4 h-4 text-neutral-400 self-center shrink-0 max-md:rotate-90" />
+
+        <!-- Harness (o nada) con el modelo dentro -->
+        <div
+          class="flex-1 rounded-xl p-3 flex flex-col gap-3 transition-colors duration-300"
+          :style="{ backgroundColor: modo === 'harness' ? 'color-mix(in srgb, #0891b2 10%, white)' : 'transparent' }"
+        >
+          <p
+            class="text-xs font-semibold transition-opacity duration-300"
+            :class="modo === 'harness' ? 'opacity-100' : 'opacity-0'"
+            style="color: #0891b2"
           >
-            <span
-              class="flex items-center gap-1.5 shrink-0 w-24 pt-2 text-xs font-medium"
-              :style="{ color: COLOR[m.quien] }"
+            Harness · OpenCode, Claude Code, Codex
+          </p>
+
+          <div class="rounded-lg px-4 py-4 flex items-center gap-3" style="background-color: color-mix(in srgb, #7c3aed 12%, white)">
+            <Brain class="w-5 h-5 shrink-0" style="color: #7c3aed" />
+            <div class="flex flex-col">
+              <span class="text-sm font-semibold" style="color: #7c3aed">Modelo</span>
+              <span class="text-xs text-neutral-600">GPT, Claude, Gemini, Qwen…</span>
+            </div>
+          </div>
+
+          <div
+            class="grid grid-cols-2 gap-2 transition-opacity duration-300"
+            :class="modo === 'harness' ? 'opacity-100' : 'opacity-0'"
+          >
+            <div
+              v-for="h in HERRAMIENTAS"
+              :key="h.texto"
+              class="flex items-center gap-2 rounded-lg bg-white px-3 py-2 text-xs text-neutral-800"
             >
-              <component :is="QUIEN[m.quien].icono" class="w-3.5 h-3.5" />
-              {{ QUIEN[m.quien].etiqueta }}
-            </span>
-            <p
-              class="flex-1 rounded-lg border-l-2 px-3 py-2 text-sm leading-relaxed"
-              :class="m.quien === 'tu' ? 'bg-neutral-100 text-neutral-900' : 'bg-neutral-50 text-neutral-800'"
-              :style="{ borderColor: COLOR[m.quien] }"
-            >
-              {{ m.texto }}
-            </p>
-          </motion.div>
-        </AnimatePresence>
+              <component :is="h.icono" class="w-3.5 h-3.5 shrink-0" style="color: #0891b2" />
+              {{ h.texto }}
+            </div>
+          </div>
+        </div>
+
+        <!-- Conexión con el proyecto -->
+        <ArrowLeftRight
+          v-if="modo === 'harness'"
+          class="w-4 h-4 self-center shrink-0 max-md:rotate-90"
+          style="color: #0891b2"
+        />
+        <X v-else class="w-4 h-4 text-neutral-300 self-center shrink-0" />
+
+        <!-- Tu proyecto -->
+        <div
+          class="flex md:flex-col items-center justify-center gap-2 rounded-xl px-4 py-3 md:w-28 transition-colors duration-300"
+          :class="modo === 'harness' ? 'bg-neutral-100 text-neutral-900' : 'bg-neutral-50 text-neutral-300'"
+        >
+          <FileCode class="w-5 h-5" />
+          <span class="text-sm font-medium text-center">Tu proyecto</span>
+        </div>
       </div>
 
-      <!-- Conclusión del modo -->
-      <p class="text-sm text-neutral-700 leading-relaxed border-t border-neutral-200 pt-4">
+      <p class="text-sm text-neutral-700 leading-relaxed">
         <template v-if="modo === 'modelo'">
-          El modelo solo recibe texto y devuelve texto. <strong class="text-neutral-900">Las manos las pones tú</strong>:
-          copiar, pegar, ejecutar, volver a preguntar.
+          El modelo no llega a tu proyecto: <strong class="text-neutral-900">las manos las pones tú</strong>
+          (copiar, pegar, ejecutar).
         </template>
         <template v-else>
-          <span :style="{ color: COLOR.modelo }" class="font-medium">El modelo piensa</span> y
-          <span :style="{ color: COLOR.harness }" class="font-medium">el harness hace</span>, pasándose el
-          resultado {{ vueltas }} veces hasta acabar. Tú solo pides y revisas.
+          <span class="font-medium" style="color: #7c3aed">El modelo decide</span>,
+          <span class="font-medium" style="color: #0891b2">el harness lo hace</span>, y repiten hasta acabar: eso
+          es un <strong class="text-neutral-900">agente</strong>.
         </template>
       </p>
-
-      <div class="flex justify-end">
-        <button
-          type="button"
-          @click="reproducir"
-          class="flex items-center gap-1.5 rounded-lg border border-neutral-200 px-3 py-1.5 text-sm text-neutral-700 hover:bg-neutral-50"
-        >
-          <component :is="reproduciendo ? Pause : visibles >= mensajes.length ? RotateCcw : Play" class="w-3.5 h-3.5" />
-          {{ reproduciendo ? 'Pausar' : 'Verlo paso a paso' }}
-        </button>
-      </div>
     </div>
   </div>
 </template>

@@ -1,28 +1,20 @@
 # Agentes de IA con OpenCode
 
 Un agente de IA para programar es una IA que trabaja dentro de tu proyecto: lee
-archivos, ejecuta comandos y edita código. Aquí lo aprendemos con [OpenCode](https://opencode.ai/)
-porque es gratis y cualquiera puede instalarlo, pero lo que aprendas vale igual para
-Claude Code o Codex.
+archivos, ejecuta comandos y edita código. Lo aprendemos con [OpenCode](https://opencode.ai/)
+porque es gratis; lo mismo vale para Claude Code o Codex.
 
 ## Modelo, harness y agente
 
-Son tres palabras que se mezclan mucho:
-
 - **Modelo:** la IA en sí (GPT, Claude, Gemini, Qwen...). Recibe texto y devuelve texto.
   No ve tus archivos ni ejecuta nada.
-- **Harness:** el programa que envuelve al modelo y le da manos. Lee tus archivos,
-  ejecuta comandos, le pasa los resultados al modelo y repite. OpenCode, Claude Code y
-  Codex son harnesses.
-- **Agente:** un modelo dentro de un harness, trabajando en bucle hasta acabar.
-
-La diferencia se ve con la misma petición. Cambia entre las dos pestañas:
+- **Harness:** el programa que envuelve al modelo y le da manos: lee archivos, edita y
+  ejecuta comandos. OpenCode, Claude Code y Codex son harnesses.
+- **Agente:** un modelo dentro de un harness, en bucle hasta acabar la tarea.
 
 ```visual
 modelo-y-harness
 ```
-
-Los tres harnesses más usados:
 
 | Harness | De quién | Qué necesitas |
 |---|---|---|
@@ -30,23 +22,16 @@ Los tres harnesses más usados:
 | Claude Code | Anthropic | suscripción de Claude o API |
 | Codex | OpenAI | cuenta de ChatGPT o API |
 
-Las ideas de esta página (reglas del proyecto, skills, MCP) son las mismas en los tres.
-Solo cambia algún nombre de fichero: Claude Code, por ejemplo, lee `CLAUDE.md`.
+Lo que sigue (`AGENTS.md`, skills, MCP) funciona igual en los tres. Claude Code usa
+`CLAUDE.md` en vez de `AGENTS.md`.
 
 ## Un agente trabajando, paso a paso
 
-Pulsa **Reproducir** o ve paso a paso: se ilumina la pieza que entra en juego en cada
-momento. El caso es de este mismo repo (la terminal está simplificada): pedirle un apunte.
+Caso de este repo: pedirle un apunte. La terminal está simplificada.
 
 ```visual
 agente-en-accion
 ```
-
-| Pieza | Dónde va | Cuándo la usa el agente |
-|---|---|---|
-| `AGENTS.md` | raíz del proyecto | siempre, al arrancar |
-| Skill | `.agents/skills/<nombre>/SKILL.md` | solo cuando la tarea encaja con su descripción |
-| MCP | `opencode.json` | cuando necesita algo de fuera de tu proyecto |
 
 ## Instalar y arrancar
 
@@ -58,10 +43,8 @@ agente-en-accion
 
 ## Los agentes de OpenCode
 
-Dentro de OpenCode, cada "agente" es el mismo modelo y el mismo harness con tres ajustes:
-**instrucciones** (qué hace y cómo), **permisos** (si puede editar o usar la terminal) y
-**cómo se le llama**. Trae varios de serie, y puedes hacerte los tuyos. Elige uno y
-compara:
+En OpenCode, cada agente es el mismo modelo con tres ajustes: **instrucciones**,
+**permisos** y **cómo se le llama**. Elige uno y compara:
 
 ```visual
 agentes-opencode
@@ -71,15 +54,14 @@ agentes-opencode
 - **Subagente:** el agente principal le encarga una parte, la hace aparte y le devuelve
   solo el resultado. Tú también puedes llamarlo con `@nombre`.
 
-Hacerte uno es elegir tú esos tres ajustes: `opencode agent create` te los pregunta, o
-escribes el `.md` a mano en `.opencode/agents/`. Merece la pena cuando repites siempre
-las mismas instrucciones, o cuando quieres que **no pueda** hacer algo: un agente sin
-permiso de editar no edita aunque se lo pidas.
+Para hacerte uno, `opencode agent create` te pregunta los tres ajustes, o escribes el `.md`
+en `.opencode/agents/`. Merece la pena cuando quieres que **no pueda** hacer algo: sin
+permiso de editar, no edita aunque se lo pidas.
 
 ## `AGENTS.md`: las reglas del proyecto
 
-Es un `.md` normal en la raíz del proyecto. El agente lo lee cada vez que arranca, así
-que no tienes que repetirle lo mismo en cada conversación. Ejemplo para una práctica:
+Un `.md` en la raíz del proyecto que el agente lee siempre al arrancar. Ejemplo para una
+práctica:
 
 ```markdown
 # Práctica Spring: tienda
@@ -95,12 +77,8 @@ proyectos está `~/.config/opencode/AGENTS.md`.
 
 ## Skills: instrucciones que carga solo si hacen falta
 
-La diferencia con `AGENTS.md`: de cada skill el agente solo ve el nombre y la
-descripción. El contenido entero lo carga cuando la tarea encaja (paso 3 del esquema de
-arriba).
-
-Una skill es una carpeta con un `SKILL.md`. El frontmatter con `name` y `description` es
-obligatorio:
+De cada skill el agente solo ve el nombre y la descripción, y carga el resto cuando la
+tarea encaja. Es una carpeta con un `SKILL.md`; `name` y `description` son obligatorios:
 
 ```markdown
 ---
@@ -115,14 +93,14 @@ description: Estilo de escritura para cualquier .md de este repo. Aplícalo siem
 - Código en bloques, nunca descrito en prosa.
 ```
 
-Este repo ya tiene una en `.agents/skills/apuntes-claros/`, así que si abres OpenCode aquí
-la usa sin configurar nada.
+Este repo tiene una en `.agents/skills/apuntes-claros/`: OpenCode la usa sin configurar
+nada.
 
 ## MCP: herramientas de fuera
 
-Un servidor MCP le da al agente acceso a algo que no está en tu proyecto: documentación
-actualizada, tu GitHub, una base de datos... Se añade en `opencode.json`, en la raíz del
-proyecto. Ejemplo con Context7, que busca en la documentación oficial de librerías:
+Un servidor MCP conecta al agente con algo de fuera de tu proyecto: documentación, tu
+GitHub, una base de datos. Va en `opencode.json`. Ejemplo con Context7, que busca en la
+documentación oficial de librerías:
 
 ```json
 {
@@ -136,8 +114,7 @@ proyecto. Ejemplo con Context7, que busca en la documentación oficial de librer
 }
 ```
 
-Luego se lo pides tal cual: "usa context7 y dime cómo se hace un `watch` en Vue 3". Con
-`opencode mcp list` ves qué servidores tiene conectados.
+Se lo pides tal cual: "usa context7 y dime cómo se hace un `watch` en Vue 3".
 
 ## Ponte a prueba
 
