@@ -5,6 +5,8 @@ Copilot, ChatGPT...) en el día a día de clase.
 
 ## Para empezar
 
+- **Sin parálisis por análisis.** No hace falta saber cómo se hace algo antes de empezar:
+  arranca, pregúntale a la IA cómo se hace y tira. Lo vas corrigiendo sobre la marcha.
 - **No le pidas la solución, pídele que explique.** Si el asistente te da el código directo,
   aprendes menos y no vas a poder defenderlo en un examen o en una entrevista. Pídele que te
   explique el concepto o que revise lo que ya has hecho tú.

@@ -114,3 +114,10 @@ por cada apunte.
 
 Los bloques ```` ```mermaid ```` se pintan como diagrama (`DiagramaMermaid.vue`), con la
 paleta neutra de arriba. Mermaid solo se descarga en las páginas que tienen alguno.
+
+**Piezas visuales interactivas** (`src/visuales/`): para lo que se entiende mejor tocándolo
+que leyéndolo (un proceso paso a paso, un autoexamen). Son componentes Vue hechos a mano
+que el `.md` mete con un bloque ```` ```visual ```` y el nombre de la pieza dentro,
+registrado en `src/visuales/index.js`. El resto de la página sigue saliendo del `.md`.
+Ejemplos de referencia: `AgenteEnAccion.vue` (esquema que se ilumina + terminal que
+avanza) y `AutoexamenAgentes.vue`.

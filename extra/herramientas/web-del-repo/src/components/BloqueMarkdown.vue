@@ -2,6 +2,7 @@
 import { AlertTriangle, Info, Terminal } from '@lucide/vue'
 import DiagramaMermaid from './DiagramaMermaid.vue'
 import TarjetaInterna from './TarjetaInterna.vue'
+import { VISUALES } from '../visuales/index.js'
 import TarjetaRecurso from './TarjetaRecurso.vue'
 import TarjetasMixtas from './TarjetasMixtas.vue'
 
@@ -24,6 +25,11 @@ defineProps({
     <component :is="bloque.variante === 'nota' ? Info : AlertTriangle" class="w-4 h-4 text-neutral-900 shrink-0 mt-0.5" />
     <p class="text-sm text-neutral-700 leading-relaxed" v-html="bloque.html" />
   </div>
+
+  <component
+    :is="VISUALES[bloque.codigo.trim()]"
+    v-else-if="bloque.tipo === 'codigo' && bloque.lenguaje === 'visual' && VISUALES[bloque.codigo.trim()]"
+  />
 
   <DiagramaMermaid v-else-if="bloque.tipo === 'codigo' && bloque.lenguaje === 'mermaid'" :codigo="bloque.codigo" />
 

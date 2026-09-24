@@ -7,14 +7,11 @@ nada. Lo que practiques aquí vale igual en Claude Code, Codex o Copilot.
 
 ## Cómo encaja todo
 
-```mermaid
-flowchart LR
-    tu([Tú]) -->|le pides algo| agente[OpenCode]
-    agente <-->|piensa y responde| modelo[(Modelo de IA)]
-    reglas["AGENTS.md<br/>(siempre)"] --> agente
-    skills["Skills<br/>(solo si hacen falta)"] -.-> agente
-    agente <-->|lee y edita| codigo[Tus archivos]
-    agente <-->|usa| mcp["Servidores MCP<br/>(docs, GitHub, BD...)"]
+Pulsa **Reproducir** o ve paso a paso: se ilumina la pieza que entra en juego en cada
+momento. El caso es de este mismo repo (la terminal está simplificada): pedirle un apunte.
+
+```visual
+agente-en-accion
 ```
 
 | Pieza | Dónde va | Cuándo la usa el agente |
@@ -83,19 +80,8 @@ proyectos está `~/.config/opencode/AGENTS.md`.
 ## Skills: instrucciones que carga solo si hacen falta
 
 La diferencia con `AGENTS.md`: de cada skill el agente solo ve el nombre y la
-descripción. El contenido entero lo carga cuando la tarea encaja.
-
-```mermaid
-sequenceDiagram
-    actor Tú
-    participant A as Agente
-    participant S as Skill apuntes-claros
-    Tú->>A: Escríbeme un apunte sobre v-model
-    Note over A: Ve la descripción: "estilo para<br/>cualquier .md de este repo"
-    A->>S: La carga
-    S-->>A: Reglas de estilo
-    A->>Tú: Apunte escrito con ese estilo
-```
+descripción. El contenido entero lo carga cuando la tarea encaja (paso 3 del esquema de
+arriba).
 
 Una skill es una carpeta con un `SKILL.md`. El frontmatter con `name` y `description` es
 obligatorio:
@@ -136,3 +122,9 @@ proyecto. Ejemplo con Context7, que busca en la documentación oficial de librer
 
 Luego se lo pides tal cual: "usa context7 y dime cómo se hace un `watch` en Vue 3". Con
 `opencode mcp list` ves qué servidores tiene conectados.
+
+## Ponte a prueba
+
+```visual
+autoexamen-agentes
+```
