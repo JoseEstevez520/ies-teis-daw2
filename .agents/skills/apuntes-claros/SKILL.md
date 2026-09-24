@@ -49,22 +49,10 @@ Un bloque de texto largo se salta. Usa:
 - **Listas de hasta 5 puntos.** Si tienes más, agrúpalos bajo sub-encabezados.
 - **Código en bloques**, nunca descrito en prosa cuando se puede pegar directamente.
 
-## Enséñalo, no solo lo cuentes
+## Enséñalo
 
-Una lista de definiciones se lee y se olvida. Si un concepto es nuevo para la clase, que
-quien lee vea cómo es de verdad:
-
-- **Un ejemplo real** del fichero, comando o salida, en un bloque de código. Mejor de
-  algo de clase (una práctica de Spring o de Vue) que genérico.
-- **Un diagrama Mermaid** (bloque ```` ```mermaid ````) cuando hay piezas que se
-  relacionan o pasos en orden. GitHub y la web del repo lo pintan solos.
-- **"Así se ve"**: una sesión o pantalla de ejemplo, marcada como simplificada si no es
-  literal.
-
-Cada visual va justo después de la frase que explica, no todos juntos al final.
-
-Cómo elegir y construir esos visuales para la web: skill
-[apuntes-web](../apuntes-web/SKILL.md).
+Un concepto nuevo lleva un ejemplo real o un visual, justo después de la frase que lo
+explica. Cómo hacerlo en la web: [apuntes-web](../apuntes-web/SKILL.md).
 
 ## Quita los tics de IA
 
