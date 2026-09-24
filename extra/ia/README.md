@@ -21,24 +21,17 @@ curso.
 
 ## Empezar con agentes: OpenCode
 
-[OpenCode](https://opencode.ai/) es un agente de código para la terminal. Sirve para
-iniciarse en trabajar con agentes sin pagar nada:
+[OpenCode](https://opencode.ai/) es un agente de código para la terminal, gratis y con
+modelos gratuitos incluidos. Con él practicas lo mismo que luego usan Claude Code, Codex
+o Copilot:
 
-- **Gratis**: open source y con modelos gratuitos incluidos, no necesitas suscripción.
-- **`AGENTS.md`**: lo lee al arrancar, así que puedes practicar a darle reglas a un
-  agente por proyecto.
-- **Skills**: instrucciones reutilizables que el agente carga cuando hacen falta (como
-  `apuntes-claros` en este repo).
-- **MCP**: le conectas servidores externos (GitHub, una base de datos, el navegador...)
-  para que use herramientas más allá de leer y editar archivos.
-
-Lo que aprendas aquí vale igual para Claude Code, Codex o Copilot: usan los mismos
-conceptos.
+- **`AGENTS.md`**: las reglas del proyecto, que el agente lee al arrancar.
+- **Skills**: instrucciones que el agente carga solo cuando le hacen falta, como
+  `apuntes-claros` en este repo.
+- **MCP**: servidores que le dan herramientas extra, por ejemplo acceso a GitHub o a una
+  base de datos.
 
 ## Recursos
 
 - [How I Use AI to Learn Things](https://www.youtube.com/watch?v=kzcI5F4tGiU) — usar la IA
   para aprender algo nuevo, no para que te lo resuelva.
-- [OpenCode](https://opencode.ai/) — agente de código en la terminal, gratis y open
-  source, con modelos gratuitos incluidos. Buena forma de empezar a trabajar con agentes:
-  lee tu `AGENTS.md` y admite skills y servidores MCP.
