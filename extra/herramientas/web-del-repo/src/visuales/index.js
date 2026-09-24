@@ -1,5 +1,4 @@
 import AgenteEnAccion from './AgenteEnAccion.vue'
-import AgentesOpencode from './AgentesOpencode.vue'
 import AutoexamenAgentes from './AutoexamenAgentes.vue'
 import HorarioModulos from './HorarioModulos.vue'
 import HorarioSemanal from './HorarioSemanal.vue'
@@ -15,7 +14,6 @@ import ModeloYHarness from './ModeloYHarness.vue'
 // página sigue saliendo del .md normal.
 export const VISUALES = {
   'agente-en-accion': AgenteEnAccion,
-  'agentes-opencode': AgentesOpencode,
   'autoexamen-agentes': AutoexamenAgentes,
   'horario-modulos': HorarioModulos,
   'horario-semanal': HorarioSemanal,
