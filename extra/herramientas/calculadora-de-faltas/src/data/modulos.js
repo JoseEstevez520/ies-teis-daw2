@@ -2,7 +2,7 @@
 export const modulos = [
   { id: 'dwcs', label: 'DWCS (8h 20min/semana)', horasSemana: 8.333 },
   { id: 'diw', label: 'DIW (6h 40min/semana)', horasSemana: 6.667 },
-  { id: 'dwcc', label: 'DWCC (5h 50min/semana)', horasSemana: 5.833 },
+  { id: 'dwcc', label: 'DWCC (6h 40min/semana)', horasSemana: 6.667 },
   { id: 'daw', label: 'DAW (3h 20min/semana)', horasSemana: 3.333 },
   { id: 'ipeii', label: 'IPEII (1h 40min/semana)', horasSemana: 1.667 },
   { id: 'hcle', label: 'HCLE (1h 40min/semana)', horasSemana: 1.667 },
