@@ -1,6 +1,5 @@
 <script setup>
-import { computed, ref, watch } from 'vue'
-import { useRoute } from 'vue-router'
+import { computed } from 'vue'
 import { NavTreeGroup, NavTreeItem } from 'elastic-ui'
 import { colorDeRuta } from '../lib/colorSeccion.js'
 import { iconoConColor } from '../lib/iconos.js'
@@ -16,17 +15,6 @@ const props = defineProps({
 // sección); el resto, solo el texto.
 const icono = computed(() => (props.nodo.icono ? iconoConColor(props.nodo.icono, colorDeRuta(props.nodo.ruta)) : undefined))
 const titulo = computed(() => props.nodo.etiqueta || props.nodo.titulo)
-
-// Un grupo se abre al estar en su página o en una de dentro, venga de donde
-// venga la navegación (barra, tarjeta, enlace de un .md). Plegarlo con el
-// chevron sigue funcionando.
-const route = useRoute()
-const dentro = (ruta) => ruta === props.nodo.ruta || ruta.startsWith(props.nodo.ruta + '/')
-const abierto = ref(dentro(route.path))
-watch(
-  () => route.path,
-  (ruta) => dentro(ruta) && (abierto.value = true),
-)
 </script>
 
 <template>
@@ -37,7 +25,6 @@ watch(
     :value="nodo.ruta"
     :to="nodo.ruta"
     :toggle-label="`Plegar ${titulo}`"
-    v-model:open="abierto"
   >
     <NodoNav v-for="hijo in nodo.hijos" :key="hijo.ruta" :nodo="hijo" />
   </NavTreeGroup>
