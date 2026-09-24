@@ -79,12 +79,12 @@ defineProps({
     />
   </div>
 
-  <div v-else-if="bloque.tipo === 'lista-referencia'" class="flex flex-col divide-y divide-neutral-200 rounded-lg border border-neutral-200 overflow-hidden">
-    <div v-for="(item, idx) in bloque.items" :key="idx" class="flex flex-col gap-1 p-4 bg-white">
-      <p class="text-sm font-semibold text-neutral-900" v-html="item.terminoHtml" />
-      <p v-if="item.descripcionHtml" class="text-sm text-neutral-700 leading-relaxed" v-html="item.descripcionHtml" />
+  <dl v-else-if="bloque.tipo === 'lista-referencia'" class="flex flex-col gap-3">
+    <div v-for="(item, idx) in bloque.items" :key="idx" class="flex flex-col gap-0.5">
+      <dt class="text-sm font-semibold text-neutral-900" v-html="item.terminoHtml.replace(/:\s*$/, '')" />
+      <dd v-if="item.descripcionHtml" class="text-sm text-neutral-700 leading-relaxed first-letter:uppercase" v-html="item.descripcionHtml" />
     </div>
-  </div>
+  </dl>
 
   <ul v-else-if="bloque.tipo === 'lista'" class="flex flex-col gap-2">
     <li v-for="(item, idx) in bloque.items" :key="idx" class="flex items-start gap-2">
