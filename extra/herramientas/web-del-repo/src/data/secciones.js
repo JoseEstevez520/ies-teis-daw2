@@ -1,4 +1,4 @@
-import { BookOpen, Bot, Calendar, Home, Lightbulb, Palette, Wrench } from '@lucide/vue'
+import { BookOpen, Calendar, Home, Layers } from '@lucide/vue'
 
 // Una entrada por sección de nivel superior del repo. Sirve tanto para la
 // barra lateral como para la rejilla de tarjetas de la portada (ver design.md).
@@ -18,31 +18,10 @@ export const SECCIONES = [
     enPortada: true,
   },
   {
-    etiqueta: 'Herramientas',
-    ruta: '/herramientas',
-    icono: Wrench,
-    descripcion: 'Mini-proyectos útiles para el día a día de la clase.',
-    enPortada: true,
-  },
-  {
-    etiqueta: 'IA',
-    ruta: '/ia',
-    icono: Bot,
-    descripcion: 'Cosas que no son temario pero ayudan a currar mejor con IA.',
-    enPortada: true,
-  },
-  {
-    etiqueta: 'Diseño web',
-    ruta: '/diseno-web',
-    icono: Palette,
-    descripcion: 'Recursos para que un frontend no parezca hecho a última hora.',
-    enPortada: true,
-  },
-  {
-    etiqueta: 'Ideas de PFC',
-    ruta: '/ideas-proyecto-fin-curso',
-    icono: Lightbulb,
-    descripcion: 'Propuestas y referencias para el proyecto de fin de curso.',
+    etiqueta: 'Extra',
+    ruta: '/extra',
+    icono: Layers,
+    descripcion: 'Lo que no es temario pero ayuda en el curso.',
     enPortada: true,
   },
   {

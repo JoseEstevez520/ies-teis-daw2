@@ -17,8 +17,8 @@ const router = createRouter({
   routes: [
     { path: '/', component: HomeView },
     { path: '/modulos', component: ModulosView },
-    { path: '/herramientas/panel-aula-virtual', component: PanelAulaVirtualView },
-    { path: '/herramientas/calculadora-de-faltas', component: CalculadoraDeFaltasView },
+    { path: '/extra/herramientas/panel-aula-virtual', component: PanelAulaVirtualView },
+    { path: '/extra/herramientas/calculadora-de-faltas', component: CalculadoraDeFaltasView },
     ...rutasMarkdown,
     { path: '/:pathMatch(.*)*', redirect: '/' },
   ],

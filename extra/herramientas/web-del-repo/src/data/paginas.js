@@ -1,4 +1,4 @@
-import { BookOpen, Bot, Calendar, Lightbulb, Palette, Wrench } from '@lucide/vue'
+import { BookOpen, Bot, Calendar, Layers, Lightbulb, Palette, Wrench } from '@lucide/vue'
 
 import dasp from '../../../../../modulos/dasp/README.md?raw'
 import daw from '../../../../../modulos/DAW/README.md?raw'
@@ -7,6 +7,7 @@ import diw from '../../../../../modulos/diw/README.md?raw'
 import dwcc from '../../../../../modulos/dwcc/README.md?raw'
 import dwcs from '../../../../../modulos/dwcs/README.md?raw'
 
+import extraIndex from '../../../../../extra/README.md?raw'
 import herramientasIndex from '../../../../../extra/herramientas/README.md?raw'
 import alarmaTareas from '../../../../../extra/herramientas/alarma-tareas/README.md?raw'
 import cuadernoIa from '../../../../../extra/herramientas/cuaderno-ia/README.md?raw'
@@ -80,7 +81,15 @@ export const PAGINAS = [
     fuente: dwcs,
   },
   {
-    ruta: '/herramientas',
+    ruta: '/extra',
+    directorio: 'extra',
+    claveRuta: 'extra',
+    seccion: 'Extra',
+    icono: Layers,
+    fuente: extraIndex,
+  },
+  {
+    ruta: '/extra/herramientas',
     directorio: 'extra/herramientas',
     claveRuta: 'extra/herramientas',
     seccion: 'Herramientas',
@@ -88,7 +97,7 @@ export const PAGINAS = [
     fuente: herramientasIndex,
   },
   {
-    ruta: '/herramientas/alarma-tareas',
+    ruta: '/extra/herramientas/alarma-tareas',
     directorio: 'extra/herramientas/alarma-tareas',
     claveRuta: 'extra/herramientas/alarma-tareas',
     seccion: 'Herramientas',
@@ -96,7 +105,7 @@ export const PAGINAS = [
     fuente: alarmaTareas,
   },
   {
-    ruta: '/herramientas/cuaderno-ia',
+    ruta: '/extra/herramientas/cuaderno-ia',
     directorio: 'extra/herramientas/cuaderno-ia',
     claveRuta: 'extra/herramientas/cuaderno-ia',
     seccion: 'Herramientas',
@@ -104,7 +113,7 @@ export const PAGINAS = [
     fuente: cuadernoIa,
   },
   {
-    ruta: '/herramientas/moodle-api',
+    ruta: '/extra/herramientas/moodle-api',
     directorio: 'extra/herramientas',
     claveRuta: 'extra/herramientas/moodle-api',
     seccion: 'Herramientas',
@@ -112,7 +121,7 @@ export const PAGINAS = [
     fuente: moodleApi,
   },
   {
-    ruta: '/ia',
+    ruta: '/extra/ia',
     directorio: 'extra/ia',
     claveRuta: 'extra/ia',
     seccion: 'IA',
@@ -120,7 +129,7 @@ export const PAGINAS = [
     fuente: ia,
   },
   {
-    ruta: '/ia/opencode',
+    ruta: '/extra/ia/opencode',
     directorio: 'extra/ia/opencode',
     claveRuta: 'extra/ia/opencode',
     seccion: 'IA',
@@ -128,7 +137,7 @@ export const PAGINAS = [
     fuente: opencode,
   },
   {
-    ruta: '/diseno-web',
+    ruta: '/extra/diseno-web',
     directorio: 'extra/diseno-web',
     claveRuta: 'extra/diseno-web',
     seccion: 'Diseño web',
@@ -136,7 +145,7 @@ export const PAGINAS = [
     fuente: disenoWeb,
   },
   {
-    ruta: '/ideas-proyecto-fin-curso',
+    ruta: '/extra/ideas-proyecto-fin-curso',
     directorio: 'extra/ideas-proyecto-fin-curso',
     claveRuta: 'extra/ideas-proyecto-fin-curso',
     seccion: 'Ideas de PFC',

@@ -76,7 +76,7 @@ const REFERENCIAS = [
       Junta en una sola pantalla lo que hoy hay que ir a buscar por separado en Moodle: tareas
       pendientes de verdad (con estado real de entrega), notas nuevas por curso, y en qué
       asignatura llevas tiempo sin entrar. Detalles técnicos de la API del Aula Virtual en
-      <RouterLink to="/herramientas/moodle-api" class="text-neutral-900 underline decoration-neutral-300 hover:decoration-neutral-900 underline-offset-2">moodle-api</RouterLink>.
+      <RouterLink to="/extra/herramientas/moodle-api" class="text-neutral-900 underline decoration-neutral-300 hover:decoration-neutral-900 underline-offset-2">moodle-api</RouterLink>.
     </p>
 
     <!-- Estado -->
