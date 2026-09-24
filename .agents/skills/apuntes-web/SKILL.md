@@ -30,6 +30,7 @@ El texto sigue [apuntes-claros](../apuntes-claros/SKILL.md).
 | Si la idea es… | Forma |
 |---|---|
 | pasos en orden | lista numerada |
+| detalles que no todos necesitan | `###` por cada uno (sale como desplegable) |
 | una comparación | tabla |
 | un fichero o comando | bloque de código con el ejemplo real |
 | piezas que encajan | cajas (una dentro de otra si una contiene a la otra) |

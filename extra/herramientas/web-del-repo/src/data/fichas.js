@@ -27,6 +27,7 @@ export const FICHAS = {
   'extra/herramientas/panel-aula-virtual': { titulo: 'Panel del Aula Virtual', icono: LayoutDashboard },
   'extra/herramientas/web-del-repo': { titulo: 'Web del repo', icono: Globe },
   'extra/herramientas/cuaderno-ia': { titulo: 'Cuaderno de IA para apuntes', icono: NotebookPen },
+  'extra/ia/consejos': { titulo: 'Consejos para usar la IA', icono: Lightbulb },
   'extra/ia/fundamentos': { titulo: 'Fundamentos: modelo, harness y agente', icono: Brain },
   'extra/ia/opencode': { titulo: 'Agentes de IA con OpenCode', icono: SquareTerminal },
 }

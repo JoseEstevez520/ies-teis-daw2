@@ -16,6 +16,7 @@ import moodleApi from '../../../../../extra/herramientas/moodle-api.md?raw'
 import ia from '../../../../../extra/ia/README.md?raw'
 import opencode from '../../../../../extra/ia/opencode/README.md?raw'
 import fundamentos from '../../../../../extra/ia/fundamentos/README.md?raw'
+import consejos from '../../../../../extra/ia/consejos/README.md?raw'
 import disenoWeb from '../../../../../extra/diseno-web/README.md?raw'
 import ideasPfc from '../../../../../extra/ideas-proyecto-fin-curso/README.md?raw'
 
@@ -128,6 +129,14 @@ export const PAGINAS = [
     seccion: 'IA',
     icono: Bot,
     fuente: ia,
+  },
+  {
+    ruta: '/extra/ia/consejos',
+    directorio: 'extra/ia/consejos',
+    claveRuta: 'extra/ia/consejos',
+    seccion: 'IA',
+    icono: Bot,
+    fuente: consejos,
   },
   {
     ruta: '/extra/ia/fundamentos',
