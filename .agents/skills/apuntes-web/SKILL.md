@@ -24,6 +24,9 @@ El texto sigue [apuntes-claros](../apuntes-claros/SKILL.md).
 - Busca **qué hay que entender primero**, y cuéntalo con lo mínimo. En agentes bastó
   "el modelo es el cerebro, el harness le da herramientas"; el bucle y MCP liaban.
 - Lo básico va en su propia página (como `extra/ia/fundamentos/`), no al principio de otra.
+- **Poco, y una puerta para explorar.** Explica bien solo lo necesario para empezar. Lo
+  avanzado va al final, en `## Para explorar`: una línea por tema y el enlace a la
+  documentación oficial. Sin orden fijo: cada uno tira del hilo que le interese.
 
 ## Qué forma darle a cada idea
 
@@ -47,8 +50,8 @@ nombre-de-la-pieza
 ```
 ````
 
-Referencias: `ModeloYHarness.vue` (cajas), `AgenteEnAccion.vue` (paso a paso),
-`AgentesPorPasos.vue` (de menos a más), `HorarioSemanal.vue`. Antes de hacer una pieza, mira si basta
+Referencias: `ModeloYHarness.vue` (cajas), `AgentesPorPasos.vue` (de menos a más),
+`HorarioSemanal.vue`. Antes de hacer una pieza, mira si basta
 una tabla: para Build y Plan bastó.
 
 - **Color:** uno por concepto, el mismo en toda la página. Verde / ámbar / rojo solo

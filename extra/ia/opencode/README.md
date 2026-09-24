@@ -7,14 +7,6 @@ harness, empieza por los [fundamentos](../fundamentos/).
 Explicamos OpenCode porque es gratis, sencillo y está bien hecho. Lo que aprendas aquí
 vale igual para Claude Code o Codex.
 
-## Un agente trabajando, paso a paso
-
-Caso de este repo: pedirle un apunte. La terminal está simplificada.
-
-```visual
-agente-en-accion
-```
-
 ## Instalar y arrancar
 
 1. Instálalo: `curl -fsSL https://opencode.ai/install | bash` (o
@@ -48,43 +40,12 @@ práctica:
 Si no hay `AGENTS.md` pero sí `CLAUDE.md`, lee ese. Para reglas tuyas en todos los
 proyectos está `~/.config/opencode/AGENTS.md`.
 
-## Skills: instrucciones que carga solo si hacen falta
+## Para explorar
 
-De cada skill el agente solo ve el nombre y la descripción, y carga el resto cuando la
-tarea encaja. Es una carpeta con un `SKILL.md`; `name` y `description` son obligatorios:
+Cuando ya te manejes, hay más. Pregúntale al propio agente o mira la documentación:
 
-```markdown
----
-name: apuntes-claros
-description: Estilo de escritura para cualquier .md de este repo. Aplícalo siempre
-  que redactes o revises un apunte.
----
-
-# Apuntes claros
-
-- Empieza por lo importante, no por el contexto.
-- Código en bloques, nunca descrito en prosa.
-```
-
-Este repo tiene una en `.agents/skills/apuntes-claros/`: OpenCode la usa sin configurar
-nada.
-
-## MCP: herramientas de fuera
-
-Un servidor MCP conecta al agente con algo de fuera de tu proyecto: documentación, tu
-GitHub, una base de datos. Va en `opencode.json`. Ejemplo con Context7, que busca en la
-documentación oficial de librerías:
-
-```json
-{
-  "$schema": "https://opencode.ai/config.json",
-  "mcp": {
-    "context7": {
-      "type": "remote",
-      "url": "https://mcp.context7.com/mcp"
-    }
-  }
-}
-```
-
-Se lo pides tal cual: "usa context7 y dime cómo se hace un `watch` en Vue 3".
+- **Skills:** instrucciones que el agente carga solo cuando le hacen falta. Este repo
+  tiene una en `.agents/skills/apuntes-claros/`. [Documentación](https://opencode.ai/docs/skills/)
+- **MCP:** conecta al agente con cosas de fuera de tu proyecto, como la documentación de
+  una librería. [Documentación](https://opencode.ai/docs/mcp-servers/)
+- **Más agentes:** crear los tuyos y los subagentes. [Documentación](https://opencode.ai/docs/agents/)
