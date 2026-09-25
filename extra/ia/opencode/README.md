@@ -26,7 +26,7 @@ equipo: uno construye, otro planifica, otro explica.
 | Constructor (Build, en OpenCode) | hace el cambio que le pides | sí | sí |
 | Planificador (Plan, en OpenCode) | piensa el cambio y te lo propone | te pregunta | te pregunta |
 | Tutor (hecho por ti) | te explica, pero no te resuelve la práctica | no | no |
-| Explorador (un subagente) | busca para otro agente y vuelve con la respuesta | no | solo lee |
+| Explorador (un subagente) | busca para otro agente, solo leyendo, y vuelve con la respuesta | no | no |
 
 **Lo que cambia de un agente a otro no es el modelo, son sus instrucciones y sus
 permisos.**
