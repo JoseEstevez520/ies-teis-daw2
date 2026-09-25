@@ -7,7 +7,7 @@ description: Cómo crear o mejorar una página de la web del repo (web-del-repo)
 
 ## Principios
 
-1. **Se entiende a simple vista.** Si hace falta leer un párrafo para pillarlo, falta un
+1. **Se entiende a simple vista.** Si hace falta leer un párrafo para entenderlo, falta un
    visual o sobra texto.
 2. **Poco texto.** Una frase por idea. Si el visual ya lo explica, fuera la prosa.
 3. **Lo concreto primero.** "Ejecuta comandos (`npm test`)" y, como pista, "sus manos".
@@ -22,7 +22,7 @@ El texto sigue [apuntes-claros](../apuntes-claros/SKILL.md).
 
 - Datos de la **documentación oficial**, nunca de memoria.
 - Busca **qué hay que entender primero**, y cuéntalo con lo mínimo. En agentes bastó
-  "el modelo es el cerebro, el harness le da herramientas"; el bucle y MCP liaban.
+  "el modelo es el cerebro, el harness le da herramientas"; el bucle y MCP confundían.
 - Lo básico va en su propia página (como `extra/ia/fundamentos/`), no al principio de otra.
 - **Poco, y una puerta para explorar.** Explica bien solo lo necesario para empezar. Lo
   avanzado va al final, en `## Para explorar`: una línea por tema y el enlace a la
@@ -33,11 +33,12 @@ El texto sigue [apuntes-claros](../apuntes-claros/SKILL.md).
 | Si la idea es… | Forma |
 |---|---|
 | pasos en orden | lista numerada |
-| detalles que no todos necesitan | `###` por cada uno (sale como desplegable) |
+| detalles o casos dentro de un tema | `###` por cada uno |
 | una comparación | tabla |
 | un fichero o comando | bloque de código con el ejemplo real |
-| piezas que encajan | cajas (una dentro de otra si una contiene a la otra) |
-| un proceso en el tiempo | pieza paso a paso |
+| un cambio en un fichero | bloque ```` ```diff ```` |
+| piezas que encajan | dibujo con cajas (una dentro de otra si una contiene a la otra) |
+| cómo trabaja un agente | sesión de agente (una por idea, una detrás de otra) |
 
 ## Piezas visuales
 
@@ -50,9 +51,13 @@ nombre-de-la-pieza
 ```
 ````
 
-Referencias: `ModeloYHarness.vue` (cajas), `AgentesPorPasos.vue` (de menos a más),
-`HorarioSemanal.vue`. Antes de hacer una pieza, mira si basta
-una tabla: para Build y Plan bastó.
+Referencias: `DiagramaHarness.vue` (cajas), las sesiones de `sesiones.js` (se ven como
+`sesion-<nombre>`) y `HorarioSemanal.vue`. Antes de hacer una pieza, mira si basta una
+tabla o un bloque de código. La forma (colores, dibujos, movimiento) la ponen los
+componentes de elastic-ui; su `USAGE.md` tiene las reglas.
+
+- **Alrededor de cada pieza**: una frase antes que diga en qué fijarse, y después su
+  conclusión en negrita, para quien solo mira el final.
 
 - **Color:** uno por concepto, el mismo en toda la página. Verde / ámbar / rojo solo
   para sí / con condiciones / no. Fuera de las piezas, el de la sección
@@ -64,14 +69,11 @@ una tabla: para Build y Plan bastó.
 
 ## Meterla en la web
 
-- Página nueva: regístrala en `src/data/paginas.js` (ruta como las carpetas) y, si sale
-  como tarjeta, título e icono en `src/data/fichas.js`.
+- Página nueva: regístrala en `src/data/paginas.js` (ruta como las carpetas) y, si su `#`
+  es demasiado largo para las migas, un título corto en `src/data/fichas.js`.
 - Compruébala con captura, no basta con que compile (a 1280 y a 390 px de ancho):
 
-```bash
-google-chrome --headless=new --disable-gpu --no-sandbox --window-size=390,2000 \
-  --virtual-time-budget=8000 --screenshot=captura.png http://localhost:5173/<ruta>
-```
-
-Para ver un estado que requiere clic, cambia un momento el valor inicial del `ref`, haz
-la captura y déjalo como estaba.
+Con un navegador de verdad (Playwright, o el tuyo): Chrome sin interfaz con
+`--virtual-time-budget` congela las animaciones a medias y la captura sale desenfocada. Las
+piezas que se reproducen solas arrancan al verse enteras, así que haz scroll hasta ellas
+antes de la captura.

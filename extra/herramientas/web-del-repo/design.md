@@ -1,10 +1,15 @@
 # Sistema de diseño
 
-La web está hecha con [elastic-ui](#elastic-ui), la librería de componentes Vue de José:
-las cosas se transforman en vez de aparecer de golpe, pocas cajas y una sola animación
-que manda en cada pantalla. Este archivo dice cómo se aplica aquí. Extiende la regla de
-[`../README.md#estilo-visual`](../README.md#estilo-visual): paleta neutra, color solo con
-significado.
+La web está hecha con [elastic-ui](#elastic-ui), la librería de componentes Vue de José.
+Las reglas de cómo usarla están en su `USAGE.md`: gris por defecto, un solo ancho, una
+sola cosa que se mueve a la vez, iconos solo donde ayudan, sin sombras propias. Este
+archivo solo recoge lo propio de esta web.
+
+**Qué es de la librería y qué de la web**: cómo se ven y se comportan las cosas es de
+elastic-ui. Lo que se dice es de la web: los textos (en los `.md`), cada dibujo concreto,
+los guiones de las sesiones de agente y los datos (el horario, el árbol de páginas, los
+colores de las secciones). Si algo de la librería falla o falta, se le cuenta a la
+librería; no se arregla por encima desde aquí.
 
 ## elastic-ui
 
@@ -22,173 +27,67 @@ Y aquí `npm install ./vendor/elastic-ui-<versión>.tgz`. Borra el `.tgz` viejo.
 
 No trae CSS compilado: `src/style.css` importa sus tokens y le dice a Tailwind que lea sus
 componentes (`@source`). Los textos que pone la librería por su cuenta (nombres para
-lectores de pantalla, "En esta página", títulos de los avisos...) están en español en
-`src/main.js` (`app.use(ElasticUi, { labels })`).
+lectores de pantalla, "En esta página", "Paso 2 de 4"...) están en español en
+`src/main.js`, con `app.use(ElasticUi, { labels })`.
 
-Antes de montar algo a mano, mira si la librería ya lo tiene. Qué usa la web:
+## Estructura
 
-| Para | Componente |
-|---|---|
-| estructura | `SidebarLayout`, `Sidebar variant="connected"`, `SidebarToggle`, `NavTree`, `Breadcrumbs` |
-| índice de cada página | `TableOfContents` (los `##`, a la derecha, solo en pantallas anchas) |
-| bloques de código | `CodeBlock` |
-| avisos | `Callout` |
-| `###` de un `.md` | `Accordion` |
-| tarjetas | `Card` |
-| filtros y cambios de vista | `Tabs` (+ `AnimatedList` para lo que se filtra) |
-| buscador | `SearchMorph` (se abre con `/`) |
-| tema claro / oscuro | `ThemeToggle` |
-| botones y etiquetas | `Button`, `Badge`, `TextMorph` |
-| sesiones de un agente | `AgentReplay` (modelo y harness, agentes por pasos) |
+- **Barra lateral** (`Sidebar` conectada): solo las cuatro secciones (Inicio, Módulos,
+  Extra, Horario), con su icono.
+- **Cabecera** (`SidebarLayoutHeader`): las migas a la izquierda (`Breadcrumbs`, con las
+  demás páginas de cada nivel detrás del chevron), y el buscador y el tema a la derecha.
+  Las migas salen del árbol de páginas, que sigue las carpetas del repo
+  (`src/lib/arbolNav.js` y `src/lib/migas.js`).
+- **Entre páginas** (`PageTransition`): solo cambia el contenido, con un fundido corto. La
+  rayita de scroll (`ScrollIndicator`) se asoma en cada página nueva.
+- **Cada página** (`PlantillaPagina.vue`): un artículo a un solo ancho (`prose article`),
+  con su título, y en pantallas muy anchas el índice de sus `##` y `###` a la derecha.
 
-## Paleta
+## Color
 
-Los colores son los tokens de elastic-ui (`--color-bg`, `--color-fg`...), en clases de
-Tailwind (`bg-bg`, `text-fg-secondary`...). Cada token tiene valor claro y oscuro, así que
-la web sale bien en los dos temas sin hacer nada.
+Gris por defecto. `--color-accent` está en `src/style.css` con el mismo gris casi negro
+del texto (casi blanco en oscuro): la web no tiene color de acento.
 
-| Token | Uso |
-|---|---|
-| `bg` | fondo de la página |
-| `bg-subtle`, `bg-muted` | fondos suaves: código, hover |
-| `border`, `border-strong` | líneas y bordes |
-| `fg` | títulos y texto importante |
-| `fg-secondary` | texto normal |
-| `fg-muted`, `fg-faint` | texto secundario, iconos apagados |
+El color con significado de esta web:
 
-No pongas grises fijos (`neutral-500`, `#fff`...): en tema oscuro no se ven.
+- **Cada sección** tiene el suyo (Módulos azul, Extra verde azulado, IA violeta,
+  Herramientas ámbar, Diseño web fucsia, Ideas de PFC verde lima, Horario rosa), en un
+  único sitio, [`src/lib/colorSeccion.js`](src/lib/colorSeccion.js). Solo se usa en los
+  iconos de las secciones (barra lateral y portada).
+- **Cada módulo** tiene el suyo en el horario (`src/visuales/horario.js`), el mismo en el
+  horario y en la tabla de módulos.
+- **Modelo violeta y harness cian** en todas las páginas de agentes.
 
-**Sin acento de color.** `--color-accent` está en `src/style.css` con el mismo gris casi
-negro del texto (casi blanco en oscuro). La página activa, el foco o la pestaña elegida se
-marcan con ese gris, no con un color.
+## Páginas desde `.md`
 
-**Color por sección**: cada sección del repo tiene su color (Módulos azul, Extra verde
-azulado, IA violeta, Herramientas ámbar, Diseño web fucsia, Ideas de PFC verde lima,
-Horario rosa), definido en un único sitio, [`src/lib/colorSeccion.js`](src/lib/colorSeccion.js).
-Solo se usa en iconos. Como los componentes piden el icono como componente, el color se le
-pone con `iconoConColor` de [`src/lib/iconos.js`](src/lib/iconos.js).
-
-**Excepción, tarjetas de recursos**: cuando una lista del `.md` es casi toda enlaces
-externos con descripción, sale como tarjetas con el favicon real del sitio (vía
-`icon.horse`) y un degradado del color medio de ese favicon (`src/lib/colorFavicon.js`).
-Mientras carga, o si falla, un degradado por hash del dominio. Es la única zona con color a
-propósito: sin ella, una lista de herramientas externas es igual que cualquier otra lista.
-
-**Excepción, piezas visuales** (`src/visuales/`): llevan color, siempre con significado. Las
-reglas están en la skill [apuntes-web](../../../.agents/skills/apuntes-web/SKILL.md).
-
-Los avisos (`Callout`) usan los colores de la librería: verde para consejo, ámbar para
-aviso, rojo para cuidado.
-
-## Tipografía
-
-Sin fuente propia: la de elastic-ui cae a la del sistema si no está instalada.
-
-| Uso | Clases |
-|---|---|
-| Título de página | `text-2xl font-semibold tracking-tight text-fg` |
-| Título de sección (`##`) | `text-lg font-semibold tracking-tight text-fg` |
-| Título de tarjeta | `CardTitle size="sm"` |
-| Cuerpo | `text-sm text-fg-secondary` |
-| Texto secundario | `text-xs text-fg-muted` |
-
-## Iconos
-
-`@lucide/vue`. En la barra lateral, un icono por sección. No hace falta un icono ni una
-marca en cada cosa.
-
-| Sección | Icono |
-|---|---|
-| Inicio | `Home` |
-| Módulos | `BookOpen` |
-| Extra | `Layers` |
-| Herramientas | `Wrench` |
-| IA | `Bot` |
-| Diseño web | `Palette` |
-| Ideas de PFC | `Lightbulb` |
-| Horario | `Calendar` |
-
-**Tarjetas de páginas del repo**: cuando una lista del `.md` es casi toda enlaces internos
-con descripción, sale como tarjetas (`TarjetaInterna.vue`) con título e icono de
-[`src/data/fichas.js`](src/data/fichas.js). Sin ficha, el nombre de la carpeta y
-`FileText`. Flecha `ArrowRight` si abre dentro de la web, `ArrowUpRight` si va a GitHub.
-
-## Layout
-
-- **Barra lateral**: `Sidebar` conectada, solo con las cuatro secciones (Inicio, Módulos,
-  Extra, Horario). La sección en la que estás es una pestaña del mismo color que el
-  contenido, que entra en la barra, sin sombra. Se pliega a una columna de iconos; en el
-  móvil es un panel que se abre con el botón de arriba.
-- **Migas** (`Breadcrumbs`, en `src/components/Migas.vue`): arriba de cada página, la ruta
-  completa (Inicio › Extra › IA aplicada › Consejos). El chevron entre dos migas abre las
-  demás páginas de ese nivel, para saltar de una a otra sin volver atrás. Salen del mismo
-  árbol que sigue las carpetas del repo (`src/lib/migas.js`).
-- **Cabecera**: las migas a la izquierda; buscador y cambio de tema, a la derecha.
-- **Contenido**: `max-w-3xl`, con el índice de la página a la derecha en pantallas anchas.
-  La ventana es la que hace scroll, no el contenido.
-- **Portada**: una frase + rejilla de tarjetas, una por sección.
-
-## Cajas
-
-Las tarjetas que llevan a otra página van en caja (`Card` con borde), que se marca más al
-pasar por encima. El resto va sin caja: las secciones se separan con espacio, las tablas y
-listas de enlaces solo con líneas entre filas, y el código con un fondo suave.
-
-## Movimiento
-
-Lo pone la librería; no animes nada a mano.
-
-- Lo que ya está al cargar la página se muestra sin animar. Al cambiar de página, la nueva
-  entra enfocándose (`blur-in`).
-- Una sola animación manda en cada pantalla: no añadas otra al lado de la de un componente.
-- Si un texto cambia de valor (un botón que pasa a "Generando…"), `TextMorph`.
-
-## Plantilla de página
-
-Dos variantes. Cuál usar está en [`AGENTS.md`](AGENTS.md#qué-lleva-diseño-a-medida-y-qué-no).
-Las dos usan `PlantillaPagina` (título, icono y el índice a la derecha) y `SeccionPagina`
-para cada `##`.
-
-**A medida** (herramientas con entidad propia):
-
-```vue
-<script setup>
-import { IconoDeLaSeccion } from '@lucide/vue'
-import { colorDeRuta } from '../lib/colorSeccion.js'
-import PlantillaPagina from '../components/PlantillaPagina.vue'
-import SeccionPagina from '../components/SeccionPagina.vue'
-
-const INDICE = [{ id: 'primera', label: 'Primera sección', level: 2 }]
-</script>
-
-<template>
-  <PlantillaPagina titulo="Título" :icono="IconoDeLaSeccion" :color="colorDeRuta('/ruta')" :indice="INDICE">
-    <SeccionPagina id="primera">
-      <template #titulo>Primera sección</template>
-      <!-- contenido -->
-    </SeccionPagina>
-  </PlantillaPagina>
-</template>
-```
-
-**Desde `.md`** (apuntes y el resto de `extra/`): `MarkdownRouteView` pasa el `.md` por
-[`src/lib/markdown.js`](src/lib/markdown.js), que lo convierte en bloques, y cada bloque sale
-con su componente:
+Casi todas las páginas salen de su `.md` con el componente `Markdown` de la librería
+(`views/MarkdownRouteView.vue`). Antes, `src/lib/fuenteMd.js` pasa los enlaces e imágenes
+relativos del `.md` a rutas de la web o, si la página no está en la web, a GitHub.
 
 | En el `.md` | Sale como |
 |---|---|
-| `##` | sección, con icono y en el índice de la página |
-| `###` | desplegable (`Accordion`) |
-| bloque de código | `CodeBlock` |
+| `##`, `###` | títulos, en el índice de la página |
+| bloque de código (con ` title="archivo"` si quieres) | `CodeBlock` |
+| bloque ```` ```diff ```` | `CodeDiff`, que reproduce el cambio |
 | `> [!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]`, `[!CAUTION]` | `Callout` |
-| párrafo que empieza por "Ojo:", "Cuidado:", "Nota:"... | `Callout` |
-| lista numerada | pasos |
-| lista de enlaces | tarjetas |
+| tabla | tabla al ancho del texto |
+| bloque ```` ```visual ```` con el nombre de una pieza | la pieza (`src/visuales/`) |
+| bloque ```` ```mermaid ```` | diagrama (`DiagramaMermaid.vue`), solo se descarga donde hace falta |
 
-Los bloques ```` ```mermaid ```` se pintan como diagrama (`DiagramaMermaid.vue`), con los
-colores del tema que se está viendo. Mermaid solo se descarga en las páginas que lo usan.
+## Páginas a medida
 
-**Piezas visuales interactivas** (`src/visuales/`): para lo que se entiende mejor tocándolo
-que leyéndolo. El `.md` las mete con un bloque ```` ```visual ```` y el nombre de la pieza,
-registrado en `src/visuales/index.js`. Cómo hacerlas: skill
+La portada, Módulos y las herramientas con entidad propia (`panel-aula-virtual`,
+`calculadora-de-faltas`) son vistas Vue en `src/views/`. Usan la misma `PlantillaPagina` y
+se escriben como un artículo: `h2`, párrafos, listas y las piezas de la librería.
+
+## Piezas visuales (`src/visuales/`)
+
+Para lo que se entiende mejor viéndolo que leyéndolo. Un `.md` las mete con un bloque
+```` ```visual ```` y su nombre, registrado en `src/visuales/index.js`. Cómo hacerlas: skill
 [apuntes-web](../../../.agents/skills/apuntes-web/SKILL.md).
+
+- **Dibujos** con `Diagram` y las clases de la librería (`diagram-area`, `diagram-chip`...):
+  `modelo-y-harness`.
+- **Sesiones de agente** con `AgentReplay`: cada guion está en `src/visuales/sesiones.js` y
+  sale como `sesion-<nombre>`. Son inventados, y la página lo dice.
+- **Horario** con `Timetable`: `horario-semanal` (y su PNG) y `horario-modulos`.

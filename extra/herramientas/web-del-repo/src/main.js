@@ -50,6 +50,10 @@ const TEXTOS = {
   allow: 'Permitir',
   deny: 'Denegar',
   askingPermission: 'Esperando tu permiso',
+  remove: 'Quitar',
+  day: 'Día',
+  creatingImage: 'Generando la imagen',
+  commandPlaceholder: 'Escribe una orden o busca…',
 }
 
 // Se monta con la primera ruta ya resuelta: así la barra lateral y la página

@@ -39,7 +39,7 @@ import { useTheme } from 'elastic-ui'
 // el mismo bloque, así que el .md sigue siendo la única fuente. Mermaid pesa
 // bastante: se carga solo en las páginas que tienen algún diagrama.
 const props = defineProps({
-  codigo: { type: String, required: true },
+  code: { type: String, required: true },
 })
 
 const svg = ref('')
@@ -84,7 +84,7 @@ async function renderizar() {
         fontSize: '14px',
       },
     })
-    svg.value = (await mermaid.render(`diagrama-${contador++}`, props.codigo)).svg
+    svg.value = (await mermaid.render(`diagrama-${contador++}`, props.code)).svg
   } catch {
     error.value = true
   }
@@ -94,7 +94,7 @@ async function renderizar() {
 <template>
   <div class="overflow-x-auto rounded-[var(--radius-lg)] bg-bg-subtle p-4 scrollbar-subtle">
     <div v-if="svg" class="flex justify-center [&_svg]:h-auto [&_svg]:max-w-full" v-html="svg" />
-    <pre v-else-if="error" class="font-mono text-xs text-fg-secondary"><code>{{ codigo }}</code></pre>
+    <pre v-else-if="error" class="font-mono text-xs text-fg-secondary"><code>{{ code }}</code></pre>
     <div v-else class="h-24" />
   </div>
 </template>

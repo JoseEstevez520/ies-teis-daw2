@@ -23,7 +23,7 @@ import ideasPfc from '../../../../../extra/ideas-proyecto-fin-curso/README.md?ra
 import horario from '../../../../../horario/README.md?raw'
 
 // Cada página real del repo que se renderiza desde su .md, con la plantilla
-// compartida PaginaMarkdown (ver web-del-repo/AGENTS.md). Las herramientas con
+// compartida (MarkdownRouteView, ver web-del-repo/AGENTS.md). Las herramientas con
 // entidad propia (panel-aula-virtual, calculadora-de-faltas) no están aquí:
 // tienen su propia vista a medida.
 //

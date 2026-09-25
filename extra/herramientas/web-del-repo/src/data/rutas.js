@@ -1,6 +1,6 @@
 import { PAGINAS } from './paginas.js'
 
-// Herramientas con página a medida (no pasan por PaginaMarkdown), pero otros
+// Herramientas con página a medida (no salen de su .md), pero otros
 // .md sí enlazan a ellas, así que también necesitan una entrada aquí para que
 // esos enlaces se resuelvan dentro de la app en vez de caer al fallback de GitHub.
 export const BESPOKE = [

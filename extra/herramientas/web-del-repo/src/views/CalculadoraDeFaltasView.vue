@@ -1,12 +1,6 @@
 <script setup>
-import { Badge, CodeBlock } from 'elastic-ui'
-import { CalendarX, Ban, Server } from '@lucide/vue'
-import { colorDeRuta } from '../lib/colorSeccion.js'
-import ListaEnlaces from '../components/ListaEnlaces.vue'
+import { CodeBlock } from 'elastic-ui'
 import PlantillaPagina from '../components/PlantillaPagina.vue'
-import SeccionPagina from '../components/SeccionPagina.vue'
-
-const color = colorDeRuta('/extra/herramientas/calculadora-de-faltas')
 
 const INDICE = [
   { id: 'arrancarlo', label: 'Arrancarlo tú mismo', level: 2 },
@@ -43,76 +37,68 @@ const FUENTES = [
   { nombre: 'Calendario escolar Galicia 2026-2027', url: 'https://www.galiciae.com/articulo/galicia/calendario-escolar-galicia-curso-2026-27-cuando-empiezan-claves-que-dias-seran-lectivos/20260825180432109165.html', nota: 'galiciae.com' },
 ]
 
-const CODIGO = 'rounded-[var(--radius-sm)] bg-bg-muted px-1.5 py-0.5 font-mono text-[0.85em] text-fg'
 </script>
 
 <template>
-  <PlantillaPagina titulo="Calculadora de faltas" :icono="CalendarX" :color="color" :indice="INDICE">
-    <p class="text-sm leading-relaxed text-fg-secondary">
+  <PlantillaPagina titulo="Calculadora de faltas" :indice="INDICE">
+    <p>
       Mete tus faltas por módulo y ve el % frente al máximo permitido antes de perder evaluación
       continua.
     </p>
 
-    <div class="flex flex-col gap-12">
-      <SeccionPagina id="arrancarlo">
-        <template #titulo>Arrancarlo tú mismo</template>
-        <Badge variant="outline" :icon="Server" class="self-start">sin backend ni token</Badge>
-        <CodeBlock :code="ARRANQUE" language="bash" />
-        <p class="text-sm text-fg-secondary">
-          Abre la URL que te dé Vite (<code :class="CODIGO">http://localhost:5173</code> normalmente).
-        </p>
-      </SeccionPagina>
+    <h2 id="arrancarlo">Arrancarlo tú mismo</h2>
+    <p>Sin backend ni token: solo Node.</p>
+    <CodeBlock :code="ARRANQUE" language="bash" />
+    <p>Abre la URL que te dé Vite (<code>http://localhost:5173</code> normalmente).</p>
 
-      <SeccionPagina id="por-que-manual">
-        <template #titulo>Por qué es de entrada manual, no automática</template>
-        <p class="text-sm text-fg-secondary">Investigado y descartado el automatizarlo:</p>
-        <ul class="flex flex-col gap-3">
-          <li v-for="d in DESCARTES" :key="d" class="flex gap-3">
-            <Ban class="mt-0.5 size-4 shrink-0 text-fg-faint" />
-            <p class="text-sm leading-relaxed text-fg-secondary">{{ d }}</p>
-          </li>
-        </ul>
-        <p class="text-sm leading-relaxed text-fg-secondary">
-          No hay ninguna fuente de la que tirar el dato automáticamente: tú cuentas tus faltas en
-          AbalarMóvil y metes el número, la herramienta hace el cálculo. Ese acceso a AbalarMóvil es
-          individual, del propio alumno, no compartido con la familia.
-        </p>
-      </SeccionPagina>
+    <h2 id="por-que-manual">Por qué es de entrada manual, no automática</h2>
+    <p>Investigado y descartado el automatizarlo:</p>
+    <ul>
+      <li v-for="d in DESCARTES" :key="d">{{ d }}</li>
+    </ul>
+    <p>
+      No hay ninguna fuente de la que sacar el dato automáticamente: tú cuentas tus faltas en
+      AbalarMóvil y metes el número, la herramienta hace el cálculo. Ese acceso a AbalarMóvil es
+      individual, del propio alumno, no compartido con la familia.
+    </p>
 
-      <SeccionPagina id="umbrales">
-        <template #titulo>Los umbrales reales</template>
-        <p class="text-sm text-fg-secondary">
-          De la presentación de Tutoría de IES de Teis, más específica que la norma general. Solo
-          cuentan las faltas sin justificar.
-        </p>
-        <dl class="grid gap-6 sm:grid-cols-3">
-          <div v-for="u in UMBRALES" :key="u.nota" class="flex flex-col gap-1">
-            <dt class="order-2 text-xs text-fg-muted">{{ u.etiqueta }}</dt>
-            <dd class="order-1 text-2xl font-semibold tracking-tight text-fg tabular-nums">{{ u.valor }}</dd>
-            <dd class="order-3 text-sm text-fg-secondary">{{ u.nota }}</dd>
-          </div>
-        </dl>
-      </SeccionPagina>
+    <h2 id="umbrales">Los umbrales reales</h2>
+    <p>
+      De la presentación de Tutoría de IES de Teis, más específica que la norma general. Solo
+      cuentan las faltas sin justificar.
+    </p>
+    <table>
+      <thead>
+        <tr><th>Umbral</th><th>Qué cuenta</th><th>Qué pasa</th></tr>
+      </thead>
+      <tbody>
+        <tr v-for="u in UMBRALES" :key="u.nota">
+          <td class="font-semibold text-fg tabular-nums">{{ u.valor }}</td>
+          <td>{{ u.etiqueta }}</td>
+          <td>{{ u.nota }}</td>
+        </tr>
+      </tbody>
+    </table>
 
-      <SeccionPagina id="formula">
-        <template #titulo>Fórmula</template>
-        <p class="text-sm leading-relaxed text-fg-secondary">
-          Horas por módulo (contando los bloques de 50 min de <code :class="CODIGO">horario/README.md</code>):
-          dwcs 8h20, diw 6h40, dwcc 5h50, daw 3h20, ipeii 1h40, hcle 1h40, dasp 50min, acp 50min.
-          Semanas lectivas reales de 2º curso (hasta la 2ª avaliación, antes de FCT): ~20,8, no las
-          ~34,8 de un curso completo.
-        </p>
-        <CodeBlock :code="FORMULA" title="fórmula" />
-        <p class="text-sm leading-relaxed text-fg-secondary">
-          Ejemplo con DWCS (8,33h/semana): ~173 horas totales. 6% ≈ 10,4h de falta (aviso), 10% ≈
-          17,3h (pérdida de evaluación continua).
-        </p>
-      </SeccionPagina>
+    <h2 id="formula">Fórmula</h2>
+    <p>
+      Horas por módulo, contando los bloques de 50 min de <code>horario/README.md</code>: dwcs 8h20,
+      diw 6h40, dwcc 5h50, daw 3h20, ipeii 1h40, hcle 1h40, dasp 50 min, acp 50 min. Semanas
+      lectivas reales de 2º (hasta la 2ª avaliación, antes de la FCT): unas 20,8, no las 34,8 de un
+      curso completo.
+    </p>
+    <CodeBlock :code="FORMULA" title="fórmula" />
+    <p>
+      Ejemplo con DWCS (8,33 h/semana): unas 173 horas en total. El 6 % son unas 10,4 h de falta
+      (aviso) y el 10 %, unas 17,3 h (pérdida de evaluación continua).
+    </p>
 
-      <SeccionPagina id="fuentes">
-        <template #titulo>Fuentes</template>
-        <ListaEnlaces :items="FUENTES" />
-      </SeccionPagina>
-    </div>
+    <h2 id="fuentes">Fuentes</h2>
+    <ul>
+      <li v-for="f in FUENTES" :key="f.nombre">
+        <a v-if="f.url" :href="f.url" target="_blank" rel="noopener noreferrer">{{ f.nombre }}</a>
+        <template v-else>{{ f.nombre }}</template>: {{ f.nota }}.
+      </li>
+    </ul>
   </PlantillaPagina>
 </template>

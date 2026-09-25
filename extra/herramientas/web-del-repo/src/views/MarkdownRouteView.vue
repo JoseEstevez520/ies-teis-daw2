@@ -1,30 +1,27 @@
 <script setup>
 import { computed } from 'vue'
-import PaginaMarkdown from '../components/PaginaMarkdown.vue'
+import { Markdown, headingsOf } from 'elastic-ui'
+import BloqueVisual from '../components/BloqueVisual.vue'
+import DiagramaMermaid from '../components/DiagramaMermaid.vue'
 import PlantillaPagina from '../components/PlantillaPagina.vue'
-import { extraerTitulo, parseMarkdown } from '../lib/markdown.js'
-import { colorDeRuta } from '../lib/colorSeccion.js'
-import { textoDeHtml } from '../lib/slug.js'
+import { prepararMarkdown } from '../lib/fuenteMd.js'
+import { extraerTitulo } from '../lib/titulo.js'
 
+// Una página sacada de su .md: el título es su `#`, el cuerpo lo pinta el
+// Markdown de elastic-ui (código, avisos, tablas, títulos con id) y los
+// bloques ```visual y ```mermaid salen como pieza o diagrama.
 const props = defineProps({
   pagina: { type: Object, required: true },
 })
 
 const info = computed(() => extraerTitulo(props.pagina.fuente))
-const color = computed(() => colorDeRuta(props.pagina.ruta))
-const bloques = computed(() => parseMarkdown(info.value.cuerpo, { directorio: props.pagina.directorio }))
-
-// El índice son los `##`: los `###` salen como desplegables cerrados, y un
-// enlace a algo escondido no llevaría a ningún sitio visible.
-const indice = computed(() =>
-  bloques.value
-    .filter((b) => b.tipo === 'titulo' && b.nivel === 2)
-    .map((b) => ({ id: b.id, label: textoDeHtml(b.html), level: 2 })),
-)
+const cuerpo = computed(() => prepararMarkdown(info.value.cuerpo, props.pagina.directorio))
+const indice = computed(() => headingsOf(cuerpo.value))
+const COMPONENTES = { visual: BloqueVisual, mermaid: DiagramaMermaid }
 </script>
 
 <template>
-  <PlantillaPagina :titulo="info.titulo" :icono="pagina.icono" :color="color" :indice="indice">
-    <PaginaMarkdown :bloques="bloques" :color="color" />
+  <PlantillaPagina :titulo="info.titulo" :indice="indice">
+    <Markdown :source="cuerpo" :components="COMPONENTES" as="div" class="contents" />
   </PlantillaPagina>
 </template>

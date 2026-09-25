@@ -1,6 +1,4 @@
 <script setup>
-import { BookOpen } from '@lucide/vue'
-import { colorDeRuta } from '../lib/colorSeccion.js'
 import PlantillaPagina from '../components/PlantillaPagina.vue'
 import TarjetaPagina from '../components/TarjetaPagina.vue'
 
@@ -17,10 +15,10 @@ const MODULOS = [
 </script>
 
 <template>
-  <PlantillaPagina titulo="Módulos" :icono="BookOpen" :color="colorDeRuta('/modulos')">
-    <p class="text-sm text-fg-secondary">Apuntes del temario, un módulo por carpeta.</p>
+  <PlantillaPagina titulo="Módulos">
+    <p>Apuntes del temario, un módulo por carpeta.</p>
 
-    <div class="grid gap-4 sm:grid-cols-2">
+    <div class="not-prose grid gap-4 sm:grid-cols-2">
       <TarjetaPagina
         v-for="modulo in MODULOS"
         :key="modulo.ruta"

@@ -1,19 +1,26 @@
-import AgentesPorPasos from './AgentesPorPasos.vue'
+import { h } from 'vue'
+import DiagramaHarness from './DiagramaHarness.vue'
 import HorarioModulos from './HorarioModulos.vue'
 import HorarioSemanal from './HorarioSemanal.vue'
-import ModeloYHarness from './ModeloYHarness.vue'
+import SesionAgente from './SesionAgente.vue'
+import { SESIONES } from './sesiones.js'
 
-// Piezas visuales interactivas que un .md mete con un bloque:
+// Piezas visuales que un .md mete con un bloque:
 //
 //   ```visual
-//   agentes-por-pasos
+//   modelo-y-harness
 //   ```
 //
-// Para lo que se entiende mejor tocándolo que leyéndolo. El resto de la
-// página sigue saliendo del .md normal.
+// Para lo que se entiende mejor viéndolo o tocándolo. El resto de la página
+// sigue saliendo del .md normal. Cada sesión de sesiones.js es una pieza
+// `sesion-<nombre>`.
+const sesiones = Object.fromEntries(
+  Object.keys(SESIONES).map((nombre) => [`sesion-${nombre}`, () => h(SesionAgente, { nombre })]),
+)
+
 export const VISUALES = {
-  'agentes-por-pasos': AgentesPorPasos,
+  'modelo-y-harness': DiagramaHarness,
   'horario-modulos': HorarioModulos,
   'horario-semanal': HorarioSemanal,
-  'modelo-y-harness': ModeloYHarness,
+  ...sesiones,
 }
