@@ -1,5 +1,6 @@
 <script setup>
 import { CodeBlock, Steps, StepsItem, TerminalReplay } from 'elastic-ui'
+import DiagramaAgentes from '../../visuales/DiagramaAgentes.vue'
 import SesionAgente from '../../visuales/SesionAgente.vue'
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
 
@@ -68,21 +69,29 @@ const EXPLORAR = [
 
     <h2 id="agentes">Agentes</h2>
     <p>
-      OpenCode trae dos agentes, Build y Plan, y cambias de uno a otro con la tecla Tab. Aquí les
-      haces a todos la misma petición, para ver en qué cambian.
+      Un agente es el modelo con un papel: unas instrucciones que dicen qué hace y unos permisos
+      que dicen qué puede tocar. Con papeles distintos tienes agentes distintos, como en un equipo:
+      uno construye, otro planifica, otro explica.
+    </p>
+    <DiagramaAgentes />
+    <p><strong>Lo que cambia de un agente a otro no es el modelo, son sus instrucciones y sus permisos.</strong></p>
+    <p>
+      OpenCode trae dos hechos, Build y Plan (cambias de uno a otro con la tecla Tab), y puedes
+      crear los tuyos. Abajo, la misma petición a cada uno, para verlos trabajar. Las sesiones son
+      un ejemplo inventado.
     </p>
 
-    <h3 id="build">Build</h3>
-    <p>El agente con el que arranca. Fíjate en que edita sin preguntarte.</p>
+    <h3 id="build">El constructor: Build</h3>
+    <p>El agente con el que arranca OpenCode. Fíjate en que edita sin preguntarte.</p>
     <SesionAgente nombre="build" />
     <p><strong>Build hace el cambio directamente.</strong></p>
 
-    <h3 id="plan">Plan</h3>
+    <h3 id="plan">El planificador: Plan</h3>
     <p>Para pensar antes de un cambio grande. Fíjate en que se para y te pide permiso antes de editar.</p>
     <SesionAgente nombre="plan" />
     <p><strong>Plan te deja un plan y no cambia nada sin tu permiso.</strong></p>
 
-    <h3 id="tu-propio-agente">Tu propio agente</h3>
+    <h3 id="tu-propio-agente">El tutor: uno tuyo</h3>
     <p>
       Puedes crear otro con tus instrucciones y tus permisos. Este tutor tiene la edición
       denegada, así que no puede resolverte la práctica aunque se lo pidas.
@@ -92,7 +101,7 @@ const EXPLORAR = [
     <p>Así se crea: guarda esto en tu proyecto.</p>
     <CodeBlock :code="TUTOR_MD" title=".opencode/agents/tutor.md" />
 
-    <h3 id="subagentes">Subagentes</h3>
+    <h3 id="subagentes">El explorador: un subagente</h3>
     <p>Un agente puede encargarle una parte a otro, que trabaja aparte. Fíjate en lo que vuelve.</p>
     <SesionAgente nombre="subagente" />
     <p><strong>Del subagente solo vuelve la respuesta, no todo lo que leyó.</strong></p>

@@ -17,24 +17,38 @@ vale igual para Claude Code o Codex.
 
 ## Agentes
 
-OpenCode trae dos agentes, Build y Plan, y cambias de uno a otro con la tecla Tab. Aquí
-les haces a todos la misma petición, para ver en qué cambian. Las sesiones son un
-ejemplo inventado.
+Un agente es el modelo con un papel: unas instrucciones que dicen qué hace y unos permisos
+que dicen qué puede tocar. Con papeles distintos tienes agentes distintos, como en un
+equipo: uno construye, otro planifica, otro explica.
 
-### Build
+| Agente | Qué hace | Edita | Ejecuta comandos |
+|---|---|---|---|
+| Constructor (Build, en OpenCode) | hace el cambio que le pides | sí | sí |
+| Planificador (Plan, en OpenCode) | piensa el cambio y te lo propone | te pregunta | te pregunta |
+| Tutor (hecho por ti) | te explica, pero no te resuelve la práctica | no | no |
+| Explorador (un subagente) | busca para otro agente y vuelve con la respuesta | no | solo lee |
+
+**Lo que cambia de un agente a otro no es el modelo, son sus instrucciones y sus
+permisos.**
+
+OpenCode trae dos hechos, Build y Plan (cambias de uno a otro con la tecla Tab), y puedes
+crear los tuyos. Abajo, la misma petición a cada uno. En la web se ven las sesiones; son
+un ejemplo inventado.
+
+### El constructor: Build
 
 El agente con el que arranca. Fíjate en que edita sin preguntarte.
 
 **Build hace el cambio directamente.**
 
-### Plan
+### El planificador: Plan
 
 Para pensar antes de un cambio grande. Fíjate en que se para y te pide permiso antes de
 editar.
 
 **Plan te deja un plan y no cambia nada sin tu permiso.**
 
-### Tu propio agente
+### El tutor: uno tuyo
 
 Puedes crear otro con tus instrucciones y tus permisos. Este tutor tiene la edición
 denegada, así que no puede resolverte la práctica aunque se lo pidas.
@@ -56,7 +70,7 @@ Explícame el concepto y hazme preguntas.
 No me des el código de la práctica.
 ```
 
-### Subagentes
+### El explorador: un subagente
 
 Un agente puede encargarle una parte a otro, que trabaja aparte. Fíjate en lo que vuelve.
 

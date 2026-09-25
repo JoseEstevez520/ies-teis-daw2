@@ -83,7 +83,7 @@ Para lo que se entiende mejor viéndolo que leyéndolo. Cada página las importa
 necesita. Cómo hacerlas: skill [apuntes-web](../../../.agents/skills/apuntes-web/SKILL.md).
 
 - **Dibujos** con `Diagram` y las clases de la librería (`diagram-area`, `diagram-chip`...):
-  `DiagramaHarness.vue`.
+  `DiagramaHarness.vue` (qué es un agente) y `DiagramaAgentes.vue` (un equipo de agentes).
 - **Sesiones de agente** con `AgentReplay`: cada guion está en `src/visuales/sesiones.js` y
   se pone con `<SesionAgente nombre="..." />`. Son inventados, y la página lo dice.
 - **Horario** con `Timetable`: `HorarioSemanal.vue` (y su PNG) y `HorarioModulos.vue`.
