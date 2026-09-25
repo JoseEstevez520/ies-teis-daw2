@@ -1,7 +1,7 @@
 <script setup>
 import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { SidebarLayout, SidebarToggle, ThemeToggle } from 'elastic-ui'
+import { ScrollIndicator, SidebarLayout, SidebarToggle, ThemeToggle } from 'elastic-ui'
 import BarraLateral from './components/BarraLateral.vue'
 import Migas from './components/Migas.vue'
 import Buscador from './components/Buscador.vue'
@@ -27,9 +27,15 @@ onBeforeUnmount(() => document.removeEventListener('click', alHacerClic))
 // Lo que ya está al cargar simplemente se muestra; al cambiar de página, la
 // nueva entra enfocándose (el `blur-in` de elastic-ui).
 const primeraCarga = ref(true)
+// La rayita de scroll de la página se asoma un momento en cada página nueva,
+// para que se vea cuánto hay.
+const indicador = ref(null)
 watch(
   () => route.path,
-  () => (primeraCarga.value = false),
+  () => {
+    primeraCarga.value = false
+    requestAnimationFrame(() => indicador.value?.flash())
+  },
 )
 </script>
 
@@ -57,4 +63,5 @@ watch(
       </main>
     </div>
   </SidebarLayout>
+  <ScrollIndicator ref="indicador" />
 </template>
