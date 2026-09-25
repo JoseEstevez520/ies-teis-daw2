@@ -2,7 +2,7 @@
 
 Lo que no es temario pero ayuda en el curso.
 
-- [`ia/`](ia/): currar mejor con IA y empezar con agentes.
+- [`ia/`](ia/): trabajar mejor con IA y empezar con agentes.
 - [`herramientas/`](herramientas/): mini-proyectos útiles para el día a día de la clase.
 - [`diseno-web/`](diseno-web/): recursos para que un frontend no parezca hecho a última
   hora.

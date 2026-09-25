@@ -32,6 +32,20 @@ necesita decir qué es la primera vez que sale.
 
 Nada de jerga suelta ("API", "open source") si no hace falta para entender la frase.
 
+## Tono
+
+De tú y cercano, pero en castellano correcto, como un buen apunte o una buena
+documentación: lo lee toda la clase, y también profesores o quien llegue de fuera.
+
+- Sin coloquialismos: currar, pillar, liar, molar, flipar, a lo loco, en plan, un montón.
+  Hay una palabra normal para cada uno (trabajar, entender, confundir, gustar...).
+- Sin muletillas ni guiños ("ojo, que esto es un clásico", "spoiler:"). La frase va a lo
+  que dice.
+- Serio no es frío: frases cortas y directas, de tú, sin "usted" ni pasivas de manual.
+
+- Mal: "Haz `git pull` antes de currar, que si no la lías."
+- Bien: "Haz `git pull` antes de ponerte a trabajar, para no pisar el trabajo de otro."
+
 ## No digas lo innecesario
 
 Si un dato no ayuda a quien lee a entender o decidir algo, sobra, aunque sea cierto. Cada
@@ -66,7 +80,7 @@ explica. Cómo hacerlo en la web: [apuntes-web](../apuntes-web/SKILL.md).
 
 ## Quita los tics de IA
 
-Delatan que un texto lo escribió (o lo pasó a lo loco por) una IA, y estorban a la
+Delatan que un texto lo escribió (o lo pasó sin revisar por) una IA, y estorban a la
 lectura rápida:
 
 - **Contrastes de manual**: "no es solo X, sino también Y". Di la cosa directamente.
@@ -99,6 +113,7 @@ lectura rápida:
 ## Antes de dar por terminado un apunte
 
 - ¿La primera frase ya dice lo importante?
+- ¿Hay alguna palabra coloquial (currar, pillar, liar...) que tenga una normal?
 - ¿Hay algún párrafo que se pueda cortar a la mitad sin perder información?
 - ¿Sobra alguna palabra de la lista de "infladas"?
 - ¿Una lista tiene más de 5 puntos sin agrupar?

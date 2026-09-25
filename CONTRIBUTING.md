@@ -5,7 +5,7 @@ previa. La idea es que subir algo sea tan fácil como copiarlo aquí.
 
 ## Reglas mínimas
 
-- **Haz `git pull` antes de currar**, para no pisar el trabajo de otro.
+- **Haz `git pull` antes de ponerte a trabajar**, para no pisar el trabajo de otro.
 - **No reescribas lo de otra persona sin necesidad.** Si crees que algo está mal, corrígelo,
   pero no borres el trabajo ajeno solo porque lo harías distinto.
 - **Nombres de archivo y carpeta en minúsculas-con-guiones** (`validacion-formularios.md`,
