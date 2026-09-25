@@ -207,14 +207,14 @@ const nombreValido = computed(() => nombre.value.trim() !== '')
     {
       kind: 'prompt',
       text: '¿Cómo se usa defineModel en Vue 3.5? use context7',
-      note: 'Context7 es un MCP que busca en la documentación oficial de las librerías. "use context7" le dice que lo use.',
+      note: 'Context7 es un MCP: conecta al agente con la documentación oficial de las librerías. "use context7" le dice que lo use.',
     },
     {
       kind: 'step',
       running: 'Buscando "vue" en Context7',
       done: 'Encontrada la documentación de Vue',
       icon: Plug,
-      note: 'Estas herramientas no son de OpenCode: las pone el MCP que conectaste.',
+      note: 'Esto no lo trae el agente: lo hace a través de la conexión con Context7.',
     },
     {
       kind: 'step',

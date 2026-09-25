@@ -7,11 +7,11 @@ una entra en un momento distinto:
 |---|---|---|
 | **AGENTS.md** | las reglas de tu proyecto | siempre, al arrancar |
 | **Skills** | instrucciones para un tipo de tarea | solo cuando la tarea lo pide |
-| **MCP** | herramientas de fuera de tu proyecto | cuando las necesita |
+| **MCP** | conexiones con otras aplicaciones | cuando necesita algo de ellas |
 
 Todo eso ocupa sitio en lo que el modelo tiene delante: AGENTS.md entero; de las skills,
-solo su nombre y descripción hasta que carga una; de cada MCP, la lista de sus
-herramientas.
+solo su nombre y descripción hasta que carga una; de cada MCP, lo que se puede hacer con
+esa conexión.
 
 **Lo que usa siempre va en AGENTS.md; lo que solo usa a veces, en una skill.** Así no le
 llenas la cabeza de instrucciones que no necesita.
@@ -51,11 +51,11 @@ Nadie le dice que use la skill: la carga él al ver que la tarea encaja con su d
 OpenCode busca skills en `.opencode/skills/`, `.agents/skills/` y `.claude/skills/` de tu
 proyecto, y en las mismas carpetas de tu usuario.
 
-## MCP: herramientas de fuera
+## MCP: conexiones con otras aplicaciones
 
-MCP es una forma estándar de darle al agente herramientas que no trae: buscar en la
-documentación de una librería, mirar tus incidencias, consultar una base de datos. Cada
-una la pone un servidor MCP, que conectas en la configuración. Por ejemplo, Context7, que
+Un MCP conecta al agente con otra aplicación: la documentación de las librerías, tu
+GitHub, una base de datos. Es una forma estándar de conectarlas, así que la misma conexión
+sirve para cualquier agente. Se añade en la configuración; por ejemplo, Context7, que
 busca en la documentación oficial de las librerías:
 
 ```json title="opencode.json"
@@ -71,13 +71,13 @@ busca en la documentación oficial de las librerías:
 ```
 
 Luego le pides algo acabando en "use context7" y busca en la documentación de ahora, no
-en lo que el modelo recordaba. **Un MCP le da al agente herramientas nuevas, y con ellas
-información que no tiene.**
+en lo que el modelo recordaba. **Un MCP conecta al agente con otra aplicación, y con ella
+con información que no tiene.**
 
 > [!WARNING]
-> La lista de herramientas de cada MCP entra en lo que el modelo tiene delante, aunque no
-> las use. Conecta solo los que necesitas: algunos, como el de GitHub, tienen tantas que
-> llenan el contexto.
+> Lo que se puede hacer con cada conexión entra en lo que el modelo tiene delante, aunque
+> no lo use. Conecta solo lo que necesitas: algunas, como la de GitHub, traen tantas cosas
+> que llenan el contexto.
 
 Más en la documentación de OpenCode: [reglas](https://opencode.ai/docs/rules/),
 [skills](https://opencode.ai/docs/skills/) y [MCP](https://opencode.ai/docs/mcp-servers/).

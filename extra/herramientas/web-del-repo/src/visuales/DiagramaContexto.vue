@@ -1,53 +1,81 @@
 <script setup>
 import { Diagram } from 'elastic-ui'
-import { BookOpen, MessageSquare, Plug, ScrollText } from '@lucide/vue'
+import { BookOpen, Brain, MessageSquare, Plug, ScrollText } from '@lucide/vue'
 
-// Qué tiene delante el modelo cuando le pides algo, y cuándo entra cada cosa:
-// AGENTS.md entero y siempre; de las skills, solo su nombre y descripción
-// hasta que una hace falta; de cada MCP, la lista de sus herramientas, que
-// ocupa sitio aunque no las use. Harness cian, como en el resto de páginas de
-// agentes; lo que destaca es la skill que se carga.
+// Qué tiene delante el modelo cuando le pides algo, y cuánto entra de cada cosa:
+// AGENTS.md entero; de las skills, el nombre (y entera la que hace falta); de
+// cada MCP, lo que se puede hacer con esa conexión; y tu petición.
+// Colores de concepto, los de todas las páginas de agentes: el modelo violeta
+// (la caja de fuera), lo que pone el harness cian y lo tuyo gris. La forma dice
+// cuánto entra: relleno es entero; punteado, solo el nombre.
+const MODELO = '#7c3aed'
 const HARNESS = '#0891b2'
+const TU = 'var(--color-fg-muted)'
 
-const FILAS = [
-  { icono: ScrollText, que: 'AGENTS.md', cuando: 'entero, siempre', detalle: 'las reglas de tu proyecto' },
-  { icono: BookOpen, que: 'Skills', cuando: 'solo nombre y descripción', detalle: 'la entera, cuando hace falta', skills: true },
-  { icono: Plug, que: 'MCP', cuando: 'la lista de sus herramientas', detalle: 'ocupa sitio aunque no las use' },
-  { icono: MessageSquare, que: 'Tu petición', cuando: 'lo que le acabas de pedir', detalle: '' },
-]
+// Una skill que aún no ha cargado: solo su nombre, sin relleno.
+const soloNombre = {
+  '--diagram-color': HARNESS,
+  background: 'transparent',
+  boxShadow: `inset 0 0 0 1px color-mix(in oklab, ${HARNESS} 45%, transparent)`,
+  fontWeight: 500,
+}
 </script>
 
 <template>
   <Diagram
-    label="Lo que tiene delante el modelo al pedirle algo: AGENTS.md entero siempre; de las skills, solo su nombre y descripción hasta que carga la que necesita; de cada MCP, la lista de sus herramientas; y tu petición."
+    label="Lo que tiene delante el modelo al pedirle algo: AGENTS.md entero siempre; de las skills, solo su nombre y descripción hasta que carga la que necesita, que entra entera; de cada MCP, lo que se puede hacer con esa conexión; y tu petición."
   >
-    <div class="diagram-area diagram-in" :style="{ '--diagram-color': HARNESS }">
-      <span class="text-sm font-semibold">Lo que tiene delante el modelo</span>
-      <ul class="flex flex-col gap-2">
-        <li
-          v-for="f in FILAS"
-          :key="f.que"
-          class="diagram-in flex flex-col gap-1.5 rounded-[var(--radius-md)] bg-bg px-3 py-2.5 sm:flex-row sm:items-center sm:gap-3"
-        >
-          <span class="flex w-36 shrink-0 items-center gap-2 text-sm font-semibold">
-            <component :is="f.icono" class="size-4 shrink-0" :stroke-width="1.5" aria-hidden="true" />{{ f.que }}
+    <div class="diagram-area diagram-in gap-4" :style="{ '--diagram-color': MODELO }">
+      <span class="flex items-center gap-2 text-sm font-semibold">
+        <Brain class="size-4 shrink-0" :stroke-width="1.5" aria-hidden="true" />
+        Lo que tiene delante el modelo
+      </span>
+
+      <dl class="grid gap-x-4 gap-y-3 sm:grid-cols-[9rem_1fr] sm:items-start">
+        <dt class="diagram-in pt-2 text-xs font-medium text-fg-secondary">AGENTS.md: siempre, entero</dt>
+        <dd class="diagram-in flex flex-col gap-1">
+          <span class="diagram-chip self-start" :style="{ '--diagram-color': HARNESS }">
+            <ScrollText class="size-4" :stroke-width="1.5" aria-hidden="true" />AGENTS.md
           </span>
-          <span v-if="!f.skills" class="text-sm text-fg-secondary">
-            <span class="text-fg">{{ f.cuando }}</span><template v-if="f.detalle">: {{ f.detalle }}</template>
-          </span>
-          <!-- Las skills: tres nombres, y solo una abierta, la que hace falta. -->
-          <span v-else class="flex flex-wrap items-center gap-2 text-sm">
-            <span class="rounded-[var(--radius-sm)] border border-border px-2 py-0.5 text-fg-muted">apuntes-web</span>
-            <span class="rounded-[var(--radius-sm)] border-2 border-[color:var(--diagram-color)] px-2 py-0.5 font-medium text-fg">
-              apuntes-claros · cargada
+          <span class="text-xs text-fg-secondary">las reglas de tu proyecto</span>
+        </dd>
+
+        <dt class="diagram-in pt-2 text-xs font-medium text-fg-secondary">Skills: el nombre, y entera la que hace falta</dt>
+        <dd class="diagram-in flex flex-col gap-1.5">
+          <span class="flex flex-wrap items-center gap-2">
+            <span class="diagram-chip" :style="soloNombre">
+              <BookOpen class="size-4" :stroke-width="1.5" aria-hidden="true" />apuntes-web
             </span>
-            <span class="rounded-[var(--radius-sm)] border border-border px-2 py-0.5 text-fg-muted">…</span>
-            <span class="w-full text-fg-secondary">
-              <span class="text-fg">{{ f.cuando }}</span>; {{ f.detalle }}
+            <span class="diagram-chip" :style="soloNombre">…</span>
+          </span>
+          <!-- La que la tarea necesita: entra entera, con sus instrucciones. -->
+          <span class="flex flex-col self-start rounded-[var(--radius-md)]" :style="{ background: `color-mix(in oklab, ${HARNESS} 14%, var(--color-bg))` }">
+            <span class="diagram-chip" :style="{ '--diagram-color': HARNESS, background: 'transparent' }">
+              <BookOpen class="size-4" :stroke-width="1.5" aria-hidden="true" />apuntes-claros
+              <span class="font-normal text-fg-secondary">· cargada</span>
+            </span>
+            <span class="px-3 pb-2.5 text-xs leading-relaxed text-fg-secondary">
+              + sus instrucciones: ir al grano, escribir para quien no sabe nada…
             </span>
           </span>
-        </li>
-      </ul>
+        </dd>
+
+        <dt class="diagram-in pt-2 text-xs font-medium text-fg-secondary">MCP: siempre, aunque no la use</dt>
+        <dd class="diagram-in flex flex-col gap-1">
+          <span class="diagram-chip self-start" :style="{ '--diagram-color': HARNESS }">
+            <Plug class="size-4" :stroke-width="1.5" aria-hidden="true" />context7
+            <span class="font-normal text-fg-secondary">· lo que puede hacer con esa conexión</span>
+          </span>
+          <span class="text-xs text-fg-secondary">cada aplicación que conectas suma lo suyo</span>
+        </dd>
+
+        <dt class="diagram-in pt-2 text-xs font-medium text-fg-secondary">Lo tuyo: ahora</dt>
+        <dd class="diagram-in">
+          <span class="diagram-chip self-start" :style="{ '--diagram-color': TU }">
+            <MessageSquare class="size-4" :stroke-width="1.5" aria-hidden="true" />Tu petición
+          </span>
+        </dd>
+      </dl>
     </div>
   </Diagram>
 </template>

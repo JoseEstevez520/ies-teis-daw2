@@ -43,7 +43,7 @@ const CONTEXT7 = `{
       <tbody>
         <tr><td><strong>AGENTS.md</strong></td><td>las reglas de tu proyecto</td><td>siempre, al arrancar</td></tr>
         <tr><td><strong>Skills</strong></td><td>instrucciones para un tipo de tarea</td><td>solo cuando la tarea lo pide</td></tr>
-        <tr><td><strong>MCP</strong></td><td>herramientas de fuera de tu proyecto</td><td>cuando las necesita</td></tr>
+        <tr><td><strong>MCP</strong></td><td>conexiones con otras aplicaciones</td><td>cuando necesita algo de ellas</td></tr>
       </tbody>
     </table>
     <p>Todo eso ocupa sitio en lo que el modelo tiene delante al trabajar. Fíjate en qué entra entero y qué no:</p>
@@ -82,22 +82,22 @@ const CONTEXT7 = `{
       <code>.claude/skills/</code> de tu proyecto, y en las mismas carpetas de tu usuario.
     </p>
 
-    <h2 id="mcp">MCP: herramientas de fuera</h2>
+    <h2 id="mcp">MCP: conexiones con otras aplicaciones</h2>
     <p>
-      MCP es una forma estándar de darle al agente herramientas que no trae: buscar en la
-      documentación de una librería, mirar tus incidencias, consultar una base de datos. Cada una
-      la pone un servidor MCP, que conectas en la configuración. Por ejemplo, Context7, que busca en
-      la documentación oficial de las librerías:
+      Un MCP conecta al agente con otra aplicación: la documentación de las librerías, tu GitHub,
+      una base de datos. Es una forma estándar de conectarlas, así que la misma conexión sirve
+      para cualquier agente. Se añade en la configuración; por ejemplo, Context7, que busca en la
+      documentación oficial de las librerías:
     </p>
     <CodeBlock :code="CONTEXT7" title="opencode.json" />
     <p>Fíjate en que responde con la documentación de ahora, no con lo que el modelo recordaba. La sesión es un ejemplo inventado.</p>
     <SesionAgente nombre="mcp" />
-    <p><strong>Un MCP le da al agente herramientas nuevas, y con ellas información que no tiene.</strong></p>
-    <Callout type="warning" title="Cada MCP ocupa sitio">
+    <p><strong>Un MCP conecta al agente con otra aplicación, y con ella con información que no tiene.</strong></p>
+    <Callout type="warning" title="Cada conexión ocupa sitio">
       <p>
-        La lista de herramientas de cada MCP entra en lo que el modelo tiene delante, aunque no las
-        use. Conecta solo los que necesitas: algunos, como el de GitHub, tienen tantas que llenan
-        el contexto.
+        Lo que se puede hacer con cada conexión entra en lo que el modelo tiene delante, aunque no
+        lo use. Conecta solo lo que necesitas: algunas, como la de GitHub, traen tantas cosas que
+        llenan el contexto.
       </p>
     </Callout>
   </PlantillaPagina>
