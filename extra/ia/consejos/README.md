@@ -17,7 +17,7 @@ Pídele que te explique el concepto o que revise lo que has hecho tú.
 ### Ponle reglas con `AGENTS.md`
 
 Un archivo `AGENTS.md` en tu proyecto le dice cómo quieres que trabaje. Por ejemplo: "no
-edites código, solo explica". Cómo se usa, en [OpenCode](../opencode/).
+edites código, solo explica". Cómo se usa, en [Darle contexto](../contexto/).
 
 ### Úsala para lo tedioso
 

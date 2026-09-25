@@ -1,4 +1,4 @@
-import { Bot, FileText, FlaskConical, PencilLine, Search } from '@lucide/vue'
+import { BookOpen, Bot, FilePen, FileText, FlaskConical, PencilLine, Plug, Search } from '@lucide/vue'
 
 // Los guiones de las sesiones de agente que se reproducen en las páginas de IA
 // (con AgentReplay). Son inventados, sobre la práctica de Spring de la tienda:
@@ -159,6 +159,84 @@ export const SESIONES = {
       kind: 'answer',
       text: 'En src/main/resources/application.properties: las claves spring.datasource.* ponen la URL, el usuario y la contraseña.',
       note: 'Solo vuelve la respuesta de Explore, no todo lo que leyó.',
+    },
+  ],
+  skill: [
+    {
+      kind: 'prompt',
+      text: 'Escribe un apunte corto de cómo validar un formulario en Vue.',
+      note: 'Una petición cualquiera. No le has dicho que use ninguna skill.',
+    },
+    {
+      kind: 'step',
+      running: 'Cargando la skill apuntes-claros',
+      done: 'Skill apuntes-claros cargada',
+      icon: BookOpen,
+      output: `---
+name: apuntes-claros
+description: Estilo de escritura para cualquier .md de este repo (apuntes, README,
+  extra/), conciso, escaneable y sin sonar a texto generado por IA. [...]
+---
+
+# Apuntes claros
+[...]`,
+      note: 'Solo tenía el nombre y la descripción de cada skill. La descripción encaja con "escribir un apunte", así que la carga entera.',
+    },
+    {
+      kind: 'step',
+      running: 'Escribiendo modulos/diw/validar-formularios.md',
+      done: 'Escrito modulos/diw/validar-formularios.md',
+      icon: FilePen,
+      output: `# Validar formularios en Vue
+
+Vue valida un campo con una computed que devuelve true o false:
+
+\`\`\`js
+const nombreValido = computed(() => nombre.value.trim() !== '')
+\`\`\`
+[...]`,
+      note: 'Escribe siguiendo la skill: empieza por lo importante y enseña el código.',
+    },
+    {
+      kind: 'answer',
+      text: 'Hecho: modulos/diw/validar-formularios.md, con el estilo de apuntes-claros.',
+      note: 'Las instrucciones de la skill solo entraron cuando hicieron falta.',
+    },
+  ],
+  mcp: [
+    {
+      kind: 'prompt',
+      text: '¿Cómo se usa defineModel en Vue 3.5? use context7',
+      note: 'Context7 es un MCP que busca en la documentación oficial de las librerías. "use context7" le dice que lo use.',
+    },
+    {
+      kind: 'step',
+      running: 'Buscando "vue" en Context7',
+      done: 'Encontrada la documentación de Vue',
+      icon: Plug,
+      note: 'Estas herramientas no son de OpenCode: las pone el MCP que conectaste.',
+    },
+    {
+      kind: 'step',
+      running: 'Leyendo la documentación de defineModel',
+      done: 'Leída la documentación de defineModel',
+      icon: Search,
+      note: 'Lee la documentación de ahora, no lo que recordaba el modelo de cuando lo entrenaron.',
+    },
+    {
+      kind: 'answer',
+      text: 'defineModel() declara de una vez la prop y el evento que la actualiza. En el hijo, const nombre = defineModel(); en el padre, <Hijo v-model="texto" />.',
+      code: {
+        file: 'Hijo.vue',
+        code: `<script setup>
+const nombre = defineModel()
+</script>
+
+<template>
+  <input v-model="nombre" />
+</template>`,
+      },
+      note: 'La respuesta sale de la documentación que acaba de leer.',
     },
   ],
 }

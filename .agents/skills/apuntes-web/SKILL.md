@@ -21,6 +21,10 @@ El texto sigue [apuntes-claros](../apuntes-claros/SKILL.md).
 ## Antes de escribir
 
 - Datos de la **documentación oficial**, nunca de memoria.
+- **Conceptos, no una herramienta.** Se explica la idea, que vale para cualquier
+  herramienta (qué es un agente, qué es un AGENTS.md, una skill, un MCP), no cómo se usa un
+  programa concreto. La herramienta de clase (en IA, OpenCode) es solo el ejemplo: sus
+  nombres, archivos y rutas salen como "en OpenCode, ...", nunca como el tema de la página.
 - Busca **qué hay que entender primero**, y cuéntalo con lo mínimo. En agentes bastó
   "el modelo es el cerebro, el harness le da herramientas"; el bucle y MCP confundían.
 - Lo básico va en su propia página (como `extra/ia/fundamentos/`), no al principio de otra.

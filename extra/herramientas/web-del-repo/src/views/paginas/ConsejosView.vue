@@ -38,7 +38,7 @@ Quería inyectar el repositorio en el controlador. ¿Qué me falta?`
     <p>
       Un archivo <code>AGENTS.md</code> en tu proyecto le dice cómo quieres que trabaje. Por
       ejemplo: "no edites código, solo explica". Cómo se usa, en
-      <RouterLink to="/extra/ia/opencode#agents-md">Agentes con OpenCode</RouterLink>.
+      <RouterLink to="/extra/ia/contexto#agents-md">Darle contexto</RouterLink>.
     </p>
 
     <h2 id="lo-tedioso">Úsala para lo tedioso</h2>

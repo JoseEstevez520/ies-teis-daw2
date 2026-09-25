@@ -13,5 +13,7 @@ export const FICHAS = {
   'extra/herramientas/cuaderno-ia': { titulo: 'Cuaderno de IA para apuntes' },
   'extra/ia/consejos': { titulo: 'Consejos para usar la IA' },
   'extra/ia/fundamentos': { titulo: 'Fundamentos: modelo, harness y agente' },
-  'extra/ia/opencode': { titulo: 'Agentes de IA con OpenCode' },
+  'extra/ia/opencode': { titulo: 'Tu primer agente' },
+  'extra/ia/contexto': { titulo: 'Darle contexto' },
+  'extra/ia/agentes': { titulo: 'Agentes y subagentes' },
 }

@@ -4,7 +4,9 @@ import ModulosView from '../views/ModulosView.vue'
 import PanelAulaVirtualView from '../views/PanelAulaVirtualView.vue'
 import CalculadoraDeFaltasView from '../views/CalculadoraDeFaltasView.vue'
 import AlarmaTareasView from '../views/paginas/AlarmaTareasView.vue'
+import AgentesView from '../views/paginas/AgentesView.vue'
 import ConsejosView from '../views/paginas/ConsejosView.vue'
+import ContextoView from '../views/paginas/ContextoView.vue'
 import CuadernoIaView from '../views/paginas/CuadernoIaView.vue'
 import DisenoWebView from '../views/paginas/DisenoWebView.vue'
 import ExtraView from '../views/paginas/ExtraView.vue'
@@ -47,6 +49,8 @@ const router = createRouter({
     { path: '/extra/ia', component: IaView },
     { path: '/extra/ia/fundamentos', component: FundamentosView },
     { path: '/extra/ia/opencode', component: OpenCodeView },
+    { path: '/extra/ia/contexto', component: ContextoView },
+    { path: '/extra/ia/agentes', component: AgentesView },
     { path: '/extra/ia/consejos', component: ConsejosView },
     { path: '/extra/diseno-web', component: DisenoWebView },
     { path: '/extra/ideas-proyecto-fin-curso', component: IdeasPfcView },
