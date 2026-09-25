@@ -42,23 +42,17 @@ El texto sigue [apuntes-claros](../apuntes-claros/SKILL.md).
 
 ## Piezas visuales
 
-Componentes Vue en `extra/herramientas/web-del-repo/src/visuales/`, registrados en
-`index.js` y metidos en el `.md` así:
+Cada página de la web es un componente Vue compuesto a mano, en
+`extra/herramientas/web-del-repo/src/views/`; el `.md` es la versión de GitHub. Las piezas
+visuales son componentes en `src/visuales/` que la página importa donde toca.
 
-````markdown
-```visual
-nombre-de-la-pieza
-```
-````
-
-Referencias: `DiagramaHarness.vue` (cajas), las sesiones de `sesiones.js` (se ven como
-`sesion-<nombre>`) y `HorarioSemanal.vue`. Antes de hacer una pieza, mira si basta una
-tabla o un bloque de código. La forma (colores, dibujos, movimiento) la ponen los
+Referencias: `DiagramaHarness.vue` (cajas), las sesiones de `sesiones.js` (con
+`<SesionAgente nombre="..." />`) y `HorarioSemanal.vue`. Antes de hacer una pieza, mira si
+basta una tabla o un bloque de código. La forma (colores, dibujos, movimiento) la ponen los
 componentes de elastic-ui; su `USAGE.md` tiene las reglas.
 
 - **Alrededor de cada pieza**: una frase antes que diga en qué fijarse, y después su
   conclusión en negrita, para quien solo mira el final.
-
 - **Color:** uno por concepto, el mismo en toda la página. Verde / ámbar / rojo solo
   para sí / con condiciones / no. Fuera de las piezas, el de la sección
   (`src/lib/colorSeccion.js`).
@@ -69,8 +63,9 @@ componentes de elastic-ui; su `USAGE.md` tiene las reglas.
 
 ## Meterla en la web
 
-- Página nueva: regístrala en `src/data/paginas.js` (ruta como las carpetas) y, si su `#`
-  es demasiado largo para las migas, un título corto en `src/data/fichas.js`.
+- Página nueva: su componente en `src/views/paginas/`, su ruta en `src/router/index.js`
+  (como las carpetas) y su entrada en `src/data/paginas.js`. Si su `#` es demasiado largo
+  para las migas, un título corto en `src/data/fichas.js`.
 - Compruébala con captura, no basta con que compile (a 1280 y a 390 px de ancho):
 
 Con un navegador de verdad (Playwright, o el tuyo): Chrome sin interfaz con

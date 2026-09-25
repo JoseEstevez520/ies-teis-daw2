@@ -25,10 +25,6 @@ ejemplo inventado.
 
 El agente con el que arranca. Fíjate en que edita sin preguntarte.
 
-```visual
-sesion-build
-```
-
 **Build hace el cambio directamente.**
 
 ### Plan
@@ -36,20 +32,12 @@ sesion-build
 Para pensar antes de un cambio grande. Fíjate en que se para y te pide permiso antes de
 editar.
 
-```visual
-sesion-plan
-```
-
 **Plan te deja un plan y no cambia nada sin tu permiso.**
 
 ### Tu propio agente
 
 Puedes crear otro con tus instrucciones y tus permisos. Este tutor tiene la edición
 denegada, así que no puede resolverte la práctica aunque se lo pidas.
-
-```visual
-sesion-tutor
-```
 
 **Sus permisos mandan: aunque el modelo quiera editar, el harness no le deja.**
 
@@ -71,10 +59,6 @@ No me des el código de la práctica.
 ### Subagentes
 
 Un agente puede encargarle una parte a otro, que trabaja aparte. Fíjate en lo que vuelve.
-
-```visual
-sesion-subagente
-```
 
 **Del subagente solo vuelve la respuesta, no todo lo que leyó.**
 

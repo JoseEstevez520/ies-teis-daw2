@@ -41,7 +41,7 @@ lectores de pantalla, "En esta página", "Paso 2 de 4"...) están en español en
 - **Entre páginas** (`PageTransition`): solo cambia el contenido, con un fundido corto. La
   rayita de scroll (`ScrollIndicator`) se asoma en cada página nueva.
 - **Cada página** (`PlantillaPagina.vue`): un artículo a un solo ancho (`prose article`),
-  con su título, y en pantallas muy anchas el índice de sus `##` y `###` a la derecha.
+  con su título, y en pantallas muy anchas el índice de sus títulos a la derecha.
 
 ## Color
 
@@ -58,36 +58,32 @@ El color con significado de esta web:
   horario y en la tabla de módulos.
 - **Modelo violeta y harness cian** en todas las páginas de agentes.
 
-## Páginas desde `.md`
+## Páginas
 
-Casi todas las páginas salen de su `.md` con el componente `Markdown` de la librería
-(`views/MarkdownRouteView.vue`). Antes, `src/lib/fuenteMd.js` pasa los enlaces e imágenes
-relativos del `.md` a rutas de la web o, si la página no está en la web, a GitHub.
+Cada página es un componente en `src/views/` (la regla, en [AGENTS.md](AGENTS.md)), dentro
+de `PlantillaPagina`: un artículo con su título, una entradilla opcional y el índice, que
+saca solo de sus `h2` y `h3` con `id`. Dentro va HTML normal (`h2`, párrafos, listas,
+tablas), que la librería ya pinta con su tipografía, y sus piezas donde toca:
 
-| En el `.md` | Sale como |
+| Para | Pieza |
 |---|---|
-| `##`, `###` | títulos, en el índice de la página |
-| bloque de código (con ` title="archivo"` si quieres) | `CodeBlock` |
-| bloque ```` ```diff ```` | `CodeDiff`, que reproduce el cambio |
-| `> [!NOTE]`, `[!TIP]`, `[!IMPORTANT]`, `[!WARNING]`, `[!CAUTION]` | `Callout` |
-| tabla | tabla al ancho del texto |
-| bloque ```` ```visual ```` con el nombre de una pieza | la pieza (`src/visuales/`) |
-| bloque ```` ```mermaid ```` | diagrama (`DiagramaMermaid.vue`), solo se descarga donde hace falta |
+| páginas de una carpeta, enlaces a otras webs | tarjetas (`RejillaTarjetas` + `TarjetaPagina`) |
+| código | `CodeBlock` (con `title` si es un archivo, `wrap` si es texto) |
+| comandos que se ejecutan | `TerminalReplay` |
+| pasos para hacer algo | `Steps static` |
+| un aviso | `Callout` |
+| una comparación | tabla, o dos `CodeBlock` en `side-by-side` si son dos textos cortos |
+| detalles que no todos necesitan | `Accordion` |
 
-## Páginas a medida
-
-La portada, Módulos y las herramientas con entidad propia (`panel-aula-virtual`,
-`calculadora-de-faltas`) son vistas Vue en `src/views/`. Usan la misma `PlantillaPagina` y
-se escriben como un artículo: `h2`, párrafos, listas y las piezas de la librería.
+Las páginas de los módulos comparten `ModuloView` mientras no tengan apuntes.
 
 ## Piezas visuales (`src/visuales/`)
 
-Para lo que se entiende mejor viéndolo que leyéndolo. Un `.md` las mete con un bloque
-```` ```visual ```` y su nombre, registrado en `src/visuales/index.js`. Cómo hacerlas: skill
-[apuntes-web](../../../.agents/skills/apuntes-web/SKILL.md).
+Para lo que se entiende mejor viéndolo que leyéndolo. Cada página las importa donde las
+necesita. Cómo hacerlas: skill [apuntes-web](../../../.agents/skills/apuntes-web/SKILL.md).
 
 - **Dibujos** con `Diagram` y las clases de la librería (`diagram-area`, `diagram-chip`...):
-  `modelo-y-harness`.
+  `DiagramaHarness.vue`.
 - **Sesiones de agente** con `AgentReplay`: cada guion está en `src/visuales/sesiones.js` y
-  sale como `sesion-<nombre>`. Son inventados, y la página lo dice.
-- **Horario** con `Timetable`: `horario-semanal` (y su PNG) y `horario-modulos`.
+  se pone con `<SesionAgente nombre="..." />`. Son inventados, y la página lo dice.
+- **Horario** con `Timetable`: `HorarioSemanal.vue` (y su PNG) y `HorarioModulos.vue`.

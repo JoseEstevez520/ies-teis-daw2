@@ -11,28 +11,16 @@ El modelo es el cerebro. El harness le da herramientas. Juntos son un agente.
   No lo tienes que montar tú: hay aplicaciones que lo traen ya montado, como Claude Code.
 - **Agente:** modelo + harness.
 
-```visual
-modelo-y-harness
-```
-
 ## La misma petición, dos veces
 
 Pídele a un modelo solo que no deje crear productos sin nombre en la práctica de la
 tienda. No ha visto tu proyecto, así que te contesta con código para pegar. Las sesiones
 son un ejemplo inventado.
 
-```visual
-sesion-solo-modelo
-```
-
 **Solo, el modelo te dice qué hacer, pero lo haces tú.**
 
 Ahora, el mismo modelo con un harness alrededor. Fíjate en que busca, lee, edita y pasa
 los tests antes de contestar.
-
-```visual
-sesion-con-harness
-```
 
 **Con un harness, lo hace él en tu proyecto, y ves cada paso.**
 
