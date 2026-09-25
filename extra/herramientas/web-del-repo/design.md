@@ -29,7 +29,7 @@ Antes de montar algo a mano, mira si la librería ya lo tiene. Qué usa la web:
 
 | Para | Componente |
 |---|---|
-| estructura | `SidebarLayout`, `Sidebar variant="connected"`, `SidebarToggle`, `NavTree` |
+| estructura | `SidebarLayout`, `Sidebar variant="connected"`, `SidebarToggle`, `NavTree`, `Breadcrumbs` |
 | índice de cada página | `TableOfContents` (los `##`, a la derecha, solo en pantallas anchas) |
 | bloques de código | `CodeBlock` |
 | avisos | `Callout` |
@@ -94,8 +94,8 @@ Sin fuente propia: la de elastic-ui cae a la del sistema si no está instalada.
 
 ## Iconos
 
-`@lucide/vue`. En la barra lateral, solo las secciones de primer nivel llevan icono; el
-resto va con el texto solo. No hace falta un icono ni una marca en cada cosa.
+`@lucide/vue`. En la barra lateral, un icono por sección. No hace falta un icono ni una
+marca en cada cosa.
 
 | Sección | Icono |
 |---|---|
@@ -115,12 +115,15 @@ con descripción, sale como tarjetas (`TarjetaInterna.vue`) con título e icono 
 
 ## Layout
 
-- **Barra lateral**: `Sidebar` conectada. La página activa es una pestaña del mismo color
-  que el contenido, que entra en la barra, sin sombra. Se pliega a una columna de iconos; en
-  el móvil es un panel que se abre con el botón de arriba. Una carpeta con páginas dentro es
-  un grupo que también es página: su nombre lleva a ella y el chevron lo pliega. Se abre
-  solo al estar en su página o en una de dentro.
-- **Cabecera**: buscador y cambio de tema, a la derecha.
+- **Barra lateral**: `Sidebar` conectada, solo con las cuatro secciones (Inicio, Módulos,
+  Extra, Horario). La sección en la que estás es una pestaña del mismo color que el
+  contenido, que entra en la barra, sin sombra. Se pliega a una columna de iconos; en el
+  móvil es un panel que se abre con el botón de arriba.
+- **Migas** (`Breadcrumbs`, en `src/components/Migas.vue`): arriba de cada página, la ruta
+  completa (Inicio › Extra › IA aplicada › Consejos). El chevron entre dos migas abre las
+  demás páginas de ese nivel, para saltar de una a otra sin volver atrás. Salen del mismo
+  árbol que sigue las carpetas del repo (`src/lib/migas.js`).
+- **Cabecera**: las migas a la izquierda; buscador y cambio de tema, a la derecha.
 - **Contenido**: `max-w-3xl`, con el índice de la página a la derecha en pantallas anchas.
   La ventana es la que hace scroll, no el contenido.
 - **Portada**: una frase + rejilla de tarjetas, una por sección.

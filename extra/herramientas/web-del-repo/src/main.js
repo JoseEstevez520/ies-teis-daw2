@@ -27,6 +27,8 @@ const TEXTOS = {
   important: 'Importante',
   warning: 'Aviso',
   caution: 'Cuidado',
+  breadcrumb: 'Ruta de la página',
+  pagesAtThisLevel: 'Páginas de este nivel',
 }
 
 // Se monta con la primera ruta ya resuelta: así la barra lateral y la página

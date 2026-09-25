@@ -1,24 +1,35 @@
 <script setup>
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { NavTree, Sidebar } from 'elastic-ui'
-import { ARBOL_NAV } from '../lib/arbolNav.js'
-import NodoNav from './NodoNav.vue'
+import { NavTree, NavTreeItem, Sidebar } from 'elastic-ui'
+import { SECCIONES } from '../data/secciones.js'
+import { colorDeRuta } from '../lib/colorSeccion.js'
+import { iconoConColor } from '../lib/iconos.js'
+import { seccionDe } from '../lib/migas.js'
 
-// Barra lateral de elastic-ui, variante "conectada": la página activa es una
-// pestaña del propio contenido que entra en la barra. El árbol sale de las
-// rutas (lib/arbolNav.js), así que una página nueva aparece sola en su sitio.
+// Barra lateral de elastic-ui, variante "conectada": la sección en la que estás
+// es una pestaña del propio contenido que entra en la barra. Solo las
+// secciones de primer nivel; a las páginas de dentro se llega con las migas de
+// arriba (Migas.vue).
 const route = useRoute()
-const activa = computed(() => route.path)
+const activa = computed(() => seccionDe(route.path))
 </script>
 
 <template>
-  <Sidebar variant="connected" label="Navegación">
+  <Sidebar variant="connected">
     <template #header>
       <RouterLink to="/" class="block px-2.5 text-sm font-semibold text-fg">2º DAW · IES de Teis</RouterLink>
     </template>
-    <NavTree :model-value="activa" label="Páginas">
-      <NodoNav v-for="seccion in ARBOL_NAV" :key="seccion.ruta" :nodo="seccion" />
+    <NavTree :model-value="activa">
+      <NavTreeItem
+        v-for="s in SECCIONES"
+        :key="s.ruta"
+        :value="s.ruta"
+        :to="s.ruta"
+        :icon="iconoConColor(s.icono, colorDeRuta(s.ruta))"
+      >
+        {{ s.etiqueta }}
+      </NavTreeItem>
     </NavTree>
   </Sidebar>
 </template>

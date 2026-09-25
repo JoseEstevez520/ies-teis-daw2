@@ -3,6 +3,7 @@ import { onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { SidebarLayout, SidebarToggle, ThemeToggle } from 'elastic-ui'
 import BarraLateral from './components/BarraLateral.vue'
+import Migas from './components/Migas.vue'
 import Buscador from './components/Buscador.vue'
 
 const route = useRoute()
@@ -39,8 +40,8 @@ watch(
     <div class="flex min-w-0 flex-1 flex-col">
       <header class="flex h-14 shrink-0 items-center gap-2 px-4 md:px-8">
         <SidebarToggle class="md:hidden" label="Abrir el menú" />
-        <RouterLink to="/" class="truncate text-sm font-semibold text-fg md:hidden">2º DAW · IES de Teis</RouterLink>
-        <div class="ml-auto flex items-center gap-1">
+        <Migas class="flex-1" />
+        <div class="flex shrink-0 items-center gap-1">
           <Buscador />
           <ThemeToggle />
         </div>
