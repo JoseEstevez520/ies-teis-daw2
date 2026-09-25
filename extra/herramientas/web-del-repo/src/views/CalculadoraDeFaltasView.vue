@@ -1,14 +1,8 @@
 <script setup>
 import { CodeBlock } from 'elastic-ui'
 import PlantillaPagina from '../components/PlantillaPagina.vue'
+import CalculadoraFaltas from '../visuales/CalculadoraFaltas.vue'
 
-const INDICE = [
-  { id: 'arrancarlo', label: 'Arrancarlo tú mismo', level: 2 },
-  { id: 'por-que-manual', label: 'Por qué es de entrada manual', level: 2 },
-  { id: 'umbrales', label: 'Los umbrales reales', level: 2 },
-  { id: 'formula', label: 'Fórmula', level: 2 },
-  { id: 'fuentes', label: 'Fuentes', level: 2 },
-]
 
 const ARRANQUE = `git clone https://github.com/JoseEstevez520/ies-teis-daw2.git
 cd ies-teis-daw2/extra/herramientas/calculadora-de-faltas
@@ -40,16 +34,13 @@ const FUENTES = [
 </script>
 
 <template>
-  <PlantillaPagina titulo="Calculadora de faltas" :indice="INDICE">
+  <PlantillaPagina titulo="Calculadora de faltas">
     <p>
-      Mete tus faltas por módulo y ve el % frente al máximo permitido antes de perder evaluación
-      continua.
+      Elige el módulo, mete tus faltas sin justificar y mira qué porcentaje llevas frente al
+      máximo antes de perder la evaluación continua.
     </p>
 
-    <h2 id="arrancarlo">Arrancarlo tú mismo</h2>
-    <p>Sin backend ni token: solo Node.</p>
-    <CodeBlock :code="ARRANQUE" language="bash" />
-    <p>Abre la URL que te dé Vite (<code>http://localhost:5173</code> normalmente).</p>
+    <CalculadoraFaltas />
 
     <h2 id="por-que-manual">Por qué es de entrada manual, no automática</h2>
     <p>Investigado y descartado el automatizarlo:</p>
@@ -83,7 +74,7 @@ const FUENTES = [
     <h2 id="formula">Fórmula</h2>
     <p>
       Horas por módulo, contando los bloques de 50 min de <code>horario/README.md</code>: dwcs 8h20,
-      diw 6h40, dwcc 5h50, daw 3h20, ipeii 1h40, hcle 1h40, dasp 50 min, acp 50 min. Semanas
+      diw 6h40, dwcc 6h40, daw 3h20, ipeii 1h40, hcle 1h40, dasp 50 min, acp 50 min. Semanas
       lectivas reales de 2º (hasta la 2ª avaliación, antes de la FCT): unas 20,8, no las 34,8 de un
       curso completo.
     </p>
@@ -92,6 +83,11 @@ const FUENTES = [
       Ejemplo con DWCS (8,33 h/semana): unas 173 horas en total. El 6 % son unas 10,4 h de falta
       (aviso) y el 10 %, unas 17,3 h (pérdida de evaluación continua).
     </p>
+
+    <h2 id="arrancarla">Arrancarla por separado</h2>
+    <p>También es una app propia en su carpeta, sin backend ni token: solo hace falta Node.</p>
+    <CodeBlock :code="ARRANQUE" language="bash" />
+    <p>Abre la URL que te dé Vite (<code>http://localhost:5173</code> normalmente).</p>
 
     <h2 id="fuentes">Fuentes</h2>
     <ul>

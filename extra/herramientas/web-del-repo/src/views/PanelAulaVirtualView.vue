@@ -3,15 +3,6 @@ import { RouterLink } from 'vue-router'
 import { Callout, CodeBlock } from 'elastic-ui'
 import PlantillaPagina from '../components/PlantillaPagina.vue'
 
-const INDICE = [
-  { id: 'arrancarlo', label: 'Arrancarlo tú mismo', level: 2 },
-  { id: 'fases', label: 'Fases', level: 2 },
-  { id: 'fase-1', label: 'Fase 1', level: 3 },
-  { id: 'fase-2', label: 'Fase 2', level: 3 },
-  { id: 'stack', label: 'Stack', level: 2 },
-  { id: 'legal', label: 'Legal', level: 2 },
-  { id: 'referencias', label: 'Referencias', level: 2 },
-]
 
 const ESTADO = [
   { nombre: 'Tareas', nota: '/api/tareas funciona', hecho: true },
@@ -78,7 +69,7 @@ const REFERENCIAS = [
 </script>
 
 <template>
-  <PlantillaPagina titulo="Panel del Aula Virtual" :indice="INDICE">
+  <PlantillaPagina titulo="Panel del Aula Virtual">
     <p>
       Junta en una sola pantalla lo que hoy hay que ir a buscar por separado en Moodle: tareas
       pendientes de verdad (con estado real de entrega), notas nuevas por curso, y en qué
