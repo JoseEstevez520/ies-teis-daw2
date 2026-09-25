@@ -1,6 +1,6 @@
 <script setup>
 import { computed, ref } from 'vue'
-import { AnimatedList, Card, CardDescription, CardTitle, SegmentedControl, SegmentedControlItem } from 'elastic-ui'
+import { AnimatedList, Card, CardDescription, CardTitle, Tabs, TabsList, TabsTrigger } from 'elastic-ui'
 import TarjetaRecurso from './TarjetaRecurso.vue'
 
 const props = defineProps({
@@ -35,11 +35,13 @@ const clave = (it) => it.href || it.terminoHtml
 
 <template>
   <div class="flex flex-col gap-4">
-    <SegmentedControl v-model="filtro" label="Filtrar tarjetas">
-        <SegmentedControlItem v-for="o in opciones" :key="o.id" :value="o.id">
+    <Tabs v-model="filtro">
+      <TabsList aria-label="Filtrar tarjetas">
+        <TabsTrigger v-for="o in opciones" :key="o.id" :value="o.id">
           {{ o.label }}<span class="ml-1.5 text-fg-faint tabular-nums">{{ o.total }}</span>
-        </SegmentedControlItem>
-    </SegmentedControl>
+        </TabsTrigger>
+      </TabsList>
+    </Tabs>
 
     <AnimatedList :items="visibles" :item-key="clave" as="div" class="grid gap-4 sm:grid-cols-2">
       <template #default="{ item }">

@@ -35,11 +35,11 @@ Antes de montar algo a mano, mira si la librería ya lo tiene. Qué usa la web:
 | avisos | `Callout` |
 | `###` de un `.md` | `Accordion` |
 | tarjetas | `Card` |
-| filtros y cambios de vista | `SegmentedControl` (+ `AnimatedList` para lo que se filtra) |
+| filtros y cambios de vista | `Tabs` (+ `AnimatedList` para lo que se filtra) |
 | buscador | `SearchMorph` (se abre con `/`) |
 | tema claro / oscuro | `ThemeToggle` |
 | botones y etiquetas | `Button`, `Badge`, `TextMorph` |
-| pasos | `Collapsible` (pieza de agentes por pasos) |
+| sesiones de un agente | `AgentReplay` (modelo y harness, agentes por pasos) |
 
 ## Paleta
 

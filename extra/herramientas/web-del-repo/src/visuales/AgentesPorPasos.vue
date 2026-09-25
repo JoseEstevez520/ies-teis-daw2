@@ -1,46 +1,98 @@
 <script setup>
-import { Button, Card, CodeBlock, Collapsible, CollapsibleContent, CollapsibleTrigger } from 'elastic-ui'
-import { ArrowRight, Check, ChevronRight, CircleHelp, X } from '@lucide/vue'
-import { ref } from 'vue'
+import { AgentReplay, CodeBlock } from 'elastic-ui'
+import { Bot, FileText, Search } from '@lucide/vue'
+import { EDITAR, LEER, PETICION } from './sesionTienda.js'
 
-// Los agentes de OpenCode de menos a más, como pasos numerados unidos por una
-// línea que se va rellenando: 1) Build y Plan, 2) uno tuyo, 3) subagentes. El
-// paso abierto se despliega en su sitio; los demás quedan como título.
-// Permisos según la documentación oficial de OpenCode.
+// Los agentes de OpenCode de menos a más, como sesiones una detrás de otra:
+// Build, Plan, uno tuyo (tutor) y un subagente. La misma petición a cada uno,
+// para que se vea en qué cambian. Permisos según la documentación oficial de
+// OpenCode; el ejemplo (sesionTienda.js) es inventado.
 
-const BUILD = { nombre: 'Build', que: 'Hace los cambios que le pides. Viene activado.', editar: 'si', comandos: 'si' }
-const PLAN = { nombre: 'Plan', que: 'Te dice qué cambiaría. Úsalo antes de un cambio grande.', editar: 'pregunta', comandos: 'pregunta' }
-const TUTOR = {
-  nombre: 'tutor',
-  tuyo: true,
-  que: 'Te explica las prácticas, pero no puede resolverlas por ti.',
-  editar: 'no',
-  comandos: 'no',
-}
+const pide = (note) => ({ kind: 'prompt', text: PETICION, note })
 
-const PASOS = [
-  { titulo: 'Build y Plan', texto: 'OpenCode trae dos agentes. Cambias de uno a otro con la tecla Tab.' },
+const SESIONES = [
   {
-    titulo: 'Tu propio agente',
-    texto: 'Puedes crear otro con tus instrucciones y tus permisos. Este tutor no puede editar aunque se lo pidas.',
+    titulo: 'Build',
+    intro: 'La misma petición a Build, el agente con el que arranca OpenCode.',
+    eventos: [
+      pide('Build es el agente con el que arranca OpenCode. Hace lo que le pides.'),
+      LEER,
+      { ...EDITAR, note: 'Build puede editar y ejecutar comandos sin preguntar.' },
+      {
+        kind: 'answer',
+        text: 'Hecho: POST /productos contesta 400 si falta el nombre.',
+        note: 'En OpenCode cambias de agente con la tecla Tab.',
+      },
+    ],
+  },
+  {
+    titulo: 'Plan',
+    intro: 'La misma petición a Plan, el agente para pensar antes de cambiar.',
+    eventos: [
+      pide('Plan es para pensar antes de un cambio grande. Te dice qué haría.'),
+      LEER,
+      {
+        ...EDITAR,
+        asking: 'Quiere editar ProductoController.java',
+        done: 'Sin editar: le dijiste que no',
+        permission: 'ask-deny',
+        note: 'Antes de editar o ejecutar nada, Plan te pregunta. Aquí le dices que no: solo querías el plan.',
+      },
+      {
+        kind: 'answer',
+        text: 'Plan: en crear, comprobar que el nombre no esté vacío, contestar 400 si lo está y 201 al guardar. Cambia a Build para hacerlo.',
+        note: 'Te deja un plan para revisar y no cambia nada.',
+      },
+    ],
+  },
+  {
+    titulo: 'Tu propio agente: tutor',
+    intro: 'La misma petición a tutor, un agente hecho por ti que no puede editar.',
+    eventos: [
+      pide('tutor es un agente tuyo: tus instrucciones y tus permisos. Este no puede editar.'),
+      LEER,
+      {
+        ...EDITAR,
+        done: 'Denegado: tutor no puede editar',
+        permission: 'deny',
+        note: 'Sus permisos dicen edit: deny, así que el harness le niega la edición aunque el modelo lo intente.',
+      },
+      {
+        kind: 'answer',
+        text: 'No puedo cambiar el archivo, pero tú sí. ¿En qué método comprobarías que el producto tiene nombre? ¿Qué debería contestar la API si no lo tiene?',
+        note: 'Sus instrucciones dicen guiar, no resolver: te hace preguntas en vez de escribir el código.',
+      },
+    ],
+    archivo: true,
   },
   {
     titulo: 'Subagentes',
-    texto: 'Un agente puede encargarle una parte a otro. El otro trabaja aparte y le devuelve solo la respuesta.',
+    intro: 'Un agente que le encarga una parte del trabajo a otro.',
+    eventos: [
+      {
+        kind: 'prompt',
+        text: '¿Dónde se configura la base de datos?',
+        note: 'Una pregunta que obliga a mirar por todo el proyecto.',
+      },
+      {
+        kind: 'step',
+        running: 'Preguntando a Explore',
+        done: 'Explore ha contestado',
+        icon: Bot,
+        session: [
+          { kind: 'step', running: 'Buscando "datasource"', done: 'Encontrados 2 archivos', icon: Search },
+          { kind: 'step', running: 'Leyendo application.properties', done: 'Leído application.properties', icon: FileText },
+          { kind: 'answer', text: 'En src/main/resources/application.properties, en spring.datasource.' },
+        ],
+        note: 'Build le encarga la búsqueda a Explore, un subagente que solo puede leer. Trabaja aparte, en su propia sesión.',
+      },
+      {
+        kind: 'answer',
+        text: 'En src/main/resources/application.properties: las claves spring.datasource.* ponen la URL, el usuario y la contraseña.',
+        note: 'Solo vuelve la respuesta de Explore, no todo lo que leyó, así que Build no se llena de contexto.',
+      },
+    ],
   },
-]
-
-// Verde / ámbar / rojo para sí / con condiciones / no (skill apuntes-web), con
-// los tokens de la librería para que se lean en los dos temas.
-const ESTADO = {
-  si: { icono: Check, texto: 'sí', color: 'var(--color-success)' },
-  pregunta: { icono: CircleHelp, texto: 'te pregunta', color: 'var(--color-warning)' },
-  no: { icono: X, texto: 'no', color: 'var(--color-danger)' },
-}
-
-const PERMISOS = [
-  { clave: 'editar', etiqueta: 'Edita' },
-  { clave: 'comandos', etiqueta: 'Comandos' },
 ]
 
 const TUTOR_MD = `---
@@ -53,91 +105,17 @@ permission:
 
 Explícame el concepto y hazme preguntas.
 No me des el código de la práctica.`
-
-// Un encargo de ida y vuelta a un subagente.
-const ENCARGO = [
-  { quien: 'Build', que: '"¿Dónde se configura la base de datos?"' },
-  { quien: 'Explore', que: 'busca por el proyecto, solo leyendo' },
-  { quien: 'Build recibe', que: 'application.properties', codigo: true },
-]
-
-// Un paso abierto cada vez. Cerrar el abierto no deja ninguno: se queda.
-const paso = ref(0)
-const abrir = (i, abierto) => abierto && (paso.value = i)
 </script>
 
 <template>
-  <ol class="flex flex-col">
-    <li v-for="(p, i) in PASOS" :key="p.titulo" class="grid grid-cols-[1.75rem_1fr] gap-x-4">
-      <!-- El número y, debajo, el tramo de línea hasta el siguiente paso, que se
-           rellena al pasar de él. -->
-      <div class="flex flex-col items-center">
-        <span
-          class="flex size-7 shrink-0 items-center justify-center rounded-full text-xs font-semibold tabular-nums transition-colors duration-300"
-          :class="i <= paso ? 'bg-fg text-bg' : 'bg-bg-muted text-fg-muted'"
-        >
-          {{ i + 1 }}
-        </span>
-        <span v-if="i < PASOS.length - 1" class="relative my-1.5 w-px flex-1 bg-border">
-          <span
-            class="absolute inset-0 origin-top bg-fg transition-transform duration-[450ms] ease-emphasized motion-reduce:transition-none"
-            :class="i < paso ? 'scale-y-100' : 'scale-y-0'"
-          />
-        </span>
+  <div class="flex flex-col gap-12">
+    <section v-for="s in SESIONES" :key="s.titulo" class="flex flex-col gap-4">
+      <h3 class="text-sm font-semibold text-fg">{{ s.titulo }}</h3>
+      <AgentReplay :events="s.eventos" :intro="s.intro" />
+      <div v-if="s.archivo" class="flex flex-col gap-2">
+        <p class="text-sm text-fg-secondary">Así se crea: guarda esto en tu proyecto.</p>
+        <CodeBlock :code="TUTOR_MD" title=".opencode/agents/tutor.md" />
       </div>
-
-      <Collapsible :open="paso === i" class="min-w-0 pb-6" @update:open="abrir(i, $event)">
-        <CollapsibleTrigger
-          :chevron="false"
-          class="min-h-7 py-0.5 text-sm transition-colors duration-150"
-          :class="paso === i ? 'text-fg' : 'text-fg-muted hover:text-fg'"
-        >
-          {{ p.titulo }}
-        </CollapsibleTrigger>
-
-        <CollapsibleContent class="flex flex-col gap-4 pt-2 pb-0">
-          <p class="text-sm leading-relaxed">{{ p.texto }}</p>
-
-          <!-- Paso 1: los dos que trae; paso 2: el tuyo, y cómo se crea. -->
-          <div v-if="i < 2" class="grid gap-3 sm:grid-cols-2">
-            <Card v-for="a in i === 0 ? [BUILD, PLAN] : [TUTOR]" :key="a.nombre" size="sm" class="gap-3 px-4">
-              <div class="flex items-baseline justify-between gap-2">
-                <span class="text-base font-semibold text-fg" :class="a.tuyo && 'font-mono'">{{ a.nombre }}</span>
-                <span v-if="a.tuyo" class="text-xs text-fg-muted">hecho por ti</span>
-              </div>
-              <p class="text-sm leading-snug text-fg-secondary">{{ a.que }}</p>
-              <dl class="mt-auto flex flex-col gap-1 text-[13px] whitespace-nowrap">
-                <div v-for="perm in PERMISOS" :key="perm.clave" class="flex items-center gap-1.5">
-                  <component :is="ESTADO[a[perm.clave]].icono" class="size-3.5 shrink-0" :style="{ color: ESTADO[a[perm.clave]].color }" />
-                  <dt class="text-fg-secondary">{{ perm.etiqueta }}:</dt>
-                  <dd :style="{ color: ESTADO[a[perm.clave]].color }">{{ ESTADO[a[perm.clave]].texto }}</dd>
-                </div>
-              </dl>
-            </Card>
-          </div>
-
-          <template v-if="i === 1">
-            <p class="text-sm">Así se crea: guarda esto en tu proyecto.</p>
-            <CodeBlock :code="TUTOR_MD" title=".opencode/agents/tutor.md" />
-          </template>
-
-          <!-- Paso 3: un encargo de ida y vuelta. -->
-          <div v-if="i === 2" class="grid items-center gap-3 text-sm sm:grid-cols-[1fr_auto_1fr_auto_1fr]">
-            <template v-for="(e, n) in ENCARGO" :key="e.quien">
-              <div class="flex flex-col gap-0.5">
-                <span class="font-semibold text-fg">{{ e.quien }}</span>
-                <span :class="e.codigo ? 'font-mono text-xs text-fg' : 'text-fg-secondary'">{{ e.que }}</span>
-              </div>
-              <ArrowRight v-if="n < ENCARGO.length - 1" aria-hidden="true" class="size-4 text-fg-faint max-sm:rotate-90" />
-            </template>
-          </div>
-
-          <Button v-if="i < PASOS.length - 1" variant="ghost" size="sm" class="-ml-3 self-start" @click="paso = i + 1">
-            Siguiente
-            <ChevronRight class="size-4" aria-hidden="true" />
-          </Button>
-        </CollapsibleContent>
-      </Collapsible>
-    </li>
-  </ol>
+    </section>
+  </div>
 </template>
