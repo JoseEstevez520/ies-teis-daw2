@@ -6,8 +6,8 @@ inspirar a otro, o alguien puede sumarse.
 Van de lo más concreto a lo más abierto. Antes de elegir, mira qué hay hecho:
 [busca antes de construir](../open-source/#busca-antes-de-construir).
 
-Para añadir una, ponla en su lista con el mismo formato: qué es y cómo sería a escala de
-PFC.
+Para añadir una, ponla en su lista con el mismo formato: qué es, cómo sería a escala de PFC
+y, si la sacaste de una serie o un libro, de dónde.
 
 ## Ideas
 
@@ -25,16 +25,27 @@ Proyectos pensados para empezarlos ya.
 - **Wiki de un canal de YouTube** — un canal de YouTube o un pódcast convertido en wiki: la
   transcripción completa y un chat que responde citando el vídeo y el minuto exacto. *A
   escala de PFC:* transcripción, backend, RAG y frontend, contra un canal real.
+- **Experiencias cercanas a la muerte** (idea sacada de la serie *The
+  OA*) — [NDERF](https://www.nderf.org) ha publicado más de 16.000 relatos de personas que
+  estuvieron a punto de morir. Uno a uno son historias; todos juntos, se puede buscar qué se
+  repite: lo que ven, lo que sienten, en qué orden. *A escala de PFC:* recoger los relatos,
+  analizarlos con un modelo para agrupar lo que se repite y enseñarlo en una web que se
+  pueda explorar.
+- **Personalidades que viven una vida entera** (idea sacada de *Pluto*, manga y serie) — en
+  vez de escribirle a un personaje cómo es, simularle una vida completa, de la infancia en
+  adelante, y que su personalidad salga de lo que ha vivido y recuerda. Referencia:
+  [Generative Agents](https://arxiv.org/abs/2304.03442). *A escala de PFC:* un personaje con
+  memoria que vive días simulados, una línea de su vida que se pueda recorrer y un chat para
+  hablar con él.
 
 ## Campos
 
 Un área por la que tirar si aún no tienes idea.
 
 - **Machine learning y datos masivos** — casi cualquier tema tiene datos detrás, y
-  juntarlos saca cosas que no se ven de uno en uno. Por ejemplo,
-  [NDERF](https://www.nderf.org) ha publicado más de 16.000 relatos de experiencias
-  cercanas a la muerte: con todos juntos se puede buscar qué se repite. Hay más datos
-  abiertos en [datos.gob.es](https://datos.gob.es). *A escala de PFC:* recoger un conjunto
+  juntarlos saca cosas que no se ven de uno en uno. Por ejemplo, las experiencias cercanas
+  a la muerte, en [Ideas](#ideas). Hay miles de conjuntos de datos abiertos en
+  [datos.gob.es](https://datos.gob.es). *A escala de PFC:* recoger un conjunto
   de datos real, limpiarlo, analizarlo con un modelo y enseñar los resultados en una web.
 - **Hardware** — una placa (Arduino, ESP32, Raspberry Pi) con sensores, y la IA para
   entender lo que capta. Por ejemplo, un robot o un dron que recorre un sitio y construye

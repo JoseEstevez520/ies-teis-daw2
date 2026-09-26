@@ -11,6 +11,8 @@ defineProps({
   titulo: { type: String, required: true },
   descripcion: { type: String, required: true },
   escala: { type: String, default: '' },
+  // De dónde salió la idea, si fue de una serie, un libro o algo así.
+  origen: { type: String, default: '' },
   enlaces: { type: Array, default: () => [] },
 })
 
@@ -20,14 +22,15 @@ const externo = (href) => /^https?:/.test(href)
 <template>
   <Card :id="id" size="sm" class="h-full scroll-mt-[calc(var(--page-header-height)+1rem)]">
     <CardHeader class="h-full gap-3">
-      <div class="flex flex-1 flex-col gap-1">
+      <div class="flex flex-col gap-1">
         <CardTitle size="sm">{{ titulo }}</CardTitle>
+        <span v-if="origen" class="text-xs text-fg-muted">{{ origen }}</span>
         <CardDescription class="leading-relaxed">{{ descripcion }}</CardDescription>
       </div>
       <p v-if="escala" class="text-sm leading-relaxed text-fg-secondary">
         <span class="font-medium text-fg">A escala de PFC:</span> {{ escala }}
       </p>
-      <ul v-if="enlaces.length" class="flex flex-wrap gap-x-4 gap-y-1 text-sm">
+      <ul v-if="enlaces.length" class="mt-auto flex flex-wrap gap-x-4 gap-y-1 text-sm">
         <li v-for="e in enlaces" :key="e.href">
           <component
             :is="externo(e.href) ? 'a' : RouterLink"

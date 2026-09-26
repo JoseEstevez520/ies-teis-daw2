@@ -29,17 +29,30 @@ const IDEAS = [
     descripcion: 'Un canal de YouTube o un pódcast convertido en wiki: la transcripción completa y un chat que responde citando el vídeo y el minuto exacto.',
     escala: 'transcripción, backend, RAG y frontend, contra un canal real.',
   },
+  {
+    id: 'experiencias-cercanas-a-la-muerte',
+    titulo: 'Experiencias cercanas a la muerte',
+    origen: 'Idea sacada de la serie The OA',
+    descripcion: 'NDERF ha publicado más de 16.000 relatos de personas que estuvieron a punto de morir. Uno a uno son historias; todos juntos, se puede buscar qué se repite: lo que ven, lo que sienten, en qué orden.',
+    escala: 'recoger los relatos, analizarlos con un modelo para agrupar lo que se repite y enseñarlo en una web que se pueda explorar.',
+    enlaces: [{ texto: 'NDERF', href: 'https://www.nderf.org' }],
+  },
+  {
+    id: 'personalidades-que-viven-una-vida',
+    titulo: 'Personalidades que viven una vida entera',
+    origen: 'Idea sacada de Pluto (manga y serie)',
+    descripcion: 'En vez de escribirle a un personaje cómo es, simularle una vida completa, de la infancia en adelante, y que su personalidad salga de lo que ha vivido y recuerda.',
+    escala: 'un personaje con memoria que vive días simulados, una línea de su vida que se pueda recorrer y un chat para hablar con él.',
+    enlaces: [{ texto: 'Generative Agents (el artículo de referencia)', href: 'https://arxiv.org/abs/2304.03442' }],
+  },
 ]
 
 const CAMPOS = [
   {
     titulo: 'Machine learning y datos masivos',
-    descripcion: 'Casi cualquier tema tiene datos detrás, y juntarlos saca cosas que no se ven de uno en uno. Por ejemplo, NDERF ha publicado más de 16.000 relatos de experiencias cercanas a la muerte: con todos juntos se puede buscar qué se repite.',
+    descripcion: 'Casi cualquier tema tiene datos detrás, y juntarlos saca cosas que no se ven de uno en uno. Por ejemplo, las experiencias cercanas a la muerte, en Ideas.',
     escala: 'recoger un conjunto de datos real, limpiarlo, analizarlo con un modelo y enseñar los resultados en una web.',
-    enlaces: [
-      { texto: 'NDERF', href: 'https://www.nderf.org' },
-      { texto: 'Datos abiertos (datos.gob.es)', href: 'https://datos.gob.es' },
-    ],
+    enlaces: [{ texto: 'Datos abiertos (datos.gob.es)', href: 'https://datos.gob.es' }],
   },
   {
     titulo: 'Hardware',
@@ -94,7 +107,8 @@ const EJEMPLOS = [
     <p>
       Van de lo más concreto a lo más abierto. Antes de elegir, mira qué hay hecho:
       <RouterLink to="/extra/open-source#busca-antes">busca antes de construir</RouterLink>. Para añadir
-      una, ponla en su lista con el mismo formato: qué es y cómo sería a escala de PFC.
+      una, ponla en su lista con el mismo formato: qué es, cómo sería a escala de PFC y, si
+      la sacaste de una serie o un libro, de dónde.
     </p>
 
     <h2 id="ideas">Ideas</h2>
