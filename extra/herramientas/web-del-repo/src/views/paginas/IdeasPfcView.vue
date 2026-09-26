@@ -40,10 +40,13 @@ const IDEAS = [
   {
     id: 'personalidades-que-viven-una-vida',
     titulo: 'Personalidades que viven una vida entera',
-    origen: 'Idea sacada de Pluto (manga y serie)',
-    descripcion: 'En vez de escribirle a un personaje cómo es, simularle una vida completa, de la infancia en adelante, y que su personalidad salga de lo que ha vivido y recuerda.',
+    origen: 'Idea sacada de Pluto (manga y serie) y de sonder',
+    descripcion: 'En vez de escribirle a un personaje cómo es, simularle una vida completa, de la infancia en adelante, y que su personalidad salga de lo que ha vivido y recuerda. Es lo que dice sonder: cada persona con la que te cruzas tiene una vida tan compleja como la tuya. Aquí, cada personaje la tendría de verdad.',
     escala: 'un personaje con memoria que vive días simulados, una línea de su vida que se pueda recorrer y un chat para hablar con él.',
-    enlaces: [{ texto: 'Generative Agents (el artículo de referencia)', href: 'https://arxiv.org/abs/2304.03442' }],
+    enlaces: [
+      { texto: 'Generative Agents (el artículo de referencia)', href: 'https://arxiv.org/abs/2304.03442' },
+      { texto: 'Qué es sonder', href: 'https://www.dictionaryofobscuresorrows.com/post/23536922667/sonder' },
+    ],
   },
 ]
 
