@@ -17,7 +17,7 @@ su propio código.
 Ninguna de estas tiene código todavía.
 
 - **Buscador de empresas de FCT**: idea completa en
-  [`../ideas-proyecto-fin-curso/README.md`](../ideas-proyecto-fin-curso/README.md#buscador-de-empresas-de-fct).
+  [`../ideas-proyecto-fin-curso/README.md`](../ideas-proyecto-fin-curso/README.md#ideas).
 - **Plantillas de proyecto**: Spring (JDK 21 + Thymeleaf + H2) y Vue (Vite + ESLint +
   Prettier) ya montados, para no levantar el esqueleto en cada práctica.
 - **Script de setup del PC del aula**: deja listo lo necesario de una vez, en vez de

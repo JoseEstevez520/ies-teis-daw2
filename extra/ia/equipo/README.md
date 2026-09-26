@@ -16,7 +16,7 @@ está bien.**
 ## Un proyecto de principio a fin
 
 Una idea que ya está en el repo: un
-[buscador de empresas de FCT](../../ideas-proyecto-fin-curso/#buscador-de-empresas-de-fct),
+[buscador de empresas de FCT](../../ideas-proyecto-fin-curso/#ideas),
 con lo que cada alumno hizo allí. Así se lo repartiría un equipo:
 
 | | Quién | Qué hace | Su skill |

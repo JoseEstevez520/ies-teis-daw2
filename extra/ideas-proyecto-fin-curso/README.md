@@ -1,50 +1,69 @@
 # Ideas para el proyecto de fin de curso
 
-Sitio para dejar ideas de proyectos de fin de ciclo interesantes, aunque no los vayas a
-hacer tú. Puede inspirar a otro, o alguien puede sumarse.
+Sitio para dejar ideas de proyectos de fin de ciclo, aunque no los vayas a hacer tú. Puede
+inspirar a otro, o alguien puede sumarse.
 
-## Panel del Aula Virtual
-
-Ya está en marcha como herramienta real para la clase, no solo como idea. Diseño completo
-en [`../herramientas/panel-aula-virtual/`](../herramientas/panel-aula-virtual/). También
-encaja bien como PFC: frontend/backend + consumo de una API REST real + decisiones de
-arquitectura defendibles, no solo un CRUD de ejemplo.
-
-## Buscador de empresas de FCT
-
-Directorio de empresas donde hacer la FCT, con lo que aporta cada alumno que ya estuvo:
-qué stack usaron, qué hizo allí, si la recomienda. Encaja como PFC: alcance pequeño, fecha
-real encima (la FCT) y sirve a los 26. También vale como herramienta real de la clase, no
-solo como idea: ver [`../herramientas/README.md`](../herramientas/README.md#pendientes).
-
-## Wiki de un canal de YouTube
-
-Convertir un canal de YouTube o podcast en una wiki interactiva: transcripción completa
-más un chatbot que responde citando el vídeo y el minuto exacto. Alcance de PFC:
-transcripción + backend + RAG + frontend, contra un canal real.
-
-## Campos, ejemplos y tecnología
-
-Si no tienes idea concreta: un área por la que tirar, un proyecto real que ya existe para
-ver qué se está haciendo (no para copiarlo), o una pieza de tecnología que podrías usar
-como motor de tu propio proyecto. Antes de elegir, mira qué hay hecho:
+Van de lo más concreto a lo más abierto. Antes de elegir, mira qué hay hecho:
 [busca antes de construir](../open-source/#busca-antes-de-construir).
 
-- **Generative UI**: interfaces que se generan a partir de datos en vez de pantallas fijas
-  de siempre. A escala de PFC: un renderizador de formularios o dashboards a partir de un
-  JSON de configuración, con lo que ya dais en DIW.
-- **Agentes e IA aplicada**: integrar un asistente o automatización real en una app, no
-  solo un chat pegado encima. A escala de PFC: un bot que resuelve una tarea concreta
-  contra una API real (ver también [`../ia/`](../ia/)).
-- [SkillNet](https://skillnet.es/) — LMS con cursos generados según el perfil de cada
-  alumno.
-- **Tecnología:** [Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev) —
-  modelo de IA que no genera texto: devuelve un valor tipado (elección, puntuación o
-  sí/no) con nivel de confianza, mucho más rápido que un LLM normal para clasificar o
-  rutear.
-- **Tecnología:** [OpenUI](https://github.com/wandb/openui) — genera interfaces a partir
-  de una descripción en texto y las renderiza en vivo.
-- **Tecnología:** [MCP Apps](https://modelcontextprotocol.io/docs/extensions/apps) — una
-  conexión MCP que, además de responder, devuelve una interfaz (un formulario, un panel, un
-  mapa) que se usa dentro del chat del agente. Hay plantillas en Vue. A escala de PFC: que
-  al preguntarle a tu agente «¿qué entregas tengo?» te enseñe el panel del Aula Virtual.
+Para añadir una, ponla en su lista con el mismo formato: qué es y cómo sería a escala de
+PFC.
+
+## Ideas
+
+Proyectos pensados para empezarlos ya.
+
+- **Panel del Aula Virtual** — tus entregas, notas y avisos del Aula Virtual en un solo
+  sitio. Ya está en marcha como
+  [herramienta de la clase](../herramientas/panel-aula-virtual/). *A escala de PFC:*
+  frontend y backend, una API REST real y decisiones de arquitectura defendibles, no solo
+  un CRUD de ejemplo.
+- **Buscador de empresas de FCT** — empresas donde hacer la FCT, con lo que cuenta cada
+  alumno que ya estuvo: qué tecnologías usaron, qué hizo allí y si la recomienda. Está en
+  los [pendientes de Herramientas](../herramientas/README.md#pendientes). *A escala de
+  PFC:* alcance pequeño, una fecha real encima (la FCT) y le sirve a toda la clase.
+- **Wiki de un canal de YouTube** — un canal de YouTube o un pódcast convertido en wiki: la
+  transcripción completa y un chat que responde citando el vídeo y el minuto exacto. *A
+  escala de PFC:* transcripción, backend, RAG y frontend, contra un canal real.
+
+## Campos
+
+Un área por la que tirar si aún no tienes idea.
+
+- **Machine learning y datos masivos** — casi cualquier tema tiene datos detrás, y
+  juntarlos saca cosas que no se ven de uno en uno. Por ejemplo,
+  [NDERF](https://www.nderf.org) ha publicado más de 16.000 relatos de experiencias
+  cercanas a la muerte: con todos juntos se puede buscar qué se repite. Hay más datos
+  abiertos en [datos.gob.es](https://datos.gob.es). *A escala de PFC:* recoger un conjunto
+  de datos real, limpiarlo, analizarlo con un modelo y enseñar los resultados en una web.
+- **Hardware** — una placa (Arduino, ESP32, Raspberry Pi) con sensores, y la IA para
+  entender lo que capta. Por ejemplo, un robot o un dron que recorre un sitio y construye
+  un mapa. *A escala de PFC:* sensores que mandan datos a tu backend y una web que los
+  enseña.
+- **Generative UI** — interfaces que se generan a partir de datos en vez de pantallas
+  fijas. *A escala de PFC:* un generador de formularios o paneles a partir de un JSON de
+  configuración, con lo que ya dais en DIW.
+- **Agentes e IA aplicada** — meter un asistente o una automatización real en una app, no
+  solo un chat pegado encima (para empezar, [`../ia/`](../ia/)). *A escala de PFC:* un bot
+  que resuelve una tarea concreta contra una API real.
+
+## Tecnología
+
+Piezas que puedes usar como motor de tu proyecto.
+
+- [Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev) — un modelo de IA
+  que no genera texto, sino un valor con tipo (elección, puntuación o sí/no) y su confianza.
+  Mucho más rápido que un LLM para clasificar.
+- [OpenUI](https://github.com/wandb/openui) — genera interfaces a partir de una descripción
+  en texto y las pinta en vivo.
+- [MCP Apps](https://modelcontextprotocol.io/docs/extensions/apps) — una conexión MCP que,
+  además de responder, devuelve una interfaz que se usa dentro del chat del agente. Hay
+  plantillas en Vue. Por ejemplo, preguntarle a tu agente qué entregas tienes y ver el
+  panel del Aula Virtual.
+
+## Ejemplos
+
+Proyectos que ya existen, para ver qué se está haciendo, no para copiarlos.
+
+- [SkillNet](https://skillnet.es/) — una plataforma de cursos que se generan según el perfil
+  de cada alumno.
