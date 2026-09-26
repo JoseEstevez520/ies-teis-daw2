@@ -5,6 +5,7 @@ export const FICHAS = {
   'extra/ia': { titulo: 'IA aplicada' },
   'extra/herramientas': { titulo: 'Herramientas' },
   'extra/diseno-web': { titulo: 'Diseño web' },
+  'extra/open-source': { titulo: 'Open source' },
   'extra/ideas-proyecto-fin-curso': { titulo: 'Ideas para el proyecto de fin de curso' },
   'extra/herramientas/calculadora-de-faltas': { titulo: 'Calculadora de faltas' },
   'extra/herramientas/alarma-tareas': { titulo: 'Alarma de tareas' },

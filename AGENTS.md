@@ -13,7 +13,7 @@ edita toda la clase, no una sola persona.
 | necesitas el horario de clase | [horario/](horario/) |
 
 Módulos: `modulos/{DAW,dwcs,diw,dwcc,despregamento,dasp}`.
-Contenido extra (no es temario): `extra/{ia,diseno-web,ideas-proyecto-fin-curso,herramientas}`.
+Contenido extra (no es temario): `extra/{ia,diseno-web,ideas-proyecto-fin-curso,herramientas,open-source}`.
 
 ## Reglas
 

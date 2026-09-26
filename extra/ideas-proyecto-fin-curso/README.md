@@ -27,7 +27,8 @@ transcripción + backend + RAG + frontend, contra un canal real.
 
 Si no tienes idea concreta: un área por la que tirar, un proyecto real que ya existe para
 ver qué se está haciendo (no para copiarlo), o una pieza de tecnología que podrías usar
-como motor de tu propio proyecto.
+como motor de tu propio proyecto. Antes de elegir, mira qué hay hecho:
+[busca antes de construir](../open-source/#busca-antes-de-construir).
 
 - **Generative UI**: interfaces que se generan a partir de datos en vez de pantallas fijas
   de siempre. A escala de PFC: un renderizador de formularios o dashboards a partir de un

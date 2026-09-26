@@ -18,6 +18,7 @@ import IdeasPfcView from '../views/paginas/IdeasPfcView.vue'
 import ModuloView from '../views/paginas/ModuloView.vue'
 import MoodleApiView from '../views/paginas/MoodleApiView.vue'
 import OpenCodeView from '../views/paginas/OpenCodeView.vue'
+import OpenSourceView from '../views/paginas/OpenSourceView.vue'
 
 // Cada página de la web es un componente compuesto a mano (ver AGENTS.md). Las
 // rutas siguen las carpetas del repo; una página nueva también va en
@@ -53,6 +54,7 @@ const router = createRouter({
     { path: '/extra/ia/agentes', component: AgentesView },
     { path: '/extra/ia/consejos', component: ConsejosView },
     { path: '/extra/diseno-web', component: DisenoWebView },
+    { path: '/extra/open-source', component: OpenSourceView },
     { path: '/extra/ideas-proyecto-fin-curso', component: IdeasPfcView },
     { path: '/horario', component: HorarioView },
     { path: '/:pathMatch(.*)*', redirect: '/' },

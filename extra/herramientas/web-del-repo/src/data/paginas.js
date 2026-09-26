@@ -18,6 +18,7 @@ import agentes from '../../../../../extra/ia/agentes/README.md?raw'
 import fundamentos from '../../../../../extra/ia/fundamentos/README.md?raw'
 import consejos from '../../../../../extra/ia/consejos/README.md?raw'
 import disenoWeb from '../../../../../extra/diseno-web/README.md?raw'
+import openSource from '../../../../../extra/open-source/README.md?raw'
 import ideasPfc from '../../../../../extra/ideas-proyecto-fin-curso/README.md?raw'
 
 import horario from '../../../../../horario/README.md?raw'
@@ -137,6 +138,12 @@ export const PAGINAS = [
     claveRuta: 'extra/diseno-web',
     seccion: 'Diseño web',
     fuente: disenoWeb,
+  },
+  {
+    ruta: '/extra/open-source',
+    claveRuta: 'extra/open-source',
+    seccion: 'Diseño web',
+    fuente: openSource,
   },
   {
     ruta: '/extra/ideas-proyecto-fin-curso',

@@ -39,7 +39,7 @@ import TarjetaPagina from '../../components/TarjetaPagina.vue'
     <p>
       Si no tienes una idea concreta: un área por la que tirar, un proyecto que ya existe para ver
       qué se está haciendo (no para copiarlo), o una tecnología que podrías usar como motor de tu
-      propio proyecto.
+      propio proyecto. Antes de elegir, mira qué hay hecho: <RouterLink to="/extra/open-source#busca-antes">busca antes de construir</RouterLink>.
     </p>
 
     <h3 id="campos">Campos</h3>

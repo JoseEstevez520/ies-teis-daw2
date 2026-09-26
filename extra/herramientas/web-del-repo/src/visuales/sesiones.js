@@ -1,4 +1,4 @@
-import { BookOpen, Bot, FilePen, FileText, FlaskConical, PencilLine, Plug, Search } from '@lucide/vue'
+import { BookOpen, Bot, FilePen, FileText, FlaskConical, PencilLine, Plug, Scale, Search } from '@lucide/vue'
 
 // Los guiones de las sesiones de agente que se reproducen en las páginas de IA
 // (con AgentReplay). Son inventados, sobre la práctica de Spring de la tienda:
@@ -237,6 +237,40 @@ const nombre = defineModel()
 </template>`,
       },
       note: 'La respuesta sale de la documentación que acaba de leer.',
+    },
+  ],
+  buscar: [
+    {
+      kind: 'prompt',
+      text: 'Quiero que un texto se anime al cambiar de valor en Vue, como un contador que pasa de 3 a 4. Antes de hacerlo, ¿hay algo hecho que pueda usar?',
+      note: 'Le pides que busque antes de construir, y le dices para qué lo quieres.',
+    },
+    {
+      kind: 'step',
+      running: 'Buscando en GitHub',
+      done: 'Encontrados varios proyectos',
+      icon: Search,
+      output: `$ gh search repos "text morph animation" --sort stars
+lochie/torph                    Dependency-free animated text component.   MIT
+svgdotjs/svg.textmorph.js       text morphing for svg.js                    MIT
+Text-Morph-Animation            (sin descripción)                           sin licencia
+...`,
+      note: 'Sale de todo: proyectos cuidados y pruebas de alguien sin licencia.',
+    },
+    {
+      kind: 'step',
+      running: 'Mirando si están vivos y su licencia',
+      done: 'Comprobados torph y svg.textmorph.js',
+      icon: Scale,
+      output: `lochie/torph            último cambio: este mes    licencia: MIT    trae versión para Vue
+svg.textmorph.js        solo para svg.js                              licencia: MIT
+Text-Morph-Animation    sin licencia: no se puede usar su código`,
+      note: 'Lo importante no son las estrellas: que se mantenga, que tenga licencia y que encaje con lo que usas.',
+    },
+    {
+      kind: 'answer',
+      text: 'Usa torph: hace justo eso, tiene versión para Vue (torph/vue), se sigue manteniendo y su licencia MIT te deja usarlo en tu proyecto. Se instala con npm install torph.',
+      note: 'Había algo maduro que hace lo que necesitas: úsalo en vez de construirlo.',
     },
   ],
 }
