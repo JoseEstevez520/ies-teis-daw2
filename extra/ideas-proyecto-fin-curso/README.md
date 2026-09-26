@@ -44,3 +44,7 @@ como motor de tu propio proyecto. Antes de elegir, mira qué hay hecho:
   rutear.
 - **Tecnología:** [OpenUI](https://github.com/wandb/openui) — genera interfaces a partir
   de una descripción en texto y las renderiza en vivo.
+- **Tecnología:** [MCP Apps](https://modelcontextprotocol.io/docs/extensions/apps) — una
+  conexión MCP que, además de responder, devuelve una interfaz (un formulario, un panel, un
+  mapa) que se usa dentro del chat del agente. Hay plantillas en Vue. A escala de PFC: que
+  al preguntarle a tu agente «¿qué entregas tengo?» te enseñe el panel del Aula Virtual.

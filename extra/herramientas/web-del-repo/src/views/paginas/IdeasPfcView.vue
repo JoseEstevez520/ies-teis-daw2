@@ -67,6 +67,11 @@ import TarjetaPagina from '../../components/TarjetaPagina.vue'
         descripcion="Tecnología: un modelo de IA que no genera texto, sino un valor con tipo (elección, puntuación o sí/no) y su confianza. Mucho más rápido que un LLM para clasificar."
       />
       <TarjetaPagina href="https://github.com/wandb/openui" titulo="OpenUI" descripcion="Tecnología: genera interfaces a partir de una descripción en texto y las pinta en vivo." />
+      <TarjetaPagina
+        href="https://modelcontextprotocol.io/docs/extensions/apps"
+        titulo="MCP Apps"
+        descripcion="Tecnología: una conexión MCP que, además de responder, devuelve una interfaz que se usa dentro del chat del agente. Por ejemplo, preguntar qué entregas tienes y ver el panel del Aula Virtual."
+      />
     </RejillaTarjetas>
   </PlantillaPagina>
 </template>
