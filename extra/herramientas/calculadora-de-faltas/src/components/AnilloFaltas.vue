@@ -3,21 +3,16 @@ import { computed } from 'vue'
 import { TextMorph } from 'elastic-ui'
 
 // El porcentaje de faltas en un anillo que va de 0 al 10 %, el límite: lleno
-// es perder la evaluación continua. Una marca en el 6 %, el apercibimiento.
+// es perder la evaluación continua.
 const props = defineProps({
   pct: { type: Number, required: true },
   color: { type: String, required: true },
-  apercibimiento: { type: Number, required: true },
   perdida: { type: Number, required: true },
 })
 
 const RADIO = 52
 const CIRCUNFERENCIA = 2 * Math.PI * RADIO
 const relleno = computed(() => CIRCUNFERENCIA * (1 - Math.min(props.pct / props.perdida, 1)))
-const marca = computed(() => {
-  const angulo = (props.apercibimiento / props.perdida) * 2 * Math.PI - Math.PI / 2
-  return { x: 60 + RADIO * Math.cos(angulo), y: 60 + RADIO * Math.sin(angulo) }
-})
 </script>
 
 <template>
@@ -36,7 +31,6 @@ const marca = computed(() => {
         :stroke-dashoffset="relleno"
         class="transition-[stroke-dashoffset,stroke] duration-500 ease-emphasized motion-reduce:transition-none"
       />
-      <circle :cx="marca.x" :cy="marca.y" r="2.5" fill="var(--color-fg-muted)" />
     </svg>
     <div class="absolute inset-0 flex flex-col items-center justify-center">
       <span class="text-4xl font-semibold tracking-tight text-fg tabular-nums">

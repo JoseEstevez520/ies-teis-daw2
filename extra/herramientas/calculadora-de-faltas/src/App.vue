@@ -84,7 +84,7 @@ const estado = computed(() => {
         </div>
 
         <figure class="flex flex-col items-center gap-2" role="img" :aria-label="`${pct.toFixed(1)} % de faltas: ${estado.titulo}`">
-          <AnilloFaltas :pct="pct" :color="estado.color" :apercibimiento="APERCIBIMIENTO" :perdida="PERDIDA" />
+          <AnilloFaltas :pct="pct" :color="estado.color" :perdida="PERDIDA" />
           <figcaption class="text-xs text-fg-muted">{{ Math.round(horasTotales) }} h totales del módulo</figcaption>
         </figure>
 
