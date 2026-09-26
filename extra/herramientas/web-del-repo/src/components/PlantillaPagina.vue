@@ -2,6 +2,7 @@
 import { nextTick, onBeforeUnmount, onMounted, ref, useTemplateRef } from 'vue'
 import { TableOfContents } from 'elastic-ui'
 import { tieneIndice } from '../lib/indicePagina.js'
+import NavegacionSerie from './NavegacionSerie.vue'
 
 // Toda página de la web: un artículo a un solo ancho (USAGE 11), con su título,
 // y a la derecha, en pantallas anchas, el índice de sus títulos (`h2` y `h3`
@@ -34,6 +35,7 @@ onBeforeUnmount(() => soltar?.())
       <h1>{{ titulo }}</h1>
       <p v-if="entradilla" class="text-lg">{{ entradilla }}</p>
       <slot />
+      <NavegacionSerie />
     </article>
 
     <aside v-if="indice.length > 1" class="absolute inset-y-0 right-8 hidden w-52 2xl:block">

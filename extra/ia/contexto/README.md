@@ -81,3 +81,7 @@ con información que no tiene.**
 
 Más en la documentación de OpenCode: [reglas](https://opencode.ai/docs/rules/),
 [skills](https://opencode.ai/docs/skills/) y [MCP](https://opencode.ai/docs/mcp-servers/).
+
+---
+
+**3 de 5** · Anterior: [Tu primer agente](../opencode/) · Siguiente: [Agentes y subagentes](../agentes/)

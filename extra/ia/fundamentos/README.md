@@ -34,4 +34,6 @@ Se instalan en tu ordenador y se usan desde la terminal.
 | Claude Code | pagar Claude |
 | Codex | pagar ChatGPT |
 
-Para empezar, [tu primer agente](../opencode/), con OpenCode, que es gratis.
+---
+
+**1 de 5** · Siguiente: [Tu primer agente](../opencode/)

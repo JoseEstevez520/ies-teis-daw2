@@ -58,3 +58,7 @@ principal no se llena de contexto.
 
 Crear agentes y subagentes, con todas sus opciones, en la
 [documentación de OpenCode](https://opencode.ai/docs/agents/).
+
+---
+
+**4 de 5** · Anterior: [Darle contexto](../contexto/) · Siguiente: [Consejos](../consejos/)

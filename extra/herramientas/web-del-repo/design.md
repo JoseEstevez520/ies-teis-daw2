@@ -77,6 +77,11 @@ tablas), que la librería ya pinta con su tipografía, y sus piezas donde toca:
 
 Las páginas de los módulos comparten `ModuloView` mientras no tengan apuntes.
 
+**Páginas en orden.** Las que se leen una detrás de otra (hoy, las de IA) forman una serie
+en [`src/data/series.js`](src/data/series.js). Cada página de la serie acaba con la anterior
+y la siguiente (`NavegacionSerie.vue`, dentro de `PlantillaPagina`), y la página de su
+carpeta las numera. En su `.md` de GitHub va lo mismo como una línea al final.
+
 ## Piezas visuales (`src/visuales/`)
 
 Para lo que se entiende mejor viéndolo que leyéndolo. Cada página las importa donde las

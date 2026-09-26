@@ -2,20 +2,19 @@
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
 import RejillaTarjetas from '../../components/RejillaTarjetas.vue'
 import TarjetaPagina from '../../components/TarjetaPagina.vue'
+import { serieDeCarpeta } from '../../data/series.js'
 
 // extra/ia/README.md
-// En el orden en que se leen mejor: cada una se apoya en la anterior.
-const PAGINAS = [
-  { href: '/extra/ia/fundamentos', titulo: 'Fundamentos', descripcion: 'Qué es un modelo, un harness y un agente. Empieza por aquí.' },
-  { href: '/extra/ia/opencode', titulo: 'Tu primer agente', descripcion: 'Instalar uno, arrancarlo en tu proyecto y pedirle cosas.' },
-  { href: '/extra/ia/contexto', titulo: 'Darle contexto', descripcion: 'AGENTS.md, skills y MCP: cómo sabe lo que necesita.' },
-  { href: '/extra/ia/agentes', titulo: 'Agentes y subagentes', descripcion: 'El mismo modelo con papeles distintos, y cómo crear los tuyos.' },
-  { href: '/extra/ia/consejos', titulo: 'Consejos', descripcion: 'Cómo sacarle partido sin que te resuelva las prácticas.' },
-]
+// Las páginas en el orden en que se leen (data/series.js), numeradas.
+const PAGINAS = serieDeCarpeta('/extra/ia').paginas.map((p, i) => ({
+  href: p.ruta,
+  titulo: `${i + 1}. ${p.titulo}`,
+  descripcion: p.descripcion,
+}))
 </script>
 
 <template>
-  <PlantillaPagina titulo="IA aplicada" entradilla="Cómo usar la IA en clase para aprender más, no para que te haga el trabajo.">
+  <PlantillaPagina titulo="IA aplicada" entradilla="Cómo usar la IA en clase para aprender más, no para que te haga el trabajo. Se lee en orden: cada página se apoya en la anterior.">
     <RejillaTarjetas>
       <TarjetaPagina v-for="p in PAGINAS" :key="p.href" v-bind="p" />
     </RejillaTarjetas>

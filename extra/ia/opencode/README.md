@@ -28,7 +28,6 @@ ejemplo:
 Mientras trabaja ves cada paso: qué busca, qué lee, qué cambia y qué ejecuta. **Revisa lo
 que cambia antes de darlo por bueno**, igual que revisarías el código de otro.
 
-## Siguiente
+---
 
-- [Darle contexto](../contexto/): AGENTS.md, skills y MCP.
-- [Agentes y subagentes](../agentes/): el mismo modelo con papeles distintos.
+**2 de 5** · Anterior: [Fundamentos](../fundamentos/) · Siguiente: [Darle contexto](../contexto/)

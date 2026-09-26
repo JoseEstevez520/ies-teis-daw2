@@ -4,7 +4,7 @@ Cómo usar la IA en clase para aprender más, no para que te haga el trabajo.
 
 ## Páginas
 
-En el orden en que se leen mejor:
+Se leen en orden: cada página se apoya en la anterior.
 
 1. [`fundamentos/`](fundamentos/): qué es un modelo, un harness y un agente.
 2. [`opencode/`](opencode/): tu primer agente: instalarlo y pedirle cosas.

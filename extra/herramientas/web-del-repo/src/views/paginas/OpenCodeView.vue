@@ -1,8 +1,6 @@
 <script setup>
 import { Steps, StepsItem, TerminalReplay } from 'elastic-ui'
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
-import RejillaTarjetas from '../../components/RejillaTarjetas.vue'
-import TarjetaPagina from '../../components/TarjetaPagina.vue'
 
 // extra/ia/opencode/README.md. Explica cómo se empieza a usar un agente; OpenCode
 // es el ejemplo porque es el que se usa en clase (y es gratis), no el tema.
@@ -15,19 +13,6 @@ const PETICIONES = [
   'Explícame qué hace ProductoController.',
   'Añade que no se pueda guardar un producto sin nombre.',
   '¿Por qué falla el test de crear producto?',
-]
-
-const SIGUIENTE = [
-  {
-    href: '/extra/ia/contexto',
-    titulo: 'Darle contexto',
-    descripcion: 'AGENTS.md, skills y MCP: cómo sabe lo que necesita de tu proyecto y de fuera.',
-  },
-  {
-    href: '/extra/ia/agentes',
-    titulo: 'Agentes y subagentes',
-    descripcion: 'El mismo modelo con papeles distintos: uno construye, otro planifica, otro explica.',
-  },
 ]
 </script>
 
@@ -68,9 +53,5 @@ const SIGUIENTE = [
       de otro.
     </p>
 
-    <h2 id="siguiente">Siguiente</h2>
-    <RejillaTarjetas>
-      <TarjetaPagina v-for="s in SIGUIENTE" :key="s.href" v-bind="s" />
-    </RejillaTarjetas>
   </PlantillaPagina>
 </template>

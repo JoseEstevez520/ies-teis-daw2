@@ -48,6 +48,5 @@ import PlantillaPagina from '../../components/PlantillaPagina.vue'
         <tr><td>Codex</td><td>pagar ChatGPT</td></tr>
       </tbody>
     </table>
-    <p>Para empezar, <RouterLink to="/extra/ia/opencode">tu primer agente</RouterLink>, con OpenCode, que es gratis.</p>
   </PlantillaPagina>
 </template>

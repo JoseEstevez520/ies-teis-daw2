@@ -23,3 +23,7 @@ edites código, solo explica". Cómo se usa, en [Darle contexto](../contexto/).
 
 Documentación, montar un proyecto nuevo, buscar en la documentación oficial: ahí ahorra
 tiempo de verdad.
+
+---
+
+**5 de 5** · Anterior: [Agentes y subagentes](../agentes/)
