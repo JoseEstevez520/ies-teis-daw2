@@ -1,6 +1,11 @@
 @import "tailwindcss";
+@import "elastic-ui/tokens.css";
+
+/* La librería no trae CSS compilado: Tailwind tiene que leer sus componentes. */
+@source "../node_modules/elastic-ui/dist";
 
 body {
   margin: 0;
-  background: #fafafa;
+  background: var(--color-bg);
+  color: var(--color-fg);
 }

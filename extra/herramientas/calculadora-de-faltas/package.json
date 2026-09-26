@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@lucide/vue": "^1.47.0",
+    "elastic-ui": "file:vendor/elastic-ui-0.1.0.tgz",
+    "motion-v": "^2.4.4",
     "vue": "^3.5.42"
   },
   "devDependencies": {

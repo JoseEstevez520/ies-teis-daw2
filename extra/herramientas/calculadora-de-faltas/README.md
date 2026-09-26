@@ -49,7 +49,7 @@ De la presentación de Tutoría de IES de Teis (más específica que la norma ge
 ## Horas por módulo y semanas lectivas (para calcular el total)
 
 Horas/semana (contando los bloques de 50 min de
-[`horario/README.md`](../../../horario/README.md)): dwcs 8h20, diw 6h40, dwcc 5h50, daw 3h20,
+[`horario/README.md`](../../../horario/README.md)): dwcs 8h20, diw 6h40, dwcc 6h40, daw 3h20,
 ipeii 1h40, hcle 1h40, dasp 50min, acp 50min.
 
 Semanas lectivas reales para **2º curso**: el calendario escolar general de Galicia va del

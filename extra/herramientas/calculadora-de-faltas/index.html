@@ -5,6 +5,13 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calculadora de faltas · 2º DAW</title>
+    <script>
+      // El tema elegido, puesto antes de pintar para que no parpadee.
+      try {
+        const tema = localStorage.getItem('elastic-ui.theme')
+        if (tema === 'light' || tema === 'dark') document.documentElement.dataset.theme = tema
+      } catch {}
+    </script>
   </head>
   <body>
     <div id="app"></div>

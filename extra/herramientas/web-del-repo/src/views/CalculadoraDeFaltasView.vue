@@ -1,7 +1,6 @@
 <script setup>
 import { CodeBlock } from 'elastic-ui'
 import PlantillaPagina from '../components/PlantillaPagina.vue'
-import CalculadoraFaltas from '../visuales/CalculadoraFaltas.vue'
 
 
 const ARRANQUE = `git clone https://github.com/JoseEstevez520/ies-teis-daw2.git
@@ -36,11 +35,14 @@ const FUENTES = [
 <template>
   <PlantillaPagina titulo="Calculadora de faltas">
     <p>
-      Elige el módulo, mete tus faltas sin justificar y mira qué porcentaje llevas frente al
-      máximo antes de perder la evaluación continua.
+      Mete tus faltas por módulo y ve el % frente al máximo permitido antes de perder evaluación
+      continua.
     </p>
 
-    <CalculadoraFaltas />
+    <h2 id="arrancarlo">Arrancarlo tú mismo</h2>
+    <p>Sin backend ni token: solo Node.</p>
+    <CodeBlock :code="ARRANQUE" language="bash" />
+    <p>Abre la URL que te dé Vite (<code>http://localhost:5173</code> normalmente).</p>
 
     <h2 id="por-que-manual">Por qué es de entrada manual, no automática</h2>
     <p>Investigado y descartado el automatizarlo:</p>
@@ -83,11 +85,6 @@ const FUENTES = [
       Ejemplo con DWCS (8,33 h/semana): unas 173 horas en total. El 6 % son unas 10,4 h de falta
       (aviso) y el 10 %, unas 17,3 h (pérdida de evaluación continua).
     </p>
-
-    <h2 id="arrancarla">Arrancarla por separado</h2>
-    <p>También es una app propia en su carpeta, sin backend ni token: solo hace falta Node.</p>
-    <CodeBlock :code="ARRANQUE" language="bash" />
-    <p>Abre la URL que te dé Vite (<code>http://localhost:5173</code> normalmente).</p>
 
     <h2 id="fuentes">Fuentes</h2>
     <ul>
