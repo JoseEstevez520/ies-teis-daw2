@@ -1,6 +1,7 @@
 <script setup>
-import { nextTick, onMounted, ref, useTemplateRef } from 'vue'
+import { nextTick, onBeforeUnmount, onMounted, ref, useTemplateRef } from 'vue'
 import { TableOfContents } from 'elastic-ui'
+import { tieneIndice } from '../lib/indicePagina.js'
 
 // Toda página de la web: un artículo a un solo ancho (USAGE 11), con su título,
 // y a la derecha, en pantallas anchas, el índice de sus títulos (`h2` y `h3`
@@ -20,7 +21,11 @@ onMounted(async () => {
     label: h.textContent.trim(),
     level: h.tagName === 'H2' ? 2 : 3,
   }))
+  // Con índice, la rayita de scroll sobra: el índice ya marca por dónde vas.
+  if (indice.value.length > 1) soltar = tieneIndice()
 })
+let soltar
+onBeforeUnmount(() => soltar?.())
 </script>
 
 <template>

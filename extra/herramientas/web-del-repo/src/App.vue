@@ -4,11 +4,14 @@ import { PageTransition, ScrollIndicator, SidebarLayout, SidebarLayoutHeader, Th
 import BarraLateral from './components/BarraLateral.vue'
 import Buscador from './components/Buscador.vue'
 import Migas from './components/Migas.vue'
+import { hayIndice } from './lib/indicePagina.js'
 
 // La estructura de elastic-ui (USAGE 12, 13 y 15): barra lateral con las
 // secciones, cabecera fija con las migas, el buscador y el tema, y entre
 // páginas solo cambia el contenido. La rayita de scroll se asoma en cada
-// página nueva.
+// página nueva, salvo donde la página muestra su índice a la derecha (en
+// pantallas 2xl), que ya marca por dónde vas. Se esconde en vez de quitarse: la
+// librería oculta la barra nativa mientras está montada.
 const indicador = ref(null)
 </script>
 
@@ -34,5 +37,5 @@ const indicador = ref(null)
       </main>
     </div>
   </SidebarLayout>
-  <ScrollIndicator ref="indicador" />
+  <ScrollIndicator ref="indicador" :class="hayIndice && '2xl:hidden'" />
 </template>
