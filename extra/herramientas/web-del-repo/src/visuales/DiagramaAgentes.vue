@@ -97,9 +97,10 @@ const AGENTES = [
           </ul>
         </div>
 
-        <!-- El que falta es el tuyo: una caja por rellenar. -->
+        <!-- El que falta es el tuyo: un tinte flojo, sin borde, como algo por hacer. -->
         <div
-          class="diagram-in flex items-center gap-3 rounded-[var(--radius-xl)] border border-dashed border-border-strong px-4 py-3 sm:col-span-2"
+          class="diagram-in flex items-center gap-3 rounded-[var(--radius-xl)] px-4 py-3 sm:col-span-2"
+          :style="{ background: 'color-mix(in oklab, var(--color-fg-muted) 8%, var(--color-bg))' }"
         >
           <Plus class="size-4 shrink-0 text-fg-muted" :stroke-width="1.5" aria-hidden="true" />
           <span class="text-sm text-fg-secondary">

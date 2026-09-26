@@ -6,19 +6,19 @@ import { BookOpen, Brain, MessageSquare, Plug, ScrollText } from '@lucide/vue'
 // AGENTS.md entero; de las skills, el nombre (y entera la que hace falta); de
 // cada MCP, lo que se puede hacer con esa conexión; y tu petición.
 // Colores de concepto, los de todas las páginas de agentes: el modelo violeta
-// (en el título), lo que pone el harness cian y lo tuyo gris. La caja de fuera
-// no lleva tinte, solo un borde: las piezas de color van sobre la página, nunca
-// un tinte dentro de otro, que se come el contraste. La forma dice
-// cuánto entra: relleno es entero; punteado, solo el nombre.
+// (en el título), lo que pone el harness cian y lo tuyo gris. Sin cajas ni
+// bordes: cada pieza es un tinte sobre la página (USAGE 10), nunca un tinte
+// dentro de otro, que se come el contraste. Lo que solo entra a medias (las
+// skills sin cargar) va con un tinte más flojo y el texto más apagado.
 const MODELO = '#7c3aed'
 const HARNESS = '#0891b2'
 const TU = 'var(--color-fg-muted)'
 
-// Una skill que aún no ha cargado: solo su nombre, sin relleno.
+// Una skill que aún no ha cargado: solo su nombre, en segundo plano.
 const soloNombre = {
   '--diagram-color': HARNESS,
-  background: 'transparent',
-  boxShadow: `inset 0 0 0 1px color-mix(in oklab, ${HARNESS} 45%, transparent)`,
+  background: `color-mix(in oklab, ${HARNESS} 6%, var(--color-bg))`,
+  color: 'var(--color-fg-muted)',
   fontWeight: 500,
 }
 </script>
@@ -27,7 +27,7 @@ const soloNombre = {
   <Diagram
     label="Lo que tiene delante el modelo al pedirle algo: AGENTS.md entero siempre; de las skills, solo su nombre y descripción hasta que carga la que necesita, que entra entera; de cada MCP, lo que se puede hacer con esa conexión; y tu petición."
   >
-    <div class="diagram-in flex flex-col gap-4 rounded-[var(--radius-xl)] border border-border p-4">
+    <div class="diagram-in flex flex-col gap-4">
       <span class="flex items-center gap-2 text-sm font-semibold text-fg">
         <Brain class="size-4 shrink-0" :stroke-width="1.5" :style="{ color: MODELO }" aria-hidden="true" />
         Lo que tiene delante el modelo

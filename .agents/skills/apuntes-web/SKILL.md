@@ -60,10 +60,11 @@ componentes de elastic-ui; su `USAGE.md` tiene las reglas.
 - **Color:** uno por concepto, el mismo en toda la página. Verde / ámbar / rojo solo
   para sí / con condiciones / no. Fuera de las piezas, el de la sección
   (`src/lib/colorSeccion.js`).
-- **Contraste:** cada pieza, un tinte suave de su color directamente sobre la página, con
-  texto normal encima. Nunca un tinte dentro de otro tinte ni letra pequeña y gris sobre
-  color: el texto se queda sin contraste, sobre todo en oscuro. Referencia que se lee
-  bien: `DiagramaAgentes.vue`.
+- **Tintes, sin bordes ni cajas:** cada pieza, un tinte suave de su color directamente
+  sobre la página, con texto normal encima. Lo secundario, con un tinte más flojo y el
+  texto más apagado, no con un borde. Nunca un tinte dentro de otro tinte ni letra pequeña
+  y gris sobre color: el texto se queda sin contraste, sobre todo en oscuro. Referencia que
+  se lee bien: `DiagramaAgentes.vue`.
 - **Nunca:** cajas semitransparentes sobre líneas, un visual vacío al cargar, bordes
   laterales de color, datos repetidos dentro de cada caja.
 - **Móvil:** si no cabe, cambia de forma (un día cada vez, fichas en vez de esquema).
