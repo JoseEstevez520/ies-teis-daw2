@@ -20,7 +20,8 @@ const indicador = ref(null)
     <BarraLateral />
 
     <div class="min-w-0 flex-1">
-      <SidebarLayoutHeader toggle-label="Abrir el menú">
+      <!-- Sin la línea que la librería pone debajo al hacer scroll. -->
+      <SidebarLayoutHeader toggle-label="Abrir el menú" class="shadow-none">
         <Migas />
         <template #end>
           <Buscador />
