@@ -59,7 +59,7 @@ const AGENTES = [
 </script>
 
 <template>
-  <Diagram
+  <Diagram class="rounded-[var(--radius-xl)] bg-bg-subtle p-5 sm:p-6"
     label="Un equipo de agentes: todos usan el mismo modelo, y cada uno tiene su papel, sus instrucciones y sus permisos. El constructor edita, el planificador pregunta antes, el tutor no puede editar y el explorador solo lee. Puedes crear los tuyos."
   >
     <div class="flex flex-col items-center gap-2">

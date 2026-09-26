@@ -24,7 +24,7 @@ const soloNombre = {
 </script>
 
 <template>
-  <Diagram
+  <Diagram class="rounded-[var(--radius-xl)] bg-bg-subtle p-5 sm:p-6"
     label="Lo que tiene delante el modelo al pedirle algo: AGENTS.md entero siempre; de las skills, solo su nombre y descripción hasta que carga la que necesita, que entra entera; de cada MCP, lo que se puede hacer con esa conexión; y tu petición."
   >
     <div class="diagram-in flex flex-col gap-4">

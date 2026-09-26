@@ -18,7 +18,7 @@ const HERRAMIENTAS = [
 </script>
 
 <template>
-  <Diagram label="Un agente: el modelo dentro de un harness, que le da herramientas, instrucciones y permisos, entre tú y tu proyecto">
+  <Diagram class="rounded-[var(--radius-xl)] bg-bg-subtle p-5 sm:p-6" label="Un agente: el modelo dentro de un harness, que le da herramientas, instrucciones y permisos, entre tú y tu proyecto">
     <div class="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
       <span class="diagram-chip diagram-in self-center" style="--diagram-color: var(--color-fg-muted)">
         <User class="size-4" :stroke-width="1.5" aria-hidden="true" />Tú
