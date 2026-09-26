@@ -6,7 +6,8 @@ import { BookOpen, Brain, MessageSquare, Plug, ScrollText } from '@lucide/vue'
 // AGENTS.md entero; de las skills, el nombre (y entera la que hace falta); de
 // cada MCP, lo que se puede hacer con esa conexión; y tu petición.
 // Colores de concepto, los de todas las páginas de agentes: el modelo violeta
-// (la caja de fuera), lo que pone el harness cian y lo tuyo gris. La forma dice
+// (en el título; la caja, gris neutro para que lo de dentro se lea bien), lo que
+// pone el harness cian y lo tuyo gris. La forma dice
 // cuánto entra: relleno es entero; punteado, solo el nombre.
 const MODELO = '#7c3aed'
 const HARNESS = '#0891b2'
@@ -25,14 +26,14 @@ const soloNombre = {
   <Diagram
     label="Lo que tiene delante el modelo al pedirle algo: AGENTS.md entero siempre; de las skills, solo su nombre y descripción hasta que carga la que necesita, que entra entera; de cada MCP, lo que se puede hacer con esa conexión; y tu petición."
   >
-    <div class="diagram-area diagram-in gap-4" :style="{ '--diagram-color': MODELO }">
-      <span class="flex items-center gap-2 text-sm font-semibold">
-        <Brain class="size-4 shrink-0" :stroke-width="1.5" aria-hidden="true" />
+    <div class="diagram-area diagram-in gap-4" :style="{ '--diagram-color': 'var(--color-fg-muted)' }">
+      <span class="flex items-center gap-2 text-sm font-semibold text-fg">
+        <Brain class="size-4 shrink-0" :stroke-width="1.5" :style="{ color: MODELO }" aria-hidden="true" />
         Lo que tiene delante el modelo
       </span>
 
       <dl class="grid gap-x-4 gap-y-3 sm:grid-cols-[9rem_1fr] sm:items-start">
-        <dt class="diagram-in pt-2 text-xs font-medium text-fg-secondary">AGENTS.md: siempre, entero</dt>
+        <dt class="diagram-in pt-2 text-xs font-semibold text-fg">AGENTS.md: siempre, entero</dt>
         <dd class="diagram-in flex flex-col gap-1">
           <span class="diagram-chip self-start" :style="{ '--diagram-color': HARNESS }">
             <ScrollText class="size-4" :stroke-width="1.5" aria-hidden="true" />AGENTS.md
@@ -40,7 +41,7 @@ const soloNombre = {
           <span class="text-xs text-fg-secondary">las reglas de tu proyecto</span>
         </dd>
 
-        <dt class="diagram-in pt-2 text-xs font-medium text-fg-secondary">Skills: el nombre, y entera la que hace falta</dt>
+        <dt class="diagram-in pt-2 text-xs font-semibold text-fg">Skills: el nombre, y entera la que hace falta</dt>
         <dd class="diagram-in flex flex-col gap-1.5">
           <span class="flex flex-wrap items-center gap-2">
             <span class="diagram-chip" :style="soloNombre">
@@ -60,7 +61,7 @@ const soloNombre = {
           </span>
         </dd>
 
-        <dt class="diagram-in pt-2 text-xs font-medium text-fg-secondary">MCP: siempre, aunque no la use</dt>
+        <dt class="diagram-in pt-2 text-xs font-semibold text-fg">MCP: siempre, aunque no la use</dt>
         <dd class="diagram-in flex flex-col gap-1">
           <span class="diagram-chip self-start" :style="{ '--diagram-color': HARNESS }">
             <Plug class="size-4" :stroke-width="1.5" aria-hidden="true" />context7
@@ -69,7 +70,7 @@ const soloNombre = {
           <span class="text-xs text-fg-secondary">cada aplicación que conectas suma lo suyo</span>
         </dd>
 
-        <dt class="diagram-in pt-2 text-xs font-medium text-fg-secondary">Lo tuyo: ahora</dt>
+        <dt class="diagram-in pt-2 text-xs font-semibold text-fg">Lo tuyo: ahora</dt>
         <dd class="diagram-in">
           <span class="diagram-chip self-start" :style="{ '--diagram-color': TU }">
             <MessageSquare class="size-4" :stroke-width="1.5" aria-hidden="true" />Tu petición
