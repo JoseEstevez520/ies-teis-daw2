@@ -26,4 +26,4 @@ tiempo de verdad.
 
 ---
 
-**5 de 5** · Anterior: [Agentes y subagentes](../agentes/)
+**6 de 6** · Anterior: [Un equipo de agentes](../equipo/)

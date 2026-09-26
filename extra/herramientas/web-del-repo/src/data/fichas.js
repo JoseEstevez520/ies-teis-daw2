@@ -17,4 +17,5 @@ export const FICHAS = {
   'extra/ia/opencode': { titulo: 'Tu primer agente' },
   'extra/ia/contexto': { titulo: 'Darle contexto' },
   'extra/ia/agentes': { titulo: 'Agentes y subagentes' },
+  'extra/ia/equipo': { titulo: 'Un equipo de agentes' },
 }

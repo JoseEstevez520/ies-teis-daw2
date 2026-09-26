@@ -9,6 +9,7 @@ export const SERIES = [
       { ruta: '/extra/ia/opencode', titulo: 'Tu primer agente', descripcion: 'Instalar uno, arrancarlo en tu proyecto y pedirle cosas.' },
       { ruta: '/extra/ia/contexto', titulo: 'Darle contexto', descripcion: 'AGENTS.md, skills y MCP: cómo sabe lo que necesita.' },
       { ruta: '/extra/ia/agentes', titulo: 'Agentes y subagentes', descripcion: 'El mismo modelo con papeles distintos, y cómo crear los tuyos.' },
+      { ruta: '/extra/ia/equipo', titulo: 'Un equipo de agentes', descripcion: 'Un proyecto de principio a fin, con cada agente en su papel.' },
       { ruta: '/extra/ia/consejos', titulo: 'Consejos', descripcion: 'Cómo sacarle partido sin que te resuelva las prácticas.' },
     ],
   },

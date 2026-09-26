@@ -36,4 +36,4 @@ Se instalan en tu ordenador y se usan desde la terminal.
 
 ---
 
-**1 de 5** · Siguiente: [Tu primer agente](../opencode/)
+**1 de 6** · Siguiente: [Tu primer agente](../opencode/)

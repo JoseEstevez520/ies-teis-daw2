@@ -1,4 +1,4 @@
-import { BookOpen, Bot, FilePen, FileText, FlaskConical, PencilLine, Plug, Scale, Search } from '@lucide/vue'
+import { BookOpen, Bot, ClipboardList, FilePen, FileText, FlaskConical, Hammer, PencilLine, Plug, Scale, Search, ShieldCheck } from '@lucide/vue'
 
 // Los guiones de las sesiones de agente que se reproducen en las páginas de IA
 // (con AgentReplay). Son inventados, sobre la práctica de Spring de la tienda:
@@ -271,6 +271,65 @@ Text-Morph-Animation    sin licencia: no se puede usar su código`,
       kind: 'answer',
       text: 'Usa torph: hace justo eso, tiene versión para Vue (torph/vue), se sigue manteniendo y su licencia MIT te deja usarlo en tu proyecto. Se instala con npm install torph.',
       note: 'Había algo maduro que hace lo que necesitas: úsalo en vez de construirlo.',
+    },
+  ],
+  equipo: [
+    {
+      kind: 'prompt',
+      text: 'Quiero un buscador de empresas donde hacer la FCT: qué tecnologías usan, qué hizo allí cada alumno y si la recomienda. Para toda la clase.',
+      note: 'Lo pides una vez, en palabras normales. Lo que importa es que digas qué quieres y para quién.',
+    },
+    {
+      kind: 'step',
+      running: 'El explorador busca si ya existe',
+      done: 'El explorador: nada hecho para la FCT de un centro',
+      icon: Search,
+      session: [
+        { kind: 'step', running: 'Buscando directorios de empresas de FCT', done: 'Encontrados portales de empleo genéricos', icon: Search },
+        { kind: 'answer', text: 'No hay nada para la FCT de un centro. Los portales de empleo no guardan qué hizo allí cada alumno.' },
+      ],
+      note: 'Primero, buscar antes de construir. Aquí no hay nada maduro: toca construirlo.',
+    },
+    {
+      kind: 'step',
+      running: 'El que especifica escribe qué tiene que hacer',
+      done: 'Especificación escrita en SPEC.md',
+      icon: ClipboardList,
+      output: `# Buscador de empresas de FCT
+
+- Cada empresa: nombre, ciudad y tecnologías.
+- Cada alumno que estuvo: qué hizo y si la recomienda.
+- Buscar por tecnología o por ciudad.
+- Fuera, de momento: cuentas de usuario.`,
+      note: 'Qué hace, qué no y cómo se sabrá que está bien. Es lo primero que revisas tú.',
+    },
+    {
+      kind: 'step',
+      running: 'El constructor desarrolla',
+      done: 'El constructor: proyecto hecho y con tests',
+      icon: Hammer,
+      session: [
+        { kind: 'step', running: 'Leyendo SPEC.md y AGENTS.md', done: 'Leídos SPEC.md y AGENTS.md', icon: FileText },
+        { kind: 'step', running: 'Creando el proyecto con Spring Boot', done: 'Creado el proyecto', icon: FilePen },
+        { kind: 'step', running: 'Escribiendo los tests de la búsqueda', done: 'Tests escritos', icon: FlaskConical },
+        { kind: 'answer', text: 'Hecho: empresas, opiniones de alumnos y búsqueda por tecnología y ciudad.' },
+      ],
+      note: 'Construye siguiendo la especificación y las reglas del proyecto (AGENTS.md y sus skills).',
+    },
+    {
+      kind: 'step',
+      running: 'El revisor comprueba',
+      done: 'El revisor: 1 fallo encontrado',
+      icon: ShieldCheck,
+      output: `✔ busca por tecnología
+✔ busca por ciudad
+✘ una empresa sin opiniones sale como "no recomendada"`,
+      note: 'Otro agente, con otro papel, revisa lo que hizo el primero. Encuentra lo que se le pasó.',
+    },
+    {
+      kind: 'answer',
+      text: 'Listo para que lo revises: el buscador funciona y hay un fallo apuntado, una empresa sin opiniones no debería salir como "no recomendada". ¿Lo arreglo?',
+      note: 'Al final vuelve a ti: revisas y decides. El trabajo lo hicieron ellos; la última palabra es tuya.',
     },
   ],
 }

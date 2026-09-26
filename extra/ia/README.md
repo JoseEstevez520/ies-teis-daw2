@@ -10,7 +10,8 @@ Se leen en orden: cada página se apoya en la anterior.
 2. [`opencode/`](opencode/): tu primer agente: instalarlo y pedirle cosas.
 3. [`contexto/`](contexto/): darle contexto con AGENTS.md, skills y MCP.
 4. [`agentes/`](agentes/): agentes y subagentes, y cómo crear los tuyos.
-5. [`consejos/`](consejos/): cómo sacarle partido sin que te resuelva las prácticas.
+5. [`equipo/`](equipo/): un equipo de agentes, en un proyecto de principio a fin.
+6. [`consejos/`](consejos/): cómo sacarle partido sin que te resuelva las prácticas.
 
 Las páginas explican conceptos que valen para cualquier agente. Los ejemplos son de
 OpenCode porque es el que usamos.

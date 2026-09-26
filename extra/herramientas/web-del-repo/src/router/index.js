@@ -10,6 +10,7 @@ import ContextoView from '../views/paginas/ContextoView.vue'
 import CuadernoIaView from '../views/paginas/CuadernoIaView.vue'
 import DisenoWebView from '../views/paginas/DisenoWebView.vue'
 import ExtraView from '../views/paginas/ExtraView.vue'
+import EquipoView from '../views/paginas/EquipoView.vue'
 import FundamentosView from '../views/paginas/FundamentosView.vue'
 import HerramientasView from '../views/paginas/HerramientasView.vue'
 import HorarioView from '../views/paginas/HorarioView.vue'
@@ -52,6 +53,7 @@ const router = createRouter({
     { path: '/extra/ia/opencode', component: OpenCodeView },
     { path: '/extra/ia/contexto', component: ContextoView },
     { path: '/extra/ia/agentes', component: AgentesView },
+    { path: '/extra/ia/equipo', component: EquipoView },
     { path: '/extra/ia/consejos', component: ConsejosView },
     { path: '/extra/diseno-web', component: DisenoWebView },
     { path: '/extra/open-source', component: OpenSourceView },

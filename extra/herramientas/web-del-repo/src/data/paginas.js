@@ -15,6 +15,7 @@ import ia from '../../../../../extra/ia/README.md?raw'
 import opencode from '../../../../../extra/ia/opencode/README.md?raw'
 import contexto from '../../../../../extra/ia/contexto/README.md?raw'
 import agentes from '../../../../../extra/ia/agentes/README.md?raw'
+import equipo from '../../../../../extra/ia/equipo/README.md?raw'
 import fundamentos from '../../../../../extra/ia/fundamentos/README.md?raw'
 import consejos from '../../../../../extra/ia/consejos/README.md?raw'
 import disenoWeb from '../../../../../extra/diseno-web/README.md?raw'
@@ -132,6 +133,12 @@ export const PAGINAS = [
     claveRuta: 'extra/ia/agentes',
     seccion: 'IA',
     fuente: agentes,
+  },
+  {
+    ruta: '/extra/ia/equipo',
+    claveRuta: 'extra/ia/equipo',
+    seccion: 'IA',
+    fuente: equipo,
   },
   {
     ruta: '/extra/diseno-web',

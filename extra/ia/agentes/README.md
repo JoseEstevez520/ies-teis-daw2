@@ -61,4 +61,4 @@ Crear agentes y subagentes, con todas sus opciones, en la
 
 ---
 
-**4 de 5** · Anterior: [Darle contexto](../contexto/) · Siguiente: [Consejos](../consejos/)
+**4 de 6** · Anterior: [Darle contexto](../contexto/) · Siguiente: [Un equipo de agentes](../equipo/)

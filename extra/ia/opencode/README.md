@@ -30,4 +30,4 @@ que cambia antes de darlo por bueno**, igual que revisarías el código de otro.
 
 ---
 
-**2 de 5** · Anterior: [Fundamentos](../fundamentos/) · Siguiente: [Darle contexto](../contexto/)
+**2 de 6** · Anterior: [Fundamentos](../fundamentos/) · Siguiente: [Darle contexto](../contexto/)
