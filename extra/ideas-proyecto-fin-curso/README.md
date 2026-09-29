@@ -20,6 +20,8 @@ Proyectos pensados para empezarlos ya. Cada uno tiene su página, con la idea en
   un personaje simulado con una vida completa y memoria.
 - [Entorno interactivo que explica el código](entorno-interactivo-que-explica-el-codigo.md) —
   un notebook con IA, para cualquier lenguaje.
+- [Análisis del comportamiento deportivo con IA](analisis-del-comportamiento-deportivo.md) —
+  vídeos de boxeo convertidos en datos y estilos.
 
 ## Campos
 

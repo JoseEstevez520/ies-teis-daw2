@@ -27,6 +27,7 @@ import ideaWiki from '../../../../../extra/ideas-proyecto-fin-curso/wiki-de-un-c
 import ideaExperiencias from '../../../../../extra/ideas-proyecto-fin-curso/experiencias-cercanas-a-la-muerte.md?raw'
 import ideaPersonalidades from '../../../../../extra/ideas-proyecto-fin-curso/personalidades-que-viven-una-vida-entera.md?raw'
 import ideaEntorno from '../../../../../extra/ideas-proyecto-fin-curso/entorno-interactivo-que-explica-el-codigo.md?raw'
+import ideaAnalisis from '../../../../../extra/ideas-proyecto-fin-curso/analisis-del-comportamiento-deportivo.md?raw'
 
 import horario from '../../../../../horario/README.md?raw'
 
@@ -199,6 +200,12 @@ export const PAGINAS = [
     claveRuta: 'extra/ideas-proyecto-fin-curso/entorno-interactivo-que-explica-el-codigo',
     seccion: 'Ideas de PFC',
     fuente: ideaEntorno,
+  },
+  {
+    ruta: '/extra/ideas-proyecto-fin-curso/analisis-del-comportamiento-deportivo',
+    claveRuta: 'extra/ideas-proyecto-fin-curso/analisis-del-comportamiento-deportivo',
+    seccion: 'Ideas de PFC',
+    fuente: ideaAnalisis,
   },
   {
     ruta: '/horario',

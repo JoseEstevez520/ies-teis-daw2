@@ -1,4 +1,4 @@
-import { Compass, Code, HeartPulse, LayoutDashboard, UserRound, Video } from '@lucide/vue'
+import { Compass, Code, HeartPulse, LayoutDashboard, ScanEye, UserRound, Video } from '@lucide/vue'
 
 // Las ideas de PFC: extra/ideas-proyecto-fin-curso/<slug>.md. El índice (IdeasPfcView)
 // las enseña como tarjetas que llevan a su página; cada página se compone a mano con
@@ -65,6 +65,15 @@ export const IDEAS = [
     descripcion: 'Jupyter deja probar trozos de código pequeños, ejecutarlos paso a paso y ver qué pasa, pero está atado a Python y a los notebooks. La idea es algo parecido, para cualquier lenguaje, donde la IA explica el código y además genera la interfaz que mejor lo enseña: al seleccionar un fragmento, saca un diagrama, un flujo de ejecución, el estado de las variables, un diff o un ejercicio. Sale de un AGENTS.md propio que ya pide explicar el código, justificar decisiones y señalar mejoras, y que casi siempre acaba en párrafos de texto.',
     escala: 'un notebook para escribir y ejecutar fragmentos, conectado a una IA que consulta documentación actual con Context7 y devuelve el visual adecuado para cada caso. La arquitectura debería aguantar el salto a un entorno tipo IDE que entienda el proyecto entero, vea las dependencias y diga qué partes se ven afectadas por un cambio.',
     enlaces: [{ texto: 'Context7', href: 'https://context7.com' }],
+  },
+  {
+    slug: 'analisis-del-comportamiento-deportivo',
+    titulo: 'Análisis del comportamiento deportivo con IA',
+    icono: ScanEye,
+    resumen: 'Vídeos de boxeo convertidos en datos y estilos.',
+    tags: ['IA', 'Visión por computador', 'Machine Learning'],
+    descripcion: 'Un sistema que convierte vídeos de combates de boxeo en datos: de cada combate saca golpes, desplazamientos, intercambios y defensa, y los guarda como números medibles. Con varios combates salen perfiles de comportamiento y, buscando patrones con Machine Learning, los estilos de cada deportista. El boxeo es solo el caso de estudio; la misma cadena (datos observables → features → perfiles → modelos) vale para otros deportes, videojuegos competitivos o cualquier ámbito donde una persona deje un rastro observable.',
+    escala: 'un sistema de visión por computador que saca las features del vídeo, un análisis con Machine Learning encima (clasificación, clustering, reducción de dimensionalidad) y una web donde consultar estadísticas, perfiles y patrones. Los datos, anonimizados y minimizados, con identificadores anónimos y consentimiento cuando se asocian a un deportista real.',
   },
 ]
 
