@@ -108,6 +108,9 @@ componentes de elastic-ui; su `USAGE.md` tiene las reglas.
 
 - **Alrededor de cada pieza**: una frase antes que diga en qué fijarse, y después su
   conclusión en negrita, para quien solo mira el final.
+- **El texto no repite el dibujo**: lo que la pieza ya enseña no se vuelve a contar en
+  prosa. Si el diagrama lista las etapas, el texto no las enumera otra vez; la frase de
+  antes dice en qué fijarse, no lo que ya se ve. Si dos bloques dicen lo mismo, sobra uno.
 - **Color:** uno por concepto, el mismo en toda la página. Verde / ámbar / rojo solo
   para sí / con condiciones / no. Fuera de las piezas, el de la sección
   (`src/lib/colorSeccion.js`).
