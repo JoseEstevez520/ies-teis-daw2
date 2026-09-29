@@ -1,9 +1,10 @@
 <script setup>
-import { AgentReplay, Card, CardDescription, CardHeader, CardImage, CardTitle } from 'elastic-ui'
-import { ArrowUpRight, Brain, CalendarDays } from '@lucide/vue'
+import { AgentReplay } from 'elastic-ui'
+import { Brain, CalendarDays } from '@lucide/vue'
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
 import EtiquetasIdea from '../../components/EtiquetasIdea.vue'
 import EnlacesIdea from '../../components/EnlacesIdea.vue'
+import TarjetaReferencia from '../../components/TarjetaReferencia.vue'
 import DiagramaConducta from '../../visuales/DiagramaConducta.vue'
 import { ideaDe } from '../../data/ideas.js'
 
@@ -88,25 +89,7 @@ const EVENTOS = [
     <h2 id="de-donde-sale">De dónde sale</h2>
     <p>La idea parte de <em>Pluto</em> (manga y serie) y de <em>sonder</em>:</p>
     <div class="not-prose grid gap-4 sm:grid-cols-2">
-      <a
-        v-for="r in REFERENCIAS"
-        :key="r.titulo"
-        :href="r.href"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="group rounded-[var(--radius-xl)] focus-visible:outline-2 focus-visible:outline-accent"
-      >
-        <Card size="sm" class="h-full transition-colors duration-150 group-hover:border-border-strong">
-          <CardImage :src="r.imagen" :alt="r.titulo" class="aspect-[16/9]" />
-          <CardHeader class="gap-1">
-            <CardTitle size="sm" class="flex items-center justify-between gap-2">
-              {{ r.titulo }}
-              <ArrowUpRight class="size-4 shrink-0 text-fg-faint transition-colors duration-150 group-hover:text-fg" aria-hidden="true" />
-            </CardTitle>
-            <CardDescription>{{ r.texto }}</CardDescription>
-          </CardHeader>
-        </Card>
-      </a>
+      <TarjetaReferencia v-for="r in REFERENCIAS" :key="r.titulo" v-bind="r" />
     </div>
 
     <EnlacesIdea :idea="idea" />

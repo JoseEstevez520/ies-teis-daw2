@@ -3,6 +3,7 @@ import { AnimatedList, Tabs, TabsContent, TabsList, TabsTrigger } from 'elastic-
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
 import EtiquetasIdea from '../../components/EtiquetasIdea.vue'
 import EnlacesIdea from '../../components/EnlacesIdea.vue'
+import DiagramaPanelMCP from '../../visuales/DiagramaPanelMCP.vue'
 import { ideaDe } from '../../data/ideas.js'
 
 // extra/ideas-proyecto-fin-curso/panel-del-aula-virtual.md
@@ -54,6 +55,15 @@ const PESTANAS = [
       </TabsContent>
     </Tabs>
     <p><strong>Entregas, notas y avisos, en una sola pantalla.</strong></p>
+
+    <h2 id="agentes">Con agentes y MCP</h2>
+    <p>
+      El panel es el principio. Con una conexión MCP, tu agente mira el Aula Virtual y te
+      devuelve el panel dentro del chat: le preguntas qué te falta por entregar y te lo dice con
+      tus datos. Encima se pueden montar más cosas.
+    </p>
+    <DiagramaPanelMCP />
+    <p><strong>El agente consulta el Aula Virtual por MCP y te responde con tus datos.</strong></p>
 
     <p><span class="font-medium">A escala de PFC:</span> {{ idea.escala }}</p>
 

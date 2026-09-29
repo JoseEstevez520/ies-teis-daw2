@@ -10,9 +10,9 @@ export const IDEAS = [
     titulo: 'Panel del Aula Virtual',
     icono: LayoutDashboard,
     resumen: 'Entregas, notas y avisos en un sitio.',
-    tags: ['Web', 'API REST', 'Aula Virtual'],
-    descripcion: 'Tus entregas, notas y avisos del Aula Virtual en un solo sitio. Ya está en marcha como herramienta de la clase.',
-    escala: 'frontend y backend, una API REST real y decisiones de arquitectura defendibles, no solo un CRUD de ejemplo.',
+    tags: ['Web', 'MCP', 'Agentes'],
+    descripcion: 'Tus entregas, notas y avisos del Aula Virtual en un solo sitio. Ya está en marcha como herramienta de la clase. Y da para mucho más: una conexión MCP para que tu agente consulte el Aula Virtual y te devuelva el panel dentro del chat, y agentes que te avisen de lo que se acerca, te resuman los avisos o te organicen la semana.',
+    escala: 'frontend y backend, una API REST real y decisiones de arquitectura defendibles, no solo un CRUD de ejemplo. Y, si te atreves, una conexión MCP y un agente que la use.',
     enlaces: [{ texto: 'La herramienta', href: '/extra/herramientas/panel-aula-virtual' }],
   },
   {

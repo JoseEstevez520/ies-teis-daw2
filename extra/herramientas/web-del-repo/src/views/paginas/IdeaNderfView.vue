@@ -1,13 +1,23 @@
 <script setup>
-import { Callout } from 'elastic-ui'
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
 import EtiquetasIdea from '../../components/EtiquetasIdea.vue'
 import EnlacesIdea from '../../components/EnlacesIdea.vue'
+import TarjetaReferencia from '../../components/TarjetaReferencia.vue'
 import DiagramaRepite from '../../visuales/DiagramaRepite.vue'
 import { ideaDe } from '../../data/ideas.js'
 
 // extra/ideas-proyecto-fin-curso/experiencias-cercanas-a-la-muerte.md
 const idea = ideaDe('experiencias-cercanas-a-la-muerte')
+
+// De dónde sale la idea.
+const REFERENCIAS = [
+  {
+    titulo: 'The OA',
+    href: 'https://en.wikipedia.org/wiki/The_OA',
+    imagen: 'https://upload.wikimedia.org/wikipedia/en/6/6d/The_OA.png',
+    texto: 'La serie de Brit Marling y Zal Batmanglij: gente que vuelve de la muerte con algo que contar.',
+  },
+]
 </script>
 
 <template>
@@ -37,9 +47,11 @@ const idea = ideaDe('experiencias-cercanas-a-la-muerte')
 
     <p><span class="font-medium">A escala de PFC:</span> {{ idea.escala }}</p>
 
-    <Callout type="note" title="De dónde sale">
-      Idea sacada de la serie <em>The OA</em>.
-    </Callout>
+    <h2 id="de-donde-sale">De dónde sale</h2>
+    <p>La idea la sacó <em>The OA</em>; los relatos son de NDERF:</p>
+    <div class="not-prose grid gap-4 sm:grid-cols-2">
+      <TarjetaReferencia v-for="r in REFERENCIAS" :key="r.titulo" v-bind="r" />
+    </div>
 
     <EnlacesIdea :idea="idea" />
   </PlantillaPagina>

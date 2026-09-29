@@ -1,6 +1,6 @@
 ---
 name: apuntes-web
-description: Cómo crear o mejorar una página de la web del repo (web-del-repo) que explica algo, con diagramas, piezas interactivas y ejemplos. Úsala siempre que añadas o rehagas un apunte, tema o recurso de extra/ o modulos/ que se vaya a ver en la web, junto con apuntes-claros para el texto.
+description: Cómo crear o mejorar una página de la web del repo (web-del-repo) que explica algo (un apunte, una idea o un proyecto), con diagramas, piezas interactivas y ejemplos. Úsala siempre que añadas o rehagas un apunte, tema o recurso de extra/ o modulos/ que se vaya a ver en la web, junto con apuntes-claros para el texto.
 ---
 
 # Apuntes web
@@ -44,6 +44,22 @@ El texto sigue [apuntes-claros](../apuntes-claros/SKILL.md).
 | piezas que encajan | dibujo con cajas (una dentro de otra si una contiene a la otra) |
 | cómo trabaja un agente | sesión de agente (una por idea, una detrás de otra) |
 
+## Páginas de idea o de proyecto
+
+No solo apuntes: las páginas de una idea o un proyecto (`extra/ideas-proyecto-fin-curso/`)
+siguen las mismas reglas, con esta forma:
+
+1. **Qué es**, en una frase que ya sirva sola.
+2. **La idea entera**, como estaba en el `.md`: qué es y a escala de PFC. No la recortes.
+3. **Una pieza** que la haga concreta (un diagrama, una sesión de agente, un gráfico, una
+   pieza real de la librería), con su frase antes y su conclusión en negrita después. Una
+   pieza por idea.
+4. **De dónde sale**, si viene de una serie, un libro o un proyecto.
+5. **Sus enlaces.**
+
+Cada idea con su pieza: no todas con el mismo esquema. Mira la librería y usa lo que le
+encaje a esa idea (tabs, filtros, chat, sesión de agente, gráfico, diff...).
+
 ## Piezas visuales
 
 Cada página de la web es un componente Vue compuesto a mano, en
@@ -71,6 +87,13 @@ componentes de elastic-ui; su `USAGE.md` tiene las reglas.
   laterales de color, datos repetidos dentro de cada caja.
 - **Móvil:** si no cabe, cambia de forma (un día cada vez, fichas en vez de esquema).
 - **Ejemplos** de clase o de este repo. Si no es literal, dilo.
+- **De dónde sale:** si la página parte de una serie, un libro o un proyecto, ciérrala con una
+  sección "De dónde sale": una tarjeta por referencia, con su imagen, el título y una línea,
+  y toda la tarjeta como enlace. Es `TarjetaReferencia.vue`, hecha con `Card` + `CardImage`
+  (`fade`, `aspect-video`), como en los ejemplos de la propia librería. Sin imagen, la tarjeta
+  va con el título y el texto.
+- **Reutiliza:** si una pieza se repite en dos páginas, sácala a `src/components/` (piezas de
+  la web, como `TarjetaReferencia.vue`) o a `src/visuales/` (dibujos) y úsala desde las dos.
 
 ## Meterla en la web
 
