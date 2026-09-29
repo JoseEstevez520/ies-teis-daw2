@@ -1,6 +1,6 @@
 <script setup>
-import { AgentReplay, Callout } from 'elastic-ui'
-import { Brain, CalendarDays } from '@lucide/vue'
+import { AgentReplay, Card, CardDescription, CardHeader, CardImage, CardTitle } from 'elastic-ui'
+import { ArrowUpRight, Brain, CalendarDays } from '@lucide/vue'
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
 import EtiquetasIdea from '../../components/EtiquetasIdea.vue'
 import EnlacesIdea from '../../components/EnlacesIdea.vue'
@@ -8,6 +8,22 @@ import { ideaDe } from '../../data/ideas.js'
 
 // extra/ideas-proyecto-fin-curso/personalidades-que-viven-una-vida-entera.md
 const idea = ideaDe('personalidades-que-viven-una-vida-entera')
+
+// De dónde sale la idea, con su imagen y su enlace.
+const REFERENCIAS = [
+  {
+    titulo: 'Pluto',
+    href: 'https://en.wikipedia.org/wiki/Pluto_(manga)',
+    imagen: 'https://upload.wikimedia.org/wikipedia/en/e/ef/Pluto_%28manga%29_1.png',
+    texto: 'El manga y la serie de Naoki Urasawa: robots con vida interior y una memoria que los cambia.',
+  },
+  {
+    titulo: 'sonder',
+    href: 'https://www.dictionaryofobscuresorrows.com/post/23536922667/sonder',
+    imagen: 'https://static.tumblr.com/lcv5kdg/6DJmx8ury/6nvcv.jpg',
+    texto: 'La palabra de John Koenig: cada persona con la que te cruzas vive una vida tan compleja como la tuya.',
+  },
+]
 
 // Sesión de ejemplo, inventada: el personaje vive un día y lo recuerda.
 const EVENTOS = [
@@ -61,9 +77,29 @@ const EVENTOS = [
 
     <p><span class="font-medium">A escala de PFC:</span> {{ idea.escala }}</p>
 
-    <Callout type="note" title="De dónde sale">
-      Idea sacada de <em>Pluto</em> (manga y serie) y de <em>sonder</em>.
-    </Callout>
+    <h2 id="de-donde-sale">De dónde sale</h2>
+    <p>La idea parte de <em>Pluto</em> (manga y serie) y de <em>sonder</em>:</p>
+    <div class="not-prose grid gap-4 sm:grid-cols-2">
+      <a
+        v-for="r in REFERENCIAS"
+        :key="r.titulo"
+        :href="r.href"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group rounded-[var(--radius-xl)] focus-visible:outline-2 focus-visible:outline-accent"
+      >
+        <Card size="sm" class="h-full transition-colors duration-150 group-hover:border-border-strong">
+          <CardImage :src="r.imagen" :alt="r.titulo" class="aspect-[4/3]" />
+          <CardHeader class="gap-1">
+            <CardTitle size="sm" class="flex items-center justify-between gap-2">
+              {{ r.titulo }}
+              <ArrowUpRight class="size-4 shrink-0 text-fg-faint transition-colors duration-150 group-hover:text-fg" aria-hidden="true" />
+            </CardTitle>
+            <CardDescription>{{ r.texto }}</CardDescription>
+          </CardHeader>
+        </Card>
+      </a>
+    </div>
 
     <EnlacesIdea :idea="idea" />
   </PlantillaPagina>

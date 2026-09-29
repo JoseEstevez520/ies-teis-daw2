@@ -1,8 +1,5 @@
 # Personalidades que viven una vida entera
 
-Idea sacada de *Pluto* (manga y serie) y de
-[sonder](https://www.dictionaryofobscuresorrows.com/post/23536922667/sonder).
-
 Tiene dos partes. La primera es un modelo de conducta: con lo que alguien ha vivido y la
 situación de ahora, predecir qué haría. La segunda son vidas enteras simuladas con ese
 modelo: cada personaje vive sus días, los recuerda, y de ahí salen personalidades e
@@ -15,3 +12,18 @@ la tuya. Aquí, cada personaje la tendría de verdad.
 *A escala de PFC:* un modelo de conducta (predecir la reacción a una situación) y, encima,
 días simulados de una vida entera con memoria, que dan personalidades e historias; y una
 línea de la vida de la IA.
+
+## De dónde sale
+
+La idea parte de dos cosas:
+
+- [**Pluto**](https://en.wikipedia.org/wiki/Pluto_(manga)) — el manga y la serie de Naoki
+  Urasawa: robots con vida interior y una memoria que los cambia.
+
+  ![Portada de Pluto](https://upload.wikimedia.org/wikipedia/en/e/ef/Pluto_%28manga%29_1.png)
+
+- [**sonder**](https://www.dictionaryofobscuresorrows.com/post/23536922667/sonder) — la
+  palabra de John Koenig: cada persona con la que te cruzas vive una vida tan compleja como
+  la tuya.
+
+  ![sonder](https://static.tumblr.com/lcv5kdg/6DJmx8ury/6nvcv.jpg)
