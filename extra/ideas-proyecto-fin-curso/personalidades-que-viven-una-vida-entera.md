@@ -19,11 +19,6 @@ La idea parte de dos cosas:
 
 - [**Pluto**](https://en.wikipedia.org/wiki/Pluto_(manga)) — el manga y la serie de Naoki
   Urasawa: robots con vida interior y una memoria que los cambia.
-
-  ![Portada de Pluto](https://upload.wikimedia.org/wikipedia/en/e/ef/Pluto_%28manga%29_1.png)
-
 - [**sonder**](https://www.dictionaryofobscuresorrows.com/post/23536922667/sonder) — la
   palabra de John Koenig: cada persona con la que te cruzas vive una vida tan compleja como
   la tuya.
-
-  ![sonder](https://static.tumblr.com/lcv5kdg/6DJmx8ury/6nvcv.jpg)

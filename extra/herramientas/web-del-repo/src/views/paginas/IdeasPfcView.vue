@@ -74,6 +74,7 @@ const EJEMPLOS = [
         v-for="i in IDEAS"
         :key="i.slug"
         :href="`/extra/ideas-proyecto-fin-curso/${i.slug}`"
+        :icono="i.icono"
         :titulo="i.titulo"
         :descripcion="i.resumen"
       />

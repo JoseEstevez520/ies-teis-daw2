@@ -4,6 +4,7 @@ import { ArrowUpRight, Brain, CalendarDays } from '@lucide/vue'
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
 import EtiquetasIdea from '../../components/EtiquetasIdea.vue'
 import EnlacesIdea from '../../components/EnlacesIdea.vue'
+import DiagramaConducta from '../../visuales/DiagramaConducta.vue'
 import { ideaDe } from '../../data/ideas.js'
 
 // extra/ideas-proyecto-fin-curso/personalidades-que-viven-una-vida-entera.md
@@ -14,13 +15,13 @@ const REFERENCIAS = [
   {
     titulo: 'Pluto',
     href: 'https://en.wikipedia.org/wiki/Pluto_(manga)',
-    imagen: 'https://upload.wikimedia.org/wikipedia/en/e/ef/Pluto_%28manga%29_1.png',
+    imagen: 'https://pluto-anime.com/assets/images/ogp.jpg',
     texto: 'El manga y la serie de Naoki Urasawa: robots con vida interior y una memoria que los cambia.',
   },
   {
     titulo: 'sonder',
     href: 'https://www.dictionaryofobscuresorrows.com/post/23536922667/sonder',
-    imagen: 'https://static.tumblr.com/lcv5kdg/6DJmx8ury/6nvcv.jpg',
+    imagen: 'https://images.unsplash.com/photo-1721230306879-80c97f3eadba?fm=jpg&q=60&w=1200&auto=format&fit=crop',
     texto: 'La palabra de John Koenig: cada persona con la que te cruzas vive una vida tan compleja como la tuya.',
   },
 ]
@@ -65,12 +66,19 @@ const EVENTOS = [
 
     <p>{{ idea.descripcion }}</p>
 
+    <h2 id="modelo">El modelo de conducta</h2>
     <p>
-      La primera parte es predecir: con lo que alguien ha vivido y lo que pasa ahora, qué haría.
-      Si a este personaje le ofrecen el turno de tarde, diría que no, porque recuerda la
-      discusión de ayer.
+      La primera parte es predecir: entran lo que alguien ha vivido y la situación de ahora, y sale
+      qué haría. La misma persona reacciona distinto según lo que recuerda.
     </p>
+    <DiagramaConducta />
+    <p>
+      Si a este personaje le ofrecen el turno de tarde, diría que no, porque recuerda la discusión
+      de ayer.
+    </p>
+    <p><strong>Con la memoria y la situación, el modelo dice qué haría, no una ficha fija.</strong></p>
 
+    <h2 id="vidas">Vidas enteras</h2>
     <p>La segunda son vidas enteras. Mira la sesión; su carácter no está escrito, sale de la memoria.</p>
     <AgentReplay :events="EVENTOS" intro="El personaje vive un día y lo recuerda." />
     <p><strong>La personalidad no se escribe: emerge de lo que el personaje ha vivido.</strong></p>
@@ -89,7 +97,7 @@ const EVENTOS = [
         class="group rounded-[var(--radius-xl)] focus-visible:outline-2 focus-visible:outline-accent"
       >
         <Card size="sm" class="h-full transition-colors duration-150 group-hover:border-border-strong">
-          <CardImage :src="r.imagen" :alt="r.titulo" class="aspect-[4/3]" />
+          <CardImage :src="r.imagen" :alt="r.titulo" class="aspect-[16/9]" />
           <CardHeader class="gap-1">
             <CardTitle size="sm" class="flex items-center justify-between gap-2">
               {{ r.titulo }}
