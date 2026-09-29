@@ -3,12 +3,15 @@
 Idea sacada de *Pluto* (manga y serie) y de
 [sonder](https://www.dictionaryofobscuresorrows.com/post/23536922667/sonder).
 
-En vez de escribirle a un personaje cómo es, simularle una vida completa, de la infancia en
-adelante, y que su personalidad salga de lo que ha vivido y recuerda. Es lo que dice
-sonder: cada persona con la que te cruzas tiene una vida tan compleja como la tuya. Aquí,
-cada personaje la tendría de verdad.
+Tiene dos partes. La primera es un modelo de conducta: con lo que alguien ha vivido y la
+situación de ahora, predecir qué haría. La segunda son vidas enteras simuladas con ese
+modelo: cada personaje vive sus días, los recuerda, y de ahí salen personalidades e
+historias complejas, no una ficha escrita a mano. La misma idea vale para la vida de la
+propia IA: qué recuerda y cómo cambia con lo que vive.
 
-*A escala de PFC:* un personaje con memoria que vive días simulados, una línea de su vida
-que se pueda recorrer y un chat para hablar con él.
+Es lo que dice sonder: cada persona con la que te cruzas tiene una vida tan compleja como
+la tuya. Aquí, cada personaje la tendría de verdad.
 
-Referencia: [Generative Agents](https://arxiv.org/abs/2304.03442).
+*A escala de PFC:* un modelo de conducta (predecir la reacción a una situación) y, encima,
+días simulados de una vida entera con memoria, que dan personalidades e historias; y una
+línea de la vida de la IA.

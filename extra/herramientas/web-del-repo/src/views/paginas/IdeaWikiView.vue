@@ -4,6 +4,7 @@ import { Video } from '@lucide/vue'
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
 import EtiquetasIdea from '../../components/EtiquetasIdea.vue'
 import EnlacesIdea from '../../components/EnlacesIdea.vue'
+import DiagramaTemas from '../../visuales/DiagramaTemas.vue'
 import { ideaDe } from '../../data/ideas.js'
 
 // extra/ideas-proyecto-fin-curso/wiki-de-un-canal-de-youtube.md
@@ -54,7 +55,11 @@ const ANALISIS = [
     <p><strong>Cada respuesta cita el vídeo y el minuto, así puedes ir a comprobarlo.</strong></p>
 
     <h2 id="analisis">Análisis del canal</h2>
-    <p>Y, una vez tienes el texto de todos los vídeos, se puede aprender del canal:</p>
+    <p>Y, una vez tienes el texto de todos los vídeos, se puede aprender del canal. Por ejemplo, cómo cambian los temas con los años:</p>
+    <DiagramaTemas />
+    <p><strong>Se ve de un vistazo qué temas crecen y cuáles se dejan.</strong></p>
+
+    <p>Y más cosas que salen del mismo texto:</p>
     <div class="not-prose grid gap-4 sm:grid-cols-2">
       <Card v-for="a in ANALISIS" :key="a.titulo" size="sm" class="h-full gap-1 px-4">
         <CardTitle as="h3" size="sm">{{ a.titulo }}</CardTitle>

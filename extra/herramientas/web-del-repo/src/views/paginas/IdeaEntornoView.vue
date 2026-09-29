@@ -1,5 +1,4 @@
 <script setup>
-import { CodeWalkthrough, CodeWalkthroughStep } from 'elastic-ui'
 import mockupEntorno from '../../../../../../extra/ideas-proyecto-fin-curso/entorno-interactivo-que-explica-el-codigo.jpg?url'
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
 import EtiquetasIdea from '../../components/EtiquetasIdea.vue'
@@ -8,18 +7,6 @@ import { ideaDe } from '../../data/ideas.js'
 
 // extra/ideas-proyecto-fin-curso/entorno-interactivo-que-explica-el-codigo.md
 const idea = ideaDe('entorno-interactivo-que-explica-el-codigo')
-
-const CODIGO = `async function cargarUsuario(id) {
-  const res = await fetch(\`/api/usuarios/\${id}\`)
-  if (!res.ok) throw new Error('No se pudo cargar')
-  return res.json()
-}`
-
-const MEJORADO = `async function cargarUsuario(id) {
-  const res = await fetch(\`/api/usuarios/\${id}\`)
-  if (!res.ok) throw new Error(\`Usuario \${id}: \${res.status}\`)
-  return res.json()
-}`
 </script>
 
 <template>
@@ -28,19 +15,19 @@ const MEJORADO = `async function cargarUsuario(id) {
 
     <p>{{ idea.descripcion }}</p>
 
-    <p>Lee la explicación: el código se queda al lado y va señalando de qué habla cada paso.</p>
-    <CodeWalkthrough>
-      <CodeWalkthroughStep title="Qué hace" file="api.js" :code="CODIGO" highlight="1-4">
-        <p>Pide un usuario a la API y devuelve el JSON. Es <code>async</code> porque espera a la red.</p>
-      </CodeWalkthroughStep>
-      <CodeWalkthroughStep title="Dónde puede fallar" file="api.js" :code="CODIGO" highlight="3">
-        <p>Si la respuesta no es correcta, lanza un error en vez de devolver datos a medias.</p>
-      </CodeWalkthroughStep>
-      <CodeWalkthroughStep title="La mejora" file="api.js" :code="MEJORADO" highlight="3">
-        <p>El entorno no se queda en explicarlo: propone el cambio y lo deja listo para aplicar.</p>
-      </CodeWalkthroughStep>
-    </CodeWalkthrough>
-    <p><strong>La IA no solo explica el código: genera la interfaz que mejor lo enseña.</strong></p>
+    <p>
+      Se usaría así: escribes y ejecutas un fragmento; seleccionas una parte y pides que te la
+      explique, que experimente con ella o que te la dibuje. La IA parte del código, de lo que pasó
+      al ejecutarlo y del contexto del proyecto, y consulta la documentación al día.
+    </p>
+
+    <p>Y, en vez de contestar en texto, genera la pieza que mejor lo enseñe:</p>
+    <ul>
+      <li>Un diagrama o un flujo de ejecución.</li>
+      <li>El estado de las variables, paso a paso.</li>
+      <li>Un diff de la mejora que propone.</li>
+      <li>Una línea de tiempo, un playground o un ejercicio.</li>
+    </ul>
 
     <p>Así se vería, con el flujo, las dependencias y el estado de las variables al lado:</p>
     <figure class="not-prose">

@@ -1,5 +1,5 @@
 <script setup>
-import { Callout, CodeBlock } from 'elastic-ui'
+import { Callout } from 'elastic-ui'
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
 import EtiquetasIdea from '../../components/EtiquetasIdea.vue'
 import EnlacesIdea from '../../components/EnlacesIdea.vue'
@@ -8,17 +8,6 @@ import { ideaDe } from '../../data/ideas.js'
 
 // extra/ideas-proyecto-fin-curso/experiencias-cercanas-a-la-muerte.md
 const idea = ideaDe('experiencias-cercanas-a-la-muerte')
-
-// Ejemplo de cómo se agruparían los relatos, no de un proyecto terminado.
-const CODIGO = `from sentence_transformers import SentenceTransformer
-from sklearn.cluster import KMeans
-
-relatos = cargar_relatos("nderf.csv")            # unos 16.000 textos
-modelo = SentenceTransformer("paraphrase-multilingual-MiniLM-L12-v2")
-vectores = modelo.encode(relatos)
-
-grupos = KMeans(n_clusters=8, n_init="auto").fit(vectores)
-temas = resumir_grupos(relatos, grupos.labels_)  # un tema por grupo`
 </script>
 
 <template>
@@ -40,8 +29,11 @@ temas = resumir_grupos(relatos, grupos.labels_)  # un tema por grupo`
       <li>¿Qué se repite casi siempre y qué es raro?</li>
     </ul>
 
-    <p>El trabajo está en juntarlos y agruparlos. Un ejemplo de cómo empezaría:</p>
-    <CodeBlock :code="CODIGO" language="python" />
+    <p>
+      El trabajo está en recoger los 16.000 relatos, limpiarlos y agruparlos por lo que se parece,
+      y en montar una web que enseñe lo que sale con esas preguntas al lado. Es un proyecto de
+      datos: primero el análisis, y después contarlo bien.
+    </p>
 
     <p><span class="font-medium">A escala de PFC:</span> {{ idea.escala }}</p>
 

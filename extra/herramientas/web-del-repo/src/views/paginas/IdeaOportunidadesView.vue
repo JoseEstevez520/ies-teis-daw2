@@ -1,5 +1,5 @@
 <script setup>
-import { CodeBlock } from 'elastic-ui'
+import { Callout, CodeBlock } from 'elastic-ui'
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
 import EtiquetasIdea from '../../components/EtiquetasIdea.vue'
 import EnlacesIdea from '../../components/EnlacesIdea.vue'
@@ -32,12 +32,17 @@ Backend en Java y Spring. Piden prácticas de 3 meses.
 
     <p>{{ idea.descripcion }}</p>
 
-    <p>Así funcionaría: unos agentes sobre un vault de Markdown, sin base de datos.</p>
+    <p>Así funcionaría: una app con agentes sobre un vault de Markdown, sin base de datos.</p>
     <DiagramaSenda />
     <p><strong>Los agentes leen el vault antes de responder, y lo que averiguan se queda en él.</strong></p>
 
     <p>El vault es la memoria: cada oportunidad es una nota de Markdown con su fuente. Una, por ejemplo:</p>
     <CodeBlock :code="NOTA" title="vault/oportunidades/mareo-software.md" />
+
+    <Callout type="note" title="Para empezar">
+      OpenCode no es el motor: es un atajo para la primera versión, que ya trae agentes. Lo suyo
+      es una app propia con los agentes en Python.
+    </Callout>
 
     <p><span class="font-medium">A escala de PFC:</span> {{ idea.escala }}</p>
 

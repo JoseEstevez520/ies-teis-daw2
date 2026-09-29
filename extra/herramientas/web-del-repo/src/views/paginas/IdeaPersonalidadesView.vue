@@ -49,7 +49,13 @@ const EVENTOS = [
 
     <p>{{ idea.descripcion }}</p>
 
-    <p>Mira la sesión. Fíjate en que su carácter no está escrito, sino que sale de la memoria.</p>
+    <p>
+      La primera parte es predecir: con lo que alguien ha vivido y lo que pasa ahora, qué haría.
+      Si a este personaje le ofrecen el turno de tarde, diría que no, porque recuerda la
+      discusión de ayer.
+    </p>
+
+    <p>La segunda son vidas enteras. Mira la sesión; su carácter no está escrito, sale de la memoria.</p>
     <AgentReplay :events="EVENTOS" intro="El personaje vive un día y lo recuerda." />
     <p><strong>La personalidad no se escribe: emerge de lo que el personaje ha vivido.</strong></p>
 
