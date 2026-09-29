@@ -1,19 +1,29 @@
 # Web del repo
 
-Convertir el contenido de este repo (apuntes, recursos, extra) en una web navegable, en
-vez de tener que bucear por carpetas en GitHub.
+Convierte el contenido del repo (apuntes, recursos, extra) en una web navegable, en vez de
+tener que bucear por carpetas en GitHub.
 
-Esto es documentación de diseño, sin código todavía. Sin decidir aún cómo servirla
-(GitHub Pages es una opción, no la única). Eso se decide cuando se construya.
+## Arrancarla
 
-## Por qué ya está preparado para esto
+```bash
+cd extra/herramientas/web-del-repo
+npm install
+npm run dev
+```
 
-La convención de nombres del repo (minúsculas-con-guiones, ver
-[`../../CONTRIBUTING.md`](../../CONTRIBUTING.md)) existe justo por esto: esos nombres se
-convierten en URLs limpias sin tener que renombrar nada cuando llegue el momento.
+Abre la dirección que imprime (por defecto `http://localhost:5173`). Necesita Node 20 o
+superior. `npm install` descarga y compila elastic-ui, así que la primera vez tarda un
+poco.
 
-## Se puede ir haciendo poco a poco
+Para la versión de producción, `npm run build` (sale en `dist/`).
 
-No hace falta construirla de golpe. Empieza teniendo valor con muy poco: un índice que
-enlace lo que ya hay, y va creciendo según se decide cómo generarla (a mano, con un
-generador de sitios estático, etc.).
+## Cómo está hecha
+
+Vue 3 + Vite + Tailwind, con los componentes de [elastic-ui](design.md#elastic-ui). El
+diseño y las reglas están en [design.md](design.md) y [AGENTS.md](AGENTS.md).
+
+## La convención de nombres
+
+La convención del repo (minúsculas-con-guiones, ver
+[`../../../CONTRIBUTING.md`](../../../CONTRIBUTING.md)) existe justo por esto: esos nombres
+son las URLs de la web, sin que haya que renombrar nada.

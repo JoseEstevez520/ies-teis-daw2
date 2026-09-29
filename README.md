@@ -13,6 +13,21 @@ Apuntes y documentación se leen directamente aquí en GitHub. Cada herramienta 
 en `extra/herramientas/` trae su propio quick start en su README (clonar, instalar,
 arrancar).
 
+## Ver la web
+
+Todo el contenido del repo, navegable y visual, mejor que ir carpeta por carpeta. Con el
+repo ya clonado:
+
+```bash
+cd ies-teis-daw2/extra/herramientas/web-del-repo
+npm install
+npm run dev
+```
+
+Abre la dirección que imprime (por defecto `http://localhost:5173`). Necesita Node 20 o
+superior. `npm install` descarga y compila la librería de interfaz, así que la primera vez
+tarda un poco.
+
 ## Estructura
 
 ```
