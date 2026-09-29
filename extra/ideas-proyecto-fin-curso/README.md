@@ -15,12 +15,13 @@ Proyectos pensados para empezarlos ya. Cada uno tiene su página, con la idea en
 
 - [Panel del Aula Virtual](panel-del-aula-virtual.md) — tus entregas, notas y avisos en un
   sitio. Ya está en marcha como herramienta de la clase.
-- [Buscador de empresas de FCT](buscador-de-empresas-de-fct.md) — empresas de FCT y lo que
-  cuenta cada alumno que ya estuvo.
+- [Oportunidades y trayectoria, con agentes](oportunidades-y-trayectoria.md) — un sistema
+  personal que investiga prácticas, becas y ofertas, guarda cada cosa con su fuente y ayuda a
+  decidir, sobre un vault de Markdown.
 - [Wiki de un canal de YouTube](wiki-de-un-canal-de-youtube.md) — un canal o pódcast
-  convertido en wiki, con un chat que cita el minuto exacto.
+  convertido en datos, con un chat que cita el minuto exacto y un análisis del canal.
 - [Experiencias cercanas a la muerte](experiencias-cercanas-a-la-muerte.md) — 16.000 relatos
-  de casi morir, agrupados para ver qué se repite.
+  de casi morir, analizados para detectar patrones y hacerse preguntas científicas.
 - [Personalidades que viven una vida entera](personalidades-que-viven-una-vida-entera.md) —
   un personaje simulado con una vida completa y memoria.
 - [Entorno interactivo que explica el código](entorno-interactivo-que-explica-el-codigo.md) —

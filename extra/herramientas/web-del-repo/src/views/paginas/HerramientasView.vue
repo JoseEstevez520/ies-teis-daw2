@@ -42,7 +42,7 @@ const PENDIENTES = [
     id: 'fct',
     titulo: 'Buscador de empresas de FCT',
     texto: 'Directorio de empresas donde hacer la FCT, con lo que aporta cada alumno que ya estuvo.',
-    enlace: { to: '/extra/ideas-proyecto-fin-curso/buscador-de-empresas-de-fct', texto: 'La idea completa, en Ideas para el PFC' },
+    enlace: { to: '/extra/ideas-proyecto-fin-curso/oportunidades-y-trayectoria', texto: 'La idea completa, en Ideas para el PFC' },
   },
   {
     id: 'plantillas',

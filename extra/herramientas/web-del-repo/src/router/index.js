@@ -17,7 +17,7 @@ import HorarioView from '../views/paginas/HorarioView.vue'
 import IaView from '../views/paginas/IaView.vue'
 import IdeasPfcView from '../views/paginas/IdeasPfcView.vue'
 import IdeaPanelView from '../views/paginas/IdeaPanelView.vue'
-import IdeaBuscadorView from '../views/paginas/IdeaBuscadorView.vue'
+import IdeaOportunidadesView from '../views/paginas/IdeaOportunidadesView.vue'
 import IdeaWikiView from '../views/paginas/IdeaWikiView.vue'
 import IdeaNderfView from '../views/paginas/IdeaNderfView.vue'
 import IdeaPersonalidadesView from '../views/paginas/IdeaPersonalidadesView.vue'
@@ -65,7 +65,7 @@ const router = createRouter({
     { path: '/extra/open-source', component: OpenSourceView },
     { path: '/extra/ideas-proyecto-fin-curso', component: IdeasPfcView },
     { path: '/extra/ideas-proyecto-fin-curso/panel-del-aula-virtual', component: IdeaPanelView },
-    { path: '/extra/ideas-proyecto-fin-curso/buscador-de-empresas-de-fct', component: IdeaBuscadorView },
+    { path: '/extra/ideas-proyecto-fin-curso/oportunidades-y-trayectoria', component: IdeaOportunidadesView },
     { path: '/extra/ideas-proyecto-fin-curso/wiki-de-un-canal-de-youtube', component: IdeaWikiView },
     { path: '/extra/ideas-proyecto-fin-curso/experiencias-cercanas-a-la-muerte', component: IdeaNderfView },
     { path: '/extra/ideas-proyecto-fin-curso/personalidades-que-viven-una-vida-entera', component: IdeaPersonalidadesView },

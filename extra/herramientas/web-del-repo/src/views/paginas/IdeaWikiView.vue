@@ -1,5 +1,5 @@
 <script setup>
-import { Callout, ChatMessage, ChatSource, ChatSources, ChatThread, ChatTool } from 'elastic-ui'
+import { Callout, Card, CardDescription, CardTitle, ChatMessage, ChatSource, ChatSources, ChatThread, ChatTool } from 'elastic-ui'
 import { Video } from '@lucide/vue'
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
 import EtiquetasIdea from '../../components/EtiquetasIdea.vue'
@@ -13,6 +13,14 @@ const idea = ideaDe('wiki-de-un-canal-de-youtube')
 const FUENTES = [
   { title: 'Vídeo 12 · Hooks, min 12:34', url: 'https://www.youtube.com' },
   { title: 'Vídeo 15 · Reglas de los hooks, min 3:02', url: 'https://www.youtube.com' },
+]
+
+// Lo que se puede sacar del texto, además de responder.
+const ANALISIS = [
+  { titulo: 'De qué habla', texto: 'Los temas que más trata, sacados de las transcripciones.' },
+  { titulo: 'Cómo cambia', texto: 'Qué temas suben o bajan con los años.' },
+  { titulo: 'Qué preguntas se repiten', texto: 'Las dudas que vuelven una y otra vez.' },
+  { titulo: 'Qué funciona', texto: 'Qué vídeos se ven y se comentan más.' },
 ]
 </script>
 
@@ -44,6 +52,16 @@ const FUENTES = [
       </ChatThread>
     </div>
     <p><strong>Cada respuesta cita el vídeo y el minuto, así puedes ir a comprobarlo.</strong></p>
+
+    <h2 id="analisis">Análisis del canal</h2>
+    <p>Y, una vez tienes el texto de todos los vídeos, se puede aprender del canal:</p>
+    <div class="not-prose grid gap-4 sm:grid-cols-2">
+      <Card v-for="a in ANALISIS" :key="a.titulo" size="sm" class="h-full gap-1 px-4">
+        <CardTitle as="h3" size="sm">{{ a.titulo }}</CardTitle>
+        <CardDescription>{{ a.texto }}</CardDescription>
+      </Card>
+    </div>
+    <p><strong>El mismo texto sirve para responder preguntas y para entender el canal.</strong></p>
 
     <p><span class="font-medium">A escala de PFC:</span> {{ idea.escala }}</p>
 

@@ -25,8 +25,8 @@ import PlantillaPagina from '../../components/PlantillaPagina.vue'
     <h2 id="un-proyecto">Un proyecto de principio a fin</h2>
     <p>
       Una idea que ya está en el repo: un
-      <RouterLink to="/extra/ideas-proyecto-fin-curso/buscador-de-empresas-de-fct">buscador de empresas de FCT</RouterLink>,
-      con lo que cada alumno hizo allí. Así se lo repartiría un equipo:
+      <RouterLink to="/extra/ideas-proyecto-fin-curso/oportunidades-y-trayectoria">sistema de oportunidades y trayectoria</RouterLink>,
+      que busca dónde hacer la FCT y lo guarda en un vault de Markdown. Así se lo repartiría un equipo:
     </p>
     <DiagramaEquipo />
     <p>

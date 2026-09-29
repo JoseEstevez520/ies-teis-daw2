@@ -22,7 +22,7 @@ import disenoWeb from '../../../../../extra/diseno-web/README.md?raw'
 import openSource from '../../../../../extra/open-source/README.md?raw'
 import ideasPfc from '../../../../../extra/ideas-proyecto-fin-curso/README.md?raw'
 import ideaPanel from '../../../../../extra/ideas-proyecto-fin-curso/panel-del-aula-virtual.md?raw'
-import ideaBuscador from '../../../../../extra/ideas-proyecto-fin-curso/buscador-de-empresas-de-fct.md?raw'
+import ideaOportunidades from '../../../../../extra/ideas-proyecto-fin-curso/oportunidades-y-trayectoria.md?raw'
 import ideaWiki from '../../../../../extra/ideas-proyecto-fin-curso/wiki-de-un-canal-de-youtube.md?raw'
 import ideaExperiencias from '../../../../../extra/ideas-proyecto-fin-curso/experiencias-cercanas-a-la-muerte.md?raw'
 import ideaPersonalidades from '../../../../../extra/ideas-proyecto-fin-curso/personalidades-que-viven-una-vida-entera.md?raw'
@@ -171,10 +171,10 @@ export const PAGINAS = [
     fuente: ideaPanel,
   },
   {
-    ruta: '/extra/ideas-proyecto-fin-curso/buscador-de-empresas-de-fct',
-    claveRuta: 'extra/ideas-proyecto-fin-curso/buscador-de-empresas-de-fct',
+    ruta: '/extra/ideas-proyecto-fin-curso/oportunidades-y-trayectoria',
+    claveRuta: 'extra/ideas-proyecto-fin-curso/oportunidades-y-trayectoria',
     seccion: 'Ideas de PFC',
-    fuente: ideaBuscador,
+    fuente: ideaOportunidades,
   },
   {
     ruta: '/extra/ideas-proyecto-fin-curso/wiki-de-un-canal-de-youtube',

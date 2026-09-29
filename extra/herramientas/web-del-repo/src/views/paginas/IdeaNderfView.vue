@@ -31,6 +31,15 @@ temas = resumir_grupos(relatos, grupos.labels_)  # un tema por grupo`
     <DiagramaRepite />
     <p><strong>Lo que se repite sale solo al mirar los relatos en conjunto.</strong></p>
 
+    <h2 id="preguntas">Preguntas que se puede hacer</h2>
+    <p>Con los patrones delante, salen preguntas que uno solo no deja ver:</p>
+    <ul>
+      <li>¿Cambian los relatos según el país o la época?</li>
+      <li>¿Se parecen a lo que describe la neurociencia?</li>
+      <li>¿Hay un orden común (primero la calma, luego la luz)?</li>
+      <li>¿Qué se repite casi siempre y qué es raro?</li>
+    </ul>
+
     <p>El trabajo está en juntarlos y agruparlos. Un ejemplo de cómo empezaría:</p>
     <CodeBlock :code="CODIGO" language="python" />
 
