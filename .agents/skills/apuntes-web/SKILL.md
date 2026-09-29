@@ -5,6 +5,28 @@ description: Cómo crear o mejorar una página de la web del repo (web-del-repo)
 
 # Apuntes web
 
+## El `.md` y la web son dos archivos
+
+El `.md` es la versión de GitHub; la página es un componente Vue compuesto a mano. No se
+traducen el uno al otro: el `.md` lleva el texto, y la página decide qué va en tarjetas,
+tablas, dibujos o piezas. Cambias uno, cambias el otro, pero cada uno se escribe para su
+sitio. El texto, en los dos, sigue [apuntes-claros](../apuntes-claros/SKILL.md).
+
+## Antes de componer: lee la librería
+
+La forma (colores, movimiento, componentes) la pone `elastic-ui`. Antes de componer una
+página, mírala:
+
+- Su **`USAGE.md`** (en `extra/herramientas/web-del-repo/node_modules/elastic-ui/`): las
+  reglas de cómo usarla bien (morph, un solo movimiento, iconos, color, cómo se compone una
+  página).
+- Sus **componentes y ejemplos**: la lista de lo que trae y, para cada pieza, su `.d.ts` y sus
+  `*.stories.ts` en [su repo](https://github.com/JoseEstevez520/elastic-ui). Los ejemplos dicen
+  cómo se usa de verdad.
+
+Usa cada pieza como está pensada. No improvises un estilo ni montes a mano lo que la librería
+ya trae; si le falta algo, se le pide a ella.
+
 ## Principios
 
 1. **Se entiende a simple vista.** Si hace falta leer un párrafo para entenderlo, falta un
