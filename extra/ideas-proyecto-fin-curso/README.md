@@ -37,9 +37,20 @@ Proyectos pensados para empezarlos ya.
   adelante, y que su personalidad salga de lo que ha vivido y recuerda. Es lo que dice
   sonder: cada persona con la que te cruzas tiene una vida tan compleja como la tuya. Aquí,
   cada personaje la tendría de verdad. Referencia:
-  [Generative Agents](https://arxiv.org/abs/2304.03442). *A escala de PFC:* un personaje con
+   [Generative Agents](https://arxiv.org/abs/2304.03442). *A escala de PFC:* un personaje con
   memoria que vive días simulados, una línea de su vida que se pueda recorrer y un chat para
   hablar con él.
+- **Entorno interactivo que explica el código** — Jupyter deja probar trozos de código
+  pequeños, ejecutarlos paso a paso y ver qué pasa, pero está atado a Python y a los
+  notebooks. La idea es algo parecido, para cualquier lenguaje, donde la IA explica el código
+  y además genera la interfaz que mejor lo enseña: al seleccionar un fragmento, saca un
+  diagrama, un flujo de ejecución, el estado de las variables, un diff o un ejercicio. Sale
+  de un `AGENTS.md` propio que ya pide explicar el código, justificar decisiones y señalar
+  mejoras, y que casi siempre acaba en párrafos de texto. *A escala de PFC:* un notebook para
+  escribir y ejecutar fragmentos, conectado a una IA que consulta documentación actual con
+  [Context7](https://context7.com) y devuelve el visual adecuado para cada caso. La
+  arquitectura debería aguantar el salto a un entorno tipo IDE que entienda el proyecto
+  entero, vea las dependencias y diga qué partes se ven afectadas por un cambio.
 
 ## Campos
 
