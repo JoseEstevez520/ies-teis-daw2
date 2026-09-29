@@ -1,6 +1,6 @@
 <script setup>
 import { RouterLink } from 'vue-router'
-import { Card, CardDescription, CardHeader, CardTitle } from 'elastic-ui'
+import { Card, CardDescription, CardHeader, CardImage, CardTitle } from 'elastic-ui'
 import { ArrowRight, ArrowUpRight } from '@lucide/vue'
 
 // Tarjeta de una idea: no lleva a ningún sitio entera, porque una idea no es una
@@ -13,6 +13,8 @@ defineProps({
   escala: { type: String, default: '' },
   // De dónde salió la idea, si fue de una serie, un libro o algo así.
   origen: { type: String, default: '' },
+  // Mockup o dibujo de la idea, si lo tiene.
+  imagen: { type: String, default: '' },
   enlaces: { type: Array, default: () => [] },
 })
 
@@ -21,6 +23,7 @@ const externo = (href) => /^https?:/.test(href)
 
 <template>
   <Card :id="id" size="sm" class="h-full scroll-mt-[calc(var(--page-header-height)+1rem)]">
+    <CardImage v-if="imagen" :src="imagen" :alt="titulo" />
     <CardHeader class="h-full gap-3">
       <div class="flex flex-col gap-1">
         <CardTitle size="sm">{{ titulo }}</CardTitle>

@@ -52,6 +52,8 @@ Proyectos pensados para empezarlos ya.
   arquitectura debería aguantar el salto a un entorno tipo IDE que entienda el proyecto
   entero, vea las dependencias y diga qué partes se ven afectadas por un cambio.
 
+  ![Mockup de un editor de código con paneles de flujo de ejecución, dependencias, estado interactivo y explicación](./entorno-interactivo-que-explica-el-codigo.jpg)
+
 ## Campos
 
 Un área por la que tirar si aún no tienes idea.

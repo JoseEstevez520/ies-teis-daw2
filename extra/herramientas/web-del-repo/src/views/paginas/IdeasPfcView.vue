@@ -1,4 +1,5 @@
 <script setup>
+import mockupEntorno from '../../../../../../extra/ideas-proyecto-fin-curso/entorno-interactivo-que-explica-el-codigo.jpg?url'
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
 import RejillaTarjetas from '../../components/RejillaTarjetas.vue'
 import TarjetaIdea from '../../components/TarjetaIdea.vue'
@@ -53,6 +54,7 @@ const IDEAS = [
     titulo: 'Entorno interactivo que explica el código',
     descripcion: 'Jupyter deja probar trozos de código pequeños, ejecutarlos paso a paso y ver qué pasa, pero está atado a Python y a los notebooks. La idea es algo parecido, para cualquier lenguaje, donde la IA explica el código y además genera la interfaz que mejor lo enseña: al seleccionar un fragmento, saca un diagrama, un flujo de ejecución, el estado de las variables, un diff o un ejercicio. Sale de un AGENTS.md propio que ya pide explicar el código, justificar decisiones y señalar mejoras, y que casi siempre acaba en párrafos de texto.',
     escala: 'un notebook para escribir y ejecutar fragmentos, conectado a una IA que consulta documentación actual con Context7 y devuelve el visual adecuado para cada caso. La arquitectura debería aguantar el salto a un entorno tipo IDE que entienda el proyecto entero, vea las dependencias y diga qué partes se ven afectadas por un cambio.',
+    imagen: mockupEntorno,
     enlaces: [{ texto: 'Context7', href: 'https://context7.com' }],
   },
 ]
