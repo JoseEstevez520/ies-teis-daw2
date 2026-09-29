@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@lucide/vue": "^1.47.0",
-    "elastic-ui": "file:vendor/elastic-ui-0.1.0.tgz",
+    "elastic-ui": "git+https://github.com/JoseEstevez520/elastic-ui.git#v0.3.0",
     "motion-v": "^2.4.4",
     "vue": "^3.5.42"
   },

@@ -13,17 +13,16 @@ librería; no se arregla por encima desde aquí.
 
 ## elastic-ui
 
-Aún no está en npm. Va empaquetada en `vendor/elastic-ui-<versión>.tgz`, para que funcione
-al clonar el repo sin tener la librería en tu ordenador.
+No está en npm, pero sí en un repo público:
+[JoseEstevez520/elastic-ui](https://github.com/JoseEstevez520/elastic-ui). Se instala desde
+ahí, fijada a un tag, en `package.json`:
 
-Para actualizarla, desde la carpeta de la librería:
-
-```bash
-npm run build
-npm pack --pack-destination <ruta-a>/web-del-repo/vendor
+```json
+"elastic-ui": "git+https://github.com/JoseEstevez520/elastic-ui.git#v0.3.0"
 ```
 
-Y aquí `npm install ./vendor/elastic-ui-<versión>.tgz`. Borra el `.tgz` viejo.
+npm la clona y la construye al instalar (el repo no sube el `dist`). Para actualizarla,
+cambia el tag y vuelve a hacer `npm install`.
 
 No trae CSS compilado: `src/style.css` importa sus tokens y le dice a Tailwind que lea sus
 componentes (`@source`). Los textos que pone la librería por su cuenta (nombres para
