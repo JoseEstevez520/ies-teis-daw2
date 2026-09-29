@@ -10,7 +10,7 @@ Lo mejor es verlo en la web: todo el contenido, navegable y visual.
 ```bash
 git clone https://github.com/JoseEstevez520/ies-teis-daw2.git  # traer el repo
 cd ies-teis-daw2/extra/herramientas/web-del-repo               # la web del repo
-npm install                                                    # instalar (la 1ª vez compila elastic-ui)
+npm install                                                    # instalar las dependencias
 npm run dev                                                    # arrancarla
 ```
 

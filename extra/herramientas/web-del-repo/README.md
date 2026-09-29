@@ -12,8 +12,7 @@ npm run dev
 ```
 
 Abre la dirección que imprime (por defecto `http://localhost:5173`). Necesita Node 20 o
-superior. `npm install` descarga y compila elastic-ui, así que la primera vez tarda un
-poco.
+superior.
 
 Para la versión de producción, `npm run build` (sale en `dist/`).
 
