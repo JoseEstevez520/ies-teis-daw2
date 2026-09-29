@@ -82,6 +82,9 @@ siguen las mismas reglas, con esta forma:
 Cada idea con su pieza: no todas con el mismo esquema. Mira la librería y usa lo que le
 encaje a esa idea (tabs, filtros, chat, sesión de agente, gráfico, diff...).
 
+Los `h2` y `h3` se describen solos, como en cualquier apunte ("Cómo funciona", "El modelo de
+conducta"), nunca de adorno: salen en el índice lateral de la página.
+
 ## Piezas visuales
 
 Cada página de la web es un componente Vue compuesto a mano, en
