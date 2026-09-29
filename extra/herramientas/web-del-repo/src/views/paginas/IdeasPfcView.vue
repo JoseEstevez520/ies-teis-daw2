@@ -5,8 +5,8 @@ import TarjetaPagina from '../../components/TarjetaPagina.vue'
 import { IDEAS } from '../../data/ideas.js'
 
 // extra/ideas-proyecto-fin-curso/README.md. Cuatro partes, de lo más concreto a lo
-// más abierto. Cada idea tiene su página (IdeaView): aquí va su tarjeta, que lleva
-// a ella. Campos, Tecnología y Ejemplos son tarjetas de una lista.
+// más abierto. Cada idea tiene su propia página (Idea*View): aquí va su tarjeta, que
+// lleva a ella. Campos, Tecnología y Ejemplos son tarjetas de una lista.
 const CAMPOS = [
   {
     href: 'https://datos.gob.es',
