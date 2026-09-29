@@ -31,7 +31,8 @@ const ANALISIS = [
 
     <p>{{ idea.descripcion }}</p>
 
-    <p>Así respondería. Fíjate en que cada frase lleva su cita.</p>
+    <h2 id="como-funciona">Cómo funciona</h2>
+    <p>Un chat sobre las transcripciones. Fíjate en que cada frase lleva su cita.</p>
     <div class="not-prose flex h-[26rem] flex-col rounded-[var(--radius-xl)] border border-border bg-bg-subtle p-4">
       <ChatThread label="Preguntas y respuestas sobre el canal">
         <ChatMessage role="user">¿Qué dijo sobre los hooks de React?</ChatMessage>
@@ -54,7 +55,7 @@ const ANALISIS = [
     </div>
     <p><strong>Cada respuesta cita el vídeo y el minuto, así puedes ir a comprobarlo.</strong></p>
 
-    <h2 id="analisis">Análisis del canal</h2>
+    <h2 id="mas-alla">Para ir más allá</h2>
     <p>Y, una vez tienes el texto de todos los vídeos, se puede aprender del canal. Por ejemplo, cómo cambian los temas con los años:</p>
     <DiagramaTemas />
     <p><strong>Se ve de un vistazo qué temas crecen y cuáles se dejan.</strong></p>

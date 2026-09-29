@@ -60,13 +60,6 @@ const EJEMPLOS = [
     titulo="Ideas para el proyecto de fin de curso"
     entradilla="Ideas de proyectos de fin de ciclo, aunque no los vayas a hacer tú: pueden inspirar a otro, o alguien puede sumarse."
   >
-    <p>
-      Van de lo más concreto a lo más abierto. Antes de elegir, mira qué hay hecho:
-      <RouterLink to="/extra/open-source#busca-antes">busca antes de construir</RouterLink>. Para añadir
-      una, ponla en su lista con el mismo formato: qué es, cómo sería a escala de PFC y, si
-      la sacaste de una serie o un libro, de dónde.
-    </p>
-
     <h2 id="ideas">Ideas</h2>
     <p>Proyectos pensados para empezarlos ya. Cada uno tiene su página.</p>
     <RejillaTarjetas>

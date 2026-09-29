@@ -38,8 +38,6 @@ ya trae; si le falta algo, se le pide a ella.
    solo si significa algo.
 5. **Funciona en el móvil.** A 390 px, sin scroll horizontal.
 
-El texto sigue [apuntes-claros](../apuntes-claros/SKILL.md).
-
 ## Antes de escribir
 
 - Datos de la **documentación oficial**, nunca de memoria.
@@ -82,8 +80,20 @@ siguen las mismas reglas, con esta forma:
 Cada idea con su pieza: no todas con el mismo esquema. Mira la librería y usa lo que le
 encaje a esa idea (tabs, filtros, chat, sesión de agente, gráfico, diff...).
 
-Los `h2` y `h3` se describen solos, como en cualquier apunte ("Cómo funciona", "El modelo de
-conducta"), nunca de adorno: salen en el índice lateral de la página.
+Las secciones van con etiquetas de rol, siempre las mismas, no resumiendo el contenido:
+
+| Qué hay en la sección | Título |
+|---|---|
+| el mecanismo, la pieza principal | **Cómo funciona** |
+| una demostración concreta | **Un ejemplo** |
+| lo que se suma a la idea | **Para ir más allá** |
+| el origen (serie, libro, proyecto) | **De dónde sale** |
+| el plan de trabajo | **A escala de PFC** |
+
+Mal: "Vidas enteras", "Análisis del canal", "Con agentes y MCP" (eso cuenta el contenido).
+Bien: "Cómo funciona", "Un ejemplo", "Para ir más allá".
+
+Los `h2` y `h3` salen en el índice lateral de la página, así que esos títulos se leen solos.
 
 ## Piezas visuales
 

@@ -32,11 +32,13 @@ Backend en Java y Spring. Piden prácticas de 3 meses.
 
     <p>{{ idea.descripcion }}</p>
 
-    <p>Así funcionaría: una app con agentes sobre un vault de Markdown, sin base de datos.</p>
+    <h2 id="como-funciona">Cómo funciona</h2>
+    <p>Una app con agentes sobre un vault de Markdown, sin base de datos.</p>
     <DiagramaSenda />
     <p><strong>Los agentes leen el vault antes de responder, y lo que averiguan se queda en él.</strong></p>
 
-    <p>El vault es la memoria: cada oportunidad es una nota de Markdown con su fuente. Una, por ejemplo:</p>
+    <h2 id="un-ejemplo">Un ejemplo</h2>
+    <p>Cada oportunidad es una nota de Markdown con su fuente. Una, por ejemplo:</p>
     <CodeBlock :code="NOTA" title="vault/oportunidades/mareo-software.md" />
 
     <Callout type="note" title="Para empezar">

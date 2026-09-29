@@ -15,10 +15,11 @@ const idea = ideaDe('entorno-interactivo-que-explica-el-codigo')
 
     <p>{{ idea.descripcion }}</p>
 
+    <h2 id="como-funciona">Cómo funciona</h2>
     <p>
-      Se usaría así: escribes y ejecutas un fragmento; seleccionas una parte y pides que te la
-      explique, que experimente con ella o que te la dibuje. La IA parte del código, de lo que pasó
-      al ejecutarlo y del contexto del proyecto, y consulta la documentación al día.
+      Escribes y ejecutas un fragmento; seleccionas una parte y pides que te la explique, que
+      experimente con ella o que te la dibuje. La IA parte del código, de lo que pasó al ejecutarlo
+      y del contexto del proyecto, y consulta la documentación al día.
     </p>
 
     <p>Y, en vez de contestar en texto, genera la pieza que mejor lo enseñe:</p>
@@ -29,7 +30,8 @@ const idea = ideaDe('entorno-interactivo-que-explica-el-codigo')
       <li>Una línea de tiempo, un playground o un ejercicio.</li>
     </ul>
 
-    <p>Así se vería, con el flujo, las dependencias y el estado de las variables al lado:</p>
+    <h2 id="un-ejemplo">Un ejemplo</h2>
+    <p>El editor con el flujo, las dependencias y el estado de las variables al lado:</p>
     <figure class="not-prose">
       <img
         :src="mockupEntorno"

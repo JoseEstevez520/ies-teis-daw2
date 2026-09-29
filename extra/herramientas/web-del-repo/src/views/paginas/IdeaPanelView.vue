@@ -38,6 +38,7 @@ const PESTANAS = [
 
     <p>{{ idea.descripcion }}</p>
 
+    <h2 id="como-funciona">Cómo funciona</h2>
     <p>Así se vería el panel. Elige una pestaña; los datos son de ejemplo.</p>
     <Tabs default-value="entregas" variant="underline">
       <TabsList>
@@ -56,7 +57,7 @@ const PESTANAS = [
     </Tabs>
     <p><strong>Entregas, notas y avisos, en una sola pantalla.</strong></p>
 
-    <h2 id="agentes">Con agentes y MCP</h2>
+    <h2 id="mas-alla">Para ir más allá</h2>
     <p>
       El panel es el principio. Con una conexión MCP, tu agente mira el Aula Virtual y te
       devuelve el panel dentro del chat: le preguntas qué te falta por entregar y te lo dice con

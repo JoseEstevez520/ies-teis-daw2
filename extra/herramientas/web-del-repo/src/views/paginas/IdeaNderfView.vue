@@ -26,11 +26,12 @@ const REFERENCIAS = [
 
     <p>{{ idea.descripcion }}</p>
 
-    <p>Así se leería el resultado. Los temas y los números son de ejemplo.</p>
+    <h2 id="como-funciona">Cómo funciona</h2>
+    <p>Se agrupan los relatos parecidos y se ve qué se repite. Los temas y los números son de ejemplo.</p>
     <DiagramaRepite />
     <p><strong>Lo que se repite sale solo al mirar los relatos en conjunto.</strong></p>
 
-    <h2 id="preguntas">Preguntas que se puede hacer</h2>
+    <h2 id="mas-alla">Para ir más allá</h2>
     <p>Con los patrones delante, salen preguntas que uno solo no deja ver:</p>
     <ul>
       <li>¿Cambian los relatos según el país o la época?</li>

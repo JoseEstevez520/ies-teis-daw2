@@ -3,12 +3,6 @@
 Sitio para dejar ideas de proyectos de fin de ciclo, aunque no los vayas a hacer tú. Puede
 inspirar a otro, o alguien puede sumarse.
 
-Van de lo más concreto a lo más abierto. Antes de elegir, mira qué hay hecho:
-[busca antes de construir](../open-source/#busca-antes-de-construir).
-
-Para añadir una, ponla en su lista con el mismo formato: qué es, cómo sería a escala de PFC
-y, si la sacaste de una serie o un libro, de dónde.
-
 ## Ideas
 
 Proyectos pensados para empezarlos ya. Cada uno tiene su página, con la idea entera.

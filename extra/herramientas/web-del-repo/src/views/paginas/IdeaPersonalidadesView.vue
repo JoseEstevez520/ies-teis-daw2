@@ -67,10 +67,10 @@ const EVENTOS = [
 
     <p>{{ idea.descripcion }}</p>
 
-    <h2 id="modelo">El modelo de conducta</h2>
+    <h2 id="como-funciona">Cómo funciona</h2>
     <p>
-      La primera parte es predecir: entran lo que alguien ha vivido y la situación de ahora, y sale
-      qué haría. La misma persona reacciona distinto según lo que recuerda.
+      Entran lo que alguien ha vivido y la situación de ahora, y sale qué haría. La misma persona
+      reacciona distinto según lo que recuerda.
     </p>
     <DiagramaConducta />
     <p>
@@ -79,8 +79,8 @@ const EVENTOS = [
     </p>
     <p><strong>Con la memoria y la situación, el modelo dice qué haría, no una ficha fija.</strong></p>
 
-    <h2 id="vidas">Vidas enteras</h2>
-    <p>La segunda son vidas enteras. Mira la sesión; su carácter no está escrito, sale de la memoria.</p>
+    <h2 id="un-ejemplo">Un ejemplo</h2>
+    <p>Un día en la vida del personaje. Mira la sesión; su carácter no está escrito, sale de la memoria.</p>
     <AgentReplay :events="EVENTOS" intro="El personaje vive un día y lo recuerda." />
     <p><strong>La personalidad no se escribe: emerge de lo que el personaje ha vivido.</strong></p>
 

@@ -72,8 +72,6 @@ Un bloque de texto largo se salta. Usa:
 - **Encabezados** por subtema, no un único párrafo gigante. Que digan de qué va lo de abajo,
   en llano: "Cómo funciona", "El modelo de conducta". No titulares de campaña ("La magia de
   X", "Donde todo encaja"): si al leer el título no sabes qué hay debajo, está mal.
-
-
 - **Listas de hasta 5 puntos.** Si tienes más, agrúpalos bajo sub-encabezados.
 - **Código en bloques**, nunca descrito en prosa cuando se puede pegar directamente.
 
