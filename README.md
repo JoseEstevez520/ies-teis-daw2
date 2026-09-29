@@ -5,28 +5,17 @@ apuntes, conocimientos extra, ideas y herramientas que cualquiera puede usar.
 
 ## Empezar
 
-```bash
-git clone https://github.com/JoseEstevez520/ies-teis-daw2.git
-```
-
-Apuntes y documentación se leen directamente aquí en GitHub. Cada herramienta con código
-en `extra/herramientas/` trae su propio quick start en su README (clonar, instalar,
-arrancar).
-
-## Ver la web
-
-Todo el contenido del repo, navegable y visual, mejor que ir carpeta por carpeta. Con el
-repo ya clonado:
+Lo mejor es verlo en la web: todo el contenido, navegable y visual.
 
 ```bash
-cd ies-teis-daw2/extra/herramientas/web-del-repo
-npm install
-npm run dev
+git clone https://github.com/JoseEstevez520/ies-teis-daw2.git  # traer el repo
+cd ies-teis-daw2/extra/herramientas/web-del-repo               # la web del repo
+npm install                                                    # instalar (la 1ª vez compila elastic-ui)
+npm run dev                                                    # arrancarla
 ```
 
-Abre la dirección que imprime (por defecto `http://localhost:5173`). Necesita Node 20 o
-superior. `npm install` descarga y compila la librería de interfaz, así que la primera vez
-tarda un poco.
+Abre `http://localhost:5173`. Necesita Node 20 o superior. Los apuntes también se leen en
+GitHub.
 
 ## Estructura
 
