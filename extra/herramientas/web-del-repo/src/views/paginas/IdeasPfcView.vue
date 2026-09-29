@@ -1,86 +1,30 @@
 <script setup>
-import mockupEntorno from '../../../../../../extra/ideas-proyecto-fin-curso/entorno-interactivo-que-explica-el-codigo.jpg?url'
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
 import RejillaTarjetas from '../../components/RejillaTarjetas.vue'
-import TarjetaIdea from '../../components/TarjetaIdea.vue'
 import TarjetaPagina from '../../components/TarjetaPagina.vue'
+import { IDEAS } from '../../data/ideas.js'
 
-// extra/ideas-proyecto-fin-curso/README.md. Todo en tarjetas, para que crezca sin
-// desordenarse: una idea nueva es una entrada más en su lista. Cuatro partes, de
-// lo más concreto a lo más abierto. El id del buscador de FCT lo enlazan
-// Herramientas y Un equipo de agentes: no cambiarlo.
-const IDEAS = [
-  {
-    id: 'panel-del-aula-virtual',
-    titulo: 'Panel del Aula Virtual',
-    descripcion: 'Tus entregas, notas y avisos del Aula Virtual en un solo sitio. Ya está en marcha como herramienta de la clase.',
-    escala: 'frontend y backend, una API REST real y decisiones de arquitectura defendibles, no solo un CRUD de ejemplo.',
-    enlaces: [{ texto: 'La herramienta', href: '/extra/herramientas/panel-aula-virtual' }],
-  },
-  {
-    id: 'buscador-de-empresas-de-fct',
-    titulo: 'Buscador de empresas de FCT',
-    descripcion: 'Empresas donde hacer la FCT, con lo que cuenta cada alumno que ya estuvo: qué tecnologías usaron, qué hizo allí y si la recomienda.',
-    escala: 'alcance pequeño, una fecha real encima (la FCT) y le sirve a toda la clase.',
-    enlaces: [{ texto: 'En pendientes de Herramientas', href: '/extra/herramientas#pendientes' }],
-  },
-  {
-    id: 'wiki-de-un-canal-de-youtube',
-    titulo: 'Wiki de un canal de YouTube',
-    descripcion: 'Un canal de YouTube o un pódcast convertido en wiki: la transcripción completa y un chat que responde citando el vídeo y el minuto exacto.',
-    escala: 'transcripción, backend, RAG y frontend, contra un canal real.',
-  },
-  {
-    id: 'experiencias-cercanas-a-la-muerte',
-    titulo: 'Experiencias cercanas a la muerte',
-    origen: 'Idea sacada de la serie The OA',
-    descripcion: 'NDERF ha publicado más de 16.000 relatos de personas que estuvieron a punto de morir. Uno a uno son historias; todos juntos, se puede buscar qué se repite: lo que ven, lo que sienten, en qué orden.',
-    escala: 'recoger los relatos, analizarlos con un modelo para agrupar lo que se repite y enseñarlo en una web que se pueda explorar.',
-    enlaces: [{ texto: 'NDERF', href: 'https://www.nderf.org' }],
-  },
-  {
-    id: 'personalidades-que-viven-una-vida',
-    titulo: 'Personalidades que viven una vida entera',
-    origen: 'Idea sacada de Pluto (manga y serie) y de sonder',
-    descripcion: 'En vez de escribirle a un personaje cómo es, simularle una vida completa, de la infancia en adelante, y que su personalidad salga de lo que ha vivido y recuerda. Es lo que dice sonder: cada persona con la que te cruzas tiene una vida tan compleja como la tuya. Aquí, cada personaje la tendría de verdad.',
-    escala: 'un personaje con memoria que vive días simulados, una línea de su vida que se pueda recorrer y un chat para hablar con él.',
-    enlaces: [
-      { texto: 'Generative Agents (el artículo de referencia)', href: 'https://arxiv.org/abs/2304.03442' },
-      { texto: 'Qué es sonder', href: 'https://www.dictionaryofobscuresorrows.com/post/23536922667/sonder' },
-    ],
-  },
-  {
-    id: 'entorno-interactivo-que-explica-el-codigo',
-    titulo: 'Entorno interactivo que explica el código',
-    descripcion: 'Jupyter deja probar trozos de código pequeños, ejecutarlos paso a paso y ver qué pasa, pero está atado a Python y a los notebooks. La idea es algo parecido, para cualquier lenguaje, donde la IA explica el código y además genera la interfaz que mejor lo enseña: al seleccionar un fragmento, saca un diagrama, un flujo de ejecución, el estado de las variables, un diff o un ejercicio. Sale de un AGENTS.md propio que ya pide explicar el código, justificar decisiones y señalar mejoras, y que casi siempre acaba en párrafos de texto.',
-    escala: 'un notebook para escribir y ejecutar fragmentos, conectado a una IA que consulta documentación actual con Context7 y devuelve el visual adecuado para cada caso. La arquitectura debería aguantar el salto a un entorno tipo IDE que entienda el proyecto entero, vea las dependencias y diga qué partes se ven afectadas por un cambio.',
-    imagen: mockupEntorno,
-    enlaces: [{ texto: 'Context7', href: 'https://context7.com' }],
-  },
-]
-
+// extra/ideas-proyecto-fin-curso/README.md. Cuatro partes, de lo más concreto a lo
+// más abierto. Cada idea tiene su página (IdeaView): aquí va su tarjeta, que lleva
+// a ella. Campos, Tecnología y Ejemplos son tarjetas de una lista.
 const CAMPOS = [
   {
+    href: 'https://datos.gob.es',
     titulo: 'Machine learning y datos masivos',
-    descripcion: 'Casi cualquier tema tiene datos detrás, y juntarlos saca cosas que no se ven de uno en uno. Por ejemplo, las experiencias cercanas a la muerte, en Ideas.',
-    escala: 'recoger un conjunto de datos real, limpiarlo, analizarlo con un modelo y enseñar los resultados en una web.',
-    enlaces: [{ texto: 'Datos abiertos (datos.gob.es)', href: 'https://datos.gob.es' }],
+    descripcion: 'Casi cualquier tema tiene datos detrás, y juntarlos saca cosas que no se ven de uno en uno. A escala de PFC: recoger un conjunto de datos real, limpiarlo, analizarlo con un modelo y enseñar los resultados en una web.',
   },
   {
     titulo: 'Hardware',
-    descripcion: 'Una placa (Arduino, ESP32, Raspberry Pi) con sensores, y la IA para entender lo que capta. Por ejemplo, un robot o un dron que recorre un sitio y construye un mapa.',
-    escala: 'sensores que mandan datos a tu backend y una web que los enseña.',
+    descripcion: 'Una placa (Arduino, ESP32, Raspberry Pi) con sensores, y la IA para entender lo que capta. A escala de PFC: sensores que mandan datos a tu backend y una web que los enseña.',
   },
   {
     titulo: 'Generative UI',
-    descripcion: 'Interfaces que se generan a partir de datos en vez de pantallas fijas.',
-    escala: 'un generador de formularios o paneles a partir de un JSON de configuración, con lo que ya dais en DIW.',
+    descripcion: 'Interfaces que se generan a partir de datos en vez de pantallas fijas. A escala de PFC: un generador de formularios o paneles a partir de un JSON de configuración, con lo que ya dais en DIW.',
   },
   {
+    href: '/extra/ia',
     titulo: 'Agentes e IA aplicada',
-    descripcion: 'Meter un asistente o una automatización real en una app, no solo un chat pegado encima.',
-    escala: 'un bot que resuelve una tarea concreta contra una API real.',
-    enlaces: [{ texto: 'IA aplicada', href: '/extra/ia' }],
+    descripcion: 'Meter un asistente o una automatización real en una app, no solo un chat pegado encima. A escala de PFC: un bot que resuelve una tarea concreta contra una API real.',
   },
 ]
 
@@ -124,15 +68,21 @@ const EJEMPLOS = [
     </p>
 
     <h2 id="ideas">Ideas</h2>
-    <p>Proyectos pensados para empezarlos ya.</p>
+    <p>Proyectos pensados para empezarlos ya. Cada uno tiene su página.</p>
     <RejillaTarjetas>
-      <TarjetaIdea v-for="i in IDEAS" :key="i.titulo" v-bind="i" />
+      <TarjetaPagina
+        v-for="i in IDEAS"
+        :key="i.slug"
+        :href="`/extra/ideas-proyecto-fin-curso/${i.slug}`"
+        :titulo="i.titulo"
+        :descripcion="i.resumen"
+      />
     </RejillaTarjetas>
 
     <h2 id="campos">Campos</h2>
     <p>Un área por la que tirar si aún no tienes idea.</p>
     <RejillaTarjetas>
-      <TarjetaIdea v-for="c in CAMPOS" :key="c.titulo" v-bind="c" />
+      <TarjetaPagina v-for="c in CAMPOS" :key="c.titulo" v-bind="c" />
     </RejillaTarjetas>
 
     <h2 id="tecnologia">Tecnología</h2>

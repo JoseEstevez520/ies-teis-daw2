@@ -15,6 +15,7 @@ import FundamentosView from '../views/paginas/FundamentosView.vue'
 import HerramientasView from '../views/paginas/HerramientasView.vue'
 import HorarioView from '../views/paginas/HorarioView.vue'
 import IaView from '../views/paginas/IaView.vue'
+import IdeaView from '../views/paginas/IdeaView.vue'
 import IdeasPfcView from '../views/paginas/IdeasPfcView.vue'
 import ModuloView from '../views/paginas/ModuloView.vue'
 import MoodleApiView from '../views/paginas/MoodleApiView.vue'
@@ -58,6 +59,7 @@ const router = createRouter({
     { path: '/extra/diseno-web', component: DisenoWebView },
     { path: '/extra/open-source', component: OpenSourceView },
     { path: '/extra/ideas-proyecto-fin-curso', component: IdeasPfcView },
+    { path: '/extra/ideas-proyecto-fin-curso/:slug', component: IdeaView, props: true },
     { path: '/horario', component: HorarioView },
     { path: '/:pathMatch(.*)*', redirect: '/' },
   ],

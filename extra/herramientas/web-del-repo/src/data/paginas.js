@@ -21,6 +21,12 @@ import consejos from '../../../../../extra/ia/consejos/README.md?raw'
 import disenoWeb from '../../../../../extra/diseno-web/README.md?raw'
 import openSource from '../../../../../extra/open-source/README.md?raw'
 import ideasPfc from '../../../../../extra/ideas-proyecto-fin-curso/README.md?raw'
+import ideaPanel from '../../../../../extra/ideas-proyecto-fin-curso/panel-del-aula-virtual.md?raw'
+import ideaBuscador from '../../../../../extra/ideas-proyecto-fin-curso/buscador-de-empresas-de-fct.md?raw'
+import ideaWiki from '../../../../../extra/ideas-proyecto-fin-curso/wiki-de-un-canal-de-youtube.md?raw'
+import ideaExperiencias from '../../../../../extra/ideas-proyecto-fin-curso/experiencias-cercanas-a-la-muerte.md?raw'
+import ideaPersonalidades from '../../../../../extra/ideas-proyecto-fin-curso/personalidades-que-viven-una-vida-entera.md?raw'
+import ideaEntorno from '../../../../../extra/ideas-proyecto-fin-curso/entorno-interactivo-que-explica-el-codigo.md?raw'
 
 import horario from '../../../../../horario/README.md?raw'
 
@@ -157,6 +163,42 @@ export const PAGINAS = [
     claveRuta: 'extra/ideas-proyecto-fin-curso',
     seccion: 'Ideas de PFC',
     fuente: ideasPfc,
+  },
+  {
+    ruta: '/extra/ideas-proyecto-fin-curso/panel-del-aula-virtual',
+    claveRuta: 'extra/ideas-proyecto-fin-curso/panel-del-aula-virtual',
+    seccion: 'Ideas de PFC',
+    fuente: ideaPanel,
+  },
+  {
+    ruta: '/extra/ideas-proyecto-fin-curso/buscador-de-empresas-de-fct',
+    claveRuta: 'extra/ideas-proyecto-fin-curso/buscador-de-empresas-de-fct',
+    seccion: 'Ideas de PFC',
+    fuente: ideaBuscador,
+  },
+  {
+    ruta: '/extra/ideas-proyecto-fin-curso/wiki-de-un-canal-de-youtube',
+    claveRuta: 'extra/ideas-proyecto-fin-curso/wiki-de-un-canal-de-youtube',
+    seccion: 'Ideas de PFC',
+    fuente: ideaWiki,
+  },
+  {
+    ruta: '/extra/ideas-proyecto-fin-curso/experiencias-cercanas-a-la-muerte',
+    claveRuta: 'extra/ideas-proyecto-fin-curso/experiencias-cercanas-a-la-muerte',
+    seccion: 'Ideas de PFC',
+    fuente: ideaExperiencias,
+  },
+  {
+    ruta: '/extra/ideas-proyecto-fin-curso/personalidades-que-viven-una-vida-entera',
+    claveRuta: 'extra/ideas-proyecto-fin-curso/personalidades-que-viven-una-vida-entera',
+    seccion: 'Ideas de PFC',
+    fuente: ideaPersonalidades,
+  },
+  {
+    ruta: '/extra/ideas-proyecto-fin-curso/entorno-interactivo-que-explica-el-codigo',
+    claveRuta: 'extra/ideas-proyecto-fin-curso/entorno-interactivo-que-explica-el-codigo',
+    seccion: 'Ideas de PFC',
+    fuente: ideaEntorno,
   },
   {
     ruta: '/horario',
