@@ -8,7 +8,7 @@ export const MODULOS = {
   DAW: { profe: 'Marta', color: '#ca8a04', ruta: '/modulos/daw' },
   IPEII: { profe: 'Adelina (FOL)', color: '#16a34a' },
   HCLE: { profe: 'Elvira (Inglés)', color: '#2563eb' },
-  DASP: { profe: 'Marcos Alonso', color: '#65a30d', ruta: '/modulos/dasp' },
+  DASP: { profe: 'Marcos', color: '#65a30d', ruta: '/modulos/dasp' },
   ACP: { profe: 'Iago', color: '#ea580c' },
 }
 

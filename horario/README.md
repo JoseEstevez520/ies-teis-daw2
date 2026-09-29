@@ -13,6 +13,6 @@ Sacado de la [foto oficial](horario.jpg).
 | DAW | Marta | 4 |
 | IPEII | Adelina (FOL) | 2 |
 | HCLE | Elvira (Inglés) | 2 |
-| DASP | Marcos Alonso | 1 |
+| DASP | Marcos | 1 |
 | ACP | Iago | 1 |
 
