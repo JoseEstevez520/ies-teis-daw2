@@ -43,4 +43,13 @@ Guías y webs sobre el tema:
 - [Made, Not Generated](https://agentfactory.panaversity.org/docs/website-design-crash-course)
   — curso corto de diseño de webs con IA.
 
+## Ver ejemplos
+
+Dónde ver el slop de verdad y su arreglo:
+
+- [slopless.design](https://slopless.design/) — una galería de slop: degradados morados,
+  formas "blobby", cajas con iconos dentro de cajas...
+- [kill-ai-slop](https://killaislop.com) — 33 "tells", cada uno con un antes y un después.
+- [Unslop](https://unslopai.com/examples) — antes y después del texto: lo que sobra, tachado.
+
 Las skills que sirven para esto, en [`../skills/`](../skills/).

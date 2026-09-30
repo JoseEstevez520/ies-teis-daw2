@@ -7,6 +7,7 @@ import TarjetaPagina from '../../components/TarjetaPagina.vue'
 // extra/diseno/skills/README.md
 const ANTI_SLOP = [
   { titulo: 'frontend-design', href: 'https://github.com/anthropics/claude-code/blob/main/plugins/frontend-design/skills/frontend-design/SKILL.md', descripcion: 'La oficial de Anthropic, para Claude Code. La referencia.' },
+  { titulo: 'kill-ai-slop', href: 'https://github.com/yetone/kill-ai-slop', descripcion: 'Escanea tu proyecto y quita los "tells" de slop; trae una guía de 33.' },
   { titulo: 'unslop-ui-skill', href: 'https://github.com/claudiusararu/unslop-ui-skill', descripcion: 'Un catálogo de casi 100 "tells" de diseño de IA, cada uno con su arreglo.' },
   { titulo: 'no-slop-ui', href: 'https://github.com/LeoStehlik/no-slop-ui', descripcion: 'Reglas para Codex, Claude Code y compañía, con checklist de revisión.' },
   { titulo: 'anti-slop-design', href: 'https://github.com/Ferousco-dev/anti-slop-design', descripcion: 'Evita el degradado morado, Inter y las tres tarjetas.' },

@@ -10,6 +10,8 @@ Las más famosas son justo para esto: que el agente no saque el look genérico (
 
 - [frontend-design](https://github.com/anthropics/claude-code/blob/main/plugins/frontend-design/skills/frontend-design/SKILL.md)
   — la oficial de Anthropic, para Claude Code. La referencia.
+- [kill-ai-slop](https://github.com/yetone/kill-ai-slop) — escanea tu proyecto y quita los
+  "tells" de slop; trae una guía de 33.
 - [unslop-ui-skill](https://github.com/claudiusararu/unslop-ui-skill) — un catálogo de casi
   100 "tells" de diseño de IA, cada uno con su arreglo.
 - [no-slop-ui](https://github.com/LeoStehlik/no-slop-ui) — reglas para Codex, Claude Code y

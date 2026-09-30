@@ -24,7 +24,17 @@ estilo; si no, aún no tienes uno. Vale para cualquier cosa, no solo para webs.
   flujo.
 - [Refero](https://refero.design/) — capturas de webs reales, para ver cómo resuelven
   pantallas concretas.
+- [Lapa Ninja](https://www.lapa.ninja/) — galería de landings, actualizada cada día.
 - [Dribbble](https://dribbble.com/) — escaparate de diseñadores; más ideas que interfaces de
   verdad.
 - [Awwwards](https://www.awwwards.com/) — las webs mejor valoradas, para ver qué se lleva.
 - [Design Minis](https://www.designminis.com/) — colección de herramientas de diseño pequeñas.
+
+## Estilos para inspirarte
+
+Un par de direcciones que se salen de lo de siempre:
+
+- [Neobrutalismo](https://www.nngroup.com/articles/neobrutalism) — bordes gruesos, sombras
+  duras y colores fuertes, nada de degradados.
+- [Brutalismo web](https://blog.readymag.com/web-brutalism) — HTML desnudo, sin adornos; la
+  forma la decide el contenido.
