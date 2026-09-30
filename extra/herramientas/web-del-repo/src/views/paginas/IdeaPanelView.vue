@@ -16,9 +16,9 @@ const ENTREGAS = [
   { titulo: 'Apunte de Vue', cuando: 'Pendiente' },
 ]
 const NOTAS = [
-  { titulo: 'dwcs', cuando: '7,5' },
-  { titulo: 'dwcc', cuando: '8,2' },
-  { titulo: 'diw', cuando: '9,0' },
+  { titulo: 'DWCS', cuando: '7,5' },
+  { titulo: 'DWCC', cuando: '8,2' },
+  { titulo: 'DIW', cuando: '9,0' },
 ]
 const AVISOS = [
   { titulo: 'El examen se mueve al viernes', cuando: 'Hoy' },

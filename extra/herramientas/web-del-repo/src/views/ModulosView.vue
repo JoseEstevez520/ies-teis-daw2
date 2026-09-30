@@ -5,12 +5,12 @@ import TarjetaPagina from '../components/TarjetaPagina.vue'
 // Descripciones sacadas literalmente de la segunda línea de cada
 // modulos/<módulo>/README.md.
 const MODULOS = [
-  { ruta: '/modulos/dasp', nombre: 'dasp', descripcion: 'Digitalización' },
+  { ruta: '/modulos/dasp', nombre: 'DASP', descripcion: 'Digitalización' },
   { ruta: '/modulos/daw', nombre: 'DAW', descripcion: 'Desenvolvemento de Aplicacións Web' },
-  { ruta: '/modulos/despregamento', nombre: 'despregamento', descripcion: 'Apache, DNS, Git' },
-  { ruta: '/modulos/diw', nombre: 'diw', descripcion: 'Vue 3 + Vite' },
-  { ruta: '/modulos/dwcc', nombre: 'dwcc', descripcion: 'Desarrollo web en entorno cliente' },
-  { ruta: '/modulos/dwcs', nombre: 'dwcs', descripcion: 'Spring Boot + Thymeleaf + JPA' },
+  { ruta: '/modulos/despregamento', nombre: 'Despregamento', descripcion: 'Apache, DNS, Git' },
+  { ruta: '/modulos/diw', nombre: 'DIW', descripcion: 'Vue 3 + Vite' },
+  { ruta: '/modulos/dwcc', nombre: 'DWCC', descripcion: 'Desarrollo web en entorno cliente' },
+  { ruta: '/modulos/dwcs', nombre: 'DWCS', descripcion: 'Spring Boot + Thymeleaf + JPA' },
 ]
 </script>
 

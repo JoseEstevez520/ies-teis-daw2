@@ -1,4 +1,4 @@
-# diw
+# DIW
 
 Vue 3 + Vite
 

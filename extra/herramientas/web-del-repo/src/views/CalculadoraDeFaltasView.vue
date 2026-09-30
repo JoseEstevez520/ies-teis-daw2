@@ -75,8 +75,8 @@ const FUENTES = [
 
     <h2 id="formula">Fórmula</h2>
     <p>
-      Horas por módulo, contando los bloques de 50 min de <code>horario/README.md</code>: dwcs 8h20,
-      diw 6h40, dwcc 6h40, daw 3h20, ipeii 1h40, hcle 1h40, dasp 50 min, acp 50 min. Semanas
+      Horas por módulo, contando los bloques de 50 min de <code>horario/README.md</code>: DWCS 8h20,
+      DIW 6h40, DWCC 6h40, DAW 3h20, IPEII 1h40, HCLE 1h40, DASP 50 min, ACP 50 min. Semanas
       lectivas reales de 2º (hasta la 2ª avaliación, antes de la FCT): unas 20,8, no las 34,8 de un
       curso completo.
     </p>

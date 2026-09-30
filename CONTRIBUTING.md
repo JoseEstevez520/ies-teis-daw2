@@ -25,7 +25,7 @@ No hace falta seguir un formato rígido, pero cada apunte nuevo debería empezar
 ```markdown
 # Título del apunte
 
-Módulo: dwcs
+Módulo: DWCS
 Tema: 3
 
 ...contenido...
