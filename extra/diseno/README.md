@@ -8,10 +8,11 @@ evitar que todo parezca hecho con IA.
 Se leen en orden: cada página se apoya en la anterior.
 
 1. [`idea/`](idea/): decidir qué quieres transmitir y buscar referencias.
-2. [`colores/`](colores/): paletas, contraste y temas.
-3. [`fuentes/`](fuentes/): elegir tipografías y combinarlas.
-4. [`ai-slop/`](ai-slop/): el look genérico de IA y cómo no caer en él.
-5. [`skills/`](skills/): skills de agente que ayudan con el diseño.
+2. [`marca/`](marca/): nombre, logo, color, tipografía y tono.
+3. [`colores/`](colores/): paletas, contraste y temas.
+4. [`fuentes/`](fuentes/): elegir tipografías y combinarlas.
+5. [`ai-slop/`](ai-slop/): el look genérico de IA y cómo no caer en él.
+6. [`skills/`](skills/): skills de agente que ayudan con el diseño.
 
 ## Recursos
 

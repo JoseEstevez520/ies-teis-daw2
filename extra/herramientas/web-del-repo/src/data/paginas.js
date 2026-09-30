@@ -24,6 +24,7 @@ import diseno from '../../../../../extra/diseno/README.md?raw'
 import disenoFuentes from '../../../../../extra/diseno/fuentes/README.md?raw'
 import disenoColores from '../../../../../extra/diseno/colores/README.md?raw'
 import disenoIdea from '../../../../../extra/diseno/idea/README.md?raw'
+import disenoMarca from '../../../../../extra/diseno/marca/README.md?raw'
 import disenoAiSlop from '../../../../../extra/diseno/ai-slop/README.md?raw'
 import disenoSkills from '../../../../../extra/diseno/skills/README.md?raw'
 import openSource from '../../../../../extra/open-source/README.md?raw'
@@ -190,6 +191,12 @@ export const PAGINAS = [
     claveRuta: 'extra/diseno/idea',
     seccion: 'Diseño',
     fuente: disenoIdea,
+  },
+  {
+    ruta: '/extra/diseno/marca',
+    claveRuta: 'extra/diseno/marca',
+    seccion: 'Diseño',
+    fuente: disenoMarca,
   },
   {
     ruta: '/extra/diseno/ai-slop',

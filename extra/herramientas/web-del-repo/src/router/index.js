@@ -13,6 +13,7 @@ import DisenoView from '../views/paginas/DisenoView.vue'
 import DisenoFuentesView from '../views/paginas/DisenoFuentesView.vue'
 import DisenoColoresView from '../views/paginas/DisenoColoresView.vue'
 import DisenoIdeaView from '../views/paginas/DisenoIdeaView.vue'
+import DisenoMarcaView from '../views/paginas/DisenoMarcaView.vue'
 import DisenoAiSlopView from '../views/paginas/DisenoAiSlopView.vue'
 import DisenoSkillsView from '../views/paginas/DisenoSkillsView.vue'
 import ExtraView from '../views/paginas/ExtraView.vue'
@@ -78,6 +79,7 @@ const router = createRouter({
     { path: '/extra/diseno/fuentes', component: DisenoFuentesView },
     { path: '/extra/diseno/colores', component: DisenoColoresView },
     { path: '/extra/diseno/idea', component: DisenoIdeaView },
+    { path: '/extra/diseno/marca', component: DisenoMarcaView },
     { path: '/extra/diseno/ai-slop', component: DisenoAiSlopView },
     { path: '/extra/diseno/skills', component: DisenoSkillsView },
     { path: '/extra/open-source', component: OpenSourceView },
