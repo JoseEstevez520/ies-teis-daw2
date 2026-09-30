@@ -30,6 +30,7 @@ import ideaExperiencias from '../../../../../extra/ideas-proyecto-fin-curso/expe
 import ideaPersonalidades from '../../../../../extra/ideas-proyecto-fin-curso/personalidades-que-viven-una-vida-entera.md?raw'
 import ideaEntorno from '../../../../../extra/ideas-proyecto-fin-curso/entorno-interactivo-que-explica-el-codigo.md?raw'
 import ideaAnalisis from '../../../../../extra/ideas-proyecto-fin-curso/analisis-del-comportamiento-deportivo.md?raw'
+import ideaDatosVigo from '../../../../../extra/ideas-proyecto-fin-curso/datos-de-vigo.md?raw'
 
 import horario from '../../../../../horario/README.md?raw'
 
@@ -220,6 +221,12 @@ export const PAGINAS = [
     claveRuta: 'extra/ideas-proyecto-fin-curso/analisis-del-comportamiento-deportivo',
     seccion: 'Ideas de PFC',
     fuente: ideaAnalisis,
+  },
+  {
+    ruta: '/extra/ideas-proyecto-fin-curso/datos-de-vigo',
+    claveRuta: 'extra/ideas-proyecto-fin-curso/datos-de-vigo',
+    seccion: 'Ideas de PFC',
+    fuente: ideaDatosVigo,
   },
   {
     ruta: '/horario',

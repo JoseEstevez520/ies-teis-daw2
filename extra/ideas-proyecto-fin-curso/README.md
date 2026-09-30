@@ -22,6 +22,8 @@ Proyectos pensados para empezarlos ya. Cada uno tiene su página, con la idea en
   un notebook con IA, para cualquier lenguaje.
 - [Análisis del comportamiento deportivo con IA](analisis-del-comportamiento-deportivo.md) —
   vídeos de boxeo convertidos en datos y estilos.
+- [Un proyecto con los datos de Vigo](datos-de-vigo.md) — coger datos reales de la ciudad,
+  analizarlos y enseñarlos en una web.
 
 ## Campos
 
@@ -47,7 +49,8 @@ Un área por la que tirar si aún no tienes idea.
   una base real: [más de 140 conjuntos de datos abiertos](https://datos.vigo.org), un
   [portal de mapas](https://mapas.vigo.org) y un [gemelo digital 3D](https://datos.vigo.org/es/xemelgo-dixital-de-vigo/).
   Por dónde tirar: movilidad, medioambiente, urbanismo, IA urbana, gemelos digitales,
-  ciudadanía e IoT en tiempo real.
+  ciudadanía e IoT en tiempo real. Una idea general de este campo:
+  [Un proyecto con los datos de Vigo](datos-de-vigo.md).
 
 ## Tecnología
 

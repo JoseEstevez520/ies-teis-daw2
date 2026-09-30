@@ -25,6 +25,7 @@ import IdeaNderfView from '../views/paginas/IdeaNderfView.vue'
 import IdeaPersonalidadesView from '../views/paginas/IdeaPersonalidadesView.vue'
 import IdeaEntornoView from '../views/paginas/IdeaEntornoView.vue'
 import IdeaAnalisisView from '../views/paginas/IdeaAnalisisView.vue'
+import IdeaDatosVigoView from '../views/paginas/IdeaDatosVigoView.vue'
 import ModuloView from '../views/paginas/ModuloView.vue'
 import MoodleApiView from '../views/paginas/MoodleApiView.vue'
 import OpenCodeView from '../views/paginas/OpenCodeView.vue'
@@ -78,6 +79,7 @@ const router = createRouter({
     { path: '/extra/ideas-proyecto-fin-curso/personalidades-que-viven-una-vida-entera', component: IdeaPersonalidadesView },
     { path: '/extra/ideas-proyecto-fin-curso/entorno-interactivo-que-explica-el-codigo', component: IdeaEntornoView },
     { path: '/extra/ideas-proyecto-fin-curso/analisis-del-comportamiento-deportivo', component: IdeaAnalisisView },
+    { path: '/extra/ideas-proyecto-fin-curso/datos-de-vigo', component: IdeaDatosVigoView },
     { path: '/horario', component: HorarioView },
     { path: '/ajustes', component: AjustesView },
     { path: '/:pathMatch(.*)*', redirect: '/' },

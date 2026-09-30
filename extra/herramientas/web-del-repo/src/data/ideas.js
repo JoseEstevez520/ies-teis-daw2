@@ -1,4 +1,4 @@
-import { Compass, Code, HeartPulse, LayoutDashboard, ScanEye, UserRound, Video } from '@lucide/vue'
+import { Compass, Code, Database, HeartPulse, LayoutDashboard, ScanEye, UserRound, Video } from '@lucide/vue'
 
 // Las ideas de PFC: extra/ideas-proyecto-fin-curso/<slug>.md. El índice (IdeasPfcView)
 // las enseña como tarjetas que llevan a su página; cada página se compone a mano con
@@ -74,6 +74,19 @@ export const IDEAS = [
     tags: ['IA', 'Visión por computador', 'Machine Learning'],
     descripcion: 'Un sistema que convierte vídeos de combates de boxeo en datos: de cada combate saca golpes, desplazamientos, intercambios y defensa, y los guarda como números medibles. Con varios combates salen perfiles de comportamiento y, buscando patrones con Machine Learning, los estilos de cada deportista. El boxeo es solo el caso de estudio; la misma cadena (datos observables → features → perfiles → modelos) vale para otros deportes, videojuegos competitivos o cualquier ámbito donde una persona deje un rastro observable.',
     escala: 'un sistema de visión por computador que saca las features del vídeo, un análisis con Machine Learning encima (clasificación, clustering, reducción de dimensionalidad) y una web donde consultar estadísticas, perfiles y patrones. Los datos, anonimizados y minimizados, con identificadores anónimos y consentimiento cuando se asocian a un deportista real.',
+  },
+  {
+    slug: 'datos-de-vigo',
+    titulo: 'Un proyecto con los datos de Vigo',
+    icono: Database,
+    resumen: 'Datos reales de la ciudad, analizados y enseñados.',
+    tags: ['Datos abiertos', 'Visualización', 'Análisis'],
+    descripcion: 'Vigo publica más de 140 conjuntos de datos abiertos: movilidad, medioambiente, turismo, educación, energía, urbanismo, seguridad. La idea es coger uno o cruzar varios, entenderlos y montar algo que los haga útiles: una web que los analice y los enseñe con visualizaciones, que compare zonas o barrios, o que saque conclusiones que no se ven a simple vista.',
+    escala: 'elegir un tema, descargar los datos, limpiarlos y analizarlos (estadística o un modelo) y montar una web con visualizaciones. Con los datos abiertos de Vigo de base.',
+    enlaces: [
+      { texto: 'Datos abiertos de Vigo', href: 'https://datos.vigo.org' },
+      { texto: 'Portal de mapas', href: 'https://mapas.vigo.org' },
+    ],
   },
 ]
 
