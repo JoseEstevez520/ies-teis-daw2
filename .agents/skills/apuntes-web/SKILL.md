@@ -60,6 +60,7 @@ ya trae; si le falta algo, se le pide a ella.
 | detalles o casos dentro de un tema | `###` por cada uno |
 | una comparación | tabla |
 | un fichero o comando | bloque de código con el ejemplo real |
+| la estructura de carpetas de un proyecto | bloque de código con el árbol |
 | un cambio en un fichero | bloque ```` ```diff ```` |
 | piezas que encajan | dibujo con cajas (una dentro de otra si una contiene a la otra) |
 | cómo trabaja un agente | sesión de agente (una por idea, una detrás de otra) |

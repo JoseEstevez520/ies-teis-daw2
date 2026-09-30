@@ -1,6 +1,6 @@
 ---
 name: apuntes-claros
-description: Estilo de escritura para cualquier .md de este repo (apuntes, README, extra/), conciso, escaneable y sin sonar a texto generado por IA. Aplícalo siempre que redactes o revises un apunte nuevo o un README de módulo, aunque no se pida explícitamente.
+description: Estilo de escritura y de explicación para cualquier .md de este repo (apuntes, README, extra/): conciso, escaneable, problema primero y con cada concepto definido en una frase. Aplícalo siempre que redactes o revises un apunte nuevo o un README de módulo, aunque no se pida explícitamente.
 ---
 
 # Apuntes claros
@@ -22,6 +22,13 @@ apunte, esa frase ya le tiene que servir.
 Nada de introducciones que solo anuncian lo que viene ("en este documento veremos...") ni
 cierres que resumen lo que ya se acaba de leer ("en resumen, hemos aprendido que...").
 
+Antes de decir qué es algo, di para qué hace falta. Si no, es una definición suelta que nadie
+sabe dónde encaja.
+
+- Mal: "Un bean es un objeto gestionado por Spring."
+- Bien: "En Java, cada objeto se crea con `new`. Spring los crea y los conecta por ti; a cada
+  uno lo llama **bean**."
+
 ## Escribe para quien no sabe nada
 
 Quien lee puede no haber oído nunca el término. Cada nombre propio o palabra técnica
@@ -31,6 +38,13 @@ necesita decir qué es la primera vez que sale.
 - Bien: "Hay aplicaciones que lo traen ya montado, como Claude Code."
 
 Nada de jerga suelta ("API", "open source") si no hace falta para entender la frase.
+
+Cada concepto, en una frase: "Un bean es un objeto que Spring crea y maneja", "una dependencia
+es lo que una clase necesita para funcionar". Un término se define la **primera vez que sale**,
+nunca antes: no digas "beans" veinte líneas antes de la sección Bean.
+
+Lo del lenguaje que uses (Java, SQL…) se explica dentro del ejemplo y solo lo que sale. Un
+glosario de términos sueltos no enseña.
 
 ## Tono
 
@@ -71,7 +85,8 @@ Un bloque de texto largo se salta. Usa:
 
 - **Encabezados** por subtema, no un único párrafo gigante. Que digan de qué va lo de abajo,
   en llano: "Cómo funciona", "El modelo de conducta". No titulares de campaña ("La magia de
-  X", "Donde todo encaja"): si al leer el título no sabes qué hay debajo, está mal.
+  X", "Donde todo encaja"): si al leer el título no sabes qué hay debajo, está mal. Y cortos y
+  básicos: `Problema`, `Bean`, `Instancia`, `Escalabilidad`. Sin frases ni historias.
 - **Listas de hasta 5 puntos.** Si tienes más, agrúpalos bajo sub-encabezados.
 - **Código en bloques**, nunca descrito en prosa cuando se puede pegar directamente.
 
@@ -79,6 +94,9 @@ Un bloque de texto largo se salta. Usa:
 
 Un concepto nuevo lleva un ejemplo real o un visual, justo después de la frase que lo
 explica. Cómo hacerlo en la web: [apuntes-web](../apuntes-web/SKILL.md).
+
+Si algo se ve, se dibuja: lo que crece (una curva), lo que se repite, un flujo de datos. Y el
+texto no repite lo que ya enseña el dibujo.
 
 ## Quita los tics de IA
 
@@ -121,3 +139,14 @@ lectura rápida:
 - ¿Una lista tiene más de 5 puntos sin agrupar?
 - ¿Hay un ejemplo o paréntesis que no hace falta para entender la frase?
 - ¿Cada concepto nuevo tiene un ejemplo real o un diagrama?
+- ¿Empieza por el problema (para qué hace falta) en vez de por la definición?
+- ¿Cada concepto tiene una definición de una frase ("X es Y")?
+- ¿Algún término sale antes de definirse?
+
+## De dónde sale
+
+Esto no es ocurrencia: viene de los **ejemplos resueltos** (mostrar la solución paso a paso
+antes de pedir que se resuelva, mejor para quien empieza) y de la **teoría de la carga
+cognitiva** (la memoria de trabajo sostiene pocos elementos a la vez). De ahí que el problema
+vaya antes que la solución y que cada concepto se defina de uno en uno. El detalle, en
+[Worked Examples (MIT)](https://tll.mit.edu/teaching-resources/how-people-learn/worked-examples/).
