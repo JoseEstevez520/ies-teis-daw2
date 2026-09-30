@@ -2,8 +2,8 @@
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
 import { enGitHub } from '../../lib/repo.js'
 
-// La página de un módulo (modulos/<módulo>/README.md). Todos están aún sin
-// apuntes, así que comparten esta página con sus datos.
+// La página de un módulo (modulos/<módulo>/README.md) mientras no tenga
+// apuntes propios. DWCS ya los tiene y usa su propia vista (DwcsView).
 defineProps({
   nombre: { type: String, required: true },
   descripcion: { type: String, required: true },

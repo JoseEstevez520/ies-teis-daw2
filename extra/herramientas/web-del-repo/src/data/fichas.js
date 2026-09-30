@@ -18,4 +18,6 @@ export const FICHAS = {
   'extra/ia/contexto': { titulo: 'Darle contexto' },
   'extra/ia/agentes': { titulo: 'Agentes y subagentes' },
   'extra/ia/equipo': { titulo: 'Un equipo de agentes' },
+  'modulos/dwcs/spring-y-contenedor': { titulo: 'Spring y el contenedor' },
+  'modulos/dwcs/scopes-y-estado': { titulo: 'Scopes y estado' },
 }

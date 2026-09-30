@@ -4,6 +4,8 @@ import despregamento from '../../../../../modulos/despregamento/README.md?raw'
 import diw from '../../../../../modulos/diw/README.md?raw'
 import dwcc from '../../../../../modulos/dwcc/README.md?raw'
 import dwcs from '../../../../../modulos/dwcs/README.md?raw'
+import springContenedor from '../../../../../modulos/dwcs/spring-y-contenedor.md?raw'
+import scopesEstado from '../../../../../modulos/dwcs/scopes-y-estado.md?raw'
 
 import extraIndex from '../../../../../extra/README.md?raw'
 import herramientasIndex from '../../../../../extra/herramientas/README.md?raw'
@@ -74,6 +76,18 @@ export const PAGINAS = [
     claveRuta: 'modulos/dwcs',
     seccion: 'Módulos',
     fuente: dwcs,
+  },
+  {
+    ruta: '/modulos/dwcs/spring-y-contenedor',
+    claveRuta: 'modulos/dwcs/spring-y-contenedor',
+    seccion: 'Módulos',
+    fuente: springContenedor,
+  },
+  {
+    ruta: '/modulos/dwcs/scopes-y-estado',
+    claveRuta: 'modulos/dwcs/scopes-y-estado',
+    seccion: 'Módulos',
+    fuente: scopesEstado,
   },
   {
     ruta: '/extra',

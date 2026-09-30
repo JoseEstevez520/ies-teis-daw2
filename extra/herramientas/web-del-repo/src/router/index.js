@@ -11,6 +11,7 @@ import CuadernoIaView from '../views/paginas/CuadernoIaView.vue'
 import DisenoWebView from '../views/paginas/DisenoWebView.vue'
 import ExtraView from '../views/paginas/ExtraView.vue'
 import EquipoView from '../views/paginas/EquipoView.vue'
+import DwcsView from '../views/paginas/DwcsView.vue'
 import FundamentosView from '../views/paginas/FundamentosView.vue'
 import HerramientasView from '../views/paginas/HerramientasView.vue'
 import HorarioView from '../views/paginas/HorarioView.vue'
@@ -27,6 +28,8 @@ import ModuloView from '../views/paginas/ModuloView.vue'
 import MoodleApiView from '../views/paginas/MoodleApiView.vue'
 import OpenCodeView from '../views/paginas/OpenCodeView.vue'
 import OpenSourceView from '../views/paginas/OpenSourceView.vue'
+import ScopesEstadoView from '../views/paginas/ScopesEstadoView.vue'
+import SpringContenedorView from '../views/paginas/SpringContenedorView.vue'
 
 // Cada página de la web es un componente compuesto a mano (ver AGENTS.md). Las
 // rutas siguen las carpetas del repo; una página nueva también va en
@@ -34,12 +37,11 @@ import OpenSourceView from '../views/paginas/OpenSourceView.vue'
 
 // modulos/<carpeta>/README.md: nombre y la línea que lo describe.
 const MODULOS = [
-  { ruta: 'dasp', carpeta: 'dasp', nombre: 'dasp', descripcion: 'Digitalización' },
+  { ruta: 'dasp', carpeta: 'dasp', nombre: 'DASP', descripcion: 'Digitalización' },
   { ruta: 'daw', carpeta: 'DAW', nombre: 'DAW', descripcion: 'Desenvolvemento de Aplicacións Web' },
-  { ruta: 'despregamento', carpeta: 'despregamento', nombre: 'despregamento', descripcion: 'Apache, DNS, Git' },
-  { ruta: 'diw', carpeta: 'diw', nombre: 'diw', descripcion: 'Vue 3 + Vite' },
-  { ruta: 'dwcc', carpeta: 'dwcc', nombre: 'dwcc', descripcion: 'Desarrollo web en entorno cliente' },
-  { ruta: 'dwcs', carpeta: 'dwcs', nombre: 'dwcs', descripcion: 'Spring Boot + Thymeleaf + JPA' },
+  { ruta: 'despregamento', carpeta: 'despregamento', nombre: 'Despregamento', descripcion: 'Apache, DNS, Git' },
+  { ruta: 'diw', carpeta: 'diw', nombre: 'DIW', descripcion: 'Vue 3 + Vite' },
+  { ruta: 'dwcc', carpeta: 'dwcc', nombre: 'DWCC', descripcion: 'Desarrollo web en entorno cliente' },
 ]
 
 const router = createRouter({
@@ -48,6 +50,9 @@ const router = createRouter({
     { path: '/', component: HomeView },
     { path: '/modulos', component: ModulosView },
     ...MODULOS.map(({ ruta, ...modulo }) => ({ path: `/modulos/${ruta}`, component: ModuloView, props: modulo })),
+    { path: '/modulos/dwcs', component: DwcsView },
+    { path: '/modulos/dwcs/spring-y-contenedor', component: SpringContenedorView },
+    { path: '/modulos/dwcs/scopes-y-estado', component: ScopesEstadoView },
     { path: '/extra', component: ExtraView },
     { path: '/extra/herramientas', component: HerramientasView },
     { path: '/extra/herramientas/panel-aula-virtual', component: PanelAulaVirtualView },

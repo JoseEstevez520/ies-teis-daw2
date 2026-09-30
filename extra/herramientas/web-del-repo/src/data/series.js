@@ -3,6 +3,13 @@
 // de la carpeta las numera. Una página nueva de la serie va aquí, en su sitio.
 export const SERIES = [
   {
+    carpeta: '/modulos/dwcs',
+    paginas: [
+      { ruta: '/modulos/dwcs/spring-y-contenedor', titulo: 'Spring y el contenedor', descripcion: 'Cómo Spring crea tus objetos, qué es un bean y qué es la inyección de dependencias.' },
+      { ruta: '/modulos/dwcs/scopes-y-estado', titulo: 'Scopes y estado', descripcion: 'Cuántas instancias crea Spring de cada bean: singleton, prototype y sesión HTTP.' },
+    ],
+  },
+  {
     carpeta: '/extra/ia',
     paginas: [
       { ruta: '/extra/ia/fundamentos', titulo: 'Fundamentos', descripcion: 'Qué es un modelo, un harness y un agente.' },
