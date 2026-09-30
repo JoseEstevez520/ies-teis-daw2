@@ -7,7 +7,7 @@ const COLORES = [
   ['/extra', '#0d9488'],
   ['/extra/ia', '#7c3aed'],
   ['/extra/herramientas', '#d97706'],
-  ['/extra/diseno-web', '#c026d3'],
+  ['/extra/diseno', '#c026d3'],
   ['/extra/ideas-proyecto-fin-curso', '#65a30d'],
   ['/horario', '#e11d48'],
 ]

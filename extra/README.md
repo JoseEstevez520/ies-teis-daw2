@@ -8,5 +8,4 @@ Lo que no es temario pero ayuda en el curso.
   publica lo tuyo.
 - [`ideas-proyecto-fin-curso/`](ideas-proyecto-fin-curso/): propuestas y referencias
   para el proyecto de fin de curso.
-- [`diseno-web/`](diseno-web/): herramientas y referencias de color, tipografía e
-  interfaz para diseñar webs.
+- [`diseno/`](diseno/): tipografía, color, referencias y cómo evitar el look de IA.

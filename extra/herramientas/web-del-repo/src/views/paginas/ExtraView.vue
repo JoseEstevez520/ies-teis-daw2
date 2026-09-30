@@ -13,7 +13,7 @@ const APARTADOS = [
     titulo: 'Ideas para el proyecto de fin de curso',
     descripcion: 'Propuestas y referencias para el proyecto de fin de curso.',
   },
-  { href: '/extra/diseno-web', titulo: 'Diseño web', descripcion: 'Herramientas y referencias de color, tipografía e interfaz para diseñar webs.' },
+  { href: '/extra/diseno', titulo: 'Diseño', descripcion: 'Tipografía, color, referencias y cómo evitar el look de IA.' },
 ]
 </script>
 

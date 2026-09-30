@@ -9,7 +9,12 @@ import AgentesView from '../views/paginas/AgentesView.vue'
 import ConsejosView from '../views/paginas/ConsejosView.vue'
 import ContextoView from '../views/paginas/ContextoView.vue'
 import CuadernoIaView from '../views/paginas/CuadernoIaView.vue'
-import DisenoWebView from '../views/paginas/DisenoWebView.vue'
+import DisenoView from '../views/paginas/DisenoView.vue'
+import DisenoFuentesView from '../views/paginas/DisenoFuentesView.vue'
+import DisenoColoresView from '../views/paginas/DisenoColoresView.vue'
+import DisenoReferenciasView from '../views/paginas/DisenoReferenciasView.vue'
+import DisenoAiSlopView from '../views/paginas/DisenoAiSlopView.vue'
+import DisenoSkillsView from '../views/paginas/DisenoSkillsView.vue'
 import ExtraView from '../views/paginas/ExtraView.vue'
 import EquipoView from '../views/paginas/EquipoView.vue'
 import DwcsView from '../views/paginas/DwcsView.vue'
@@ -69,7 +74,12 @@ const router = createRouter({
     { path: '/extra/ia/agentes', component: AgentesView },
     { path: '/extra/ia/equipo', component: EquipoView },
     { path: '/extra/ia/consejos', component: ConsejosView },
-    { path: '/extra/diseno-web', component: DisenoWebView },
+    { path: '/extra/diseno', component: DisenoView },
+    { path: '/extra/diseno/fuentes', component: DisenoFuentesView },
+    { path: '/extra/diseno/colores', component: DisenoColoresView },
+    { path: '/extra/diseno/referencias', component: DisenoReferenciasView },
+    { path: '/extra/diseno/ai-slop', component: DisenoAiSlopView },
+    { path: '/extra/diseno/skills', component: DisenoSkillsView },
     { path: '/extra/open-source', component: OpenSourceView },
     { path: '/extra/ideas-proyecto-fin-curso', component: IdeasPfcView },
     { path: '/extra/ideas-proyecto-fin-curso/panel-del-aula-virtual', component: IdeaPanelView },

@@ -29,7 +29,7 @@ modulos/  - apuntes del temario, por módulo
   dasp/
 extra/    - conocimientos extra, ideas y herramientas
   ia/
-  diseno-web/
+  diseno/
   ideas-proyecto-fin-curso/
   herramientas/
 horario/  - horario semanal

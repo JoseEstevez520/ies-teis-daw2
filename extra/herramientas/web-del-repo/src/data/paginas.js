@@ -20,7 +20,12 @@ import agentes from '../../../../../extra/ia/agentes/README.md?raw'
 import equipo from '../../../../../extra/ia/equipo/README.md?raw'
 import fundamentos from '../../../../../extra/ia/fundamentos/README.md?raw'
 import consejos from '../../../../../extra/ia/consejos/README.md?raw'
-import disenoWeb from '../../../../../extra/diseno-web/README.md?raw'
+import diseno from '../../../../../extra/diseno/README.md?raw'
+import disenoFuentes from '../../../../../extra/diseno/fuentes/README.md?raw'
+import disenoColores from '../../../../../extra/diseno/colores/README.md?raw'
+import disenoReferencias from '../../../../../extra/diseno/referencias/README.md?raw'
+import disenoAiSlop from '../../../../../extra/diseno/ai-slop/README.md?raw'
+import disenoSkills from '../../../../../extra/diseno/skills/README.md?raw'
 import openSource from '../../../../../extra/open-source/README.md?raw'
 import ideasPfc from '../../../../../extra/ideas-proyecto-fin-curso/README.md?raw'
 import ideaPanel from '../../../../../extra/ideas-proyecto-fin-curso/panel-del-aula-virtual.md?raw'
@@ -163,15 +168,45 @@ export const PAGINAS = [
     fuente: equipo,
   },
   {
-    ruta: '/extra/diseno-web',
-    claveRuta: 'extra/diseno-web',
-    seccion: 'Diseño web',
-    fuente: disenoWeb,
+    ruta: '/extra/diseno',
+    claveRuta: 'extra/diseno',
+    seccion: 'Diseño',
+    fuente: diseno,
+  },
+  {
+    ruta: '/extra/diseno/fuentes',
+    claveRuta: 'extra/diseno/fuentes',
+    seccion: 'Diseño',
+    fuente: disenoFuentes,
+  },
+  {
+    ruta: '/extra/diseno/colores',
+    claveRuta: 'extra/diseno/colores',
+    seccion: 'Diseño',
+    fuente: disenoColores,
+  },
+  {
+    ruta: '/extra/diseno/referencias',
+    claveRuta: 'extra/diseno/referencias',
+    seccion: 'Diseño',
+    fuente: disenoReferencias,
+  },
+  {
+    ruta: '/extra/diseno/ai-slop',
+    claveRuta: 'extra/diseno/ai-slop',
+    seccion: 'Diseño',
+    fuente: disenoAiSlop,
+  },
+  {
+    ruta: '/extra/diseno/skills',
+    claveRuta: 'extra/diseno/skills',
+    seccion: 'Diseño',
+    fuente: disenoSkills,
   },
   {
     ruta: '/extra/open-source',
     claveRuta: 'extra/open-source',
-    seccion: 'Diseño web',
+    seccion: 'Diseño',
     fuente: openSource,
   },
   {

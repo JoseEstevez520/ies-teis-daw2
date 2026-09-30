@@ -48,7 +48,7 @@ del texto (casi blanco en oscuro): la web no tiene color de acento.
 El color con significado de esta web:
 
 - **Cada sección** tiene el suyo (Módulos azul, Extra verde azulado, IA violeta,
-  Herramientas ámbar, Diseño web fucsia, Ideas de PFC verde lima, Horario rosa), en un
+  Herramientas ámbar, Diseño fucsia, Ideas de PFC verde lima, Horario rosa), en un
   único sitio, [`src/lib/colorSeccion.js`](src/lib/colorSeccion.js). Solo se usa en los
   iconos de las secciones (barra lateral y portada).
 - **Cada módulo** tiene el suyo en el horario (`src/visuales/horario.js`), el mismo en el
