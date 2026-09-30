@@ -2,6 +2,7 @@
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
 import RejillaTarjetas from '../../components/RejillaTarjetas.vue'
 import TarjetaPagina from '../../components/TarjetaPagina.vue'
+import MuestraFuentes from '../../visuales/MuestraFuentes.vue'
 
 // extra/diseno/fuentes/README.md
 const RECURSOS = [
@@ -24,6 +25,16 @@ const RECURSOS = [
       <li>Prueba con el texto real de tu web, no con "Lorem ipsum".</li>
       <li>El contraste lo dan el tamaño y el peso, no mezclar fuentes.</li>
     </ul>
+
+    <h2 id="las-de-siempre">Las de siempre</h2>
+    <p>
+      Inter, Roboto, Arial o las del sistema salen en casi todo lo que hace la IA, y no son
+      malas: son neutras y se leen bien. El problema es que, al usarlas todos, todo se parece.
+      Si quieres que lo tuyo destaque, busca una con carácter (una serif, una grotesca con
+      personalidad, una mono) y resérvala para los títulos.
+    </p>
+    <MuestraFuentes />
+    <p><strong>Cambiar de fuente cambia el tono, sin tocar el texto.</strong></p>
 
     <h2 id="recursos">Recursos</h2>
     <RejillaTarjetas>

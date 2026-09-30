@@ -2,6 +2,7 @@
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
 import RejillaTarjetas from '../../components/RejillaTarjetas.vue'
 import TarjetaPagina from '../../components/TarjetaPagina.vue'
+import PaletaEjemplo from '../../visuales/PaletaEjemplo.vue'
 
 // extra/diseno/colores/README.md
 const RECURSOS = [
@@ -24,6 +25,10 @@ const RECURSOS = [
       <li>Menos colores, mejor. Si todo es de color, nada destaca.</li>
       <li>El texto y su fondo necesitan contraste suficiente (4.5:1 en el texto normal).</li>
     </ul>
+
+    <p>Una paleta bien hecha es casi toda gris, con un solo acento:</p>
+    <PaletaEjemplo />
+    <p><strong>Si todo es de color, nada destaca.</strong></p>
 
     <h2 id="recursos">Recursos</h2>
     <RejillaTarjetas>

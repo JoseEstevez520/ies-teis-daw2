@@ -5,9 +5,11 @@ evitar que todo parezca hecho con IA.
 
 ## Páginas
 
-1. [`fuentes/`](fuentes/): elegir tipografías y combinarlas sin liarla.
+Se leen en orden: cada página se apoya en la anterior.
+
+1. [`referencias/`](referencias/): buscar la estética que te gusta antes de tocar nada.
 2. [`colores/`](colores/): paletas, contraste y temas.
-3. [`referencias/`](referencias/): dónde mirar antes de diseñar (Pinterest, Mobbin...).
+3. [`fuentes/`](fuentes/): elegir tipografías y combinarlas.
 4. [`ai-slop/`](ai-slop/): el look genérico de IA y cómo no caer en él.
 5. [`skills/`](skills/): skills de agente que ayudan con el diseño.
 

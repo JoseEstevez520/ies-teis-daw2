@@ -11,6 +11,13 @@ otra la arruina. La regla de partida es una sola familia, o dos como mucho.
 - Prueba con el texto real de tu web, no con "Lorem ipsum".
 - El contraste lo dan el tamaño y el peso, no mezclar fuentes.
 
+## Las de siempre
+
+Inter, Roboto, Arial o las del sistema salen en casi todo lo que hace la IA, y no son malas:
+son neutras y se leen bien. El problema es que, al usarlas todos, todo se parece. Si quieres
+que lo tuyo destaque, busca una con carácter (una serif, una grotesca con personalidad, una
+mono) y resérvala para los títulos.
+
 ## Recursos
 
 - [Google Fonts](https://fonts.google.com/) — miles de fuentes libres, con la licencia

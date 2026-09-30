@@ -20,6 +20,16 @@ export const SERIES = [
       { ruta: '/extra/ia/consejos', titulo: 'Consejos', descripcion: 'Cómo sacarle partido sin que te resuelva las prácticas.' },
     ],
   },
+  {
+    carpeta: '/extra/diseno',
+    paginas: [
+      { ruta: '/extra/diseno/referencias', titulo: 'Referencias', descripcion: 'Buscar la estética que te gusta antes de tocar nada.' },
+      { ruta: '/extra/diseno/colores', titulo: 'Colores', descripcion: 'Paletas, contraste y temas.' },
+      { ruta: '/extra/diseno/fuentes', titulo: 'Fuentes', descripcion: 'Elegir tipografías y combinarlas.' },
+      { ruta: '/extra/diseno/ai-slop', titulo: 'AI slop', descripcion: 'El look genérico de IA y cómo no caer en él.' },
+      { ruta: '/extra/diseno/skills', titulo: 'Skills', descripcion: 'Skills de agente que ayudan con el diseño.' },
+    ],
+  },
 ]
 
 // La serie en la que está una página, y su posición en ella.

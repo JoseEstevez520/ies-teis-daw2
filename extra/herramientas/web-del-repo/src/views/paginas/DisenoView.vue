@@ -2,15 +2,15 @@
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
 import RejillaTarjetas from '../../components/RejillaTarjetas.vue'
 import TarjetaPagina from '../../components/TarjetaPagina.vue'
+import { serieDeCarpeta } from '../../data/series.js'
 
-// extra/diseno/README.md. Las páginas, en orden, y los recursos sueltos.
-const PAGINAS = [
-  { href: '/extra/diseno/fuentes', titulo: '1. Fuentes', descripcion: 'Elegir tipografías y combinarlas sin liarla.' },
-  { href: '/extra/diseno/colores', titulo: '2. Colores', descripcion: 'Paletas, contraste y temas.' },
-  { href: '/extra/diseno/referencias', titulo: '3. Referencias', descripcion: 'Dónde mirar antes de diseñar (Pinterest, Mobbin...).' },
-  { href: '/extra/diseno/ai-slop', titulo: '4. AI slop', descripcion: 'El look genérico de IA y cómo no caer en él.' },
-  { href: '/extra/diseno/skills', titulo: '5. Skills', descripcion: 'Skills de agente que ayudan con el diseño.' },
-]
+// extra/diseno/README.md. Las páginas en el orden en que se leen (data/series.js),
+// numeradas. Los recursos sueltos van aparte.
+const PAGINAS = serieDeCarpeta('/extra/diseno').paginas.map((p, i) => ({
+  href: p.ruta,
+  titulo: `${i + 1}. ${p.titulo}`,
+  descripcion: p.descripcion,
+}))
 
 const RECURSOS = [
   {

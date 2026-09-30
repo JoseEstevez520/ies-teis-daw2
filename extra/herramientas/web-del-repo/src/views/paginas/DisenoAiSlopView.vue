@@ -2,6 +2,7 @@
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
 import RejillaTarjetas from '../../components/RejillaTarjetas.vue'
 import TarjetaPagina from '../../components/TarjetaPagina.vue'
+import SlopComparacion from '../../visuales/SlopComparacion.vue'
 
 // extra/diseno/ai-slop/README.md
 const DELATA = [
@@ -54,6 +55,10 @@ const RECURSOS = [
     <ul>
       <li v-for="e in EVITARLO" :key="e">{{ e }}</li>
     </ul>
+
+    <p>La misma pantalla, sin corregirla y dirigida:</p>
+    <SlopComparacion />
+    <p><strong>No hace falta más color ni más efectos, sino decidir.</strong></p>
 
     <h2 id="recursos">Recursos</h2>
     <RejillaTarjetas>
