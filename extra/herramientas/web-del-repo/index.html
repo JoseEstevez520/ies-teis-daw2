@@ -11,6 +11,9 @@
       try {
         const tema = localStorage.getItem('elastic-ui.theme')
         if (tema === 'light' || tema === 'dark') document.documentElement.dataset.theme = tema
+        // Ajustes → forzar las animaciones: puesto antes de pintar para que la
+        // primera página ya salga animada.
+        if (localStorage.getItem('web.motion') === 'full') document.documentElement.dataset.motion = 'full'
       } catch {}
     </script>
   </head>

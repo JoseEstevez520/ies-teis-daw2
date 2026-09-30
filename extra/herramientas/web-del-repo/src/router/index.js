@@ -4,6 +4,7 @@ import ModulosView from '../views/ModulosView.vue'
 import PanelAulaVirtualView from '../views/PanelAulaVirtualView.vue'
 import CalculadoraDeFaltasView from '../views/CalculadoraDeFaltasView.vue'
 import AlarmaTareasView from '../views/paginas/AlarmaTareasView.vue'
+import AjustesView from '../views/paginas/AjustesView.vue'
 import AgentesView from '../views/paginas/AgentesView.vue'
 import ConsejosView from '../views/paginas/ConsejosView.vue'
 import ContextoView from '../views/paginas/ContextoView.vue'
@@ -78,6 +79,7 @@ const router = createRouter({
     { path: '/extra/ideas-proyecto-fin-curso/entorno-interactivo-que-explica-el-codigo', component: IdeaEntornoView },
     { path: '/extra/ideas-proyecto-fin-curso/analisis-del-comportamiento-deportivo', component: IdeaAnalisisView },
     { path: '/horario', component: HorarioView },
+    { path: '/ajustes', component: AjustesView },
     { path: '/:pathMatch(.*)*', redirect: '/' },
   ],
 })

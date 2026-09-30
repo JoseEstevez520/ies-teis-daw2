@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import { ElasticUi } from 'elastic-ui'
 import App from './App.vue'
 import router from './router'
+import { forzarAnimaciones } from './lib/movimiento.js'
 import './style.css'
 
 // Los textos que elastic-ui pone por su cuenta (nombres para lectores de
@@ -58,5 +59,9 @@ const TEXTOS = {
 
 // Se monta con la primera ruta ya resuelta: así la barra lateral y la página
 // salen directamente como están, sin pasar antes por `/` y animar el cambio.
-const app = createApp(App).use(router).use(ElasticUi, { labels: TEXTOS })
+const app = createApp(App).use(router).use(ElasticUi, {
+  labels: TEXTOS,
+  // Ajustes → forzar las animaciones aunque el sistema pida movimiento reducido.
+  motion: forzarAnimaciones.value ? 'full' : 'auto',
+})
 router.isReady().then(() => app.mount('#app'))
