@@ -45,17 +45,9 @@ Un área por la que tirar si aún no tienes idea.
 - **Ciudades y datos urbanos (Smart Cities)** — usar datos, sensores, mapas e IA para
   entender cómo funciona una ciudad y probar cambios antes de hacerlos en la calle. Vigo es
   una base real: [más de 140 conjuntos de datos abiertos](https://datos.vigo.org), un
-  [portal de mapas](https://mapas.vigo.org) y un [gemelo digital 3D](https://datos.vigo.org/es/xemelgo-dixital-de-vigo/)
-  (una réplica de la ciudad con datos reales, para simular sobre ella). *A escala de PFC:*
-  pedir en lenguaje natural «¿qué pasa si cierro esta calle el sábado?» y que el sistema lo
-  traduzca a una simulación y la enseñe sobre el mapa. Por dónde tirar:
-  - **Movilidad** — tráfico, transporte público, peatones, logística.
-  - **Medioambiente** — calor, ruido, inundaciones, energía.
-  - **Urbanismo** — edificios, espacio público, nuevas infraestructuras.
-  - **IA urbana** — agentes que analizan los datos y proponen cambios.
-  - **Gemelos digitales** — la réplica 3D y sus simulaciones.
-  - **Ciudadanía** — participación y ver los escenarios antes de que se hagan.
-  - **IoT en tiempo real** — sensores y eventos según pasan.
+  [portal de mapas](https://mapas.vigo.org) y un [gemelo digital 3D](https://datos.vigo.org/es/xemelgo-dixital-de-vigo/).
+  Por dónde tirar: movilidad, medioambiente, urbanismo, IA urbana, gemelos digitales,
+  ciudadanía e IoT en tiempo real.
 
 ## Tecnología
 

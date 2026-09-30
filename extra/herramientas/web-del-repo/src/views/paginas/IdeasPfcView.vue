@@ -29,19 +29,8 @@ const CAMPOS = [
   {
     href: 'https://datos.vigo.org',
     titulo: 'Ciudades y datos urbanos (Smart Cities)',
-    descripcion: 'Datos, sensores, mapas e IA para entender cómo funciona una ciudad y probar cambios antes de hacerlos en la calle. Vigo tiene más de 140 conjuntos de datos abiertos, un portal de mapas y un gemelo digital 3D. A escala de PFC: pedir en lenguaje natural «¿qué pasa si cierro esta calle el sábado?» y ver la simulación sobre el mapa.',
+    descripcion: 'Datos, sensores, mapas e IA para entender cómo funciona una ciudad y probar cambios antes de hacerlos en la calle. Vigo tiene más de 140 conjuntos de datos abiertos, un portal de mapas y un gemelo digital 3D. Por dónde tirar: movilidad, medioambiente, urbanismo, IA urbana, gemelos digitales, ciudadanía e IoT en tiempo real.',
   },
-]
-
-// Por dónde tirar dentro de Ciudades y datos urbanos.
-const SUBNICHOS = [
-  { titulo: 'Movilidad', descripcion: 'tráfico, transporte público, peatones, logística.' },
-  { titulo: 'Medioambiente', descripcion: 'calor, ruido, inundaciones, energía.' },
-  { titulo: 'Urbanismo', descripcion: 'edificios, espacio público, nuevas infraestructuras.' },
-  { titulo: 'IA urbana', descripcion: 'agentes que analizan los datos y proponen cambios.' },
-  { titulo: 'Gemelos digitales', descripcion: 'la réplica 3D y sus simulaciones.' },
-  { titulo: 'Ciudadanía', descripcion: 'participación y ver los escenarios antes de que se hagan.' },
-  { titulo: 'IoT en tiempo real', descripcion: 'sensores y eventos según pasan.' },
 ]
 
 const TECNOLOGIA = [
@@ -94,10 +83,6 @@ const EJEMPLOS = [
     <RejillaTarjetas>
       <TarjetaPagina v-for="c in CAMPOS" :key="c.titulo" v-bind="c" />
     </RejillaTarjetas>
-    <p>Dentro de Ciudades y datos urbanos, por dónde tirar:</p>
-    <ul>
-      <li v-for="s in SUBNICHOS" :key="s.titulo"><strong>{{ s.titulo }}</strong> — {{ s.descripcion }}</li>
-    </ul>
 
     <h2 id="tecnologia">Tecnología</h2>
     <p>Piezas que puedes usar como motor de tu proyecto.</p>
