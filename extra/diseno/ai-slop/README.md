@@ -26,7 +26,7 @@ tres looks en los que cae la IA cuando nadie la frena.
 - Menos sombras y menos esquinas redondeadas: separa con el borde y el espaciado.
 - Iconos de verdad (una librería), no emojis.
 - Texto concreto: qué hace, para quién y qué problema resuelve.
-- Parte de referencias reales (ver [`../referencias/`](../referencias/)), no de la nada.
+- Parte de referencias reales (ver [`../idea/`](../idea/)), no de la nada.
 
 ## Recursos
 

@@ -12,7 +12,7 @@ import CuadernoIaView from '../views/paginas/CuadernoIaView.vue'
 import DisenoView from '../views/paginas/DisenoView.vue'
 import DisenoFuentesView from '../views/paginas/DisenoFuentesView.vue'
 import DisenoColoresView from '../views/paginas/DisenoColoresView.vue'
-import DisenoReferenciasView from '../views/paginas/DisenoReferenciasView.vue'
+import DisenoIdeaView from '../views/paginas/DisenoIdeaView.vue'
 import DisenoAiSlopView from '../views/paginas/DisenoAiSlopView.vue'
 import DisenoSkillsView from '../views/paginas/DisenoSkillsView.vue'
 import ExtraView from '../views/paginas/ExtraView.vue'
@@ -77,7 +77,7 @@ const router = createRouter({
     { path: '/extra/diseno', component: DisenoView },
     { path: '/extra/diseno/fuentes', component: DisenoFuentesView },
     { path: '/extra/diseno/colores', component: DisenoColoresView },
-    { path: '/extra/diseno/referencias', component: DisenoReferenciasView },
+    { path: '/extra/diseno/idea', component: DisenoIdeaView },
     { path: '/extra/diseno/ai-slop', component: DisenoAiSlopView },
     { path: '/extra/diseno/skills', component: DisenoSkillsView },
     { path: '/extra/open-source', component: OpenSourceView },

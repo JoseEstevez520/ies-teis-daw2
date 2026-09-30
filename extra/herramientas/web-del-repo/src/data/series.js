@@ -23,7 +23,7 @@ export const SERIES = [
   {
     carpeta: '/extra/diseno',
     paginas: [
-      { ruta: '/extra/diseno/referencias', titulo: 'Referencias', descripcion: 'Buscar la estética que te gusta antes de tocar nada.' },
+      { ruta: '/extra/diseno/idea', titulo: 'La idea', descripcion: 'Decidir qué quieres transmitir y buscar referencias.' },
       { ruta: '/extra/diseno/colores', titulo: 'Colores', descripcion: 'Paletas, contraste y temas.' },
       { ruta: '/extra/diseno/fuentes', titulo: 'Fuentes', descripcion: 'Elegir tipografías y combinarlas.' },
       { ruta: '/extra/diseno/ai-slop', titulo: 'AI slop', descripcion: 'El look genérico de IA y cómo no caer en él.' },

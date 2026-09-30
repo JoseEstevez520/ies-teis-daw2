@@ -1,7 +1,15 @@
-# Referencias
+# La idea
 
-Antes de diseñar (o de pedirle a la IA que diseñe), mira cómo lo han resuelto otros. No para
-copiar, sino para ver qué funciona.
+Antes de tocar color o fuente, decide qué quieres que transmita: serio, cercano, editorial,
+técnico... De ahí salen las decisiones. Dos webs con los mismos colores pueden no parecerse en
+nada, según la idea que hay detrás.
+
+## Buscar referencias
+
+No hace falta inventarla de cero. Mira cómo lo han resuelto otros:
+
+- Si no tienes ninguna referencia, búscala.
+- Aunque tengas una, busca más parecidas: así ves qué se repite y qué es propio de esa web.
 
 ## Pinterest
 

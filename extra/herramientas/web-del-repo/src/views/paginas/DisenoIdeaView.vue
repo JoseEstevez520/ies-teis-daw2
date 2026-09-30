@@ -3,7 +3,7 @@ import PlantillaPagina from '../../components/PlantillaPagina.vue'
 import RejillaTarjetas from '../../components/RejillaTarjetas.vue'
 import TarjetaPagina from '../../components/TarjetaPagina.vue'
 
-// extra/diseno/referencias/README.md
+// extra/diseno/idea/README.md
 const RECURSOS = [
   { titulo: 'Mobbin', href: 'https://mobbin.com/', descripcion: 'Capturas reales de interfaces de apps y webs, ordenadas por flujo.' },
   { titulo: 'Refero', href: 'https://refero.design/', descripcion: 'Capturas de webs reales, para ver cómo resuelven pantallas concretas.' },
@@ -15,9 +15,21 @@ const RECURSOS = [
 
 <template>
   <PlantillaPagina
-    titulo="Referencias"
-    entradilla="Antes de diseñar (o de pedirle a la IA que diseñe), mira cómo lo han resuelto otros. No para copiar, sino para ver qué funciona."
+    titulo="La idea"
+    entradilla="Antes de tocar color o fuente, decide qué quieres que transmita. De ahí salen las decisiones."
   >
+    <p>
+      Dos webs con los mismos colores pueden no parecerse en nada, según la idea que hay detrás.
+      Serio, cercano, editorial, técnico... Elige la dirección antes de ponerte.
+    </p>
+
+    <h2 id="buscar-referencias">Buscar referencias</h2>
+    <p>No hace falta inventarla de cero. Mira cómo lo han resuelto otros:</p>
+    <ul>
+      <li>Si no tienes ninguna referencia, búscala.</li>
+      <li>Aunque tengas una, busca más parecidas: así ves qué se repite y qué es propio de esa web.</li>
+    </ul>
+
     <h2 id="pinterest">Pinterest</h2>
     <p>
       Pinterest es la referencia para todo. Buscas lo que sea y te salen cientos de ejemplos.

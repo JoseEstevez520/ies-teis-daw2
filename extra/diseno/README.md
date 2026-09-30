@@ -7,7 +7,7 @@ evitar que todo parezca hecho con IA.
 
 Se leen en orden: cada página se apoya en la anterior.
 
-1. [`referencias/`](referencias/): buscar la estética que te gusta antes de tocar nada.
+1. [`idea/`](idea/): decidir qué quieres transmitir y buscar referencias.
 2. [`colores/`](colores/): paletas, contraste y temas.
 3. [`fuentes/`](fuentes/): elegir tipografías y combinarlas.
 4. [`ai-slop/`](ai-slop/): el look genérico de IA y cómo no caer en él.
