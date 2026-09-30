@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@lucide/vue": "^1.47.0",
-    "elastic-ui": "npm:@joseestevez/vue-elastic-ui@^0.3.1",
+    "elastic-ui": "file:vendor/elastic-ui-0.3.2.tgz",
     "html-to-image": "^1.11.13",
     "motion-v": "^2.4.4",
     "vue": "^3.5.42",
