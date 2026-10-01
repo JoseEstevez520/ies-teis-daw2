@@ -4,8 +4,6 @@ import {
   CodeBlock,
   DescriptionItem,
   DescriptionList,
-  Stat,
-  StatGroup,
 } from 'elastic-ui'
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
 import DiagramaModelos from '../../visuales/DiagramaModelos.vue'
@@ -61,12 +59,6 @@ const NIVELES = [
       cuatro dólares.
     </p>
     <DiagramaModelos />
-    <StatGroup>
-      <Stat label="Diferencia de coste" value="370×" />
-      <Stat label="Calidad, en torno al" value="80 %" />
-      <Stat label="Coste por tarea resuelta" value="$0,20 a $74" />
-    </StatGroup>
-    <p><strong>Casi la misma calidad, y hasta 370 veces de diferencia en el coste por tarea.</strong></p>
     <table>
       <thead>
         <tr><th>Modelo</th><th>SWE-bench Verified</th><th>Coste por tarea resuelta</th></tr>
