@@ -35,8 +35,6 @@ céntimos hasta setenta y cuatro dólares.
 
 Datos de AgentMarketCap, abril de 2026, sobre 2 millones de tokens por tarea. Cambian a menudo.
 
-Por eso el caro se reserva para lo que sale caro si falla:
-
 | Lo que haces | Con qué |
 |---|---|
 | Autocompletar, resumir, renombrar, un test sencillo | barato y rápido |

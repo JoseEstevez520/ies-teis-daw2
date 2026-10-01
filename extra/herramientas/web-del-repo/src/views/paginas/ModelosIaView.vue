@@ -83,7 +83,6 @@ const NIVELES = [
       Coste por tarea resuelta, en escala logarítmica. Datos de AgentMarketCap, abril de 2026, sobre
       2 millones de tokens por tarea; cambian a menudo.
     </p>
-    <p>Por eso el caro se reserva para lo que sale caro si falla:</p>
     <div class="not-prose grid gap-3 sm:grid-cols-3">
       <div v-for="n in NIVELES" :key="n.titulo" class="diagram-area gap-1" :style="{ '--diagram-color': n.color }">
         <span class="text-sm font-semibold">{{ n.titulo }}</span>
