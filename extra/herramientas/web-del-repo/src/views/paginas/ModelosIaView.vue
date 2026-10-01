@@ -18,22 +18,29 @@ const CAMBIA = [
   ['Razonamiento', 'Si "piensa" antes de responder. Acierta más en lo difícil, pero tarda y cuesta más.'],
 ]
 
-const MODELOS = `opencode models                     # lista los modelos que tienes
+const COMANDOS = `opencode models                     # lista los modelos que tienes
 opencode --model proveedor/modelo   # arranca con ese`
 
-const DATOS = [
-  ['DeepSeek V4 Pro', '79,3 %', '$0,20'],
-  ['Qwen3.5', '80,2 %', '$0,46'],
-  ['MiniMax M2.5', '80,6 %', '$1,31'],
-  ['Gemini 3.1 Pro', '80,8 %', '$11'],
-  ['GPT-5.4', '80,6 %', '$18'],
-  ['Claude Opus 4.6', '80,8 %', '$74'],
+const COLOR_MODELO = '#7c3aed'
+const COSTE_MIN = 0.2
+const COSTE_MAX = 74
+// Barra proporcional al logaritmo del coste, para que se vea la diferencia real.
+const ancho = (coste) =>
+  ((Math.log10(coste) - Math.log10(COSTE_MIN)) / (Math.log10(COSTE_MAX) - Math.log10(COSTE_MIN))) * 100
+
+const MODELOS = [
+  { nombre: 'DeepSeek V4 Pro', calidad: '79,3 %', coste: 0.2, costeTexto: '$0,20' },
+  { nombre: 'Qwen3.5', calidad: '80,2 %', coste: 0.46, costeTexto: '$0,46' },
+  { nombre: 'MiniMax M2.5', calidad: '80,6 %', coste: 1.31, costeTexto: '$1,31' },
+  { nombre: 'Gemini 3.1 Pro', calidad: '80,8 %', coste: 11, costeTexto: '$11' },
+  { nombre: 'GPT-5.4', calidad: '80,6 %', coste: 18, costeTexto: '$18' },
+  { nombre: 'Claude Opus 4.6', calidad: '80,8 %', coste: 74, costeTexto: '$74' },
 ]
 
 const NIVELES = [
-  ['Autocompletar, resumir, renombrar, un test sencillo', 'barato y rápido'],
-  ['Una feature normal, leyendo el código', 'el de en medio'],
-  ['Depurar algo difícil, decidir la arquitectura, un refactor grande', 'el más potente'],
+  { titulo: 'Barato y rápido', texto: 'Autocompletar, resumir, renombrar, un test sencillo.', color: '#0891b2' },
+  { titulo: 'El de en medio', texto: 'Una feature normal, leyendo el código.', color: '#7c3aed' },
+  { titulo: 'El más potente', texto: 'Depurar algo difícil, decidir la arquitectura, un refactor grande.', color: '#d97706' },
 ]
 </script>
 
@@ -59,31 +66,30 @@ const NIVELES = [
       cuatro dólares.
     </p>
     <DiagramaModelos />
-    <table>
-      <thead>
-        <tr><th>Modelo</th><th>SWE-bench Verified</th><th>Coste por tarea resuelta</th></tr>
-      </thead>
-      <tbody>
-        <tr v-for="d in DATOS" :key="d[0]">
-          <td>{{ d[0] }}</td>
-          <td>{{ d[1] }}</td>
-          <td>{{ d[2] }}</td>
-        </tr>
-      </tbody>
-    </table>
-    <p class="text-sm text-fg-muted">Datos de AgentMarketCap, abril de 2026, sobre 2 millones de tokens por tarea. Cambian a menudo.</p>
+    <div class="not-prose flex flex-col gap-2">
+      <div
+        v-for="m in MODELOS"
+        :key="m.nombre"
+        class="grid grid-cols-[10rem_1fr_3.5rem] items-center gap-3 text-sm"
+      >
+        <span class="truncate text-fg">{{ m.nombre }}</span>
+        <div class="h-2.5 overflow-hidden rounded-full bg-bg-inset">
+          <div class="h-full rounded-full" :style="{ width: ancho(m.coste) + '%', background: COLOR_MODELO }" />
+        </div>
+        <span class="text-right tabular-nums text-fg-secondary">{{ m.costeTexto }}</span>
+      </div>
+    </div>
+    <p class="text-sm text-fg-muted">
+      Coste por tarea resuelta, en escala logarítmica. Datos de AgentMarketCap, abril de 2026, sobre
+      2 millones de tokens por tarea; cambian a menudo.
+    </p>
     <p>Por eso el caro se reserva para lo que sale caro si falla:</p>
-    <table>
-      <thead>
-        <tr><th>Lo que haces</th><th>Con qué</th></tr>
-      </thead>
-      <tbody>
-        <tr v-for="n in NIVELES" :key="n[0]">
-          <td>{{ n[0] }}</td>
-          <td>{{ n[1] }}</td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="not-prose grid gap-3 sm:grid-cols-3">
+      <div v-for="n in NIVELES" :key="n.titulo" class="diagram-area gap-1" :style="{ '--diagram-color': n.color }">
+        <span class="text-sm font-semibold">{{ n.titulo }}</span>
+        <span class="text-sm text-fg-secondary">{{ n.texto }}</span>
+      </div>
+    </div>
 
     <h2 id="repartir">Repartir el trabajo</h2>
     <p>
@@ -104,7 +110,7 @@ const NIVELES = [
       En la terminal, <code>/models</code> abre el selector dentro del chat. También se puede fijar
       al arrancar o en la configuración:
     </p>
-    <CodeBlock :code="MODELOS" language="bash" />
+    <CodeBlock :code="COMANDOS" language="bash" />
     <p>
       En <code>opencode.json</code> se deja el de por defecto, y
       <code>opencode stats --models</code> enseña lo que gastas por modelo.
