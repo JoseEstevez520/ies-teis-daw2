@@ -5,6 +5,11 @@ import diw from '../../../../../modulos/diw/README.md?raw'
 import dwcc from '../../../../../modulos/dwcc/README.md?raw'
 import dwcs from '../../../../../modulos/dwcs/README.md?raw'
 import springContenedor from '../../../../../modulos/dwcs/spring-y-contenedor.md?raw'
+import controladoresRutas from '../../../../../modulos/dwcs/controladores-y-rutas.md?raw'
+import thymeleaf from '../../../../../modulos/dwcs/thymeleaf.md?raw'
+import serviciosInyeccion from '../../../../../modulos/dwcs/servicios-e-inyeccion.md?raw'
+import optional from '../../../../../modulos/dwcs/optional.md?raw'
+import dwcsEnum from '../../../../../modulos/dwcs/enum.md?raw'
 import scopesEstado from '../../../../../modulos/dwcs/scopes-y-estado.md?raw'
 
 import extraIndex from '../../../../../extra/README.md?raw'
@@ -89,6 +94,36 @@ export const PAGINAS = [
     claveRuta: 'modulos/dwcs/spring-y-contenedor',
     seccion: 'Módulos',
     fuente: springContenedor,
+  },
+  {
+    ruta: '/modulos/dwcs/controladores-y-rutas',
+    claveRuta: 'modulos/dwcs/controladores-y-rutas',
+    seccion: 'Módulos',
+    fuente: controladoresRutas,
+  },
+  {
+    ruta: '/modulos/dwcs/thymeleaf',
+    claveRuta: 'modulos/dwcs/thymeleaf',
+    seccion: 'Módulos',
+    fuente: thymeleaf,
+  },
+  {
+    ruta: '/modulos/dwcs/servicios-e-inyeccion',
+    claveRuta: 'modulos/dwcs/servicios-e-inyeccion',
+    seccion: 'Módulos',
+    fuente: serviciosInyeccion,
+  },
+  {
+    ruta: '/modulos/dwcs/optional',
+    claveRuta: 'modulos/dwcs/optional',
+    seccion: 'Módulos',
+    fuente: optional,
+  },
+  {
+    ruta: '/modulos/dwcs/enum',
+    claveRuta: 'modulos/dwcs/enum',
+    seccion: 'Módulos',
+    fuente: dwcsEnum,
   },
   {
     ruta: '/modulos/dwcs/scopes-y-estado',

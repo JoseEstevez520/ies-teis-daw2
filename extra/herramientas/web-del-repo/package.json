@@ -13,6 +13,7 @@
     "elastic-ui": "file:vendor/elastic-ui-0.3.3.tgz",
     "html-to-image": "^1.11.13",
     "motion-v": "^2.4.4",
+    "simple-icons": "^16.33.0",
     "vue": "^3.5.42",
     "vue-router": "^5.3.1"
   },

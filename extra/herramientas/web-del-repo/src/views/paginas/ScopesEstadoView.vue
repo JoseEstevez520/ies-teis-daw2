@@ -31,8 +31,6 @@ public class CarritoCompra { }`
       del bean y la comparta entre todo el que la pida. Es el scope por defecto:
       <code>@Service</code> o <code>@Component</code> ya son singleton.
     </p>
-    <DiagramaScopes />
-    <p><strong>Una sola instancia para todos o una nueva cada vez: eso lo decide el scope.</strong></p>
     <Callout type="warning">
       <p>
         Como todos comparten la misma instancia, un bean singleton <strong>no debe guardar estado de
@@ -48,6 +46,11 @@ public class CarritoCompra { }`
       compartir.
     </p>
     <CodeBlock :code="PROTOTYPE" language="java" />
+
+    <h2 id="comparar">Comparar en vivo</h2>
+    <p>Pide el bean en cada lado y mira cuántas instancias salen:</p>
+    <DiagramaScopes />
+    <p><strong>En singleton siempre es la misma; en prototype, una nueva cada vez.</strong></p>
 
     <h2 id="scopes-web">Scopes web</h2>
     <p>En una aplicación web hay más scopes, ligados a la petición y a la sesión:</p>

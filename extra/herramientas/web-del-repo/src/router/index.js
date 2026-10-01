@@ -36,8 +36,13 @@ import ModuloView from '../views/paginas/ModuloView.vue'
 import MoodleApiView from '../views/paginas/MoodleApiView.vue'
 import OpenCodeView from '../views/paginas/OpenCodeView.vue'
 import OpenSourceView from '../views/paginas/OpenSourceView.vue'
+import ControladoresRutasView from '../views/paginas/ControladoresRutasView.vue'
+import EnumView from '../views/paginas/EnumView.vue'
+import OptionalView from '../views/paginas/OptionalView.vue'
 import ScopesEstadoView from '../views/paginas/ScopesEstadoView.vue'
+import ServiciosInyeccionView from '../views/paginas/ServiciosInyeccionView.vue'
 import SpringContenedorView from '../views/paginas/SpringContenedorView.vue'
+import ThymeleafView from '../views/paginas/ThymeleafView.vue'
 
 // Cada página de la web es un componente compuesto a mano (ver AGENTS.md). Las
 // rutas siguen las carpetas del repo; una página nueva también va en
@@ -60,6 +65,11 @@ const router = createRouter({
     ...MODULOS.map(({ ruta, ...modulo }) => ({ path: `/modulos/${ruta}`, component: ModuloView, props: modulo })),
     { path: '/modulos/dwcs', component: DwcsView },
     { path: '/modulos/dwcs/spring-y-contenedor', component: SpringContenedorView },
+    { path: '/modulos/dwcs/controladores-y-rutas', component: ControladoresRutasView },
+    { path: '/modulos/dwcs/thymeleaf', component: ThymeleafView },
+    { path: '/modulos/dwcs/servicios-e-inyeccion', component: ServiciosInyeccionView },
+    { path: '/modulos/dwcs/optional', component: OptionalView },
+    { path: '/modulos/dwcs/enum', component: EnumView },
     { path: '/modulos/dwcs/scopes-y-estado', component: ScopesEstadoView },
     { path: '/extra', component: ExtraView },
     { path: '/extra/herramientas', component: HerramientasView },

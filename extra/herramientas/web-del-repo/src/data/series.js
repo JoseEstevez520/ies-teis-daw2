@@ -6,6 +6,11 @@ export const SERIES = [
     carpeta: '/modulos/dwcs',
     paginas: [
       { ruta: '/modulos/dwcs/spring-y-contenedor', titulo: 'Spring y el contenedor', descripcion: 'Cómo Spring crea tus objetos, qué es un bean y qué es la inyección de dependencias.' },
+      { ruta: '/modulos/dwcs/controladores-y-rutas', titulo: 'Controladores y rutas', descripcion: 'Cómo recibe el servidor las peticiones HTTP y las lleva al método que toca.' },
+      { ruta: '/modulos/dwcs/thymeleaf', titulo: 'Thymeleaf', descripcion: 'El motor de plantillas que rellena el HTML con los datos.' },
+      { ruta: '/modulos/dwcs/servicios-e-inyeccion', titulo: 'Servicios e inyección', descripcion: 'La lógica del negocio en un servicio y cómo se inyecta.' },
+      { ruta: '/modulos/dwcs/optional', titulo: 'Optional', descripcion: 'Un envoltorio para los valores que pueden no estar.' },
+      { ruta: '/modulos/dwcs/enum', titulo: 'Enum', descripcion: 'Un tipo con un conjunto cerrado de valores.' },
       { ruta: '/modulos/dwcs/scopes-y-estado', titulo: 'Scopes y estado', descripcion: 'Cuántas instancias crea Spring de cada bean: singleton, prototype y sesión HTTP.' },
     ],
   },

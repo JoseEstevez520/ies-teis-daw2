@@ -115,6 +115,11 @@ componentes de elastic-ui; su `USAGE.md` tiene las reglas.
 - **Color:** uno por concepto, el mismo en toda la página. Verde / ámbar / rojo solo
   para sí / con condiciones / no. Fuera de las piezas, el de la sección
   (`src/lib/colorSeccion.js`).
+- **Iconos y logos:** Lucide (`@lucide/vue`) para iconos generales, a 16–20 px y trazo 1.5,
+  con una etiqueta corta al lado. Simple Icons (`simple-icons`) para marcas y tecnologías,
+  con `Logo.vue` y `Tecnologias.vue`. Algunas marcas son casi negras (Gradle, Thymeleaf) y
+  en tema oscuro no se leen en su color: van en monocromo (el color del texto) o sobre una
+  ficha clara.
 - **El dibujo, en su fondo:** todo el dibujo va sobre un fondo gris muy suave, sin borde
   (`bg-bg-subtle` en el `Diagram`), para que se vea que es un dibujo y no texto.
 - **Tintes, sin bordes:** cada pieza, un tinte suave de su color sobre ese fondo, con
@@ -125,6 +130,9 @@ componentes de elastic-ui; su `USAGE.md` tiene las reglas.
 - **Nunca:** cajas semitransparentes sobre líneas, un visual vacío al cargar, bordes
   laterales de color, datos repetidos dentro de cada caja.
 - **Móvil:** si no cabe, cambia de forma (un día cada vez, fichas en vez de esquema).
+- **Una sola pieza para tocar por pantalla.** Un "juguete" (botones, un interruptor) solo
+  cuando tocarlo es el punto, y uno por página. Una comparación (singleton frente a
+  prototype) va después de explicar los dos, no entre medias.
 - **Ejemplos** de clase o de este repo. Si no es literal, dilo.
 - **De dónde sale:** si la página parte de una serie, un libro o un proyecto, ciérrala con una
   sección "De dónde sale": una tarjeta por referencia, con su imagen, el título y una línea,
