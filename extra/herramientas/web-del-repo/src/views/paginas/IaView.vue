@@ -98,7 +98,7 @@ const RECURSOS = [
 </script>
 
 <template>
-  <PlantillaPagina titulo="IA aplicada" entradilla="Cómo usar la IA en clase para aprender más, no para que te haga el trabajo. Se lee en orden: cada página se apoya en la anterior.">
+  <PlantillaPagina titulo="IA" entradilla="Cómo usar la IA mejor.">
     <RejillaTarjetas>
       <TarjetaPagina v-for="p in PAGINAS" :key="p.href" v-bind="p" />
     </RejillaTarjetas>

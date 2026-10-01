@@ -26,6 +26,7 @@ export const SERIES = [
     paginas: [
       { ruta: '/extra/ia/fundamentos', titulo: 'Fundamentos', descripcion: 'Qué es un modelo, un harness y un agente.' },
       { ruta: '/extra/ia/opencode', titulo: 'Tu primer agente', descripcion: 'Instalar uno, arrancarlo en tu proyecto y pedirle cosas.' },
+      { ruta: '/extra/ia/modelos', titulo: 'Elegir un modelo', descripcion: 'Capacidad, precio y cuándo basta el barato.' },
       { ruta: '/extra/ia/contexto', titulo: 'Darle contexto', descripcion: 'AGENTS.md, skills y MCP: cómo sabe lo que necesita.' },
       { ruta: '/extra/ia/agentes', titulo: 'Agentes y subagentes', descripcion: 'El mismo modelo con papeles distintos, y cómo crear los tuyos.' },
       { ruta: '/extra/ia/equipo', titulo: 'Un equipo de agentes', descripcion: 'Un proyecto de principio a fin, con cada agente en su papel.' },

@@ -84,4 +84,4 @@ Más en la documentación de OpenCode: [reglas](https://opencode.ai/docs/rules/)
 
 ---
 
-**3 de 7** · Anterior: [Tu primer agente](../opencode/) · Siguiente: [Agentes y subagentes](../agentes/)
+**4 de 8** · Anterior: [Elegir un modelo](../modelos/) · Siguiente: [Agentes y subagentes](../agentes/)

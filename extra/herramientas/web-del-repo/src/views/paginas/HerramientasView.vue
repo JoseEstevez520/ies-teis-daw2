@@ -1,5 +1,6 @@
 <script setup>
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from 'elastic-ui'
+import { BellRing, Calculator, Globe, LayoutDashboard, NotebookPen } from '@lucide/vue'
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
 import RejillaTarjetas from '../../components/RejillaTarjetas.vue'
 import TarjetaPagina from '../../components/TarjetaPagina.vue'
@@ -9,30 +10,35 @@ const HERRAMIENTAS = [
   {
     href: '/extra/herramientas/calculadora-de-faltas',
     titulo: 'Calculadora de faltas',
+    icono: Calculator,
     descripcion: '% de faltas frente al máximo permitido por módulo.',
     nota: 'Funciona',
   },
   {
     href: '/extra/herramientas/panel-aula-virtual',
     titulo: 'Panel del Aula Virtual',
+    icono: LayoutDashboard,
     descripcion: 'Tareas, notas y actividad de todos tus cursos en una sola pantalla.',
     nota: 'En marcha',
   },
   {
     href: '/extra/herramientas/alarma-tareas',
     titulo: 'Alarma de tareas',
+    icono: BellRing,
     descripcion: 'Avisa de tareas pendientes del Aula Virtual que no tengas ya en tu calendario.',
     nota: 'Sin código todavía',
   },
   {
     href: '/extra/herramientas/cuaderno-ia',
     titulo: 'Cuaderno de IA para apuntes',
+    icono: NotebookPen,
     descripcion: 'Preguntar con IA sobre el material de un módulo.',
     nota: 'Investigado, sin código',
   },
   {
     href: 'https://github.com/JoseEstevez520/ies-teis-daw2/tree/main/extra/herramientas/web-del-repo',
     titulo: 'Web del repo',
+    icono: Globe,
     descripcion: 'Esta web: el contenido del repo, navegable.',
   },
 ]

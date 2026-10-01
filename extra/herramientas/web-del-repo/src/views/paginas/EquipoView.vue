@@ -36,6 +36,11 @@ import PlantillaPagina from '../../components/PlantillaPagina.vue'
       <RouterLink to="/extra/open-source#busca-antes">buscar antes de construir</RouterLink>.
     </p>
     <p>
+      Y pueden llevar <strong>modelos distintos</strong>: al que planifica y decide le pones el más
+      listo, y a los que ejecutan lo fácil, uno más barato (ver
+      <RouterLink to="/extra/ia/modelos">Elegir un modelo</RouterLink>).
+    </p>
+    <p>
       Ahora, verlos trabajar. Lo pides una vez y cada agente hace lo suyo, aparte, y le pasa al
       siguiente solo lo que necesita. Fíjate en quién encuentra el fallo. La sesión es un ejemplo
       inventado.

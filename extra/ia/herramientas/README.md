@@ -54,4 +54,4 @@ entera de con qué lo abriste.
 
 ---
 
-**6 de 7** · Anterior: [Un equipo de agentes](../equipo/) · Siguiente: [Consejos](../consejos/)
+**7 de 8** · Anterior: [Un equipo de agentes](../equipo/) · Siguiente: [Consejos](../consejos/)

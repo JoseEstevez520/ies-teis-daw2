@@ -30,7 +30,9 @@ con lo que cada alumno hizo allí. Así se lo repartiría un equipo:
 
 Cada agente es el mismo modelo con otro papel, como en
 [Agentes y subagentes](../agentes/), y cada uno lleva su skill, como en
-[Darle contexto](../contexto/#skills-instrucciones-cuando-hacen-falta). El explorador hace
+[Darle contexto](../contexto/#skills-instrucciones-cuando-hacen-falta). Pero pueden llevar
+**modelos distintos**: al que planifica y decide le pones el más listo, y a los que ejecutan lo
+fácil, uno más barato (ver [Elegir un modelo](../modelos/)). El explorador hace
 lo de [buscar antes de construir](../../open-source/#busca-antes-de-construir). En la web se
 ve al equipo trabajando en una sesión de ejemplo, inventada.
 
@@ -67,4 +69,4 @@ sea un solo agente haciendo cada papel por turnos:
 
 ---
 
-**5 de 7** · Anterior: [Agentes y subagentes](../agentes/) · Siguiente: [Herramientas](../herramientas/)
+**6 de 8** · Anterior: [Agentes y subagentes](../agentes/) · Siguiente: [Herramientas](../herramientas/)

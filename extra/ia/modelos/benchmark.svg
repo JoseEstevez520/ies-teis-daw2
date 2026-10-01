@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" width="720" height="440" role="img" aria-label="Calidad frente a coste por tarea. Seis modelos reales dan casi la misma calidad (en torno al 80% en SWE-bench), pero resolver una tarea cuesta desde veinte céntimos hasta setenta y cuatro dólares.">
+  <rect x="0" y="0" width="720" height="440" rx="18" fill="#fafafa"/>
+  <g stroke="#e4e4e7" stroke-width="1" stroke-dasharray="3 6">
+    <line x1="96" y1="44" x2="96" y2="330"/>
+    <line x1="285" y1="44" x2="285" y2="330"/>
+    <line x1="475" y1="44" x2="475" y2="330"/>
+    <line x1="664" y1="44" x2="664" y2="330"/>
+    <line x1="96" y1="44" x2="664" y2="44"/>
+    <line x1="96" y1="116" x2="664" y2="116"/>
+    <line x1="96" y1="187" x2="664" y2="187"/>
+    <line x1="96" y1="258" x2="664" y2="258"/>
+    <line x1="96" y1="330" x2="664" y2="330"/>
+  </g>
+  <line x1="96" y1="44" x2="96" y2="330" stroke="#d4d4d8" stroke-width="1.5"/>
+  <line x1="96" y1="330" x2="664" y2="330" stroke="#d4d4d8" stroke-width="1.5"/>
+
+  <g font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#71717a">
+    <text x="96" y="350" text-anchor="middle">$0,1</text>
+    <text x="285" y="350" text-anchor="middle">$1</text>
+    <text x="475" y="350" text-anchor="middle">$10</text>
+    <text x="664" y="350" text-anchor="middle">$100</text>
+    <text x="86" y="334" text-anchor="end">78%</text>
+    <text x="86" y="262" text-anchor="end">79%</text>
+    <text x="86" y="191" text-anchor="end">80%</text>
+    <text x="86" y="120" text-anchor="end">81%</text>
+    <text x="86" y="48" text-anchor="end">82%</text>
+  </g>
+
+  <g fill="#7c3aed">
+    <circle cx="153" cy="237" r="6"/>
+    <circle cx="221" cy="173" r="6"/>
+    <circle cx="307" cy="144" r="6"/>
+    <circle cx="482" cy="130" r="6"/>
+    <circle cx="523" cy="144" r="6"/>
+    <circle cx="639" cy="130" r="6"/>
+  </g>
+  <g font-family="ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="600" fill="#7c3aed">
+    <text x="153" y="263" text-anchor="middle">DeepSeek V4 Pro</text>
+    <text x="221" y="197" text-anchor="middle">Qwen3.5</text>
+    <text x="307" y="130" text-anchor="middle">MiniMax M2.5</text>
+    <text x="472" y="118" text-anchor="end">Gemini 3.1 Pro</text>
+    <text x="523" y="170" text-anchor="middle">GPT-5.4</text>
+    <text x="635" y="116" text-anchor="middle">Claude Opus 4.6</text>
+  </g>
+
+  <g font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" fill="#71717a">
+    <text x="380" y="384" text-anchor="middle">coste por tarea resuelta, en dólares (escala logarítmica) →</text>
+    <text x="40" y="187" text-anchor="middle" transform="rotate(-90 40 187)">calidad · SWE-bench Verified (%)</text>
+    <text x="664" y="416" text-anchor="end">Datos: AgentMarketCap, abril de 2026</text>
+  </g>
+</svg>

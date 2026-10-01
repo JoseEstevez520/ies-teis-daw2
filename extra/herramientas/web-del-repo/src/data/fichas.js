@@ -2,7 +2,7 @@
 // migas o el buscador (demasiado largo, o una vista a medida sin .md). Una
 // página sin entrada aquí sale con el `#` de su .md.
 export const FICHAS = {
-  'extra/ia': { titulo: 'IA aplicada' },
+  'extra/ia': { titulo: 'IA' },
   'extra/herramientas': { titulo: 'Herramientas' },
   'extra/diseno': { titulo: 'Diseño' },
   'extra/open-source': { titulo: 'Open source' },

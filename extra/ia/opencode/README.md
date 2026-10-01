@@ -44,4 +44,4 @@ algo sin tocar la original.
 
 ---
 
-**2 de 7** · Anterior: [Fundamentos](../fundamentos/) · Siguiente: [Darle contexto](../contexto/)
+**2 de 8** · Anterior: [Fundamentos](../fundamentos/) · Siguiente: [Elegir un modelo](../modelos/)

@@ -23,6 +23,7 @@ import moodleApi from '../../../../../extra/herramientas/moodle-api.md?raw'
 
 import ia from '../../../../../extra/ia/README.md?raw'
 import opencode from '../../../../../extra/ia/opencode/README.md?raw'
+import modelos from '../../../../../extra/ia/modelos/README.md?raw'
 import contexto from '../../../../../extra/ia/contexto/README.md?raw'
 import agentes from '../../../../../extra/ia/agentes/README.md?raw'
 import equipo from '../../../../../extra/ia/equipo/README.md?raw'
@@ -200,6 +201,12 @@ export const PAGINAS = [
     claveRuta: 'extra/ia/opencode',
     seccion: 'IA',
     fuente: opencode,
+  },
+  {
+    ruta: '/extra/ia/modelos',
+    claveRuta: 'extra/ia/modelos',
+    seccion: 'IA',
+    fuente: modelos,
   },
   {
     ruta: '/extra/ia/contexto',

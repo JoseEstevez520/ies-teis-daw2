@@ -26,4 +26,4 @@ tiempo de verdad.
 
 ---
 
-**7 de 7** · Anterior: [Herramientas](../herramientas/)
+**8 de 8** · Anterior: [Herramientas](../herramientas/)

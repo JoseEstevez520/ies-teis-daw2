@@ -34,6 +34,7 @@ import IdeaEntornoView from '../views/paginas/IdeaEntornoView.vue'
 import IdeaAnalisisView from '../views/paginas/IdeaAnalisisView.vue'
 import IdeaDatosVigoView from '../views/paginas/IdeaDatosVigoView.vue'
 import ModuloView from '../views/paginas/ModuloView.vue'
+import ModelosIaView from '../views/paginas/ModelosIaView.vue'
 import MoodleApiView from '../views/paginas/MoodleApiView.vue'
 import OpenCodeView from '../views/paginas/OpenCodeView.vue'
 import OpenSourceView from '../views/paginas/OpenSourceView.vue'
@@ -87,6 +88,7 @@ const router = createRouter({
     { path: '/extra/ia', component: IaView },
     { path: '/extra/ia/fundamentos', component: FundamentosView },
     { path: '/extra/ia/opencode', component: OpenCodeView },
+    { path: '/extra/ia/modelos', component: ModelosIaView },
     { path: '/extra/ia/contexto', component: ContextoView },
     { path: '/extra/ia/agentes', component: AgentesView },
     { path: '/extra/ia/equipo', component: EquipoView },

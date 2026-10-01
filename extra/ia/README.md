@@ -1,6 +1,6 @@
-# IA aplicada
+# IA
 
-Cómo usar la IA en clase para aprender más, no para que te haga el trabajo.
+Cómo usar la IA mejor.
 
 ## Páginas
 
@@ -8,12 +8,13 @@ Se leen en orden: cada página se apoya en la anterior.
 
 1. [`fundamentos/`](fundamentos/): qué es un modelo, un harness y un agente.
 2. [`opencode/`](opencode/): tu primer agente: instalarlo y pedirle cosas.
-3. [`contexto/`](contexto/): darle contexto con AGENTS.md, skills y MCP.
-4. [`agentes/`](agentes/): agentes y subagentes, y cómo crear los tuyos.
-5. [`equipo/`](equipo/): un equipo de agentes, en un proyecto de principio a fin.
-6. [`herramientas/`](herramientas/): las que rodean al agente: Herdr (mantenerlo corriendo) y
+3. [`modelos/`](modelos/): elegir un modelo: capacidad, precio y cuándo basta el barato.
+4. [`contexto/`](contexto/): darle contexto con AGENTS.md, skills y MCP.
+5. [`agentes/`](agentes/): agentes y subagentes, y cómo crear los tuyos.
+6. [`equipo/`](equipo/): un equipo de agentes, en un proyecto de principio a fin.
+7. [`herramientas/`](herramientas/): las que rodean al agente: Herdr (mantenerlo corriendo) y
    Obsidian (editar el markdown).
-7. [`consejos/`](consejos/): cómo sacarle partido sin que te resuelva las prácticas.
+8. [`consejos/`](consejos/): cómo sacarle partido sin que te resuelva las prácticas.
 
 Las páginas explican conceptos que valen para cualquier agente. Los ejemplos son de
 OpenCode porque es el que usamos.
