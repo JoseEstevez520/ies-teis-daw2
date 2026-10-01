@@ -5,7 +5,10 @@ apuntes, conocimientos extra, ideas y herramientas que cualquiera puede usar.
 
 ## Empezar
 
-Lo mejor es verlo en la web: todo el contenido, navegable y visual.
+Lo mejor es verlo en la web: **<https://joseestevez520.github.io/ies-teis-daw2/>**. Está todo el
+contenido, navegable y visual.
+
+O arrancarla en tu equipo:
 
 ```bash
 git clone https://github.com/JoseEstevez520/ies-teis-daw2.git  # traer el repo
