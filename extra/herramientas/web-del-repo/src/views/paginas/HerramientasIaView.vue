@@ -49,8 +49,10 @@ herdr`
       a enganchar.
     </p>
     <p>
-      ¿Merece la pena? Con <strong>varios agentes a la vez</strong>, sí: lo que más se nota es el
-      aviso de cuál está bloqueado. Con uno solo, un <code>tmux</code> normal ya te vale.
+      Su gracia está en dos cosas: los agentes pueden <strong>hablar entre ellos</strong> (uno le
+      abre un panel a otro, lee su salida y espera a que termine o se quede bloqueado), y las
+      terminales <strong>siguen vivas</strong> aunque apagues tu ordenador, si Herdr corre en otra
+      máquina o te conectas por SSH. Al volver, te reenganchas donde estabas.
     </p>
 
     <h2 id="obsidian">Obsidian</h2>

@@ -30,8 +30,10 @@ herdr
 
 `ctrl+b q` te desengancha del servidor sin cerrarlo; `herdr` te vuelve a enganchar.
 
-¿Merece la pena? Con **varios agentes a la vez**, sí: lo que más se nota es el aviso de cuál está
-bloqueado. Con uno solo, un `tmux` normal ya te vale.
+Su gracia está en dos cosas: los agentes pueden **hablar entre ellos** (uno le abre un panel a
+otro, lee su salida y espera a que termine o se quede bloqueado), y las terminales **siguen
+vivas** aunque apagues tu ordenador, si Herdr corre en otra máquina o te conectas por SSH. Al
+volver, te reenganchas donde estabas.
 
 ## Obsidian
 
