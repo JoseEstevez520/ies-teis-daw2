@@ -3,6 +3,10 @@
 Convierte el contenido del repo (apuntes, recursos, extra) en una web navegable, en vez de
 tener que bucear por carpetas en GitHub.
 
+Está publicada en **<https://joseestevez520.github.io/ies-teis-daw2/>**. Se actualiza sola: al
+hacer push a `main`, un workflow ([`deploy-pages.yml`](../../../.github/workflows/deploy-pages.yml))
+la compila y la publica en GitHub Pages.
+
 ## Arrancarla
 
 ```bash
