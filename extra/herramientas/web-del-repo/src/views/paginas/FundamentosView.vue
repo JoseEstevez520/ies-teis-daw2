@@ -1,9 +1,18 @@
 <script setup>
+import { siClaudecode, siOpencode } from 'simple-icons'
 import DiagramaHarness from '../../visuales/DiagramaHarness.vue'
 import SesionAgente from '../../visuales/SesionAgente.vue'
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
+import Tecnologias from '../../components/Tecnologias.vue'
+import openaiLogo from '../../assets/openai.svg'
 
-// extra/ia/fundamentos/README.md
+// extra/ia/fundamentos/README.md. Codex es de OpenAI y su logo no está en
+// simple-icons: es el descargado.
+const APPS = [
+  { icon: siOpencode, nombre: 'OpenCode' },
+  { icon: siClaudecode, nombre: 'Claude Code' },
+  { img: openaiLogo, mono: true, nombre: 'Codex' },
+]
 </script>
 
 <template>
@@ -38,6 +47,7 @@ import PlantillaPagina from '../../components/PlantillaPagina.vue'
 
     <h2 id="aplicaciones">Aplicaciones que traen el harness montado</h2>
     <p>Se instalan en tu ordenador y se usan desde la terminal.</p>
+    <Tecnologias :items="APPS" />
     <table>
       <thead>
         <tr><th>Aplicación</th><th>Qué necesitas</th></tr>

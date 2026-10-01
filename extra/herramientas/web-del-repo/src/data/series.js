@@ -15,6 +15,13 @@ export const SERIES = [
     ],
   },
   {
+    carpeta: '/modulos/diw',
+    paginas: [
+      { ruta: '/modulos/diw/componentes-y-reactividad', titulo: 'Componentes y reactividad', descripcion: 'El archivo .vue, ref y reactive, y las directivas: v-model, v-if, v-for.' },
+      { ruta: '/modulos/diw/frontend-backend-y-base-de-datos', titulo: 'Frontend, backend y base de datos', descripcion: 'Cómo se conecta la web (Vue) con el servidor y la base de datos.' },
+    ],
+  },
+  {
     carpeta: '/extra/ia',
     paginas: [
       { ruta: '/extra/ia/fundamentos', titulo: 'Fundamentos', descripcion: 'Qué es un modelo, un harness y un agente.' },
@@ -22,6 +29,7 @@ export const SERIES = [
       { ruta: '/extra/ia/contexto', titulo: 'Darle contexto', descripcion: 'AGENTS.md, skills y MCP: cómo sabe lo que necesita.' },
       { ruta: '/extra/ia/agentes', titulo: 'Agentes y subagentes', descripcion: 'El mismo modelo con papeles distintos, y cómo crear los tuyos.' },
       { ruta: '/extra/ia/equipo', titulo: 'Un equipo de agentes', descripcion: 'Un proyecto de principio a fin, con cada agente en su papel.' },
+      { ruta: '/extra/ia/herramientas', titulo: 'Herramientas', descripcion: 'Herdr, para tenerlos corriendo, y Obsidian, para editar el markdown.' },
       { ruta: '/extra/ia/consejos', titulo: 'Consejos', descripcion: 'Cómo sacarle partido sin que te resuelva las prácticas.' },
     ],
   },

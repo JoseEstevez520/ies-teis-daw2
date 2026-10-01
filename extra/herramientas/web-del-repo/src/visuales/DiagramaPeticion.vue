@@ -43,13 +43,13 @@ const DATOS = '#db2777'
 
       <div class="flex flex-col gap-2">
         <div class="diagram-area diagram-in gap-1" :style="{ '--diagram-color': VISTA }">
-          <span class="diagram-chip diagram-in">
+          <span class="diagram-chip diagram-in whitespace-nowrap">
             <FileCode :size="16" :stroke-width="1.5" aria-hidden="true" /> Vista (HTML)
           </span>
           <span class="text-sm text-fg-secondary">@Controller</span>
         </div>
         <div class="diagram-area diagram-in gap-1" :style="{ '--diagram-color': DATOS }">
-          <span class="diagram-chip diagram-in">
+          <span class="diagram-chip diagram-in whitespace-nowrap">
             <Braces :size="16" :stroke-width="1.5" aria-hidden="true" /> Datos (JSON)
           </span>
           <span class="text-sm text-fg-secondary">@RestController</span>

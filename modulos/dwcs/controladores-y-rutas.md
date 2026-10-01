@@ -77,6 +77,34 @@ escribe entre llaves:
 public String showProduct(@PathVariable Long id) { ... }
 ```
 
+## Parámetro en la query
+
+Un trozo de la ruta va con `@PathVariable`. Lo que va después del `?` va con `@RequestParam`:
+
+```java
+@GetMapping("/products")
+public String list(@RequestParam String category, Model model) { ... }
+```
+
+Con esa ruta, `/products?category=libros` deja `category` con el valor `libros`.
+
+| Se escribe | Se lee con | Ejemplo |
+|---|---|---|
+| en la ruta: `/products/{id}` | `@PathVariable` | `/products/5` |
+| tras el `?`: `?category=libros` | `@RequestParam` | `/products?category=libros` |
+
+Si el parámetro puede no venir, no lo dejes obligatorio, o el método responde con un 400:
+
+```java
+@RequestParam(required = false, defaultValue = "todos") String category
+```
+
+Con `Optional` lo recibes como un valor que puede faltar y decides tú:
+
+```java
+@RequestParam Optional<String> category   // category.orElse("todos")
+```
+
 ## Pasar datos a la vista
 
 El controlador le entrega datos a la plantilla con un objeto `Model`. Cada dato lleva un

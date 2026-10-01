@@ -1,9 +1,19 @@
 <script setup>
 import { Steps, StepsItem, TerminalReplay } from 'elastic-ui'
+import { siClaudecode, siOpencode } from 'simple-icons'
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
+import Tecnologias from '../../components/Tecnologias.vue'
+import openaiLogo from '../../assets/openai.svg'
 
 // extra/ia/opencode/README.md. Explica cómo se empieza a usar un agente; OpenCode
 // es el ejemplo porque es el que se usa en clase (y es gratis), no el tema.
+// Codex es de OpenAI y su logo no está en simple-icons: es el descargado.
+const APPS = [
+  { icon: siOpencode, nombre: 'OpenCode' },
+  { icon: siClaudecode, nombre: 'Claude Code' },
+  { img: openaiLogo, mono: true, nombre: 'Codex' },
+]
+
 const INSTALAR = [
   { comment: 'Instalar OpenCode (o: npm install -g opencode-ai)', command: 'curl -fsSL https://opencode.ai/install | bash' },
   { comment: 'Arrancarlo en la carpeta de tu proyecto', command: 'cd practica-tienda && opencode' },
@@ -13,6 +23,12 @@ const PETICIONES = [
   'Explícame qué hace ProductoController.',
   'Añade que no se pueda guardar un producto sin nombre.',
   '¿Por qué falla el test de crear producto?',
+]
+
+const CONTINUAR = [
+  { comment: 'Retomar la última sesión de esta carpeta', command: 'opencode --continue' },
+  { comment: 'Verlas todas, con su id', command: 'opencode session list' },
+  { comment: 'Retomar una concreta', command: 'opencode --session abc123' },
 ]
 </script>
 
@@ -27,6 +43,7 @@ const PETICIONES = [
       Aquí se ve con <a href="https://opencode.ai/" target="_blank" rel="noopener noreferrer">OpenCode</a>,
       que es el que usamos porque es gratis. Claude Code y Codex funcionan igual.
     </p>
+    <Tecnologias :items="APPS" />
 
     <h2 id="instalar">Instalar y arrancar</h2>
     <TerminalReplay :entries="INSTALAR" title="~" />
@@ -53,5 +70,15 @@ const PETICIONES = [
       de otro.
     </p>
 
+    <h2 id="continuar">Continuar una sesión</h2>
+    <p>
+      Al cerrar el terminal no pierdes la conversación: OpenCode guarda las sesiones, por
+      proyecto. Cuando vuelvas a la carpeta, la retomas con un comando.
+    </p>
+    <TerminalReplay :entries="CONTINUAR" title="~" />
+    <p>
+      <code>--continue</code> (o <code>-c</code>) retoma la última. Con <code>--fork</code>
+      copias la sesión en vez de seguirla, para probar algo sin tocar la original.
+    </p>
   </PlantillaPagina>
 </template>

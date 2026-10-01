@@ -115,11 +115,13 @@ componentes de elastic-ui; su `USAGE.md` tiene las reglas.
 - **Color:** uno por concepto, el mismo en toda la página. Verde / ámbar / rojo solo
   para sí / con condiciones / no. Fuera de las piezas, el de la sección
   (`src/lib/colorSeccion.js`).
-- **Iconos y logos:** Lucide (`@lucide/vue`) para iconos generales, a 16–20 px y trazo 1.5,
-  con una etiqueta corta al lado. Simple Icons (`simple-icons`) para marcas y tecnologías,
-  con `Logo.vue` y `Tecnologias.vue`. Algunas marcas son casi negras (Gradle, Thymeleaf) y
-  en tema oscuro no se leen en su color: van en monocromo (el color del texto) o sobre una
-  ficha clara.
+- **Iconos y logos:** Lucide (`@lucide/vue`) para iconos generales y de concepto, a 16–20 px y
+  trazo 1.5, con una etiqueta corta al lado. Simple Icons (`simple-icons`) para marcas y
+  tecnologías, con `Logo.vue` y `Tecnologias.vue`. Si una marca **no está en Simple Icons**,
+  coge su logo real de su web y guárdalo en `src/assets/` (como `herdr.png`), en vez de usar un
+  icono de Lucide; Lucide es para conceptos, no para marcas. Algunas marcas son casi negras
+  (Gradle, Thymeleaf) y en tema oscuro no se leen en su color: van en monocromo (el color del
+  texto) o sobre una ficha clara.
 - **El dibujo, en su fondo:** todo el dibujo va sobre un fondo gris muy suave, sin borde
   (`bg-bg-subtle` en el `Diagram`), para que se vea que es un dibujo y no texto.
 - **Tintes, sin bordes:** cada pieza, un tinte suave de su color sobre ese fondo, con

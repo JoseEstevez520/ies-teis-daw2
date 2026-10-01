@@ -42,6 +42,32 @@ model.addAttribute("nombre", "Ana");   // en el controlador
 <p th:text="${nombre}">Sin nombre</p>   <!-- → <p>Ana</p> -->
 ```
 
+## Condicionales
+
+`th:if` muestra la etiqueta solo si se cumple la condición, y `th:unless` solo si no se cumple:
+
+```html
+<span th:if="${puntos > 0}">Aprobado</span>
+<span th:unless="${puntos > 0}">Suspenso</span>
+```
+
+## Bucles
+
+`th:each` repite la etiqueta por cada elemento de una lista. El elemento y la lista se separan
+con dos puntos:
+
+```html
+<div th:each="nombre : ${nombres}">
+  <p th:text="${nombre}">...</p>
+</div>
+```
+
+Si la lista es de objetos, se lee cada campo por sus getters:
+
+```html
+<p th:each="producto : ${productos}" th:text="${producto.nombre}">...</p>
+```
+
 ## Dónde va la plantilla
 
 Las plantillas van en `src/main/resources/templates/`. El nombre que devuelve el controlador es
@@ -65,7 +91,30 @@ Y se inserta desde otra plantilla con `th:insert`, que coge ese bloque y lo mete
 <div th:insert="~{fragmentos :: cabecera}"></div>
 ```
 
+`th:replace` hace lo mismo, pero sustituye la etiqueta entera por el fragmento en vez de
+meterlo dentro:
+
+```html
+<header th:replace="~{fragmentos :: cabecera}"></header>
+```
+
 Así, la cabecera se cambia en un solo sitio y se actualiza en todas las páginas que la usan.
+
+## Enlaces
+
+Para un enlace interno se usa `th:href` con `@{...}`, que le pone delante la ruta de la
+aplicación (sigue funcionando si la aplicación no está en la raíz):
+
+```html
+<a th:href="@{/products}">Productos</a>
+```
+
+`@{...}` también admite variables, en la query o en la propia ruta:
+
+```html
+<a th:href="@{/products(category=${category})}">Libros</a>
+<a th:href="@{/products/{id}(id=${producto.id})}">Ver</a>
+```
 
 ## Cambiar clases según un valor
 

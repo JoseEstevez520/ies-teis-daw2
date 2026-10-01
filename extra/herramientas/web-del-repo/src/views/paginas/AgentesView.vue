@@ -1,8 +1,12 @@
 <script setup>
 import { CodeBlock } from 'elastic-ui'
+import { siOpencode } from 'simple-icons'
 import DiagramaAgentes from '../../visuales/DiagramaAgentes.vue'
 import SesionAgente from '../../visuales/SesionAgente.vue'
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
+import Tecnologias from '../../components/Tecnologias.vue'
+
+const APP = [{ icon: siOpencode, nombre: 'OpenCode' }]
 
 // extra/ia/agentes/README.md. El concepto (un agente es el modelo con un papel)
 // vale para cualquier aplicación; Build, Plan y el formato del archivo son los
@@ -34,6 +38,7 @@ No me des el código de la práctica.`
       la tecla Tab) y puedes crear los tuyos. Abajo, la misma petición a cada uno, para verlos
       trabajar. Las sesiones son un ejemplo inventado.
     </p>
+    <Tecnologias :items="APP" />
 
     <h2 id="constructor">El constructor</h2>
     <p>El que hace el trabajo; en OpenCode, Build, con el que arranca. Fíjate en que edita sin preguntarte.</p>

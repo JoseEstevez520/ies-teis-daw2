@@ -1,13 +1,22 @@
 <script setup>
 import { Callout, CodeBlock } from 'elastic-ui'
+import { siClaudecode, siOpencode } from 'simple-icons'
 import skillApuntesClaros from '../../../../../../.agents/skills/apuntes-claros/SKILL.md?raw'
 import DiagramaContexto from '../../visuales/DiagramaContexto.vue'
 import SesionAgente from '../../visuales/SesionAgente.vue'
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
+import Tecnologias from '../../components/Tecnologias.vue'
+import openaiLogo from '../../assets/openai.svg'
 
 // extra/ia/contexto/README.md. Los conceptos (AGENTS.md, skills, MCP) valen
 // para cualquier agente; los archivos y rutas concretos son los de OpenCode,
 // que es el que usamos. Datos de https://opencode.ai/docs/ (rules, skills, mcp-servers).
+// Codex es de OpenAI y su logo no está en simple-icons: es el descargado.
+const APPS = [
+  { icon: siOpencode, nombre: 'OpenCode' },
+  { icon: siClaudecode, nombre: 'Claude Code' },
+  { img: openaiLogo, mono: true, nombre: 'Codex' },
+]
 
 const AGENTS_MD = `# Práctica Spring: tienda
 
@@ -36,6 +45,7 @@ const CONTEXT7 = `{
       <strong>Un agente solo sabe de tu proyecto lo que le das.</strong> Hay tres formas de dárselo,
       y cada una entra en un momento distinto:
     </p>
+    <Tecnologias :items="APPS" />
     <table>
       <thead>
         <tr><th></th><th>Qué es</th><th>Cuándo lo usa</th></tr>

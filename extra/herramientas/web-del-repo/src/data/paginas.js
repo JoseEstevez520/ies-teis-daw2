@@ -12,6 +12,9 @@ import optional from '../../../../../modulos/dwcs/optional.md?raw'
 import dwcsEnum from '../../../../../modulos/dwcs/enum.md?raw'
 import scopesEstado from '../../../../../modulos/dwcs/scopes-y-estado.md?raw'
 
+import frontendBackend from '../../../../../modulos/diw/frontend-backend-y-base-de-datos.md?raw'
+import componentesReactividad from '../../../../../modulos/diw/componentes-y-reactividad.md?raw'
+
 import extraIndex from '../../../../../extra/README.md?raw'
 import herramientasIndex from '../../../../../extra/herramientas/README.md?raw'
 import alarmaTareas from '../../../../../extra/herramientas/alarma-tareas/README.md?raw'
@@ -23,6 +26,7 @@ import opencode from '../../../../../extra/ia/opencode/README.md?raw'
 import contexto from '../../../../../extra/ia/contexto/README.md?raw'
 import agentes from '../../../../../extra/ia/agentes/README.md?raw'
 import equipo from '../../../../../extra/ia/equipo/README.md?raw'
+import iaHerramientas from '../../../../../extra/ia/herramientas/README.md?raw'
 import fundamentos from '../../../../../extra/ia/fundamentos/README.md?raw'
 import consejos from '../../../../../extra/ia/consejos/README.md?raw'
 import diseno from '../../../../../extra/diseno/README.md?raw'
@@ -132,6 +136,18 @@ export const PAGINAS = [
     fuente: scopesEstado,
   },
   {
+    ruta: '/modulos/diw/frontend-backend-y-base-de-datos',
+    claveRuta: 'modulos/diw/frontend-backend-y-base-de-datos',
+    seccion: 'Módulos',
+    fuente: frontendBackend,
+  },
+  {
+    ruta: '/modulos/diw/componentes-y-reactividad',
+    claveRuta: 'modulos/diw/componentes-y-reactividad',
+    seccion: 'Módulos',
+    fuente: componentesReactividad,
+  },
+  {
     ruta: '/extra',
     claveRuta: 'extra',
     seccion: 'Extra',
@@ -202,6 +218,12 @@ export const PAGINAS = [
     claveRuta: 'extra/ia/equipo',
     seccion: 'IA',
     fuente: equipo,
+  },
+  {
+    ruta: '/extra/ia/herramientas',
+    claveRuta: 'extra/ia/herramientas',
+    seccion: 'IA',
+    fuente: iaHerramientas,
   },
   {
     ruta: '/extra/diseno',

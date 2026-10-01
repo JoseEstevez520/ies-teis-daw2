@@ -67,4 +67,4 @@ sea un solo agente haciendo cada papel por turnos:
 
 ---
 
-**5 de 6** · Anterior: [Agentes y subagentes](../agentes/) · Siguiente: [Consejos](../consejos/)
+**5 de 7** · Anterior: [Agentes y subagentes](../agentes/) · Siguiente: [Herramientas](../herramientas/)

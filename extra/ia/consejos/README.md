@@ -26,4 +26,4 @@ tiempo de verdad.
 
 ---
 
-**6 de 6** · Anterior: [Un equipo de agentes](../equipo/)
+**7 de 7** · Anterior: [Herramientas](../herramientas/)

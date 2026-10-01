@@ -40,3 +40,18 @@ body {
   color: var(--color-fg);
 }
 
+/*
+ * Un logo descargado de un solo color (OpenAI), en negro sobre fondo claro.
+ * En el tema oscuro se invierte para que se lea, como los logos de simple-icons
+ * que toman el color del texto.
+ */
+:root[data-theme='dark'] .logo-mono {
+  filter: invert(1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) .logo-mono {
+    filter: invert(1);
+  }
+}
+

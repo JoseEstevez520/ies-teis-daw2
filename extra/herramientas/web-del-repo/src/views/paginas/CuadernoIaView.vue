@@ -1,8 +1,14 @@
 <script setup>
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from 'elastic-ui'
+import { siGooglegemini, siNotebooklm } from 'simple-icons'
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
+import Tecnologias from '../../components/Tecnologias.vue'
 
 // extra/herramientas/cuaderno-ia/README.md
+const MARCAS = [
+  { icon: siNotebooklm, nombre: 'NotebookLM' },
+  { icon: siGooglegemini, nombre: 'Google Gemini' },
+]
 </script>
 
 <template>
@@ -10,6 +16,8 @@ import PlantillaPagina from '../../components/PlantillaPagina.vue'
     titulo="Cuaderno de IA para apuntes"
     entradilla="Preguntar con IA sobre el material de un módulo (PDFs, transcripciones) en vez de buscarlo a mano. Investigado, sin código todavía."
   >
+    <Tecnologias :items="MARCAS" />
+
     <h2 id="opciones">Tres opciones</h2>
     <table>
       <thead>

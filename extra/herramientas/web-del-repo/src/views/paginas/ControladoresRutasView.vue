@@ -32,6 +32,13 @@ public class ProductController {
 const PATH_VARIABLE = `@GetMapping("/products/{id}")
 public String showProduct(@PathVariable Long id) { ... }`
 
+const QUERY = `@GetMapping("/products")
+public String list(@RequestParam String category, Model model) { ... }`
+
+const QUERY_OPCIONAL = `@RequestParam(required = false, defaultValue = "todos") String category`
+
+const QUERY_OPTIONAL = `@RequestParam Optional<String> category   // category.orElse("todos")`
+
 const MODEL = `@GetMapping("/saludo")
 public String saludo(Model model) {
     model.addAttribute("nombre", "Ana");
@@ -82,6 +89,38 @@ public String saludo(Model model) {
       trozo se escribe entre llaves:
     </p>
     <CodeBlock :code="PATH_VARIABLE" language="java" />
+
+    <h2 id="query">Parámetro en la query</h2>
+    <p>
+      Un trozo de la ruta va con <code>@PathVariable</code>. Lo que va después del
+      <code>?</code> va con <code>@RequestParam</code>:
+    </p>
+    <CodeBlock :code="QUERY" language="java" />
+    <p>
+      Con esa ruta, <code>/products?category=libros</code> deja <code>category</code> con el valor
+      <code>libros</code>.
+    </p>
+    <table>
+      <thead>
+        <tr><th>Se escribe</th><th>Se lee con</th><th>Ejemplo</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>en la ruta: <code>/products/{id}</code></td>
+          <td><code>@PathVariable</code></td>
+          <td><code>/products/5</code></td>
+        </tr>
+        <tr>
+          <td>tras el <code>?</code>: <code>?category=libros</code></td>
+          <td><code>@RequestParam</code></td>
+          <td><code>/products?category=libros</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Si el parámetro puede no venir, no lo dejes obligatorio, o el método responde con un 400:</p>
+    <CodeBlock :code="QUERY_OPCIONAL" language="java" />
+    <p>Con <code>Optional</code> lo recibes como un valor que puede faltar y decides tú:</p>
+    <CodeBlock :code="QUERY_OPTIONAL" language="java" />
 
     <h2 id="model">Pasar datos a la vista</h2>
     <p>

@@ -28,6 +28,20 @@ ejemplo:
 Mientras trabaja ves cada paso: qué busca, qué lee, qué cambia y qué ejecuta. **Revisa lo
 que cambia antes de darlo por bueno**, igual que revisarías el código de otro.
 
+## Continuar una sesión
+
+Al cerrar el terminal no pierdes la conversación: OpenCode guarda las sesiones, por proyecto.
+Cuando vuelvas a la carpeta, la retomas con un comando:
+
+```bash
+opencode --continue        # la última sesión de esta carpeta
+opencode session list      # todas, con su id
+opencode --session abc123  # una concreta
+```
+
+`--continue` (o `-c`) es lo normal. `--fork` copia la sesión en vez de seguirla, para probar
+algo sin tocar la original.
+
 ---
 
-**2 de 6** · Anterior: [Fundamentos](../fundamentos/) · Siguiente: [Darle contexto](../contexto/)
+**2 de 7** · Anterior: [Fundamentos](../fundamentos/) · Siguiente: [Darle contexto](../contexto/)

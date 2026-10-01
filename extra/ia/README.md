@@ -11,7 +11,9 @@ Se leen en orden: cada página se apoya en la anterior.
 3. [`contexto/`](contexto/): darle contexto con AGENTS.md, skills y MCP.
 4. [`agentes/`](agentes/): agentes y subagentes, y cómo crear los tuyos.
 5. [`equipo/`](equipo/): un equipo de agentes, en un proyecto de principio a fin.
-6. [`consejos/`](consejos/): cómo sacarle partido sin que te resuelva las prácticas.
+6. [`herramientas/`](herramientas/): las que rodean al agente: Herdr (mantenerlo corriendo) y
+   Obsidian (editar el markdown).
+7. [`consejos/`](consejos/): cómo sacarle partido sin que te resuelva las prácticas.
 
 Las páginas explican conceptos que valen para cualquier agente. Los ejemplos son de
 OpenCode porque es el que usamos.

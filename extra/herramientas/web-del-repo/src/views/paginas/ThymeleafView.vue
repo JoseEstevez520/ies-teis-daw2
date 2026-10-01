@@ -25,6 +25,23 @@ const FRAGMENTO = `<!-- templates/fragmentos.html -->
 const INSERT = `<!-- en otra plantilla -->
 <div th:insert="~{fragmentos :: cabecera}"></div>`
 
+const REEMPLAZAR = `<!-- sustituye la etiqueta entera -->
+<header th:replace="~{fragmentos :: cabecera}"></header>`
+
+const CONDICIONALES = `<span th:if="\${puntos > 0}">Aprobado</span>
+<span th:unless="\${puntos > 0}">Suspenso</span>`
+
+const BUCLES = `<div th:each="nombre : \${nombres}">
+  <p th:text="\${nombre}">...</p>
+</div>`
+
+const BUCLES_OBJETO = `<p th:each="producto : \${productos}" th:text="\${producto.nombre}">...</p>`
+
+const ENLACES = `<a th:href="@{/products}">Productos</a>`
+
+const ENLACES_VAR = `<a th:href="@{/products(category=\${category})}">Libros</a>
+<a th:href="@{/products/{id}(id=\${producto.id})}">Ver</a>`
+
 const CLASSAPPEND = `<p th:classappend="\${estado == 'OPERANDO' ? 'focus' : ''}">...</p>`
 </script>
 
@@ -62,6 +79,22 @@ const CLASSAPPEND = `<p th:classappend="\${estado == 'OPERANDO' ? 'focus' : ''}"
     </p>
     <CodeBlock :code="MODELO" language="java" />
 
+    <h2 id="condicionales">Condicionales</h2>
+    <p>
+      <code>th:if</code> muestra la etiqueta solo si se cumple la condición, y
+      <code>th:unless</code> solo si no se cumple:
+    </p>
+    <CodeBlock :code="CONDICIONALES" language="html" />
+
+    <h2 id="bucles">Bucles</h2>
+    <p>
+      <code>th:each</code> repite la etiqueta por cada elemento de una lista. El elemento y la
+      lista se separan con dos puntos:
+    </p>
+    <CodeBlock :code="BUCLES" language="html" />
+    <p>Si la lista es de objetos, se lee cada campo por sus getters:</p>
+    <CodeBlock :code="BUCLES_OBJETO" language="html" />
+
     <h2 id="donde">Dónde va la plantilla</h2>
     <p>
       Las plantillas van en <code>src/main/resources/templates/</code>. El nombre que devuelve el
@@ -77,8 +110,22 @@ const CLASSAPPEND = `<p th:classappend="\${estado == 'OPERANDO' ? 'focus' : ''}"
     <CodeBlock :code="FRAGMENTO" language="html" />
     <p>Y se inserta desde otra plantilla con <code>th:insert</code>:</p>
     <CodeBlock :code="INSERT" language="html" />
+    <p>
+      <code>th:replace</code> hace lo mismo, pero sustituye la etiqueta entera por el fragmento en
+      vez de meterlo dentro:
+    </p>
+    <CodeBlock :code="REEMPLAZAR" language="html" />
     <DiagramaFragmentos />
     <p><strong>La cabecera se cambia en un solo sitio y se actualiza en todas las páginas.</strong></p>
+
+    <h2 id="enlaces">Enlaces</h2>
+    <p>
+      Para un enlace interno se usa <code>th:href</code> con <code>@{...}</code>, que le pone
+      delante la ruta de la aplicación (sigue funcionando si la aplicación no está en la raíz):
+    </p>
+    <CodeBlock :code="ENLACES" language="html" />
+    <p><code>@{...}</code> también admite variables, en la query o en la propia ruta:</p>
+    <CodeBlock :code="ENLACES_VAR" language="html" />
 
     <h2 id="classappend">Cambiar clases según un valor</h2>
     <p>

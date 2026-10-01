@@ -20,6 +20,7 @@ import ExtraView from '../views/paginas/ExtraView.vue'
 import EquipoView from '../views/paginas/EquipoView.vue'
 import DwcsView from '../views/paginas/DwcsView.vue'
 import FundamentosView from '../views/paginas/FundamentosView.vue'
+import HerramientasIaView from '../views/paginas/HerramientasIaView.vue'
 import HerramientasView from '../views/paginas/HerramientasView.vue'
 import HorarioView from '../views/paginas/HorarioView.vue'
 import IaView from '../views/paginas/IaView.vue'
@@ -37,7 +38,10 @@ import MoodleApiView from '../views/paginas/MoodleApiView.vue'
 import OpenCodeView from '../views/paginas/OpenCodeView.vue'
 import OpenSourceView from '../views/paginas/OpenSourceView.vue'
 import ControladoresRutasView from '../views/paginas/ControladoresRutasView.vue'
+import ComponentesReactividadView from '../views/paginas/ComponentesReactividadView.vue'
+import DiwView from '../views/paginas/DiwView.vue'
 import EnumView from '../views/paginas/EnumView.vue'
+import FrontendBackendView from '../views/paginas/FrontendBackendView.vue'
 import OptionalView from '../views/paginas/OptionalView.vue'
 import ScopesEstadoView from '../views/paginas/ScopesEstadoView.vue'
 import ServiciosInyeccionView from '../views/paginas/ServiciosInyeccionView.vue'
@@ -53,7 +57,6 @@ const MODULOS = [
   { ruta: 'dasp', carpeta: 'dasp', nombre: 'DASP', descripcion: 'Digitalización' },
   { ruta: 'daw', carpeta: 'DAW', nombre: 'DAW', descripcion: 'Desenvolvemento de Aplicacións Web' },
   { ruta: 'despregamento', carpeta: 'despregamento', nombre: 'Despregamento', descripcion: 'Apache, DNS, Git' },
-  { ruta: 'diw', carpeta: 'diw', nombre: 'DIW', descripcion: 'Vue 3 + Vite' },
   { ruta: 'dwcc', carpeta: 'dwcc', nombre: 'DWCC', descripcion: 'Desarrollo web en entorno cliente' },
 ]
 
@@ -64,6 +67,9 @@ const router = createRouter({
     { path: '/modulos', component: ModulosView },
     ...MODULOS.map(({ ruta, ...modulo }) => ({ path: `/modulos/${ruta}`, component: ModuloView, props: modulo })),
     { path: '/modulos/dwcs', component: DwcsView },
+    { path: '/modulos/diw', component: DiwView },
+    { path: '/modulos/diw/componentes-y-reactividad', component: ComponentesReactividadView },
+    { path: '/modulos/diw/frontend-backend-y-base-de-datos', component: FrontendBackendView },
     { path: '/modulos/dwcs/spring-y-contenedor', component: SpringContenedorView },
     { path: '/modulos/dwcs/controladores-y-rutas', component: ControladoresRutasView },
     { path: '/modulos/dwcs/thymeleaf', component: ThymeleafView },
@@ -84,6 +90,7 @@ const router = createRouter({
     { path: '/extra/ia/contexto', component: ContextoView },
     { path: '/extra/ia/agentes', component: AgentesView },
     { path: '/extra/ia/equipo', component: EquipoView },
+    { path: '/extra/ia/herramientas', component: HerramientasIaView },
     { path: '/extra/ia/consejos', component: ConsejosView },
     { path: '/extra/diseno', component: DisenoView },
     { path: '/extra/diseno/fuentes', component: DisenoFuentesView },

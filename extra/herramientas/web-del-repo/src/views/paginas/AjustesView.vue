@@ -11,16 +11,15 @@ import { forzarAnimaciones, setForzarAnimaciones } from '../../lib/movimiento.js
   <PlantillaPagina titulo="Ajustes" entradilla="Cómo se comporta la web en este navegador.">
     <h2 id="animaciones">Animaciones</h2>
     <p>
-      La web sigue el ajuste de <strong>movimiento reducido</strong> del sistema. Si lo tienes
-      activado (pasa en algunos PC del aula, sobre todo si van justos de potencia), las transiciones
-      y los dibujos aparecen de golpe, sin animarse. Con esto encendido, la web anima igual aunque el
-      sistema pida lo contrario.
+      Por defecto la web anima siempre, aunque el sistema pida <strong>movimiento reducido</strong>
+      (en algunos PC del aula eso deja las páginas de golpe, sin animarse). Apágalo aquí para que la
+      web vuelva a hacer caso al sistema.
     </p>
     <div class="not-prose my-6">
       <Switch :model-value="forzarAnimaciones" @update:model-value="setForzarAnimaciones">
         Forzar las animaciones
       </Switch>
     </div>
-    <p>Se guarda solo en este navegador. Apagado, la web vuelve a hacer caso al sistema.</p>
+    <p>Se guarda solo en este navegador. Encendido (por defecto), anima aunque el sistema pida lo contrario.</p>
   </PlantillaPagina>
 </template>

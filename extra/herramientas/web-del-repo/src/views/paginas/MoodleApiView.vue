@@ -1,9 +1,12 @@
 <script setup>
 import { Callout, CodeBlock, Steps, StepsItem } from 'elastic-ui'
+import { siMoodle } from 'simple-icons'
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
+import Tecnologias from '../../components/Tecnologias.vue'
 import { enGitHub } from '../../lib/repo.js'
 
 // extra/herramientas/moodle-api.md
+const MOODLE = [{ icon: siMoodle, nombre: 'Moodle' }]
 const URL_BASE = 'https://centros.edu.xunta.gal/iesteis/aulavirtual/webservice/rest/server.php'
 const PETICION = `curl -s "\${MOODLE_URL}/webservice/rest/server.php" \\
   --data-urlencode "wstoken=\${MOODLE_TOKEN}" \\
@@ -61,6 +64,7 @@ const DETALLES = [
       app Moodle Mobile: no es un truco. Cada alumno ya tiene un token para el servicio "Moodle
       mobile web service".
     </p>
+    <Tecnologias :items="MOODLE" />
 
     <h2 id="como-sacar-tu-token">Cómo sacar tu token</h2>
     <Steps static>
