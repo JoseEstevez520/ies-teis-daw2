@@ -1,6 +1,6 @@
 <script setup>
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from 'elastic-ui'
-import { BellRing, Calculator, Globe, LayoutDashboard, NotebookPen } from '@lucide/vue'
+import { BellRing, Calculator, Globe, LayoutDashboard, NotebookPen, StickyNote } from '@lucide/vue'
 import PlantillaPagina from '../../components/PlantillaPagina.vue'
 import RejillaTarjetas from '../../components/RejillaTarjetas.vue'
 import TarjetaPagina from '../../components/TarjetaPagina.vue'
@@ -34,6 +34,13 @@ const HERRAMIENTAS = [
     icono: NotebookPen,
     descripcion: 'Preguntar con IA sobre el material de un módulo.',
     nota: 'Investigado, sin código',
+  },
+  {
+    href: '/extra/herramientas/notas-de-clase',
+    titulo: 'Notas de clase',
+    icono: StickyNote,
+    descripcion: 'Dejar notas en crudo y que un agente las convierta en apuntes y páginas.',
+    nota: 'Diseño, sin código',
   },
   {
     href: 'https://github.com/JoseEstevez520/ies-teis-daw2/tree/main/extra/herramientas/web-del-repo',

@@ -50,7 +50,7 @@ ve al equipo trabajando en una sesión de ejemplo, inventada.
 
 Tienes que entender lo que se ha hecho. Eres quien decide, quien lo defiende en clase o en
 una entrevista y quien responde si falla. Un equipo de agentes te hace ir más rápido, no te
-quita tener que saber ([consejos para usar la IA](../consejos/)).
+quita tener que saber.
 
 **Los agentes hacen el trabajo; entenderlo y decidir sigue siendo cosa tuya.**
 
@@ -69,4 +69,4 @@ sea un solo agente haciendo cada papel por turnos:
 
 ---
 
-**6 de 8** · Anterior: [Agentes y subagentes](../agentes/) · Siguiente: [Herramientas](../herramientas/)
+**6 de 9** · Anterior: [Agentes y subagentes](../agentes/) · Siguiente: [Herramientas](../herramientas/)

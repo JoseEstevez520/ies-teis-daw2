@@ -32,8 +32,9 @@ de editar: **te deja un plan y no cambia nada sin tu permiso.**
 
 Un agente creado por ti, con tus instrucciones y tus permisos. Este tutor tiene la edición
 denegada, así que no puede resolverte la práctica aunque se lo pidas: **sus permisos
-mandan, aunque el modelo quiera editar.** En OpenCode se crea con un archivo como este en
-tu proyecto:
+mandan, aunque el modelo quiera editar.** Es la forma de pedirle que te explique en vez de
+darte el código: si te lo diera, no podrías defenderlo en un examen ni en una entrevista.
+En OpenCode se crea con un archivo como este en tu proyecto:
 
 ```markdown title=".opencode/agents/tutor.md"
 ---
@@ -61,4 +62,4 @@ Crear agentes y subagentes, con todas sus opciones, en la
 
 ---
 
-**5 de 8** · Anterior: [Darle contexto](../contexto/) · Siguiente: [Un equipo de agentes](../equipo/)
+**5 de 9** · Anterior: [Darle contexto](../contexto/) · Siguiente: [Un equipo de agentes](../equipo/)

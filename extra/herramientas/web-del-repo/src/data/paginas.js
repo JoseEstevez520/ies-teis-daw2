@@ -20,6 +20,7 @@ import herramientasIndex from '../../../../../extra/herramientas/README.md?raw'
 import alarmaTareas from '../../../../../extra/herramientas/alarma-tareas/README.md?raw'
 import cuadernoIa from '../../../../../extra/herramientas/cuaderno-ia/README.md?raw'
 import moodleApi from '../../../../../extra/herramientas/moodle-api.md?raw'
+import notasDeClase from '../../../../../extra/herramientas/notas-de-clase/README.md?raw'
 
 import ia from '../../../../../extra/ia/README.md?raw'
 import opencode from '../../../../../extra/ia/opencode/README.md?raw'
@@ -29,7 +30,8 @@ import agentes from '../../../../../extra/ia/agentes/README.md?raw'
 import equipo from '../../../../../extra/ia/equipo/README.md?raw'
 import iaHerramientas from '../../../../../extra/ia/herramientas/README.md?raw'
 import fundamentos from '../../../../../extra/ia/fundamentos/README.md?raw'
-import consejos from '../../../../../extra/ia/consejos/README.md?raw'
+import queEsLaIa from '../../../../../extra/ia/que-es-la-ia/README.md?raw'
+import aplicacionesConIa from '../../../../../extra/ia/aplicaciones-con-ia/README.md?raw'
 import diseno from '../../../../../extra/diseno/README.md?raw'
 import disenoFuentes from '../../../../../extra/diseno/fuentes/README.md?raw'
 import disenoColores from '../../../../../extra/diseno/colores/README.md?raw'
@@ -179,16 +181,28 @@ export const PAGINAS = [
     fuente: moodleApi,
   },
   {
+    ruta: '/extra/herramientas/notas-de-clase',
+    claveRuta: 'extra/herramientas/notas-de-clase',
+    seccion: 'Herramientas',
+    fuente: notasDeClase,
+  },
+  {
     ruta: '/extra/ia',
     claveRuta: 'extra/ia',
     seccion: 'IA',
     fuente: ia,
   },
   {
-    ruta: '/extra/ia/consejos',
-    claveRuta: 'extra/ia/consejos',
+    ruta: '/extra/ia/que-es-la-ia',
+    claveRuta: 'extra/ia/que-es-la-ia',
     seccion: 'IA',
-    fuente: consejos,
+    fuente: queEsLaIa,
+  },
+  {
+    ruta: '/extra/ia/aplicaciones-con-ia',
+    claveRuta: 'extra/ia/aplicaciones-con-ia',
+    seccion: 'IA',
+    fuente: aplicacionesConIa,
   },
   {
     ruta: '/extra/ia/fundamentos',

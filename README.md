@@ -40,4 +40,7 @@ horario/  - horario semanal
 
 ## Cómo aportar
 
-Ver [CONTRIBUTING.md](CONTRIBUTING.md).
+¿Ves algo mal o te falta algo? Abre un
+[issue](https://github.com/JoseEstevez520/ies-teis-daw2/issues) y lo miramos. Para escribir
+en el repo hace falta ser colaborador; el resto de reglas están en
+[CONTRIBUTING.md](CONTRIBUTING.md).

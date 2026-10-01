@@ -6,7 +6,7 @@ import CalculadoraDeFaltasView from '../views/CalculadoraDeFaltasView.vue'
 import AlarmaTareasView from '../views/paginas/AlarmaTareasView.vue'
 import AjustesView from '../views/paginas/AjustesView.vue'
 import AgentesView from '../views/paginas/AgentesView.vue'
-import ConsejosView from '../views/paginas/ConsejosView.vue'
+import AplicacionesConIaView from '../views/paginas/AplicacionesConIaView.vue'
 import ContextoView from '../views/paginas/ContextoView.vue'
 import CuadernoIaView from '../views/paginas/CuadernoIaView.vue'
 import DisenoView from '../views/paginas/DisenoView.vue'
@@ -36,8 +36,10 @@ import IdeaDatosVigoView from '../views/paginas/IdeaDatosVigoView.vue'
 import ModuloView from '../views/paginas/ModuloView.vue'
 import ModelosIaView from '../views/paginas/ModelosIaView.vue'
 import MoodleApiView from '../views/paginas/MoodleApiView.vue'
+import NotasDeClaseView from '../views/paginas/NotasDeClaseView.vue'
 import OpenCodeView from '../views/paginas/OpenCodeView.vue'
 import OpenSourceView from '../views/paginas/OpenSourceView.vue'
+import QueEsLaIaView from '../views/paginas/QueEsLaIaView.vue'
 import ControladoresRutasView from '../views/paginas/ControladoresRutasView.vue'
 import ComponentesReactividadView from '../views/paginas/ComponentesReactividadView.vue'
 import DiwView from '../views/paginas/DiwView.vue'
@@ -85,6 +87,7 @@ const router = createRouter({
     { path: '/extra/herramientas/alarma-tareas', component: AlarmaTareasView },
     { path: '/extra/herramientas/cuaderno-ia', component: CuadernoIaView },
     { path: '/extra/herramientas/moodle-api', component: MoodleApiView },
+    { path: '/extra/herramientas/notas-de-clase', component: NotasDeClaseView },
     { path: '/extra/ia', component: IaView },
     { path: '/extra/ia/fundamentos', component: FundamentosView },
     { path: '/extra/ia/opencode', component: OpenCodeView },
@@ -93,7 +96,8 @@ const router = createRouter({
     { path: '/extra/ia/agentes', component: AgentesView },
     { path: '/extra/ia/equipo', component: EquipoView },
     { path: '/extra/ia/herramientas', component: HerramientasIaView },
-    { path: '/extra/ia/consejos', component: ConsejosView },
+    { path: '/extra/ia/que-es-la-ia', component: QueEsLaIaView },
+    { path: '/extra/ia/aplicaciones-con-ia', component: AplicacionesConIaView },
     { path: '/extra/diseno', component: DisenoView },
     { path: '/extra/diseno/fuentes', component: DisenoFuentesView },
     { path: '/extra/diseno/colores', component: DisenoColoresView },

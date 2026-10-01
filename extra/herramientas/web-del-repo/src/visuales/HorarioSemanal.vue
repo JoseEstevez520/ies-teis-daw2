@@ -1,12 +1,12 @@
 <script setup>
 import { nextTick, ref } from 'vue'
 import { Button, TextMorph, Timetable } from 'elastic-ui'
-import { Coffee, Download, MapPin } from '@lucide/vue'
+import { Coffee, Download } from '@lucide/vue'
 import { CLASES, MODULOS } from './horario.js'
 
-// Horario de 2º DAW, sacado de la foto oficial (horario/horario.jpg), pintado
+// Horario de 2º DAW, pintado
 // con el Timetable de elastic-ui: sesiones de 50 min desde las 8:10, con el
-// recreo de 11:30 a 12:00. Todas las clases son en el Taller Inf 2.
+// recreo de 11:30 a 12:00.
 
 const DIAS = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes']
 
@@ -58,10 +58,6 @@ async function descargar() {
 <template>
   <div class="not-prose flex flex-col gap-3">
     <div class="flex items-center justify-between gap-3">
-      <p class="flex items-center gap-1.5 text-sm text-fg-muted">
-        <MapPin class="size-3.5 shrink-0" :stroke-width="1.5" />
-        Todas en el Taller Inf 2
-      </p>
       <Button variant="ghost" size="sm" :icon="Download" :disabled="exportando" @click="descargar">
         <TextMorph :text="exportando ? 'Generando…' : 'Descargar PNG'" />
       </Button>

@@ -3,6 +3,13 @@
 Sin ceremonia: si eres colaborador, tienes push directo. No hay pull requests ni revisión
 previa. La idea es que subir algo sea tan fácil como copiarlo aquí.
 
+El repo es público: cualquiera lo lee y, si ve algo mal o le falta algo, abre un
+[issue](https://github.com/JoseEstevez520/ies-teis-daw2/issues) y lo contamos ahí. Para
+escribir directamente en el repo hay que ser colaborador; pídeselo a Jose
+([joseestevezdaw@gmail.com](mailto:joseestevezdaw@gmail.com)) con tu usuario de GitHub.
+
+Antes de nada, lee el [código de conducta](CODE_OF_CONDUCT.md).
+
 ## Reglas mínimas
 
 - **Haz `git pull` antes de ponerte a trabajar**, para no pisar el trabajo de otro.

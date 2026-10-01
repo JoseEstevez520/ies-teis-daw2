@@ -1,6 +1,6 @@
 import { ARBOL_NAV } from './arbolNav.js'
 
-// La ruta de migas de una página (Inicio › Extra › IA aplicada › Consejos),
+// La ruta de migas de una página (Inicio › Extra › IA › Fundamentos),
 // sacada del mismo árbol que sigue las carpetas del repo. Cada miga lleva sus
 // hermanas (las demás páginas de su nivel), que el chevron de Breadcrumbs
 // abre para saltar de una a otra sin volver atrás.

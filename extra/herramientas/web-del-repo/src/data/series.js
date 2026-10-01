@@ -31,7 +31,8 @@ export const SERIES = [
       { ruta: '/extra/ia/agentes', titulo: 'Agentes y subagentes', descripcion: 'El mismo modelo con papeles distintos, y cómo crear los tuyos.' },
       { ruta: '/extra/ia/equipo', titulo: 'Un equipo de agentes', descripcion: 'Un proyecto de principio a fin, con cada agente en su papel.' },
       { ruta: '/extra/ia/herramientas', titulo: 'Herramientas', descripcion: 'Herdr, para tenerlos corriendo, y Obsidian, para editar el markdown.' },
-      { ruta: '/extra/ia/consejos', titulo: 'Consejos', descripcion: 'Cómo sacarle partido sin que te resuelva las prácticas.' },
+      { ruta: '/extra/ia/que-es-la-ia', titulo: 'Qué es la IA', descripcion: 'No sigue reglas: aprende de ejemplos. De ahí salen sus aciertos y sus fallos.' },
+      { ruta: '/extra/ia/aplicaciones-con-ia', titulo: 'Aplicaciones con IA', descripcion: 'Qué se puede hacer con ella: chat, generar, tool calling y MCP.' },
     ],
   },
   {

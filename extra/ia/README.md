@@ -4,7 +4,8 @@ Cómo usar la IA mejor.
 
 ## Páginas
 
-Se leen en orden: cada página se apoya en la anterior.
+Se leen en orden: cada página se apoya en la anterior. Las siete primeras bastan para usar
+la IA; las dos últimas explican qué es por dentro, por si quieres más.
 
 1. [`fundamentos/`](fundamentos/): qué es un modelo, un harness y un agente.
 2. [`opencode/`](opencode/): tu primer agente: instalarlo y pedirle cosas.
@@ -14,7 +15,9 @@ Se leen en orden: cada página se apoya en la anterior.
 6. [`equipo/`](equipo/): un equipo de agentes, en un proyecto de principio a fin.
 7. [`herramientas/`](herramientas/): las que rodean al agente: Herdr (mantenerlo corriendo) y
    Obsidian (editar el markdown).
-8. [`consejos/`](consejos/): cómo sacarle partido sin que te resuelva las prácticas.
+8. [`que-es-la-ia/`](que-es-la-ia/): qué es esto, en llano: aprende de ejemplos.
+9. [`aplicaciones-con-ia/`](aplicaciones-con-ia/): qué se puede hacer con ella: chat, generar,
+   tool calling y MCP.
 
 Las páginas explican conceptos que valen para cualquier agente. Los ejemplos son de
 OpenCode porque es el que usamos.

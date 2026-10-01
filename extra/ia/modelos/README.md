@@ -86,4 +86,4 @@ una sola cosa. Es como un equipo: a cada recado, quien mejor lo hace.
 
 ---
 
-**3 de 8** · Anterior: [Tu primer agente](../opencode/) · Siguiente: [Darle contexto](../contexto/)
+**3 de 9** · Anterior: [Tu primer agente](../opencode/) · Siguiente: [Darle contexto](../contexto/)

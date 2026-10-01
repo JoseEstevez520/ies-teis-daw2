@@ -1,5 +1,5 @@
 // Datos del horario de 2º DAW, compartidos por HorarioSemanal y
-// HorarioModulos. Sacados de la foto oficial (horario/horario.jpg).
+// HorarioModulos.
 
 export const MODULOS = {
   DWCS: { profe: 'Patricia', color: '#e11d48', ruta: '/modulos/dwcs' },

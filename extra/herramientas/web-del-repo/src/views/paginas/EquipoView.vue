@@ -67,8 +67,7 @@ import PlantillaPagina from '../../components/PlantillaPagina.vue'
     <p>
       Tienes que entender lo que se ha hecho. Eres quien decide, quien lo defiende en clase o en una
       entrevista y quien responde si falla. Un equipo de agentes te hace ir más rápido, no te quita
-      tener que saber
-      (<RouterLink to="/extra/ia/consejos">consejos para usar la IA</RouterLink>).
+      tener que saber.
     </p>
     <p><strong>Los agentes hacen el trabajo; entenderlo y decidir sigue siendo cosa tuya.</strong></p>
 

@@ -11,6 +11,8 @@ su propio código.
   cursos en una sola pantalla.
 - [`web-del-repo/`](web-del-repo/): convertir el contenido del repo en una web navegable.
 - [`cuaderno-ia/`](cuaderno-ia/): preguntar con IA sobre el material de un módulo.
+- [`notas-de-clase/`](notas-de-clase/): dejar notas en crudo y que un agente las convierta en
+  apuntes y páginas de la web.
 
 ## Pendientes
 
