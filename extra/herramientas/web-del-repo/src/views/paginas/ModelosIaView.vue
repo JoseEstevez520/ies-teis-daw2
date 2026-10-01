@@ -83,19 +83,19 @@ const NIVELES = [
       Coste por tarea resuelta, en escala logarítmica. Datos de AgentMarketCap, abril de 2026, sobre
       2 millones de tokens por tarea; cambian a menudo.
     </p>
+
+    <h2 id="repartir">Repartir el trabajo</h2>
+    <p>Lo interesante no es usar siempre el modelo más potente: es darle a cada tarea el que le vale.</p>
     <div class="not-prose grid gap-3 sm:grid-cols-3">
       <div v-for="n in NIVELES" :key="n.titulo" class="diagram-area gap-1" :style="{ '--diagram-color': n.color }">
         <span class="text-sm font-semibold">{{ n.titulo }}</span>
         <span class="text-sm text-fg-secondary">{{ n.texto }}</span>
       </div>
     </div>
-
-    <h2 id="repartir">Repartir el trabajo</h2>
     <p>
-      Lo típico no es usar un solo modelo para todo. Muchas veces el más listo hace el
-      <strong>plan</strong> y el barato lo <strong>ejecuta</strong>: en el plan se decide bien o
-      mal, y ejecutar es seguir unos pasos, que no necesita tanta cabeza. Así el caro se paga solo
-      donde de verdad cambia el resultado.
+      Y lo más típico: el más listo hace el <strong>plan</strong> y el barato lo
+      <strong>ejecuta</strong>; en el plan se decide bien o mal, y ejecutar es seguir unos pasos, que
+      no necesita tanta cabeza. Así el caro se paga solo donde de verdad cambia el resultado.
     </p>
     <Callout type="tip">
       <p>

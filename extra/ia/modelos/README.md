@@ -35,17 +35,19 @@ céntimos hasta setenta y cuatro dólares.
 
 Datos de AgentMarketCap, abril de 2026, sobre 2 millones de tokens por tarea. Cambian a menudo.
 
+## Repartir el trabajo
+
+Lo interesante no es usar siempre el modelo más potente: es darle a cada tarea el que le vale.
+
 | Lo que haces | Con qué |
 |---|---|
 | Autocompletar, resumir, renombrar, un test sencillo | barato y rápido |
 | Una feature normal, leyendo el código | el de en medio |
 | Depurar algo difícil, decidir la arquitectura, un refactor grande | el más potente |
 
-## Repartir el trabajo
-
-Lo típico no es usar un solo modelo para todo. Muchas veces el más listo hace el **plan** y el
-barato lo **ejecuta**: en el plan se decide bien o mal, y ejecutar es seguir unos pasos, que no
-necesita tanta cabeza. Así el caro se paga solo donde de verdad cambia el resultado.
+Y lo más típico: el más listo hace el **plan** y el barato lo **ejecuta**; en el plan se decide
+bien o mal, y ejecutar es seguir unos pasos, que no necesita tanta cabeza. Así el caro se paga
+solo donde de verdad cambia el resultado.
 
 > [!TIP]
 > Para el usuario promedio no hace falta comerse la cabeza con esto: coge uno bueno y listo.
