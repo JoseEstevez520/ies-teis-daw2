@@ -61,9 +61,8 @@ const NIVELES = [
 
     <h2 id="no-el-mas-potente">No siempre el más potente</h2>
     <p>
-      Pagar más sube la calidad, pero cada vez menos. Con datos reales se ve mejor: seis modelos dan
-      casi la misma calidad, y resolver una tarea cuesta desde veinte céntimos hasta setenta y
-      cuatro dólares.
+      Pagar más no siempre compra más calidad. En estos seis modelos la calidad es casi la misma; lo
+      que cambia de verdad es el coste: de veinte céntimos a setenta y cuatro dólares por tarea.
     </p>
     <DiagramaModelos />
     <div class="not-prose flex flex-col gap-2">
@@ -93,14 +92,14 @@ const NIVELES = [
       </div>
     </div>
     <p>
-      Y lo más típico: el más listo hace el <strong>plan</strong> y el barato lo
-      <strong>ejecuta</strong>; en el plan se decide bien o mal, y ejecutar es seguir unos pasos, que
-      no necesita tanta cabeza. Así el caro se paga solo donde de verdad cambia el resultado.
+      Una práctica común: el más listo hace el <strong>plan</strong> y el barato lo
+      <strong>ejecuta</strong>. En el plan se decide bien o mal; ejecutar es seguir unos pasos, que
+      no necesita tanta cabeza.
     </p>
     <Callout type="tip">
       <p>
-        Para el usuario promedio no hace falta comerse la cabeza con esto: coge uno bueno y listo.
-        Saberlo está bien para optimizar: bajar de modelo en lo fácil y subir en lo difícil.
+        Para el usuario promedio no hace falta comerse la cabeza: coge uno bueno y listo. Saberlo
+        vale para optimizar, bajando de modelo en lo fácil.
       </p>
     </Callout>
 
@@ -126,11 +125,9 @@ const NIVELES = [
 
     <h2 id="a-donde-va">A dónde va esto</h2>
     <p>
-      Además de modelos generalistas cada vez más listos, van a crecer los
-      <strong>pequeños y específicos</strong> para una sola cosa. Es como un equipo: no pones al
-      genio a cada recado; tienes a alguien rápido para lo fácil y a un especialista para lo
-      difícil. Muchas veces lo más listo no es tirar del modelo más potente, sino repartir el
-      trabajo.
+      Además de generalistas cada vez más listos, van a crecer los
+      <strong>pequeños y específicos</strong>, buenos en una sola cosa. Es como un equipo: a cada
+      recado, quien mejor lo hace.
     </p>
 
     <h2 id="para-explorar">Para explorar</h2>

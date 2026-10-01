@@ -18,9 +18,9 @@ mudanza. No coges el camión para comprar el pan.
 
 ## No siempre el más potente
 
-Pagar más sube la calidad, pero cada vez menos. Con datos reales se ve mejor: seis modelos dan
-casi la misma calidad en SWE-bench (en torno al 80%), pero resolver una tarea cuesta desde veinte
-céntimos hasta setenta y cuatro dólares.
+Pagar más no siempre compra más calidad. En estos seis modelos la calidad es casi la misma (en
+torno al 80% en SWE-bench); lo que cambia de verdad es el coste: de veinte céntimos a setenta y
+cuatro dólares por tarea.
 
 ![Calidad frente a coste por tarea: seis modelos, casi la misma calidad y hasta 370 veces de diferencia en el coste](benchmark.svg)
 
@@ -45,13 +45,12 @@ Lo interesante no es usar siempre el modelo más potente: es darle a cada tarea 
 | Una feature normal, leyendo el código | el de en medio |
 | Depurar algo difícil, decidir la arquitectura, un refactor grande | el más potente |
 
-Y lo más típico: el más listo hace el **plan** y el barato lo **ejecuta**; en el plan se decide
-bien o mal, y ejecutar es seguir unos pasos, que no necesita tanta cabeza. Así el caro se paga
-solo donde de verdad cambia el resultado.
+Una práctica común: el más listo hace el **plan** y el barato lo **ejecuta**. En el plan se decide
+bien o mal; ejecutar es seguir unos pasos, que no necesita tanta cabeza.
 
 > [!TIP]
-> Para el usuario promedio no hace falta comerse la cabeza con esto: coge uno bueno y listo.
-> Saberlo está bien para optimizar: bajar de modelo en lo fácil y subir en lo difícil.
+> Para el usuario promedio no hace falta comerse la cabeza: coge uno bueno y listo. Saberlo vale
+> para optimizar, bajando de modelo en lo fácil.
 
 ## Cómo se elige en OpenCode
 
@@ -75,10 +74,8 @@ tema.
 
 ## A dónde va esto
 
-Además de modelos generalistas cada vez más listos, van a crecer los **pequeños y específicos**
-para una sola cosa. Es como un equipo: no pones al genio a cada recado; tienes a alguien rápido
-para lo fácil y a un especialista para lo difícil. Muchas veces lo más listo no es tirar del
-modelo más potente, sino repartir el trabajo.
+Además de generalistas cada vez más listos, van a crecer los **pequeños y específicos**, buenos en
+una sola cosa. Es como un equipo: a cada recado, quien mejor lo hace.
 
 ## Para explorar
 
