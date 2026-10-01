@@ -37,10 +37,17 @@ ya trae; si le falta algo, se le pide a ella.
 4. **Minimalista.** Sin cajas dentro de cajas, sin bordes de adorno, sin sombras. Color
    solo si significa algo.
 5. **Funciona en el móvil.** A 390 px, sin scroll horizontal.
+6. **Nada escondido.** Lo principal se entiende sin tocar nada: no pongas el contenido que hay que
+   ver de un vistazo detrás de pestañas o desplegables. Un `Tabs` vale solo para alternativas
+   equivalentes, no para lo esencial.
 
 ## Antes de escribir
 
-- Datos de la **documentación oficial**, nunca de memoria.
+- Datos de la **documentación oficial**, nunca de memoria. Si enseñas números (precios,
+  benchmarks), con su fuente y su fecha, y en una gráfica de verdad (ejes, rejilla), no en un
+  dibujo conceptual.
+- **Sin enlaces que desvíen.** No metas un "ver X" a otra página que saque de la lectura; si hace
+  falta, que sea imprescindible.
 - **Conceptos, no una herramienta.** Se explica la idea, que vale para cualquier
   herramienta (qué es un agente, qué es un AGENTS.md, una skill, un MCP), no cómo se usa un
   programa concreto. La herramienta de clase (en IA, OpenCode) es solo el ejemplo: sus
@@ -60,6 +67,7 @@ ya trae; si le falta algo, se le pide a ella.
 | detalles o casos dentro de un tema | `###` por cada uno |
 | una comparación | tabla |
 | un fichero o comando | bloque de código con el ejemplo real |
+| código que solo se lee, y es largo | bloque de código, no un `CodeWalkthrough` que se arrastra |
 | la estructura de carpetas de un proyecto | bloque de código con el árbol |
 | un cambio en un fichero | bloque ```` ```diff ```` |
 | piezas que encajan | dibujo con cajas (una dentro de otra si una contiene a la otra) |
@@ -128,7 +136,8 @@ componentes de elastic-ui; su `USAGE.md` tiene las reglas.
   texto normal encima. Lo secundario, con un tinte más flojo y el
   texto más apagado, no con un borde. Nunca un tinte dentro de otro tinte ni letra pequeña
   y gris sobre color: el texto se queda sin contraste, sobre todo en oscuro. Referencia que
-  se lee bien: `DiagramaAgentes.vue`.
+  se lee bien: `DiagramaAgentes.vue`. Comprueba cada visual en tema oscuro: uno que no se lee
+  no sirve, por bonito que sea.
 - **Nunca:** cajas semitransparentes sobre líneas, un visual vacío al cargar, bordes
   laterales de color, datos repetidos dentro de cada caja.
 - **Móvil:** si no cabe, cambia de forma (un día cada vez, fichas en vez de esquema).

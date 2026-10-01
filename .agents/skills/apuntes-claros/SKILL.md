@@ -55,6 +55,8 @@ documentación: lo lee toda la clase, y también profesores o quien llegue de fu
   Hay una palabra normal para cada uno (trabajar, entender, confundir, gustar...).
 - Sin muletillas ni guiños ("ojo, que esto es un clásico", "spoiler:"). La frase va a lo
   que dice.
+- Sin fórmulas de relleno para empezar ("lo más típico es...", "a la hora de...", "es importante
+  tener en cuenta"). Empieza por el hecho: "una práctica común es...", "muchas veces...".
 - Serio no es frío: frases cortas y directas, de tú, sin "usted" ni pasivas de manual.
 
 - Mal: "Haz `git pull` antes de currar, que si no la lías."
@@ -78,6 +80,9 @@ caso concreto *es* la explicación, no un adorno (ver "Código en bloques, nunca
 prosa" más abajo). La regla es sobre lo decorativo: un paréntesis con un dato suelto metido
 en una frase de presentación o de resumen, que no ayuda a entender esa frase y que además
 ya tiene su sitio propio en otra página.
+
+Y no repitas. Si una idea ya está dicha en una sección anterior, o la quitas o la cambias por un
+enlace. La misma idea dos veces ocupa el doble y no añade nada.
 
 ## Trocear, no amontonar
 
@@ -142,6 +147,8 @@ lectura rápida:
 - ¿Empieza por el problema (para qué hace falta) en vez de por la definición?
 - ¿Cada concepto tiene una definición de una frase ("X es Y")?
 - ¿Algún término sale antes de definirse?
+- ¿Se repite una idea que ya está en otra sección?
+- ¿Alguna frase empieza con una fórmula de relleno ("lo más típico", "a la hora de")?
 
 ## De dónde sale
 
